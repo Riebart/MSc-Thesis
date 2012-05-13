@@ -1,0 +1,67 @@
+% \documentclass[dvips,letterpaper,12pt]{report}
+\documentclass[dvips,12pt]{report}
+\usepackage{thesis}
+
+% \documentclass{article}
+\usepackage{amsfonts, amsmath, amsthm, amssymb}
+\usepackage[urlcolor=blue,linkcolor=blue,colorlinks=true]{hyperref}
+\hypersetup{
+  pdftitle = {A Novel Approach to Detecting Covert DNS Tunnels Using Throughput Estimation},
+  pdfkeywords = {},
+  pdfauthor = {Michael Himbeault}
+}
+% \usepackage[headsep=1cm,headheight=50pt]{geometry}
+\usepackage[dvips]{graphicx}
+\usepackage{subfigure}
+
+% \newtheorem{thm}{Theorem}[section]
+% \newtheorem{cor}[thm]{Corollary}
+% \newtheorem{lem}[thm]{Lemma}
+% 
+% \newtheorem*{hyp}{Hypothesis}
+% 
+% \theoremstyle{remark}
+% \newtheorem{remark}[thm]{Remark}
+% 
+% \theoremstyle{definition}
+% \newtheorem{definition}[thm]{Definition}
+% 
+% \theoremstyle{definition}
+% \newtheorem{example}{Example}[section]
+% 
+% \theoremstyle{definition}
+% \newtheorem{algorithm}{Algorithm}[section]
+
+\begin{document}
+
+\pagenumbering{roman}
+
+\thesistitle
+	{A Novel Approach to Detecting Covert DNS Tunnels Using Throughput Estimation}
+	{\emph{Michael Himbeault}}
+	{Master of Computer Engineering}
+	{Department of Electrical and Computer Engineering}
+	{May 2012}
+
+\include{abstract}
+\include{ack}
+\include{contents}
+\include{tables}
+\include{figures}
+
+\pagenumbering{arabic}
+\include{chap1}
+\include{chap2}
+\include{chap3}
+\include{chap4}
+\include{chap5}
+\include{chap6}
+
+\include{bib}
+
+% If you have no appendices, remove the following two lines.
+% If you have more appdences, add them as necessary.
+\appendix
+\include{apdxa}
+
+\end{document}
