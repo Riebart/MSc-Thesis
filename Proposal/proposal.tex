@@ -42,14 +42,13 @@ Estimation}
 
 \abstract{In a world that runs on data, protection of that data and protection 
 of the \emph{motion} of that data is of the utmost importance. Covert
-communiction channels attempt to circumvent established methods of control, such
+communication channels attempt to circumvent established methods of control, such
 as firewalls and proxies, by utilizing non-standard means of getting messages
-between two endpoints. DNS (Domain Name System), the system that  tanslates
-text-based resource names into IP addresses, is a very common and effective
-platform upon which covert channels are built. This work proposes,  and
+between two endpoints. DNS (Domain Name System), the system that  translates
+text-based resource names into resource records, is a very common and effective
+platform upon which covert channels are often built. This work proposes, and
 demonstrates the effectiveness of, a novel new technique that estimates data  
-transmission throughput over DNS and its weight against the norm for a given 
-network link to identify the existence of a DNS tunnel. The proposed technique
+transmission throughput over DNS in order to identify the existence of a DNS tunnel. The proposed technique
 is robust in the face of the obfuscation techniques that are able to hide
 tunnels from existing detection methods.}
 
@@ -73,7 +72,7 @@ in discrimination. Because there is such a wide variety of network traffic that
 is generated on a busy link, there is generally no simple definition of
 \emph{normal} for a particular class of traffic, including DNS. This tends to
 either rule out, or decrease the viability of, algorithms that depend on
-finding a definition of normal and alerting on deviations from that norm.
+finding a definition of normal and alerting based on deviations from that norm.
 
 A highly sensitive and specific detection of DNS tunnels on a busy network link
 is a very important problem in the arena of network security as it enables
@@ -90,19 +89,17 @@ can be used for is:
 \end{itemize}
 
 In enterprises that deal with sensitive information such as financial, health,
-personal or itellectial property information it is of the utmost importance to
+personal or intellectual property information it is of the utmost importance to
 control the access to this information. Even if an enterprise does not have
 information that needs protecting, DNS tunnels should still be blocked in order
 to prevent malware from communicating. Because DNS tunnels can be used for
 arbitrary communication, they can be used as command-and-control channels for
-botnets or other such systems that rely on two-way communication. Preventing
-botnets from operating is of the best interest for the internet as a whole and
-should be a concern of every user of the internet.
+botnets or any other malicious system that relies on data transmission. Preventing
+botnets from operating is of the best interest for the Internet as a whole and
+should be a concern of every user of the Internet.
 
-Existing metods of detection rely on one of two methods: character frequency
-and signatures.
-
-The signature-based solutions attempt to identify portions of the tunneling
+Existing methods of detection rely on one of two methods, character frequency
+and signatures, to detect the presence of a DNS tunnel. The signature-based solutions attempt to identify portions of the tunneling
 application data (as opposed to the user data that is sent using the tunnel
 application) for which a signature can be built. These signature based
 solutions are subject to many of the same problems that plague signature based
@@ -115,19 +112,19 @@ specifically for it, it is very likely that an existing signature will not be
 relevant and will not detect it.
 
 Because signature based schemes are not effective in detecting DNS tunnels in a
-zero-day\footnote{\emph{Zero-day} refers to a situation where no knowledge is
-known about the attack as it has never been seen before.} situation, another
+zero-day\footnote{\emph{Zero-day} refers to a situation where nothing is
+known about the attack as it has never been seen or analyzed before.} situation, another
 method is required. Analysis based on character frequency is proposed
-in\cite{kenton.born.frequency} by Kenton Born which proposes using character
+in\cite{kenton.born.frequency} by Kenton Born which uses character
 frequency analysis under the assumption that normal DNS traffic has a unique
-character frequency fingerprint. Based on analysis of common domain names, a
-distribution is obtained that accurately descibes normal DNS traffic while
+character frequency distribution that can be used as a discriminating fingerprint. Based on analysis of common domain names, a
+distribution is obtained that accurately describes normal DNS traffic while
 effectively detecting DNS tunnel traffic. Results obtained by Born indicate
-that DNS tunnels have an approximately uniform character frequency distribution.
+that DNS tunnels have an approximately uniform character frequency distribution whereas normal DNS queries do not.
 
 A weakness of the approach proposed by Born is that it relies on the assumption
-that DNS tunnel traffic \emph{necessarily} has a uniform character frequency
-distribution. This assumption is not necessarily true, and a proof-of-concept
+that DNS tunnel traffic \emph{necessarily} has a character frequency
+distribution that is different from that of normal DNS queries. This assumption is not necessarily true, and a proof-of-concept
 was developed that demonstrates this fact. The tool performs a
 \emph{probabilistic encoding} that takes an arbitrary data source and encodes
 it into a stream of characters that conforms to a given distribution. This tool
@@ -135,20 +132,20 @@ can be used to modify the output of any DNS tunnel application so that their
 output conforms to the distribution that Born found for normal DNS traffic. By
 utilizing this transformation, Born's approach fails to detect the DNS traffic
 as it becomes, from the viewpoint of his algorithm, indistinguishable from
-normal DNS traffic.
+normal DNS traffic. Details of this are given in \ref{propencode}.
 
 Due to the weaknesses listed above, it is clear that a new approach is
-necessary that detcts DNS tunnels in a zero-day situation and without the known
+necessary that detects DNS tunnels in a zero-day situation and without the known
 weakness involving character frequency and probabilistic encoding. This work
 proposes, and demonstrates the effectiveness of, a method of detecting DNS
-tunnels that meet these requirements.
+tunnels that meets these requirements.
 
 The proposed method operates under the assumption that DNS tunnels move more
 data than a normal domain. By leveraging this fact, it is possible to detect
 any use of DNS to transmit arbitrary data by measuring the amount of data that
 is transmitted using a particular DNS domain or subdomain. The details of this
 measurement methodology is contained in \ref{datameasurement} and requires
-estimating the amount of unique data that is transmitted by analysing the
+estimating the amount of unique data that is transmitted by analyzing the
 queries themselves and not simply counting characters in the query string.
 
 This proposed detection methodology is shown to detect DNS tunnels in as few as
@@ -167,7 +164,7 @@ remains practical for monitoring very large networks.
 \subsection{Domain Name System (DNS)}
 
 DNS (Domain Name System) is the service through which names are mapped to
-resources. Typiclaly, this maps a name (such as \emph{www.google.ca}) to an IP
+resources. Typically, this maps a name (such as \emph{www.google.ca}) to an IP
 address. The value of this service is that names are considerably more
 flexible, and considerably easier to remember, than the resource or record that
 they point to. For example, \emph{google.com} is considerably
@@ -176,9 +173,9 @@ easier to remember than one of the IP addresses that it points to, such as
 points to not just one but several addresses, and successive responses
 will receive different records in a round-robin, or random, fashion. This
 rotation of responses allows for a crude form of load balancing and automatic
-failover, while retaining the ease of use.
+fail over, while retaining the ease of use.
 
-The DNS protocol is assigned the both UDP and TCP port 53 for
+The DNS protocol is assigned both UDP and TCP port 53 for
 communication with most communication operating over UDP as opposed to TCP. The
 use of TCP depends on the implementation of the resolver, however the
 specification indicates the TCP should be used if the response data exceeds 512
@@ -193,25 +190,24 @@ this does not violate the specifications for DNS.
 
 The experiments related to this work do not consider the situation of DNS over
 TCP since the analysis techniques are identical since the formats of the UDP
-and TCP responses is identical once the TCP stream is reassmebled. Modification
+and TCP responses is identical once the TCP stream is reassembled. Modification
 of the tools developed for this work would require the ability to perform TCP
 stream reassembly in order to extract the responses from the TCP response.
 
-Because DNS is such an integral component of internet communication it is not
-resonable to sumply block it while still expecting a functional internet
+Because DNS is such an integral component of Internet communication it is not
+reasonable to simply block it while still expecting a functional Internet
 browsing experience. A common approach is called DNS \emph{proxying} which
 forces all DNS queries to be made to a DNS proxy server that is controlled by
 the interested entity (ISP, company, etc...). This DNS proxy server is
 responsible for handling all DNS queries for the internal network, and any DNS
-queries that are destined for the internet are typically dropped by the
-firewall in this type of confuration. The DNS proxy server operates in
-\emph{recusrive mode}, which means that if a question is asked of it to which
+queries that are destined for the Internet are typically dropped by the
+firewall in this type of configuration. The DNS proxy server operates in
+\emph{recursive mode}, which means that if a question is asked of it to which
 it does not know the answer, the proxy server will then query for the answer (by
 issuing its own query to the global DNS system) and then respond to the initial
 request using this response.
 
-DNS is a heavily cached protocol due to re-use of
-informatoin. Consider how often a desktop internet user causes a request for
+DNS is a heavily cached protocol due to how often data can be reused between queries. Consider how often a desktop Internet user causes a request for
 \emph{google.com}. If a request had to traverse the entire DNS system every
 time, this would represent a very considerable amount of traffic being
 generated. To avoid this, every DNS record has extra information about it that
@@ -223,7 +219,7 @@ record contains. Some records require a considerably lower TTL (Time To Live),
 as low as one minute, while for others a considerably longer (months) may be
 appropriate.
 
-This proxying architecture removes some naive operation modes for DNS tunnels
+This proxy architecture removes some naive operation modes for DNS tunnels
 that will be discussed in in more detail in \ref{dnstunnels.types.raw}, but does
 not offer any protection against the more common forms of DNS tunnels.
 
@@ -263,34 +259,37 @@ supports this and TCP supports this via the PUSH flag which indicates that data
 is being sent before a full window has been accumulated. The TCP PUSH flag
 is used, for example, during an SSH connection in order to provide
 interactivity. Timing channels, or any channel that relies on modifying normal
-system traffice instead of generating their own traffic, by their nature, are
+system traffic instead of generating their own traffic, by their nature, are
 unable to support real time data transfer. This is because they need to wait for
 a system packet in order to send their data, and if the system goes for a period
 of time without sending data then the covert channel must wait as well.
 
 \subsection{DNS Tunnels}
+\label{dnstunnels.types}
 
 DNS tunneling is the method by which arbitrary data is made to be transferred
-over the same channels as DNS. DNS tunnels come in one of two tyes: raw, or
+over the same channels as DNS. DNS tunnels come in one of two types: raw, or
 conforming.
 
+\label{dnstunnels.types.raw}
 Raw DNS tunnels do not attempt to mimic or conform to the DNS
 specifications, and simply attempt to utilize the fact that UDP port 53 is
 often left open in firewalls. Raw tunnels attempt to exploit this by
-transmitting arbitary traffic using UDP port 53 packets with arbitrary payload.
+transmitting arbitrary traffic using UDP port 53 packets with arbitrary payload.
 This is the most efficient exploitation of the ubiquity of DNS as it incurs the
 lowest amount of overhead, both computationally and in terms of network
-throughput. The tradeoff for this efficiency is that it is the least
+throughput. The trade off for this efficiency is that it is the least
 conforming and the most likely to get stopped by either a firewall or a proxy.
-In the situaion where all DNS queries are forced to be proxied through a
-dedicated DNS erver, raw DNS tunnels will fail to operate as expected. This is
+In the situation where all DNS queries are forced to be proxied through a
+dedicated DNS server, raw DNS tunnels will fail to operate as expected. This is
 because when the UDP port 53 traffic is redirected to the proxy, the DNS server
 will attempt to interpret the arbitrary payload as a DNS packet and will likely
 fail. When it fails, it will drop the packet thereby preventing all raw UDP
-port 53 commuication. Because these types of tunnels are effectively blocked by
+port 53 communication. Because these types of tunnels are effectively blocked by
 standard firewall and proxy practices, detection of these tunnels is not
 considered in this work.
 
+\label{dnstunnels.types.conforming}
 Conforming DNS tunnels produce DNS packets that conform to all appropriate
 specification and RFC documents and, as far as any DNS server, is concerned the
 traffic generated is valid DNS traffic. These tunnels incur the highest
@@ -298,11 +297,11 @@ computational and throughput overhead, but have the advantage that detecting
 and blocking them is a very difficult process. The detection of this type of
 DNS tunnels is the topic of this work. This type of tunnel is capable of
 operating, even in an environment with very strict firewall and proxy policies.
-Because this type of tunnel opertes in very hostile (to the operation of the
+Because this type of tunnel operates in very hostile (to the operation of the
 tunnel) environment, detection of this type of DNS tunnel is of interest to all
 levels of government and industry.
 
-Conforming DNS tunnels operate by empedding the data for transmission into the
+Conforming DNS tunnels operate by embedding the data for transmission into the
 query string and the response and require a modified, non-conforming, DNS
 server on one end of the connection and a piece of software on the client end.
 Typically these types of DNS tunnels have one endpoint that is controlled by the
@@ -320,8 +319,8 @@ Dns2tcp\footnote{\url{http://hsc.fr/ressources/outils/dns2tcp/index.html.en}},
 DNScat\footnote{\url{http://tadek.pietraszek.org/projects/DNScat/}} and
 DeNiSe\footnote{\url{http://c0re.23.nu/c0de/snap/DeNiSe-current.tar.bz2}}, and
 PSUDP\footnote{\url{http://www.kentonborn.com/psudp}}. Each of these have
-slightly different operational characteristis, but they all aim to do the same
-thing, which is trasmission of arbitrary data over DNS.
+slightly different operational characteristics, but they all aim to do the same
+thing, which is transmission of arbitrary data over DNS.
 
 Iodine supports raw tunnels, as well as moving information back from the server
 in A (IPv4 addresses), MX (mail server), TXT (arbitrary text) and may other
@@ -340,7 +339,7 @@ easily neutered by simply blocking TXT records. Because these tools only uses
 TXT records it is possible that it is the least flexible and deployable out of
 those listed above given a hostile environment. Dns2tcp utilizes with TXT or
 KEY records, which makes it as flexible as OzymanDNS and DeNiSe. The KEY DNS
-record was desginated for specific uses\cite{ietf.rfc2931}, but has been
+record was designated for specific uses\cite{ietf.rfc2931}, but has been
 deprecated now\cite{ietf.rfc3445} in favour of the DNSKEY record for use with
 DNSSEC\cite{ietf.rfc3755} and the IPSECKEY for use with
 IPSEC\cite{ietf.rfc4025}. Because of this deprecation, use of the KEY record is
@@ -370,7 +369,7 @@ or clients, but can be contain arbitrary data that is extracted by special
 clients. However, because this slack space is not processed by DNS servers, in
 an environment where all DNS queries must go through a proxy, this method is
 incapable of producing a covert channel that is able to penetrate a strictly
-prxied DNS environment.
+proxied DNS environment.
 
 \section{Problem Statement}
 
