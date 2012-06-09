@@ -62,6 +62,7 @@ transmission throughput over DNS in order to identify the existence of a DNS tun
 is robust in the face of the obfuscation techniques that are able to hide
 tunnels from existing detection methods.}
 
+\newpage
 \tableofcontents
 
 \newpage
@@ -169,6 +170,7 @@ greater than two gigabits of UDP port 53 throughput per second, indicating that
 this methodology does not sacrifice performance for detection accuracy and
 remains practical for monitoring very large networks.
 
+\newpage
 \section{Background}
 
 \subsection{Domain Name System (DNS)}
@@ -257,11 +259,12 @@ to either the constraints of the underlying medium, or the effect of
 intermediate devices. A covert channel that is only useful for reception is one
 that utilizes a third-party image hosting service. It is possible to embed
 arbitrary information into the header portion of an otherwise completely benign
-JPEG image file. This could be posted to Facebook, Flickr, or any other
-publicly accessible image hosting service, and can be checked by the remote
-hosts to pull the information. The remote hosts, however, have no guaranteed
-way of posting information back to the other endpoint though, making that
-channel a unidirectional communication channel.
+JPEG image file which could then be posted to Facebook, Flickr, or any other
+publicly accessible image hosting service. This image file can then be checked by the remote
+hosts to pull the information however, due to the nature of the image services, the remote
+hosts may have no
+way of posting information back to the other endpoint, making the
+communication channel unidirectional.
 
 Real time data transfer refers to the ability
 for a communication channel to send data immediately. UDP, by its very nature,
