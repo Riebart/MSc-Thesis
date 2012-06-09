@@ -1,0 +1,26 @@
+\BOOKMARK [1][-]{section.1}{Preface}{}% 1
+\BOOKMARK [1][-]{section.2}{Provided Proof-of-Concept Tool}{}% 2
+\BOOKMARK [1][-]{section.3}{Summary of Existing Solutions}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Suricata}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{BotHunter}{section.3}% 5
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Types of Botnet Command and Control Channels}{subsection.3.2}% 6
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Reliance on DNS}{subsection.3.2}% 7
+\BOOKMARK [1][-]{section.4}{Summary of Approaches}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Identifying Network Topology Behind NAT Devices}{section.4}% 9
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Source Port Counting}{subsection.4.1}% 10
+\BOOKMARK [3][-]{subsubsection.4.1.2}{JavaScript Injection}{subsection.4.1}% 11
+\BOOKMARK [2][-]{subsection.4.2}{Non-standard Traffic Over Standardized Ports}{section.4}% 12
+\BOOKMARK [3][-]{subsubsection.4.2.1}{DNS}{subsection.4.2}% 13
+\BOOKMARK [2][-]{subsection.4.3}{Peer-to-Peer}{section.4}% 14
+\BOOKMARK [3][-]{subsubsection.4.3.1}{BitTorrent}{subsection.4.3}% 15
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Detection}{subsection.4.3}% 16
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Distributed Hash Table \(DHT\)}{subsection.4.3}% 17
+\BOOKMARK [2][-]{subsection.4.4}{Dark IP Space and Darknets}{section.4}% 18
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Use as Real-Time Signature Tracking}{subsection.4.4}% 19
+\BOOKMARK [3][-]{subsubsection.4.4.2}{Extension to Email}{subsection.4.4}% 20
+\BOOKMARK [3][-]{subsubsection.4.4.3}{Tiered Honeypots}{subsection.4.4}% 21
+\BOOKMARK [2][-]{subsection.4.5}{Detecting Covert Communication Channels}{section.4}% 22
+\BOOKMARK [3][-]{subsubsection.4.5.1}{DNS Tunnels}{subsection.4.5}% 23
+\BOOKMARK [3][-]{subsubsection.4.5.2}{ICMP Tunnels}{subsection.4.5}% 24
+\BOOKMARK [2][-]{subsection.4.6}{Black-listing vs White-listing}{section.4}% 25
+\BOOKMARK [2][-]{subsection.4.7}{Detecting Periodic Events}{section.4}% 26
