@@ -1,0 +1,24 @@
+- Literature review
+ > Payload signature
+	+ Doomed in the face of encryption
+ > Reverse engineering: ONly viable if you've got a 'live copy' sitting around.
+ > TDG paper
+ > DNS paper
+ > Anti-TDG paper
+
+- Thoughts
+ > Bots need to talk out somehow.
+	+ Use IP or DNS. Only two options.
+ > If they use IP, not much we can do but that is probably not common
+ > If they use DNS, they are going to produce some unique patterns.
+	+ E.g. Conficker
+ > Look at DNS.
+
+- Approach
+ > Literature review (An ongoing process)
+ > Get data sample
+ > Look at data sample (!)
+	+ There is a distinct lack of software that allows us to look at very large volumes of data, and interactively trim/process the visuals, so writing one.
+ > Prototype some algorithm
+ > Magic...
+ > Profit!

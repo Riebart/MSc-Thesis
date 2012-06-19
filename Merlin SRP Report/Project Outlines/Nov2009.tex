@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage{amsfonts, amsmath, amsthm, amssymb}
+\usepackage[urlcolor=blue,linkcolor=black,colorlinks=true]{hyperref}
+\hypersetup{
+  pdftitle = {COMP 4200 (Winter 2009) Course Notes},
+  pdfkeywords = {pdf, hyperref, bookmarks},
+  pdfauthor = {Michael Himbeault}
+}
+\usepackage[headsep=1cm,headheight=50pt]{geometry}
+\usepackage[dvips]{graphicx}
+\usepackage{subfigure}
+%input "Nov2009.bib"
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+
+\newtheorem*{hyp}{Hypothesis}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{definition}
+\newtheorem{algorithm}{Algorithm}[section]
+
+\begin{document}
+\bibliographystyle{amsplain}
+\title{Merlin SRP - Project Update}
+\author{Michael Himbeault}
+
+\maketitle
+
+\section{Where We Came From}
+\subsection{Literature Review}
+\begin{itemize}
+\item Several papers on network payload signature based analysis. This is problematic for several reasons, the least of which is that it has difficulty handling encrypted payloads. It often requires the reverse engineering of network and communication protocols used by the specific malware in question necessitating that a copy of the program be on hand for analysis. This isn't particularly reasonable for Merlin's situation as the neither the expertise nor the time are available to devote to this method.
+
+    Additional problems include lack of scalability (For large networks with multiple different 'strains' of infection, this process must isolate each strain individually), portability (It doesn't port well from location to location) and adaptability.
+
+    For these reasons, this approach has been largely discarded.
+
+\item As was mentioned last time, the concept of "social interaction" of network hosts is an approach that is agnostic to payload schemes (But may care about payload size). This approach is not unknown to literature in this area and such graphs are known as Traffic Dispersion Graphs (TDGs). The originating paper appears to be \cite{TDG} and discusses possible analysis of the resulting graphs. These graphs were captured by monitoring a network backbone and considering the resulting data.
+
+    A paper exists(\cite{TDG2}) that looks at using TDGs for the purpose that was suggested in October; detecting malware based on the social characteristics of its network activity. This paper indicates that if the malware in question implements some simple peer-to-peer algorithms it is possible for it to reduces its footprint in a TDG-based analysis to such a level as to almost disappear into the background noise of normal activity. The scenario that this paper considers is significantly different form the scenario in the Merlin project for several reasons and so these results, while instructive, are not considered completely valid to this project.
+\end{itemize}
+
+\subsection{Thoughts on Approaches}
+Malware, in particular botnets, have several unchanging properties; the most useful of which is that each bot must be able to receive orders from a controller. It is this property that probably is least likely to change with future strains. How can it receive these orders?
+
+\begin{description}
+\item[Hardcoded: ] The address of the controller can be hardcoded into the malware. This is highly unlikely as it would make the controller very vulnerable to discovery should the source code be reverse engineered to obtain this address. This method is considered to not be in use for this reason.
+\item[DNS Lookups: ] The only other option for direct communication requires a DNS lookup. E.g: Conficker.
+\item[Instant Messaging: ] e.g: MSN, Yahoo, AIM
+\item[IRC: ] A common choice due to its ability to run on almost any port (including the often forwarded port 80), and the availability of hosted servers.
+\item[HTTP Hosted Services: ] Twitter.
+\item[Indirect: ] It could be possible that not all bots know where the controller is, and so orders filter through a peer-to-peer bot network.
+\end{description}
+
+Each of these have their own distinct signatures that should be detectable in the network traffic of a sufficiently large botnet.
+
+\section{Where We Are Going}
+\begin{description}
+\item[Literature review: ] This is never complete, but a preliminary survey is complete insofar as it has produced information on the most common approaches.
+\item[Get data: ] Jared is supplying the data at a rate well beyond what can be used at this time but will be useful for 'back analysis' to obtain some sort of frame of reference for when analysis begins to scale up.
+\item[Look at data*: ] The best pattern matching tool available is the human brain. It is desirable to use a visual framework to be able to visualize the data that is being produced. The problem is that out of the several tools evaluated none can accomplish the needs that are required (Massive data sets, run-time manipulation of visualization and underlying data): So a custom visualization API with a focus on exploration of massive data sets is in development.
+\item[Hypotheses: ] From the data exploration, determine some possible rules and heuristics for identifying unusual behaviour.
+\item[Magic: ] ...
+\end{description}
+
+\section{Where We Are}
+The approach that is expected to yield the best results is a hybrid approach:
+
+\begin{description}
+\item Consider the DNS lookup patterns based on the results in \cite{DNS}. Jared is working on collecting this information (As it is not contained in the flow data).
+\item Based on the results of the DNS query analysis, consider some social properties of some subset of hosts specified by the DNS analysis.
+
+It is expected that subnet-grained data is going to be insufficient for TDG analysis.
+\item Possible: Consider the payload along some questionable links as defined in the previous step. This may or may not be of use (Could attempt to detect encrypted data, or something...).
+\end{description}
+
+\nocite{*}
+\bibliography{Nov2009}
+\end{document} 

@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}Provided Proof-of-Concept Tool}{2}{section.1}
+\contentsline {section}{\numberline {2}Summary of Existing Solutions}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Suricata}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}BotHunter}{3}{subsection.2.2}
+\contentsline {section}{\numberline {3}Summary of Detection Approaches}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}Identifying Network Topology Behind NAT Devices}{3}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Source Port Counting}{4}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}JavaScript Injection}{4}{subsubsection.3.1.2}
+\contentsline {subsection}{\numberline {3.2}DNS and non-DNS over port 53}{5}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}BitTorrent}{5}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Dark IP Space and Darknets}{7}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Use as Real-Time Signature Tracking}{7}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}Extension to Email}{7}{subsubsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.3}Tiered Honeypots}{8}{subsubsection.3.4.3}
+\contentsline {subsection}{\numberline {3.5}Detecting Covert Communication Channels}{8}{subsection.3.5}
+\contentsline {subsubsection}{\numberline {3.5.1}DNS Tunnels}{9}{subsubsection.3.5.1}
+\contentsline {subsubsection}{\numberline {3.5.2}ICMP Tunnels}{10}{subsubsection.3.5.2}
+\contentsline {subsection}{\numberline {3.6}Black-listing vs White-listing}{10}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Detecting Periodic Events}{11}{subsection.3.7}
+\contentsline {section}{\numberline {4}Types of Botnet Command and Control Channels}{12}{section.4}
+\contentsline {subsection}{\numberline {4.1}Reliance on DNS}{12}{subsection.4.1}

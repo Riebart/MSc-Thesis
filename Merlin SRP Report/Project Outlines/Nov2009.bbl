@@ -1,0 +1,22 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{1}
+
+\bibitem{DNS}
+David Dagon, \emph{Botnet detection and response: The network is the
+  infection}.
+
+\bibitem{TDG2}
+Mark Jelasity and Vilmos Bilicki, \emph{Towards automated detection of
+  peer-to-peer botnets: On the limits of local approaches}.
+
+\bibitem{TDG}
+{M}arios {I}liofotou, \emph{{N}etwork {M}onitoring using {T}raffic {D}ispersion
+  {G}raphs {T}{D}{G}s}.
+
+\end{thebibliography}

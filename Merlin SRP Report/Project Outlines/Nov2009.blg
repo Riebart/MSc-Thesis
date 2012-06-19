@@ -1,0 +1,22 @@
+This is BibTeX, Version 0.99cThe top-level auxiliary file: Nov2009.aux
+The style file: amsplain.bst
+Database file #1: Nov2009.bib
+I was expecting a `,' or a `}'---line 11 of file Nov2009.bib
+ : 
+ : @ARTICLE{DNS,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Name 1 in "{M}arios {I}liofotou," has a comma at the end for entry TDG
+while executing---line 1149 of file amsplain.bst
+Warning--missing journal name in DNS
+Warning--missing year in DNS
+Warning--missing pages in DNS
+Warning--missing journal name in TDG2
+Warning--missing year in TDG2
+Warning--missing pages in TDG2
+Name 1 in "{M}arios {I}liofotou," has a comma at the end for entry TDG
+while executing---line 1233 of file amsplain.bst
+Warning--missing journal name in TDG
+Warning--missing year in TDG
+Warning--missing pages in TDG
+(There were 3 error messages)

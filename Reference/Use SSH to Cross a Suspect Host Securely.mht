@@ -1,0 +1,1804 @@
+From: "Saved by Windows Internet Explorer 9"
+Subject: Use SSH to Cross a Suspect Host Securely
+Date: Sat, 7 May 2011 16:48:20 -0500
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01CC0CD6.922ED860"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.1.7601.17574
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01CC0CD6.922ED860
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://delivery.acm.org.proxy1.lib.umanitoba.ca/10.1145/1740000/1739155/10631.html?key1=1739155&key2=1364084031&coll=DL&dl=ACM&ip=130.179.164.41&CFID=21658386&CFTOKEN=55029053
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Use SSH to Cross a Suspect Host Securely</TITLE>
+<META content=3D"text/html; charset=3Dutf-8" http-equiv=3DContent-Type>
+<META name=3DGENERATOR content=3D"MSHTML 9.00.8112.16421">
+<META name=3Ddescription=20
+content=3D"&#10;SSH tunnels can be used to connect securely to a server =
+behind a&#10;firewall in such a way that the firewall can't observe the =
+data. This is&#10;also true and useful if you know an attacker has =
+gained control of the&#10;firewall.&#10;"></HEAD>
+<BODY aLink=3D#0000ff bgColor=3Dwhite text=3Dblack vLink=3D#840084 =
+link=3D#0000ff>
+<DIV lang=3Den class=3Darticle>
+<DIV class=3Dtitlepage>
+<DIV>
+<H1 class=3Dtitle><A name=3DN0xa50530.0xb44060></A>Use SSH to Cross a =
+Suspect Host=20
+Securely </H1></DIV>
+<DIV>
+<DIV class=3Dauthor>
+<H3 class=3Dauthor>der.hans </H3></DIV></DIV>
+<DIV>
+<DIV class=3Dabstract>
+<P class=3Dtitle><B>Abstract</B></P>
+<P>SSH tunnels can be used to connect securely to a server behind a =
+firewall in=20
+such a way that the firewall can't observe the data. This is also true =
+and=20
+useful if you know an attacker has gained control of the firewall.=20
+</P></DIV></DIV>
+<HR>
+</DIV>
+<DIV lang=3Den class=3Dsimplesect>
+<DIV class=3Dtitlepage>
+<DIV>
+<H2 style=3D"CLEAR: both" class=3Dtitle><A=20
+name=3DN0xa50530.0xb447f0></A></H2></DIV></DIV><I></I>
+<P>Recently at our local (Phoenix) Free Software Stammtisch, we were =
+talking=20
+about security. I was surprised to find that no one else realized you =
+can=20
+<B><TT>ssh</TT></B> safely across a compromised host to another machine =
+behind=20
+it. A common example of =E2=80=9Ccrossing=E2=80=9D a host to get to =
+another machine is accessing=20
+a machine on a private network protected by a firewall. The firewall is =
+on the=20
+edge of the private network and provides the only means to get to the =
+private=20
+network. So, you have to pass through the firewall to get to the private =
+
+network. </P><I></I>
+<P><I>But, what happens if the firewall has (or you believe it has) been =
+
+compromised? How do you get to the private network without more security =
+
+problems?</I> It turns out that the answer is the same. You go through =
+the=20
+firewall, but you do it in such a way that your connection remains =
+secure even=20
+when the firewall itself may no longer be. The connection to the machine =
+on the=20
+private network still can be made securely, even if you know the host =
+you're=20
+passing through has been compromised and some rogue element has taken =
+control of=20
+it. </P>
+<P>As an example, let's say you need to connect from your Netbook to a =
+server on=20
+your work's network. Let's also say the only way to get to your server =
+is via a=20
+connection to your work's SSH/VPN gateway, but you think someone has =
+broken into=20
+the gateway (yes, yes, get it off-line as soon as possible, but let's do =
+that,=20
+and continue to be able to work and recover the gateway). </P>
+<P>Now, let's consider an example scenario with three machines, named=20
+corresponding to what they are: Netbook, Gateway and Server. If you =
+already=20
+understand SSH tunneling and want the short story, see the Short Story =
+sidebar.=20
+</P></DIV>
+<DIV lang=3Den class=3Dsimplesect>
+<DIV class=3Dtitlepage>
+<DIV>
+<H2 style=3D"CLEAR: both" class=3Dtitle><A=20
+name=3DN0xa50530.0xb44bb8></A></H2></DIV></DIV>
+<DIV class=3Dsidebar>
+<P class=3Dtitle><B>Short Story<I>10631s1.qrk</I></B></P>
+<P>The short description is that you initiate a connection to Gateway. =
+With that=20
+connection, you create a tunnel to port 22 on Server using the -L option =
+to ssh:=20
+<PRE class=3Dprogramlisting>-L $local_port:Server:22
+</PRE>
+<P></P>
+<P>You then can connect to a local port on Netbook that is the entry =
+point for a=20
+tunnel that comes out at port 22 of the destination machine, which is =
+Server.=20
+The tunneled connection is never decrypted on Gateway, so it stays =
+secure.=20
+</P></DIV>
+<P>For the long story, let's start with a description of some simple =
+tunneling.=20
+The -L option on the command line allows you to create a tunnel: <PRE =
+class=3Dprogramlisting>ssh -N -f -L 2222:localhost:22 Gateway
+</PRE>
+<P></P>
+<P>The -L option allows you to specify the entry and exit points for a =
+secure=20
+tunnel created by SSH. In the examples used in this article, it gets an =
+argument=20
+that has three fields. The fields are separated by colons. The first =
+field is=20
+the local port to bind (the local port to listen on). The next field is =
+the host=20
+to connect to. This field is interpreted by the remote machine in the =
+SSH=20
+connection, not by the local machine. The computer initiating the SSH =
+connection=20
+doesn't need to know how to get to it. The third field is the port to =
+connect to=20
+on the far end of the tunnel. </P>
+<P>If you run this first command from Netbook, the command creates an =
+SSH=20
+connection to Gateway and builds a tunnel that forwards port 2222 on =
+Netbook to=20
+port 22 (the standard SSH port) on Gateway. The local port, 2222, can be =
+almost=20
+any value as long as it's not already in use, although it must be above =
+1023 if=20
+you're not connecting as root. Now you can connect to SSH on Gateway by =
+using=20
+that tunnel. Again, it's important to note that the tunnel destination =
+hostname=20
+(the second field) is interpreted by Gateway, so =
+=E2=80=9Clocalhost=E2=80=9D is instructing=20
+Gateway to connect to itself. localhost is <SPAN=20
+class=3Demphasis><EM>not</EM></SPAN> Netbook; it's Gateway. For more =
+examples of=20
+using -L to create tunnels, see the SSH -L Examples sidebar. </P>
+<P>The -N and -f options are useful when just creating a tunnel and not =
+needing=20
+a remote shell. The -N option tells SSH not to run a remote command. The =
+-f=20
+option puts the ssh command in the background, so you can regain control =
+of the=20
+shell that ran the ssh command. </P></DIV>
+<DIV lang=3Den class=3Dsimplesect>
+<DIV class=3Dtitlepage>
+<DIV>
+<H2 style=3D"CLEAR: both" class=3Dtitle><A=20
+name=3DN0xa50530.0xb450e0></A></H2></DIV></DIV>
+<DIV class=3Dsidebar>
+<P class=3Dtitle><B>SSH -L Examples<I>10631s2.qrk</I></B></P>
+<P>The following command connects to remote_host and builds a tunnel =
+from port=20
+8888 of your desktop to port 80 of my Web server. You then can point a =
+Web=20
+browser at http://localhost:8888/ to read my home page: <PRE =
+class=3Dprogramlisting>ssh -L 8888:www.LuftHans.com:80 remote_host
+</PRE>
+<P></P>
+<P>The following command connects to remote_host and builds a tunnel =
+from port=20
+9993 of your desktop to port 993 of mail_server's IMAP over SSL server. =
+You then=20
+can configure your mail client to connect to port 9993 on your local =
+system to=20
+read your mail: <PRE class=3Dprogramlisting>ssh -L 9993:mail_server:993 =
+remote_host
+</PRE>
+<P></P>
+<P>In both cases, the remote servers see the connection coming from =
+remote_host,=20
+and in both cases, it doesn't matter whether your desktop can talk =
+directly to=20
+the server at the far end of the tunnel. </P></DIV>
+<P>Now, run the following command on Netbook: <PRE =
+class=3Dprogramlisting>ssh -p 2222 localhost
+</PRE>
+<P></P>
+<P>This second command creates an SSH connection to port 22 on Gateway =
+by using=20
+the tunnel created in the first command. In the second command, =
+localhost is the=20
+destination machine, so it's interpreted by the SSH client on Netbook, =
+which=20
+means the ssh command running on Netbook connects to Netbook but on a=20
+nonstandard port. The tunnel is entered at port 2222 on Netbook and =
+comes out at=20
+port 22 on Gateway. Because sshd is listening on port 22, the tunnel =
+connects to=20
+the SSH d=C3=A6mon on Gateway. </P>
+<P>Presuming Gateway can connect to Server even though Netbook can't =
+(remember=20
+Server is =E2=80=9Cfirewalled=E2=80=9D behind Gateway), it's also =
+possible to create a tunnel to=20
+Server using a command such as: <PRE class=3Dprogramlisting>ssh -a -N -f =
+-L 3333:Server:22 Gateway
+</PRE>
+<P></P>
+<P>In this case, the tunnel from port 3333 on Netbook doesn't connect to =
+
+Gateway, rather it connects to port 22 on Server. Gateway is essentially =
+
+forwarding packets from Netbook to Server. Like the first command, the =
+tunnel=20
+destination (the second field, <B><TT>Server</TT></B>) is interpreted by =
+
+Gateway, so this tunnel connects to Server. Netbook doesn't need to know =
+how to=20
+get to Server; Gateway handles the routing. </P>
+<P>The -a option here makes sure authentication agent connections are =
+not=20
+forwarded to Gateway. If you are concerned that Gateway is compromised, =
+you=20
+don't want the attacker to gain control of your authentication agent=20
+connections. For more, see the Authentication Agents sidebar. </P></DIV>
+<DIV lang=3Den class=3Dsimplesect>
+<DIV class=3Dtitlepage>
+<DIV>
+<H2 style=3D"CLEAR: both" class=3Dtitle><A=20
+name=3DN0xa50530.0xb45768></A></H2></DIV></DIV>
+<DIV class=3Dsidebar>
+<P class=3Dtitle><B>Authentication Agents<I>10631s3.qrk</I></B></P>
+<P>An authentication agent holds authentication credentials and allows =
+other=20
+processes to use it for authenticating with SSH servers. It can be used =
+for an X=20
+session allowing various commands and shells to authenticate =
+automagically when=20
+logging in to remote services. </P>
+<P>Authentication agents also can pass credentials on to remote servers =
+allowing=20
+the remote shell to use it. The following command will connect to hostB =
+and=20
+forward the authentication agent connection if you have one established: =
+<PRE class=3Dprogramlisting>ssh -A hostB
+</PRE>
+<P></P>
+<P>If hostC allows authentication with the same key, you then can=20
+<B><TT>ssh</TT></B> from hostB to hostC without having to authenticate =
+manually.=20
+</P>
+<P>A couple risks are involved in this type of authentication agent =
+forwarding.=20
+In the example in the article, the risk is that if you forward the=20
+authentication agent connection to Gateway from Netbook, the attacker =
+also could=20
+gain access to that authentication agent connection. If Server accepts =
+the same=20
+key, the attacker could use your authentication agent connection to =
+establish a=20
+connection to Server. </P>
+<P>Another issue is that the authentication agent will forward all keys =
+that it=20
+has. If you use one key for customerA and another key for customerB, you =
+don't=20
+want the agent to forward the key for customerA to customerB's machine.=20
+</P></DIV>
+<P>Figure 1 displays the example graphically. The initial ssh command =
+builds the=20
+SSH connection for the tunnel, the tunneled connection and the forwarded =
+
+connection. The second ssh command initiates a new connection through =
+the tunnel=20
+and forwards the connection directly to the machine you are trying to =
+reach. The=20
+forwarded connection is in red to show that it is unencrypted, but the =
+blue SSH=20
+connection going through it is secure. </P>
+<DIV class=3Dmediaobject><IMG=20
+src=3D"http://delivery.acm.org.proxy1.lib.umanitoba.ca/10.1145/1740000/17=
+39155/10631f1.eps">
+<DIV class=3Dcaption>
+<P>Figure 1. Tunneling across a Compromised Host (Brian Cluff, =
+<TT>&lt;<A=20
+href=3D"mailto:LJ2009@Macrosift.com">LJ2009@Macrosift.com</A>&gt;</TT>, =
+created=20
+the image for this article.) </P></DIV></DIV>
+<P>This tunnel could work for any TCP protocol, but the packets from =
+Gateway to=20
+Server and back to Gateway are unencrypted. That means unencrypted =
+services=20
+would not be secure between Gateway and Server, even though you're using =
+an SSH=20
+tunnel. You may want to review the -L option section of the SSH man page =
+and=20
+consider this a bit to convince yourself that the Server/Gateway =
+connection (the=20
+red part in Figure 1) is unencrypted. Anything that isn't secure or that =
+gets=20
+decrypted on Gateway can be read by the attacker if the attacker has =
+root access=20
+on Gateway. The attacker also can read much of that simply by having =
+access to=20
+your account on Gateway even without root access on Gateway. </P>
+<P><I>Before connecting to the tunnel, you need to make sure you have =
+Server's=20
+host public key registered as a key for localhost.</I> If you tried to =
+pull the=20
+public key out of Gateway's known_hosts file, the attacker can give you =
+a bogus=20
+key, so you need to get the key another way. </P>
+<P>Therefore, it's best to have Server's public key already. If you =
+don't=20
+already have the public key, make sure to acquire it or the fingerprint =
+for the=20
+key from a secure, trusted source. For instance, you could list the SSH =
+key=20
+fingerprints for all of your servers on a secure Web page. </P>
+<P>I suggest registering Server's public key in your known_hosts file =
+under the=20
+real server name as well as under localhost. By registering under the =
+real=20
+server name, you can figure out to which server a key belongs with the=20
+ssh-keygen command. </P>
+<P>The following command checks your $HOME/.ssh/known_hosts file for a =
+public=20
+key for Server. The command also reports the line number for the entry: =
+<PRE class=3Dprogramlisting>ssh-keygen -F Server
+</PRE>
+<P></P>
+<P>The entry then can be copied. By replacing the hostname portion of =
+the copied=20
+entry with localhost, you create an entry for that key on localhost. See =
+the=20
+Obtaining the Public Key sidebar for information on how to obtain a =
+server's=20
+public key securely. </P></DIV>
+<DIV lang=3Den class=3Dsimplesect>
+<DIV class=3Dtitlepage>
+<DIV>
+<H2 style=3D"CLEAR: both" class=3Dtitle><A=20
+name=3DN0xa50530.0xb460b0></A></H2></DIV></DIV>
+<DIV class=3Dsidebar>
+<P class=3Dtitle><B>Obtaining the Public Key<I>10631s4.qrk</I></B></P>
+<P>The public key for a host is usually in either =
+/etc/ssh/ssh_host_rsa_key.pub=20
+or /etc/ssh/ssh_host_dsa_key.pub, depending on the type of key the host =
+uses.=20
+You also can get the public key out of the known_hosts file of a =
+computer you=20
+can trust. For instance, if you normally connect to the server from your =
+work=20
+desktop, you could copy the entry for server out of your work desktop's=20
+known_hosts file. </P>
+<P>Your site also might publish SSH public keys or public key =
+fingerprints via a=20
+secure Web page or via DNS entries. </P></DIV>
+<P>If your known_hosts file has hostnames that look like the keys, you =
+have=20
+hashed hostnames. Use the -H option to ssh-keygen to hash your new =
+localhost=20
+entry. The following command translates plain-text hostnames in your =
+known_hosts=20
+file to hashed hostname entries: <PRE class=3Dprogramlisting>ssh-keygen =
+-H
+</PRE>
+<P></P>
+<P>Now with the tunnel set up, you can connect to SSH on Server, and =
+because=20
+it's an SSH connection, it's encrypted: <PRE class=3Dprogramlisting>ssh =
+-p 3333 localhost
+</PRE>
+<P></P>
+<P>Again, localhost here is from Netbook's perspective, so that command =
+connects=20
+to port 3333 on Netbook. The last SSH =E2=80=9Ctunnel=E2=80=9D command =
+created a tunnel from=20
+that port over to the SSH port on Server via Gateway=E2=80=94meaning =
+that this command=20
+uses the tunnel to connect to Server's SSH server via port 3333 on =
+Netbook. </P>
+<P>Even though the tunnel passes through Gateway, it is unreadable by =
+Gateway.=20
+Just as SSH connections normally travel across untrustable routers, yet =
+are=20
+secure, the connection through Gateway to Server is secure. The SSH =
+connection=20
+via the tunnel is never unencrypted on Gateway, so the attacker can't =
+compromise=20
+it. But again, remember to have verified the host key for Server =
+already, or the=20
+attacker can compromise the connection with a man-in-the-middle attack. =
+</P>
+<P>With the connection to Server, you now could set up a SOCKS proxy to =
+allow=20
+applications running on Netbook to be effectively on your work's =
+network. See=20
+the SOCKS Proxy sidebar for more information. </P></DIV>
+<DIV lang=3Den class=3Dsimplesect>
+<DIV class=3Dtitlepage>
+<DIV>
+<H2 style=3D"CLEAR: both" class=3Dtitle><A=20
+name=3DN0xa50530.0xb3cf28></A></H2></DIV></DIV>
+<DIV class=3Dsidebar>
+<P class=3Dtitle><B>SOCKS Proxy<I>10631s5.qrk</I></B></P>
+<P>OpenSSH can set up a SOCKS tunnel when called with the -D option to =
+contact=20
+services on Server. </P>
+<P>One example would be to use the FoxyProxy add-on for Firefox to =
+direct=20
+requests for Intranet servers to use the SOCKS tunnel. The http requests =
+then=20
+would be sent from Server and would be able to contact Web servers on =
+the=20
+Intranet. One such server could be a trouble-ticketing system to allow =
+you to=20
+report that Gateway has been compromised. </P>
+<P>The following command, when given on Netbook, would use the tunnel to =
+Server=20
+by connecting to port 3333 on localhost and then create a SOCKS proxy on =
+port=20
+1080 of Netbook: <PRE class=3Dprogramlisting>ssh -p 3333 -D 1080 =
+localhost
+</PRE>
+<P></P>
+<P>FoxyProxy then could be configured to proxy Intranet requests via =
+port 1080=20
+on localhost. </P></DIV>
+<P><I>If Netbook has a public IP, you also can set up a reverse tunnel =
+from=20
+Server to Netbook.</I> The reverse tunnel allows you to connect to =
+Netbook from=20
+Server and then connect back to Server via the reverse tunnel. If the =
+reverse=20
+tunnel doesn't need to go through Gateway, you then could take Gateway =
+down for=20
+investigation and repair while still being connected to the internal =
+network.=20
+See the Reverse SSH Tunnel sidebar for more information about reverse =
+tunnels.=20
+</P></DIV>
+<DIV lang=3Den class=3Dsimplesect>
+<DIV class=3Dtitlepage>
+<DIV>
+<H2 style=3D"CLEAR: both" class=3Dtitle><A=20
+name=3DN0xa50530.0xb3d348></A></H2></DIV></DIV>
+<DIV class=3Dsidebar>
+<P class=3Dtitle><B>Reverse SSH Tunnel<I>10631s6.qrk</I></B></P>
+<P>A reverse tunnel is just like the tunnel we set up with -L, except it =
+allows=20
+the destination machine to connect to the client machine. </P>
+<P>In the example from this article, you can create a reverse tunnel =
+from Server=20
+to Netbook allowing Netbook to reconnect to Server. The following =
+command, when=20
+run from Server, connects to Netbook and creates a tunnel from port 4444 =
+on=20
+Netbook to the SSH d=C3=A6mon on Server. Any shell on Netbook then can =
+connect to=20
+Server via port 4444: <PRE class=3Dprogramlisting>ssh -R =
+4444:localhost:22 Netbook
+</PRE>
+<P></P>
+<P>The following command, when run from Netbook, would connect to Server =
+via the=20
+reverse tunnel: <PRE class=3Dprogramlisting>ssh -p 4444 localhost
+</PRE>
+<P></P>
+<P>If the outbound connections from Server don't go out via Gateway, the =
+reverse=20
+tunnel can be used even after Gateway is shut down. </P>
+<P>I suggest running the SSH command from within a screen session on =
+Server to=20
+make sure the controlling shell doesn't exit. </P></DIV></DIV>
+<DIV lang=3Den class=3Dsimplesect>
+<DIV class=3Dtitlepage>
+<DIV>
+<H2 style=3D"CLEAR: both" class=3Dtitle><A=20
+name=3DN0xa50530.0xb3d768></A>Review</H2></DIV></DIV>
+<P>Connect to your possibly compromised machine, Gateway, and create a =
+tunnel to=20
+the machine you ultimately want to reach, Server. Once the tunnel is up, =
+use it=20
+to connect to SSH on Server: <PRE class=3Dprogramlisting>ssh -a -N -f -L =
+3333:Server:22 Gateway
+ssh -P 3333 localhost
+</PRE>
+<P></P>
+<P>Reminders: </P>
+<DIV class=3Ditemizedlist>
+<UL type=3Ddisc>
+  <LI>
+  <P>Don't forget to block authentication agent forwarding. </P>
+  <LI>
+  <P>Don't forget to specify remote user names if you need them. </P>
+  <LI>
+  <P>Use a port above 1023 if you're not connecting as root. </P>
+  <LI>
+  <P>Make sure to have confirmed SSH host keys previously. </P>
+  <LI>
+  <P>Add the host key to your known_hosts file as an entry for =
+localhost,=20
+  because SSH will see the connection as being to localhost. </P>
+  <LI>
+  <P>Use -D to create a SOCKS proxy. </P>
+  <LI>
+  <P>None of the commands in this article require root access. All would =
+work=20
+  from your own account. </P>
+  <LI>
+  <P>The attacker can block the connection and can control the =
+connection to=20
+  Gateway, but the attacker can't compromise the connection to Server.=20
+</P></LI></UL></DIV>
+<P>Any SSH connection across the Internet is crossing questionable=20
+hosts/routers. If those were safe, you wouldn't need a secured =
+connection. The=20
+tunnel is the same scenario, because it's just enabling a normal SSH =
+connection.=20
+</P></DIV>
+<DIV lang=3Den class=3Dsimplesect>
+<DIV class=3Dtitlepage>
+<DIV>
+<H2 style=3D"CLEAR: both" class=3Dtitle><A=20
+name=3DN0xa50530.0xb3df50></A></H2></DIV></DIV>
+<DIV class=3Dsidebar>
+<P class=3Dtitle><B>Resources<I>10631s7.qrk</I></B></P>
+<P>OpenSSH: <A href=3D"http://www.openssh.org/"=20
+target=3D_self>http://www.openssh.org/</A> </P>
+<P>OpenSSH Manual Pages: <A href=3D"http://www.openssh.com/manual.html"=20
+target=3D_self>http://www.OpenSSH.com/manual.html</A> </P>
+<P>Free Software Stammtisch: <A=20
+href=3D"http://www.lufthans.com/Free_Software_Stammtisch"=20
+target=3D_self>http://www.LuftHans.com/Free_Software_Stammtisch</A> </P>
+<P>FoxyProxy: <A=20
+href=3D"https://addons.mozilla.org/de/firefox/addon/15023?src=3Dapi"=20
+target=3D_self>https://addons.mozilla.org/de/firefox/addon/15023?src=3Dap=
+i</A>=20
+</P></DIV></DIV></DIV></BODY></HTML>
+
+------=_NextPart_000_0000_01CC0CD6.922ED860
+Content-Type: application/postscript
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://delivery.acm.org.proxy1.lib.umanitoba.ca/10.1145/1740000/1739155/10631f1.eps
+
+
+<!doctype html>
+
+
+<head><script type=3D"text/javascript">_cf_loadingtexthtml=3D"<img =
+alt=3D' ' src=3D'/CFIDE/scripts/ajax/resources/cf/images/loading.gif'/>";=0A=
+_cf_contextpath=3D"";=0A=
+_cf_ajaxscriptsrc=3D"/CFIDE/scripts/ajax";=0A=
+_cf_jsonprefix=3D'//';=0A=
+_cf_clientid=3D'03F31CF7FF34DE6364E88483088949F3';</script><script =
+type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/messages/cfmessage.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/package/cfajax.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/cfform.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/masks.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/cfformhistory.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/package/cfrichtexteditor.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/FCKeditor/fckeditor.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/yui/yahoo-dom-event/yahoo-dom-event.js"></scri=
+pt>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/yui/animation/animation-min.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/ext/adapter/yui/ext-yui-adapter.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/ext/ext-core.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/ext/package/tabs/tabs.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/package/cflayout.js"></script>=0A=
+<link rel=3D"stylesheet" type=3D"text/css" =
+href=3D"/CFIDE/scripts/ajax/resources/ext/css/ext-all.css" />=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/ext/package/resizable.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/ext/package/dragdrop/dragdrop.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/ext/package/util.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/ext/build/state/State-min.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/ext/package/widget-core.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/ext/package/dialog/dialogs.js"></script>=0A=
+<script type=3D"text/javascript" =
+src=3D"/CFIDE/scripts/ajax/package/cfwindow.js"></script>=0A=
+<link rel=3D"stylesheet" type=3D"text/css" =
+href=3D"/CFIDE/scripts/ajax/resources/cf/cf.css" />=0A=
+
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8" =
+/>
+<link rel=3D"stylesheet" type=3D"text/css" href=3D"css/dl.css" />
+
+
+
+<title>Use SSH to cross a suspect host securely</title>
+<style type=3D"text/css"><!--
+    body {margin-left: 0em; margin-top: 0}
+    a:link {text-decoration: underline; 	Color: #1d4d0f;}
+    a:visited  { color: #990033; text-decoration: underline;}
+    a:hover {color: red; text-decoration: none}
+    a.dLink1:link {color:#336699}
+    a.dLink1:visited {color:#666666}
+	a.isblack:link {text-decoration: underline; 	Color: #000000;}
+    a.isblack:visited  { color: #000000; text-decoration: underline;}
+    a.isblack:hover {color: #000000; text-decoration: none}
+    h1 {font-size: 140%; margin-bottom: 0}
+	ul {margin-top: .25em; list-style-type: disc}
+	ol {margin-top: .25em;}
+	li {padding-bottom: .25em}
+    h2 {color: white; background-color: #069;=20
+        font-size: 100%; padding-left: 1em;
+		margin: 0}
+	h3 {color: black; background-color: yellow;=20
+    	font-size: 100%;
+		margin: 0}
+	 h4 {color: black; background-color: #99c5e8;=20
+        font-size: 100%;
+		margin: 0}
+    hr {color: #39176d;}
+    form {margin-top: 10}
+    form.xrs {margin-top: 0}
+=09
+	a {text-decoration: none; }
+=09
+	input {font-size: 1em;}
+	.chevron {color: #ff0000;}
+	.light-blue {color:#336699;}
+	.black {color:#000000;}
+=09
+	/* ### standard text styles, smallest to largest ### */
+=09
+	.footer-link-text {font-family: Arial, Helvetica, sans-serif;
+		color:#336699; font-size: .75em; line-height: 1.33em;
+		text-indent: -.75 em; margin-left: 2em; margin-right: .75em;}
+	=09
+	.footer-copy-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .75em; line-height: 1.3em;
+		margin-left: .75em; margin-right: .75em;}
+	=09
+	.small-link-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .83em; padding-bottom : 2px;
+	  	padding-top : 2px;}
+
+	.smallerer-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .65em;}
+	.smaller-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .75em;}	=09
+	.small-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .83em;}
+	.small-textb {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .83em; font-weight: bold;}
+	.medium-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: 1em;}
+	.mediumb-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: 1em; font-weight: bold;}
+	.large-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: 1.3em;}	=09
+	.instr-text {font-family: Arial, Helvetica, sans-serif;
+		color:#666666; font-size: .83em;}
+	=09
+	.list-link-text {font-family: Arial, Helvetica, sans-serif;
+		color:#336699; font-size: .83em; line-height: 1.3em;}
+	.list-link-btext {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: .83em; line-height: 1.3em;}
+=09
+	.searchbox-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000066; font-size: 1em; font-weight: bold;}
+	.footer-header-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000066; font-size: 1em; font-weight: bold;
+		margin-left: .75em; margin-right: .75em;}
+	.medium-link-text {font-family: Arial, Helvetica, sans-serif;
+		color:#000066; font-size: 1em; font-weight: bold; line-height: 1em;
+		text-indent: -1.25em; margin-left: 2em; margin-right: .75em;}
+=09
+	.text16 {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: 16px;}
+	=09
+	.text14 {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: 14px;}
+=09
+	.text12 {font-family: Arial, Helvetica, sans-serif;
+		color:#000000; font-size: 12px;}
+	=09
+	.text10 {font-family: Arial, Helvetica, sans-serif;
+	    color:#000000; font-size: 12px;}
+	=09
+	.text9 {font-family: Arial, Helvetica, sans-serif;
+	   color:#000000; font-size: 12px;}
+=09
+	.error-text {color:red;}
+=09
+	.small-copy-text {font-family: Times, Times New Roman, serif;
+		color:#000066; font-size: .75em; line-height: 1.2em;
+		margin-left: .75em; margin-right: .75em;}
+
+	.medium-copy-text {font-family: Times, Times New Roman, serif;
+		color:#000066; font-size: 1em; line-height: 1.2em;
+		margin-left: .75em; margin-right: .75em;}
+=09
+	.large-copy-text {font-family: Times, Times New Roman, serif;
+		color:#000066; font-size: 1.3em; line-height: 1.5em;
+		margin-left: .75em; margin-right: .75em;}
+=09
+	.medium-header-text {font-family: Times, Times New Roman, serif;
+		color:#ff0000; font-size: 1em;
+		margin-left: .75em; margin-right: .75em;}
+=09
+	.large-header-text {font-family: Times, Times New Roman, serif;
+		color:#ff0000; font-size: 1.5em;
+		margin-left: .75em; margin-right: .75em;}
+
+		#side {
+			width: 10px;
+			float: left;
+			margin-left: -1px;
+			padding: 2px;
+			}
+						=09
+		#content {
+			padding: 2px;
+			margin-left: 25px;
+		=09
+		       =20
+		        }
+	 .fulltext_lnk {border:0px;
+	 				 margin-right: 2px;
+					 vertical-align:baseline;
+	 				}
+	=20
+	  .leftcoltab {=20
+		  position:relative;
+		  top:5px;
+		  left:5px;
+		  float:left;
+		  width:530px;  /* for IE5/WIN */
+		  width:520px; /* actual value */
+		  margin:0 0 0px 0;
+		  padding:5px;
+		  z-index:100;
+		  }
+	  .rightcoltab {
+		  position:relative;
+		  top:5px;
+		  right:0px;
+		  float:right;
+		  margin:0 0px 0 0;
+		  padding:5px;
+		  width:350px;
+		  z-index:99;
+		  }
+	  .centercoltab {
+		  position:absolute;
+		  padding:0 0px;
+		  }
+	  .alt {
+		background: #ece9d8;
+		margin: 0;
+		padding: 1px;
+		}
+		.leftcolc {=20
+	position:relative;
+	top:5px;
+	left:5px;
+	float:left;
+	width:420px;  /* for IE5/WIN */
+	width:400px; /* actual value */
+	margin:0 0 0px 0;
+	padding:5px;
+	z-index:100;
+	}
+.rightcolc {
+	position:relative;
+	top:0px;
+	right:0px;
+	float:right;
+	margin:0 0px;
+	padding:0px;
+	width:500px;
+	z-index:99;
+	}
+.centercolc {
+	position:absolute;
+	padding:0 0px;
+	}
+=09
+	.leftcoltabv {=20
+		  position:relative;
+		  top:5px;
+		  left:5px;
+		  float:left;
+		  width:460px;  /* for IE5/WIN */
+		  width:350px; /* actual value */
+		  margin:0 0 0px 0;
+		  padding:5px;
+		  z-index:100;
+		  }
+	.rightcoltabv {
+		position:relative;
+		top:5px;
+		right:0px;
+		float:right;
+		margin:0 0px 0 0;
+		padding:15px;
+		width:480px;
+		z-index:99;
+		}
+=09
+  --></style>
+=20
+
+
+<script type=3D"text/javascript" =
+src=3D"/cfformprotect/js/cffp.js"></script>
+
+
+<script type=3D"text/javascript">
+ function expandcollapse(anchor,whichone) {
+	 var inner =3D document.getElementById(anchor);
+	 var theshow =3D "toShow" + whichone;
+ 	 var thehide =3D "toHide" + whichone;
+	 var span =3D document.getElementById(theshow);
+     span.style.display =3D =
+(span.style.display=3D=3D'inline')?'none':'inline';
+     var span =3D document.getElementById(thehide);
+     span.style.display =3D =
+(span.style.display=3D=3D'none')?'inline':'none';
+     inner.innerHTML =3D =
+(inner.innerHTML=3D=3D'collapse')?'expand':'collapse';
+    }
+
+  function setDiv() {
+	var m =3D document.getElementById('divmain');
+	var mh =3D m.offsetHeight;
+	var t =3D document.getElementById('divtools');
+	var th =3D t.offsetHeight;
+	var tg =3D document.getElementById('divtags');
+	var tgh =3D tg.offsetHeight;
+	var calcheight =3D mh - th;
+	if (tgh > calcheight  ){
+	  var x =3D (th + tgh) - mh;
+	  if ( (th + tgh) - mh < 65) {
+	  }
+	  else {
+		 document.getElementById('divtags').innerHTML =3D "";=20
+		 var tg =3D document.getElementById('divtags');
+		 var tgh =3D tg.offsetHeight;
+		 tg.style.height =3D tgh  + 'px';
+	  }
+	}
+	else {
+		tg.style.height =3D calcheight + 'px';
+		document.getElementById('divtags').innerHTML =3D "";
+	}
+
+//  do I need to check after I resize to be sure I didn't go too big?
+//	var tg2 =3D document.getElementById('divtags');
+//	var tgh2 =3D tg.offsetHeight;=09
+//	if (tgh2 > mh + 65) {
+//	  var y =3D mh + 65;
+//	  alert('expanded too much ' + tgh2 + ' should be at most ' + y);
+//	  tg.style.height =3D y + 'px';
+//	  document.getElementById('divtags').innerHTML =3D "";
+//	}
+
+  }
+</script>
+
+<script type=3D"text/javascript">
+ /* <!-- Begin
+	if(document.layers || document.all) {
+	a =3D 1;
+	setInterval("Jump()", 10);
+	}
+	function Jump() {
+	a =3D a + 1;
+	//self.moveBy((Math.random() * a * 2 - a), (Math.random() * a * 2) - =
+a);
+	}
+//  End --> */
+</script>
+
+
+
+<meta name=3D"citation_journal_title" content=3D"Linux Journal"> <meta =
+name=3D"citation_publisher" content=3D"Specialized Systems Consultants, =
+Inc."> <meta name=3D"citation_authors" content=3D"der.hans,"> <meta =
+name=3D"citation_title" content=3D"Use SSH to cross a suspect host =
+securely"> <meta name=3D"citation_date" content=3D"03/01/2010"> <meta =
+name=3D"citation_volume" content=3D"2010"> <meta name=3D"citation_issue" =
+content=3D"191"> <meta name=3D"citation_issn" content=3D"1075-3583"> =
+<meta name=3D"citation_firstpage" content=3D"3"> <meta =
+name=3D"citation_abstract_html_url" =
+content=3D"http://portal.acm.org.proxy1.lib.umanitoba.ca/citation.cfm?id=3D=
+1739152.1739155"> <meta name=3D"citation_fulltext_html_url" =
+content=3D"http://portal.acm.org.proxy1.lib.umanitoba.ca/ft_gateway.cfm?i=
+d=3D1739155&type=3Dhtml">=20
+
+
+=0A=
+<script type=3D"text/javascript">=0A=
+	ColdFusion.Ajax.importTag('CFAJAXPROXY');=0A=
+</script>=0A=
+=0A=
+<script type=3D"text/javascript">=0A=
+	ColdFusion.Ajax.importTag('CFFORM');=0A=
+</script>=0A=
+=0A=
+<script type=3D"text/javascript">=0A=
+	ColdFusion.Ajax.importTag('CFDIV');=0A=
+</script>=0A=
+=0A=
+<script type=3D"text/javascript">=0A=
+	ColdFusion.Ajax.importTag('CFTEXTAREA');=0A=
+</script>=0A=
+=0A=
+<script type=3D"text/javascript">=0A=
+	ColdFusion.Ajax.importTag('CFLAYOUT-TAB');=0A=
+</script>=0A=
+=0A=
+	<script type=3D"text/javascript">=0A=
+		var _cf_layout_init_1304804898309=3Dfunction()=0A=
+		{=0A=
+			var =
+_cf_layout=3DColdFusion.Layout.initializeTabLayout("citationdetails");=0A=
+			=
+ColdFusion.Layout.addTab(_cf_layout,"abstract","<span>Abstract</span>",fa=
+lse,false);=0A=
+			=
+ColdFusion.Layout.selectTab('citationdetails','abstract');_cf_bind_init_1=
+304804898310=3Dfunction()=0A=
+			{=0A=
+				=
+ColdFusion.Bind.register([],{'bindTo':'abstract','bindExpr':['tab_abstrac=
+t.cfm?id=3D1739155&usebody=3Dtabbody&cfid=3D21658386&cftoken=3D55029053']=
+},ColdFusion.Bind.urlBindHandler,true);=0A=
+			};ColdFusion.Event.registerOnLoad(_cf_bind_init_1304804898310);=0A=
+			=
+ColdFusion.Layout.addTab(_cf_layout,"authors","<span>Authors</span>",fals=
+e,false);_cf_bind_init_1304804898311=3Dfunction()=0A=
+			{=0A=
+				=
+ColdFusion.Bind.register([],{'bindTo':'authors','bindExpr':['tab_authors2=
+.cfm?id=3D1739155&usebody=3Dtabbody&cfid=3D21658386&cftoken=3D55029053']}=
+,ColdFusion.Bind.urlBindHandler,true);=0A=
+			};ColdFusion.Event.registerOnLoad(_cf_bind_init_1304804898311);=0A=
+			ColdFusion.Layout.addTab(_cf_layout,"references","<span =
+style=3D'color:#999999'>References</span>",false,false);_cf_bind_init_130=
+4804898312=3Dfunction()=0A=
+			{=0A=
+				=
+ColdFusion.Bind.register([],{'bindTo':'references','bindExpr':['tab_refer=
+ences.cfm?id=3D1739155&type=3Darticle&usebody=3Dtabbody&cfid=3D21658386&c=
+ftoken=3D55029053']},ColdFusion.Bind.urlBindHandler,true);=0A=
+			};ColdFusion.Event.registerOnLoad(_cf_bind_init_1304804898312);=0A=
+			ColdFusion.Layout.addTab(_cf_layout,"citedby","<span =
+style=3D'color:#999999'>Cited =
+By</span>",false,false);_cf_bind_init_1304804898313=3Dfunction()=0A=
+			{=0A=
+				=
+ColdFusion.Bind.register([],{'bindTo':'citedby','bindExpr':['tab_citings.=
+cfm?id=3D1739155&usebody=3Dtabbody&cfid=3D21658386&cftoken=3D55029053']},=
+ColdFusion.Bind.urlBindHandler,true);=0A=
+			};ColdFusion.Event.registerOnLoad(_cf_bind_init_1304804898313);=0A=
+			ColdFusion.Layout.addTab(_cf_layout,"indexterms","<span>Index =
+Terms</span>",false,false);_cf_bind_init_1304804898314=3Dfunction()=0A=
+			{=0A=
+				=
+ColdFusion.Bind.register([],{'bindTo':'indexterms','bindExpr':['tab_index=
+terms.cfm?id=3D1739155&usebody=3Dtabbody&cfid=3D21658386&cftoken=3D550290=
+53']},ColdFusion.Bind.urlBindHandler,true);=0A=
+			};ColdFusion.Event.registerOnLoad(_cf_bind_init_1304804898314);=0A=
+			=
+ColdFusion.Layout.addTab(_cf_layout,"source","<span>Publication</span>",f=
+alse,false);_cf_bind_init_1304804898315=3Dfunction()=0A=
+			{=0A=
+				=
+ColdFusion.Bind.register([],{'bindTo':'source','bindExpr':['tab_source.cf=
+m?id=3D1739155&usebody=3Dtabbody&type=3Darticle&sellOnline=3D0&purchaseab=
+le=3Dyes&cfid=3D21658386&cftoken=3D55029053']},ColdFusion.Bind.urlBindHan=
+dler,true);=0A=
+			};ColdFusion.Event.registerOnLoad(_cf_bind_init_1304804898315);=0A=
+			ColdFusion.Layout.addTab(_cf_layout,"revs","<span =
+style=3D'color:#999999'>Reviews</span>",false,false);_cf_bind_init_130480=
+4898316=3Dfunction()=0A=
+			{=0A=
+				=
+ColdFusion.Bind.register([],{'bindTo':'revs','bindExpr':['tab_reviews.cfm=
+?id=3D1739155&logged=3D1&curclient_no=3DNO&usebody=3Dtabbody&cfid=3D21658=
+386&cftoken=3D55029053']},ColdFusion.Bind.urlBindHandler,true);=0A=
+			};ColdFusion.Event.registerOnLoad(_cf_bind_init_1304804898316);=0A=
+			=
+ColdFusion.Layout.addTab(_cf_layout,"comments","<span>Comments</span>",fa=
+lse,true);_cf_bind_init_1304804898317=3Dfunction()=0A=
+			{=0A=
+				=
+ColdFusion.Bind.register([],{'bindTo':'comments','bindExpr':['tab_comment=
+s.cfm?id=3D1739155&logged=3D1&loggedbyip=3D1&curclient_no=3DNO&usebody=3D=
+tabbody&full_name=3D&email=3D&cfid=3D21658386&cftoken=3D55029053']},ColdF=
+usion.Bind.urlBindHandler,true);=0A=
+			};ColdFusion.Event.registerOnLoad(_cf_bind_init_1304804898317);=0A=
+			ColdFusion.Layout.addTab(_cf_layout,"prox","<span>Table of =
+Contents</span>",false,false);_cf_bind_init_1304804898318=3Dfunction()=0A=
+			{=0A=
+				=
+ColdFusion.Bind.register([],{'bindTo':'prox','bindExpr':['tab_about.cfm?i=
+d=3D1739155&type=3Darticle&parent_id=3D1739152&parent_type=3Dissue&title=3D=
+Use%20SSH%20to%20cross%20a%20suspect%20host%20securely&toctitle=3DLinux%2=
+0Journal&tocissue_date=3DVolume%202010%20Issue%20191%2C%20March%202010&no=
+toc=3D0&usebody=3Dtabbody&tocnext_id=3D1767726&tocnext_str=3DVolume 2010 =
+Issue 192, April 2010&tocprev_id=3D1723009&tocprev_str=3DVolume 2010 =
+Issue 190, February =
+2010&toctype=3Dissue&cfid=3D21658386&cftoken=3D55029053']},ColdFusion.Bin=
+d.urlBindHandler,true);=0A=
+			};ColdFusion.Event.registerOnLoad(_cf_bind_init_1304804898318);=0A=
+		};ColdFusion.Event.registerOnLoad(_cf_layout_init_1304804898309);=0A=
+	</script>=0A=
+	=0A=
+<script type=3D"text/javascript">=0A=
+	ColdFusion.Ajax.importTag('CFWINDOW');=0A=
+</script>=0A=
+=0A=
+<script type=3D"text/javascript">=0A=
+	var _cf_window_init_1304804898320=3Dfunction()=0A=
+	{=0A=
+		_cf_bind_init_1304804898321=3Dfunction()=0A=
+		{=0A=
+			=
+ColdFusion.Bind.register([],{'bindTo':'theguide_body','bindExpr':['whatis=
+guide.cfm']},ColdFusion.Bind.urlBindHandler,false);=0A=
+		};ColdFusion.Event.registerOnLoad(_cf_bind_init_1304804898321);var =
+_cf_window=3DColdFusion.Window.create('theguide','The ACM Guide to =
+Computing Literature','whatisguide.cfm',{ modal:false, closable:true, =
+divid:'cf_window1304804898319', draggable:true, resizable:true, =
+fixedcenter:true, width:500, height:300, shadow:true, callfromtag:true, =
+minwidth:300, minheight:250, initshow:false});=0A=
+	};ColdFusion.Event.registerOnLoad(_cf_window_init_1304804898320);=0A=
+</script>=0A=
+=0A=
+<script type=3D"text/javascript">=0A=
+	var _cf_window_init_1304804898323=3Dfunction()=0A=
+	{=0A=
+		_cf_bind_init_1304804898324=3Dfunction()=0A=
+		{=0A=
+			=
+ColdFusion.Bind.register([],{'bindTo':'thetags_body','bindExpr':['showthe=
+tags.cfm?id=3D1739155']},ColdFusion.Bind.urlBindHandler,false);=0A=
+		};ColdFusion.Event.registerOnLoad(_cf_bind_init_1304804898324);var =
+_cf_window=3DColdFusion.Window.create('thetags','All =
+Tags','showthetags.cfm?id=3D1739155',{ modal:false, closable:true, =
+divid:'cf_window1304804898322', draggable:true, resizable:true, =
+fixedcenter:true, width:500, height:300, shadow:true, callfromtag:true, =
+minwidth:300, minheight:250, initshow:false});=0A=
+	};ColdFusion.Event.registerOnLoad(_cf_window_init_1304804898323);=0A=
+</script>=0A=
+=0A=
+<script type=3D"text/javascript">=0A=
+	var _cf_window_init_1304804898326=3Dfunction()=0A=
+	{=0A=
+		var _cf_window=3DColdFusion.Window.create('theformats','Export =
+Formats','',{ modal:false, closable:true, =
+divid:'cf_window1304804898325', draggable:true, resizable:true, =
+fixedcenter:false, width:500, height:300, shadow:true, =
+bodystyle:'text-align:left', callfromtag:true, minwidth:250, =
+minheight:250, initshow:false});=0A=
+	};ColdFusion.Event.registerOnLoad(_cf_window_init_1304804898326);=0A=
+</script>=0A=
+=0A=
+<script type=3D"text/javascript">=0A=
+	var _cf_window_init_1304804898328=3Dfunction()=0A=
+	{=0A=
+		var _cf_window=3DColdFusion.Window.create('theexplaination','','',{ =
+modal:false, closable:true, divid:'cf_window1304804898327', =
+draggable:true, resizable:true, fixedcenter:false, width:500, =
+height:300, shadow:true, bodystyle:'text-align:left', callfromtag:true, =
+minwidth:300, minheight:250, initshow:false});=0A=
+	};ColdFusion.Event.registerOnLoad(_cf_window_init_1304804898328);=0A=
+</script>=0A=
+=0A=
+<script type=3D"text/javascript">=0A=
+	var _cf_window_init_1304804898330=3Dfunction()=0A=
+	{=0A=
+		var _cf_window=3DColdFusion.Window.create('theservices','','',{ =
+modal:false, closable:true, divid:'cf_window1304804898329', =
+draggable:true, resizable:true, fixedcenter:false, width:500, =
+height:300, shadow:true, bodystyle:'text-align:left', callfromtag:true, =
+minwidth:300, minheight:250, initshow:false});=0A=
+	};ColdFusion.Event.registerOnLoad(_cf_window_init_1304804898330);=0A=
+</script>=0A=
+=0A=
+<script type=3D"text/javascript">=0A=
+	var _cf_window_init_1304804898332=3Dfunction()=0A=
+	{=0A=
+		_cf_bind_init_1304804898333=3Dfunction()=0A=
+		{=0A=
+			=
+ColdFusion.Bind.register([],{'bindTo':'savetobinder_body','bindExpr':['sa=
+vetobinder.cfm?id=3D1739155']},ColdFusion.Bind.urlBindHandler,false);=0A=
+		};ColdFusion.Event.registerOnLoad(_cf_bind_init_1304804898333);var =
+_cf_window=3DColdFusion.Window.create('savetobinder','Save to =
+Binder','savetobinder.cfm?id=3D1739155',{ modal:false, closable:true, =
+divid:'cf_window1304804898331', draggable:true, resizable:true, =
+fixedcenter:true, width:600, height:600, shadow:true, callfromtag:true, =
+minwidth:300, minheight:250, initshow:false, _cf_refreshOnShow:true});=0A=
+	};ColdFusion.Event.registerOnLoad(_cf_window_init_1304804898332);=0A=
+</script>=0A=
+</head>
+
+<body style=3D"text-align:center" onLoad=3D"window.focus();">
+
+<script type=3D"text/javascript">
+						addthis_pub             =3D 'acm';=20
+						//addthis_logo            =3D =
+'http://www.addthis.com/images/yourlogo.png';
+						addthis_logo            =3D =
+'http://portal.acm.org.proxy1.lib.umanitoba.ca/images/ACM_transparent.png=
+';
+						addthis_logo_background =3D 'c2d5fc';
+						addthis_logo_color      =3D '000000';
+						addthis_brand           =3D 'Citation Page';
+						addthis_options         =3D 'favorites, email, slashdot, =
+citeulike, digg, delicious, twitter, myspace, facebook, google, more';
+						</script>
+                       =20
+<script src=3D'AC_RunActiveContent.js' =
+type=3D"text/javascript"></script>
+
+
+
+
+<div style=3D"width:940px; margin-left: auto; margin-right: auto; =
+text-align:left">
+<a id=3D"CIT"></a>
+
+
+
+<table style=3D"table-layout:fixed; margin-top: 5px; margin-bottom: =
+10px; border:0px; width:100%; border-collapse:collapse;">
+	<tr style=3D"vertical-align:top">
+	=09
+		<td style=3D"padding-left: 5px; padding-right:10px; =
+padding-bottom:0px; width:300px" class=3D"small-link-text"  ><img =
+src=3D"http://portal.acm.org.proxy1.lib.umanitoba.ca/images/ACMDL_Logo.jp=
+g" alt=3D"ACM DL" style=3D"border:0px" usemap=3D"#port" />
+		</td>
+        <td style=3D"padding-left: 5px; padding-right:10px; =
+padding-bottom:0px; width:263px" class=3D"small-link-text">
+        	<table style=3D"width:100%; border-collapse:collapse; =
+padding:0px">
+			<tr><td style=3D"text-align:center">
+			=09
+					 <a href=3D"http://umanitoba.ca.proxy1.lib.umanitoba.ca/" =
+title=3D"Provided by the University of Manitoba"><img =
+style=3D"border:0px" =
+src=3D"http://portalparts.acm.org.proxy1.lib.umanitoba.ca/client_logos/98=
+28518.jpg" alt=3D"Provided by the University of Manitoba" /></a>
+                 =20
+                            <div style=3D"margin:0px =
+auto;color:#356b20;font-size:10pt;line-height:10%;"> </div>
+                   =20
+					</td>	=09
+			</tr>
+			</table>=20
+        </td>
+		<td style=3D"padding-top: 0px; padding-left: 0px; padding-bottom:0px; =
+text-align:right;" class=3D"small-link-text">
+			 <p style=3D"margin-top:0px; margin-bottom:10px;">
+				=09
+                            <a =
+href=3D"https://portal-acm-org.proxy1.lib.umanitoba.ca/signin.cfm?cfid=3D=
+21658386&amp;cftoken=3D55029053" class=3D"small-link-text" title=3D"Sign =
+in to personalize your Digital Library experience">SIGN IN</a>
+                            &nbsp;&nbsp;<a =
+href=3D"https://portal-acm-org.proxy1.lib.umanitoba.ca/signin.cfm?cfid=3D=
+21658386&amp;cftoken=3D55029053"  class=3D"small-link-text" =
+title=3D"Sign up to personalize your Digital Library experience">SIGN =
+UP</a>
+					=09
+			 </p>
+           =20
+			<table style=3D"padding: 5px; border-collapse:collapse; float:right">
+			=09
+			=09
+                           =20
+                            <tr>
+                            <td class=3D"small-link-text" =
+style=3D"text-align:right">
+                            <form name=3D"qiksearch" =
+action=3D"results.cfm?h=3D1&amp;cfid=3D21658386&amp;cftoken=3D55029053" =
+method=3D"post">
+                          =20
+                          =20
+                           =20
+                                    =20
+                                    <span =
+style=3D"margin-left:0px"><label><input type=3D"text" name=3D"query" =
+size=3D"34" value=3D" " /></label>&nbsp;
+                                    <input style=3D"vertical-align:top;" =
+type=3D"image" alt=3D"Search" name=3D"Go" =
+src=3D"http://portal.acm.org.proxy1.lib.umanitoba.ca/images/search_small.=
+jpg" />
+                                   =20
+                                    </span>
+							  </form>
+                                </td>
+                            </tr>
+                         =20
+				 =20
+			</table>
+
+		=09
+		=09
+		</td>
+
+	</tr>
+   =20
+   =20
+    <tr><td colspan=3D"3" class=3D"small-link-text" =
+style=3D"padding-bottom:5px; padding-top:0px; text-align:center">
+	=09
+        	<div style=3D"margin:0px =
+auto;color:#356b20;font-size:10pt;line-height:120%;">
+				Consortia Canada: University of Manitoba
+             </div>
+          =20
+         </td>
+    </tr>
+    </table>
+=09
+<map name=3D"port" id=3D"port" >=20
+  <area shape=3D"rect" coords=3D"1,1,60,50" =
+href=3D"http://www.acm.org.proxy1.lib.umanitoba.ca/" alt=3D"ACM Home =
+Page" />
+  <area shape=3D"rect" coords=3D"65,1,275,68" =
+href=3D"http://portal.acm.org.proxy1.lib.umanitoba.ca/dl.cfm?CFID=3D21658=
+386&CFTOKEN=3D55029053" alt=3D"ACM Digital Library Home Page" />
+</map>
+
+<table style=3D"table-layout:fixed; padding-bottom:10px; width:100%; =
+padding:0px;">
+	<tr style=3D"vertical-align:top">
+		<td style=3D"padding-right:10px; text-align:left" =
+class=3D"small-link-text">
+        	<div id=3D"divmain" style=3D"border:1px solid #356b20;">
+				=20
+				<div class=3D"large-text" style=3D"text-align:left; =
+margin-left:2px;margin-bottom:5px;">
+				=09
+                    	<h1 class=3D"mediumb-text" style=3D"margin-top:0px; =
+margin-bottom:0px;"><strong>Use SSH to cross a suspect host =
+securely</strong></h1>
+                       =20
+                </div>
+               =20
+                 =20
+
+<table class=3D"medium-text" style=3D"border-collapse:collapse; =
+padding:0px;">
+
+<col style=3D"width:540px" />
+
+<tr style=3D"vertical-align:top">
+  <td>
+    <table style=3D"border-collapse:collapse; padding:2px;" =
+class=3D"medium-text">
+      <col style=3D"width:80px;" />
+      <col style=3D"width:auto" />
+      <tr style=3D"vertical-align:top">
+       =20
+          <td style=3D"white-space:nowrap">Full Text:</td>
+          <td>
+               <a name=3D"FullTextHtml" title=3D"FullText Html" =
+href=3D"ft_gateway.cfm?id=3D1739155&type=3Dhtml&CFID=3D21658386&CFTOKEN=3D=
+55029053" target=3D"_blank"><img src=3D"imagetypes/www.gif" alt=3D"Html" =
+class=3D"fulltext_lnk" border=3D"0" />Html</a>=20
+          </td>
+       =20
+      </tr>
+    </table>
+
+=09
+        <table style=3D"margin-top: 10px; border-collapse:collapse; =
+padding:2px;" class=3D"medium-text">
+            <col style=3D"width:80px" />
+           =20
+            <tr>
+            <td  valign=3D"top" nowrap=3D"nowrap">
+             Author:
+               =20
+            </td>
+            <td valign=3D"top" nowrap=3D"nowrap">
+               =20
+                    <a =
+href=3D"author_page.cfm?id=3D81456637095&amp;coll=3DDL&amp;dl=3DACM&amp;t=
+rk=3D0&amp;cfid=3D21658386&amp;cftoken=3D55029053" title=3D"Author =
+Profile Page" target=3D"_self"> der.hans</a>
+               =20
+            </td>
+            <td valign=3D"bottom">
+                =09
+            </td>
+            </tr>
+           =20
+        </table>
+   =20
+        <table style=3D"margin-top: 10px" border=3D"0" =
+class=3D"medium-text" cellpadding=3D"2" cellspacing=3D"0">
+            <tr><td><table border=3D"0" class=3D"medium-text" =
+cellpadding=3D"1" cellspacing=3D"0">
+
+<tr valign=3D"top">
+    <td rowspan=3D"20" nowrap=3D"nowrap" align=3D"center" =
+style=3D"padding-top:0px;">Published in:<br />
+    =20
+                    =09
+					<a href=3D"" title=3D"" target=3D"_blank"><img =
+style=3D"margin-top:5px; border-width:1px; border-color:black" =
+src=3D"http://portalparts.acm.org.proxy1.lib.umanitoba.ca/1740000/1739152=
+/cover/cover_full.jpg" height=3D"102"  width=3D"76" alt=3D"Cover Image" =
+/></a><br />
+				=09
+                   =20
+    </td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+=20
+	<tr valign=3D"top">
+    	<td nowrap=3D"nowrap" =
+style=3D"padding-bottom:0px">&middot;&nbsp;Journal</td>
+	</tr>
+    <tr valign=3D"top">
+	    <td style=3D"padding-left:10px;">
+		   Linux Journal <a href=3D""  target=3D"_self" =
+class=3D"small-link-text"></a>=20
+              <a =
+href=3D"citation.cfm?id=3DJ508&amp;picked=3Dprox&amp;cfid=3D21658386&amp;=
+cftoken=3D55029053" target=3D"_self" =
+class=3D"small-link-text">archive</a>
+		  =20
+        </td>
+	</tr>
+   =20
+    <tr valign=3D"top">
+	    <td style=3D"padding-left:10px; padding-bottom:10px">Volume 2010 =
+Issue 191, March 2010=20
+          	<br />
+          <span class=3D"small-link-text">Specialized Systems =
+Consultants, Inc.</span> <span class=3D"small-link-text">Seattle, =
+WA</span><span class=3D"small-link-text">, USA</span>=20
+                <br />          =20
+               =20
+	                    <a =
+href=3D"citation.cfm?id=3D1739152&amp;picked=3Dprox&amp;cfid=3D21658386&a=
+mp;cftoken=3D55029053"  target=3D"_self" =
+class=3D"small-link-text">table&nbsp;of&nbsp;contents</a>
+    			=09
+      </td>
+	</tr>
+	=20
+
+</table></td></tr>
+        </table>
+   =20
+
+  </td>
+
+  <td rowspan=3D"20" nowrap=3D"nowrap">
+	<table border=3D"0" class=3D"medium-text" cellpadding=3D"0" =
+cellspacing=3D"0">
+		<tr>
+        	<td align=3D"center" style=3D"padding-bottom: 5px;">
+			 =20
+               <img src=3D"images/apdf.jpg" title=3D"Use SSH to cross a =
+suspect host securely" width=3D"60" height=3D"90" alt=3D"Use SSH to =
+cross a suspect host securely"  border=3D"0" />=20
+              </td>
+              <td valign=3D"top" align=3D"left" nowrap=3D"nowrap">
+	             2010 Article<br />
+                =20
+        	 </td>
+        </tr>
+       =20
+        <tr>
+        	<td colspan=3D"2" valign=3D"baseline" =
+style=3D"padding-bottom:5px;">
+            <img src=3D"img/stats.jpg" alt=3D"Bibliometrics Data" =
+/>&nbsp;
+            <a =
+href=3D"javascript:ColdFusion.Window.show('theexplaination');ColdFusion.n=
+avigate('explain.cfm?expid=3D1','theexplaination');" =
+title=3D"Bibliometrics: explained">Bibliometrics</a>
+            </td>
+         </tr>
+         <tr>
+            <td  class=3D"small-text" colspan=3D"2" valign=3D"top" =
+style=3D"padding-left:30px;">
+			=09
+	                    	&middot;&nbsp;Downloads (6 Weeks): 0<br />
+    	                    &middot;&nbsp;Downloads (12 Months): 64<br />
+                         =20
+                        &middot;&nbsp;Citation Count: 0=20
+			</td>
+         </tr>
+
+	</table>
+  </td>
+</tr>
+</table>
+
+<br clear=3D"all" />
+
+                 =20
+                 <br clear=3D"all" />
+			</div>
+		=09
+		</td>
+		<td style=3D"padding-left: 5px; vertical-align:top; text-align:left; =
+width:170px" class=3D"small-link-text">
+=09
+            <div id=3D"divtools" style=3D"background-color:#ece9d8; =
+text-align:left; padding-top:5px; padding-bottom:5px; ">
+              <div class=3D"medium-text" style=3D"margin-left:3px; =
+margin-top:10px;"><h1 class=3D"mediumb-text" =
+style=3D"margin-top:-15px;"><strong>Tools and =
+Resources</strong></h1></div>
+
+
+<ul title=3D"Tools and Resources" style=3D"list-style: none; =
+list-style-position:inside;
+margin-left: 0px;
+padding-left: 0em;
+text-indent: 5px;
+margin-bottom: 0px;">
+
+
+<li =
+style=3D"list-style-image:url(img/toc_small.gif);margin-top:10px;"><span =
+style=3D"margin-left:6px;">
+   <span class=3D"small-link-text">TOC Service:</span>
+   	 =20
+	  <img =
+src=3D"http://portal.acm.org.proxy1.lib.umanitoba.ca/images/blanks.gif" =
+border=3D"0" alt=3D"Spacer Image reserves space for checkmark when TOC =
+Service is updated" name=3D"saved" />
+      <ul style=3D"margin-left: 0; padding-left: 0; display:inline;">
+      =09
+        <li style=3D"list-style:none; display:inline"><br /><img =
+src=3D"img/email_small.gif" alt=3D"Toc Alert via Email" border=3D"0" =
+hspace=3D"3" /><a href=3D"#" onclick=3D"window.alert('To use this =
+Feature, you must login with your personal ACM Web Account.');" =
+class=3D"small-link-text">Email</a></li>
+        <li style=3D"list-style:none; display:inline"><img =
+src=3D"img/rss_small.gif" alt=3D"Toc Alert via Email" border=3D"0" =
+hspace=3D"3" /><a href=3D"#" onclick=3D"window.alert('To use this =
+Feature, you must login with your personal ACM Web Account.');"  =
+class=3D"small-link-text">RSS</a></li>
+		       =20
+      </ul>
+    </span>
+</li>
+
+    <li =
+style=3D"list-style-image:url(img/binder.gif);margin-top:10px;"><span =
+style=3D"margin-left:6px;">
+    <a href=3D"citation.cfm?id=3D1739155#" onclick=3D"window.alert('To =
+use this Feature, you must login with your personal ACM Web Account.');" =
+class=3D"small-link-text">Save to Binder</a>
+     </span></li>
+
+
+
+
+
+<li =
+style=3D"list-style-image:url(img/binder_green.gif);margin-top:10px;"><sp=
+an style=3D"margin-left:6px; margin-bottom:0px">
+   <span class=3D"small-link-text">Export Formats:</span>
+      <ul style=3D"margin-left: 0; padding-left: 0; margin-bottom:0px;">
+        <li style=3D"list-style:disc; display:inline; =
+margin-bottom:0px;"><a =
+href=3D"javascript:ColdFusion.Window.show('theformats');ColdFusion.naviga=
+te('exportformats.cfm?id=3D1739155&expformat=3Dbibtex','theformats');" =
+class=3D"small-link-text">BibTeX</a></li>
+        <li style=3D"list-style:disc; display:inline; =
+margin-bottom:0px;"><a =
+href=3D"javascript:ColdFusion.Window.show('theformats');ColdFusion.naviga=
+te('exportformats.cfm?id=3D1739155&expformat=3Dendnotes','theformats');" =
+class=3D"small-link-text">EndNote</a></li>
+        <li style=3D"list-style:disc; display:inline; =
+margin-bottom:0px;"><a =
+href=3D"javascript:ColdFusion.Window.show('theformats');ColdFusion.naviga=
+te('exportformats.cfm?id=3D1739155&expformat=3Dacmref','theformats');" =
+class=3D"small-link-text">ACM&nbsp;Ref</a></li>
+      </ul>
+    </span>
+</li>
+
+
+
+
+
+
+</ul>          =20
+
+  <!-- ADDTHIS BUTTON BEGIN -->
+ =20
+  <!-- ADDTHIS BUTTON END -->
+
+<p class=3D"small-link-text" style=3D"padding-top: 0px; margin-left:6px; =
+margin-bottom:0px">Share:</p>
+  <!-- AddThis Button BEGIN -->
+
+
+
+
+<!-- AddThis Button BEGIN -->
+<div style=3D"margin-left:5px;" class=3D"addthis_toolbox =
+addthis_default_style">
+<a class=3D"addthis_button_email"></a>
+<a class=3D"addthis_button_google"></a>
+<a class=3D"addthis_button_citeulike"></a>
+<a class=3D"addthis_button_slashdot"></a>
+<a class=3D"addthis_button_delicious"></a>
+<a class=3D"addthis_button_facebook"></a>
+<span class=3D"addthis_separator">|</span>
+<a =
+href=3D"http://www.addthis.com/bookmark.php?v=3D250&amp;username=3Dacm" =
+class=3D"addthis_button_expanded" title=3D"more"></a>
+</div>
+<script type=3D"text/javascript" =
+src=3D"http://s7.addthis.com/js/250/addthis_widget.js#username=3Dacm"></s=
+cript>
+<!-- AddThis Button END -->
+
+ =20
+=20
+
+ =20
+ =20
+            </div>
+           =20
+<div id=3D"divtags" style=3D"text-align:left; padding-top:10px">
+<span class=3D"medium-text" style=3D"padding-right:10px;">
+<a =
+href=3D"javascript:ColdFusion.Window.show('theexplaination');ColdFusion.n=
+avigate('explain.cfm?expid=3D2','theexplaination');" title=3D"Tags: =
+explained">
+<strong>Tags:</strong>
+</a>
+</span>
+
+<a =
+href=3D"results.cfm?query=3D%22design%22&amp;querydisp=3D%22design%22&amp=
+;termshow=3Dmatchall&amp;cfid=3D21658386&amp;cftoken=3D55029053" =
+target=3D"_self"><span class=3D"small-text" style=3D"padding-right: 0px; =
+color:#356b20">design</span></a>
+
+<a =
+href=3D"results.cfm?query=3D%22management%22&amp;querydisp=3D%22managemen=
+t%22&amp;termshow=3Dmatchall&amp;cfid=3D21658386&amp;cftoken=3D55029053" =
+target=3D"_self"><span class=3D"small-text" style=3D"padding-right: 0px; =
+color:#000000">management</span></a>
+
+<a =
+href=3D"results.cfm?query=3D%22security%22&amp;querydisp=3D%22security%22=
+&amp;termshow=3Dmatchall&amp;cfid=3D21658386&amp;cftoken=3D55029053" =
+target=3D"_self"><span class=3D"small-text" style=3D"padding-right: 0px; =
+color:#356b20">security</span></a>
+
+<a =
+href=3D"results.cfm?query=3D%22security%20and%20protection%22&amp;querydi=
+sp=3D%22security%20and%20protection%22&amp;termshow=3Dmatchall&amp;cfid=3D=
+21658386&amp;cftoken=3D55029053" target=3D"_self"><span =
+class=3D"small-text" style=3D"padding-right: 0px; =
+color:#000000">security and protection</span></a>
+
+<a =
+href=3D"results.cfm?query=3D%22security%20and%20protection%22&amp;querydi=
+sp=3D%22security%20and%20protection%22&amp;termshow=3Dmatchall&amp;cfid=3D=
+21658386&amp;cftoken=3D55029053" target=3D"_self"><span =
+class=3D"small-text" style=3D"padding-right: 0px; =
+color:#356b20">security and protection</span></a>
+
+
+
+
+</div>
+
+		</td>
+	</tr>
+   =20
+</table>
+
+
+
+</div>
+
+
+<div class=3D"layout" style=3D"width:940px; margin-left: auto; =
+margin-right: auto; text-align:left">
+
+
+
+
+<div id=3D"fback" style=3D"text-align:left; padding-top:10px; =
+padding-bottom:20px">
+<span class=3D"small-text" style=3D"padding-right:10px; =
+margin-bottom:0px;">
+<a title=3D"feedback" =
+href=3D"mailto:portal-feedback@hq.acm.org?subject=3DComments_on_new_desig=
+n" style=3D" vertical-align:middle"><img src=3D"img/feedbackg.gif" =
+width=3D"20" height=3D"19" alt=3D"feedback" border=3D"0" /></a>
+<a title=3D"feedback" =
+href=3D"mailto:portal-feedback@hq.acm.org?subject=3DComments_on_new_desig=
+n"><strong>Feedback</strong></a>
+
+<span style=3D"padding:10px;">|</span>
+
+
+
+
+<span>Switch to <a =
+href=3D"citation.cfm?id=3D1739155&amp;preflayout=3Dflat">single page =
+view</a> (no tabs) <noscript><span =
+style=3D"margin-left:20px;">**Javascript is not enabled and is required =
+for the "tabbed view" or switch to the <a =
+href=3D"citation.cfm?id=3D1739155&amp;preflayout=3Dflat">single page =
+view</a>**</span></noscript></span>
+
+
+</span>
+
+
+
+</div>
+<div  id=3D"citationdetails">=0A=
+	=0A=
+	<div  id=3D"abstract" class=3D"ytab" style=3D"overflow:auto;">=0A=
+		=0A=
+		=0A=
+	 </div> <div  id=3D"authors" class=3D"ytab" style=3D"overflow:auto;">=0A=
+		=0A=
+		=0A=
+	 </div> <div  id=3D"references" class=3D"ytab" style=3D"overflow:auto;">=0A=
+		=0A=
+		=0A=
+	 </div> <div  id=3D"citedby" class=3D"ytab" style=3D"overflow:auto;">=0A=
+		=0A=
+		=0A=
+	 </div> <div  id=3D"indexterms" class=3D"ytab" style=3D"overflow:auto;">=0A=
+		=0A=
+		=0A=
+	 </div> <div  id=3D"source" class=3D"ytab" style=3D"overflow:auto;">=0A=
+		=0A=
+		=0A=
+	 </div> <div  id=3D"revs" class=3D"ytab" style=3D"overflow:auto;">=0A=
+		=0A=
+		=0A=
+	 </div> <div  id=3D"comments" class=3D"ytab" style=3D"overflow:auto;">=0A=
+		=0A=
+		=0A=
+	 </div> <div  id=3D"prox" class=3D"ytab" style=3D"overflow:auto;">=0A=
+		=0A=
+		=0A=
+	 </div> =0A=
+ </div>=20
+</div>
+
+
+ <p class=3D"small-text" align=3D"center">Powered by <a id=3D"theguide" =
+name=3D"theguide" =
+href=3D"javascript:ColdFusion.Window.show('theguide')"><img =
+src=3D"img/poweredbyacm.jpg" width=3D"336" height=3D"11" alt=3D"The ACM =
+Guide to Computing Literature" border=3D"0" /></a></p>
+
+
+
+ <br />
+<div class=3D"footerbody" align=3D"center" >
+=09
+
+	The ACM Digital Library is published by the Association for Computing =
+Machinery. Copyright &copy; 2011 ACM, Inc.<br />
+	<a =
+href=3D"http://www.acm.org.proxy1.lib.umanitoba.ca/publications/policies/=
+usage">Terms of Usage</a>&nbsp;&nbsp;
+	<a =
+href=3D"http://www.acm.org.proxy1.lib.umanitoba.ca/about/privacy-policy">=
+Privacy Policy</a>&nbsp;&nbsp;
+	<a =
+href=3D"http://www.acm.org.proxy1.lib.umanitoba.ca/about/code-of-ethics">=
+Code of Ethics</a>&nbsp;&nbsp;	 =20
+	<a =
+href=3D"http://www.acm.org.proxy1.lib.umanitoba.ca/about/contact-us">Cont=
+act Us</a>
+
+<br /><br />
+Useful downloads:=20
+<a href=3D"http://www.adobe.com/products/acrobat/readstep2.html"><img =
+src=3D"http://portal.acm.org.proxy1.lib.umanitoba.ca/images/pdf_logo.gif"=
+ width=3D"16" height=3D"16" alt=3D"" border=3D"0" /> Adobe Acrobat</a>
+&nbsp;&nbsp;
+<a href=3D"http://www.apple.com/quicktime/download/" =
+target=3D"_blank"><img =
+src=3D"http://portal.acm.org.proxy1.lib.umanitoba.ca/images/qtlogo.gif" =
+width=3D"16" height=3D"16" alt=3D"" border=3D"0" /> QuickTime</a>
+&nbsp;&nbsp;
+<a =
+href=3D"http://www.microsoft.com/windows/windowsmedia/download/default.as=
+p" target=3D"_blank"><img =
+src=3D"http://portal.acm.org.proxy1.lib.umanitoba.ca/images/wmv.gif" =
+width=3D"16" height=3D"15" alt=3D"" border=3D"0" /> Windows Media =
+Player</a>
+&nbsp;&nbsp;
+<a href=3D"http://www.real.com/" target=3D"_blank"><img =
+src=3D"http://portal.acm.org.proxy1.lib.umanitoba.ca/images/realplayer.gi=
+f" width=3D"20" height=3D"18" alt=3D"" border=3D"0" /> Real Player</a>
+
+</div>=20
+
+
+
+<div  id=3D"cf_window1304804898319" class=3D"yuiextdlg">=0A=
+	=0A=
+	<div  id=3D"theguide_title" class=3D"x-dlg-hd">=0A=
+		The ACM Guide to Computing Literature=0A=
+	 </div>=0A=
+	<div  id=3D"theguide_body" class=3D"x-dlg-bd">=0A=
+		=0A=
+		=0A=
+	 </div>=0A=
+ </div> <div  id=3D"cf_window1304804898322" class=3D"yuiextdlg">=0A=
+	=0A=
+	<div  id=3D"thetags_title" class=3D"x-dlg-hd">=0A=
+		All Tags=0A=
+	 </div>=0A=
+	<div  id=3D"thetags_body" class=3D"x-dlg-bd">=0A=
+		=0A=
+		=0A=
+	 </div>=0A=
+ </div> <div  id=3D"cf_window1304804898325" class=3D"yuiextdlg">=0A=
+	=0A=
+	<div  id=3D"theformats_title" class=3D"x-dlg-hd">=0A=
+		Export Formats=0A=
+	 </div>=0A=
+	<div  id=3D"theformats_body" class=3D"x-dlg-bd">=0A=
+		=0A=
+		=0A=
+	 </div>=0A=
+ </div> <div  id=3D"cf_window1304804898327" class=3D"yuiextdlg">=0A=
+	=0A=
+	<div  id=3D"theexplaination_title" class=3D"x-dlg-hd">=0A=
+		&nbsp;=0A=
+	 </div>=0A=
+	<div  id=3D"theexplaination_body" class=3D"x-dlg-bd">=0A=
+		=0A=
+		=0A=
+	 </div>=0A=
+ </div> <div  id=3D"cf_window1304804898329" class=3D"yuiextdlg">=0A=
+	=0A=
+	<div  id=3D"theservices_title" class=3D"x-dlg-hd">=0A=
+		&nbsp;=0A=
+	 </div>=0A=
+	<div  id=3D"theservices_body" class=3D"x-dlg-bd">=0A=
+		=0A=
+		=0A=
+	 </div>=0A=
+ </div> <div  id=3D"cf_window1304804898331" class=3D"yuiextdlg">=0A=
+	=0A=
+	<div  id=3D"savetobinder_title" class=3D"x-dlg-hd">=0A=
+		Save to Binder=0A=
+	 </div>=0A=
+	<div  id=3D"savetobinder_body" class=3D"x-dlg-bd">=0A=
+		=0A=
+		=0A=
+	 </div>=0A=
+ </div>=20
+
+</body>
+</html>
+------=_NextPart_000_0000_01CC0CD6.922ED860--

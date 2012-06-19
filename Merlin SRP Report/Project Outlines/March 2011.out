@@ -1,0 +1,21 @@
+\BOOKMARK [1][-]{section.1}{Provided Proof-of-Concept Tool}{}% 1
+\BOOKMARK [1][-]{section.2}{Summary of Existing Solutions}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Suricata}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{BotHunter}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Summary of Detection Approaches}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Identifying Network Topology Behind NAT Devices}{section.3}% 6
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Source Port Counting}{subsection.3.1}% 7
+\BOOKMARK [3][-]{subsubsection.3.1.2}{JavaScript Injection}{subsection.3.1}% 8
+\BOOKMARK [2][-]{subsection.3.2}{DNS and non-DNS over port 53}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{BitTorrent}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.4}{Dark IP Space and Darknets}{section.3}% 11
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Use as Real-Time Signature Tracking}{subsection.3.4}% 12
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Extension to Email}{subsection.3.4}% 13
+\BOOKMARK [3][-]{subsubsection.3.4.3}{Tiered Honeypots}{subsection.3.4}% 14
+\BOOKMARK [2][-]{subsection.3.5}{Detecting Covert Communication Channels}{section.3}% 15
+\BOOKMARK [3][-]{subsubsection.3.5.1}{DNS Tunnels}{subsection.3.5}% 16
+\BOOKMARK [3][-]{subsubsection.3.5.2}{ICMP Tunnels}{subsection.3.5}% 17
+\BOOKMARK [2][-]{subsection.3.6}{Black-listing vs White-listing}{section.3}% 18
+\BOOKMARK [2][-]{subsection.3.7}{Detecting Periodic Events}{section.3}% 19
+\BOOKMARK [1][-]{section.4}{Types of Botnet Command and Control Channels}{}% 20
+\BOOKMARK [2][-]{subsection.4.1}{Reliance on DNS}{section.4}% 21

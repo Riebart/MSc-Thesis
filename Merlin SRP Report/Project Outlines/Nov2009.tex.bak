@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{amsfonts, amsmath, amsthm, amssymb}
+\usepackage[urlcolor=blue,linkcolor=black,colorlinks=true]{hyperref}
+\hypersetup{
+  pdftitle = {COMP 4200 (Winter 2009) Course Notes},
+  pdfkeywords = {pdf, hyperref, bookmarks},
+  pdfauthor = {Michael Himbeault}
+}
+\usepackage[headsep=1cm,headheight=50pt]{geometry}
+\usepackage[dvips]{graphicx}
+\usepackage{subfigure}
+%input "Nov 2009.bib"TDG
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+
+\newtheorem*{hyp}{Hypothesis}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{definition}
+\newtheorem{algorithm}{Algorithm}[section]
+
+\begin{document}
+\bibliographystyle{amsplain}
+\title{Merlin SRP - Project Update}
+\author{Michael Himbeault}
+
+\maketitle
+
+\section{Where We Came From}
+\subsection{Literature Review}
+\begin{itemize}
+\item Several papers on network payload signature based analysis. This is problematic for several reasons, the least of which is that it has difficulty handling encrypted payloads. It often requires the reverse engineering of network and communication protocols used by the specific malware in question necessitating that a copy of the program be on hand for analysis. This isn't particularly reasonable for Merlin's situation as the neither the expertise nor the time are available to devote to this method.
+
+    Additional problems include lack of scalability (For large networks with multiple different 'strains' of infection, this process must isolate each strain individually), portability (It doesn't port well from location to location) and adaptability.
+
+    For these reasons, this approach has been largely discarded.
+
+\item As was mentioned last time, the concept of "social interaction" of network hosts is an approach that is agnostic to payload schemes (But may care about payload size). This approach is not unknown to literature in this area and are known as Traffic Dispersion Graphs (TDGs). The originating paper appears to be \cite{TDG} and discusses possible analysis of the resulting graphs. These graphs were captured by monitoring a network backbone and considering the resulting data.
+    
+    A paper exists( that looks at using TDGs for the purpose that was suggested in October; detecting malware based on the social characteristics of its network activity. This paper 
+\end{itemize}
+
+\section{Where We Are}
+
+\section{Where We Are Going}
+
+\newpage
+\nocite{*}
+\bibliography{Nov 2009}
+\end{document} 

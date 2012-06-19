@@ -1,0 +1,3 @@
+- Must be able to shift with the 'norm' but still detect anomalies.
+  > Essentially a continuously learning system.
+- Shouldn't be reactive, should be able to deal with new and previously unseen events.
