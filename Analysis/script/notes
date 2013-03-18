@@ -1,0 +1,4 @@
+~/Documents/libodb/build/extra/dnsstats -v -o output -m F 1 <filename>
+cat domains | sed -n 'N;s/.*<.*>\(.*\)<\/.*>.*<.*>\(.*\)<\/.*>.*$/\2,"\1"/p' | sort -rn > sorted_domains
+for f in `head -n3 top100du | sed 's/^.*"\(.*\)"$/\1/' | tr '\\\\' '.'`; do grep $f top100d | cut -d',' -f1; done 2>&1 | less
+for d in `head -n2 top100du | sed 's/^.*"\(.*\)"$/\1/' | tr '\\\\' '.'`; do cat <(echo "{\"$d\",{") <(grep "$d" top100d | cut -d ',' -f1 | tr '\n' ',') <(echo -n "}},"); done
