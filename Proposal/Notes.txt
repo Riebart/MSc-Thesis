@@ -1,0 +1,20 @@
+= Table of contents =
+The abstract should make sense to everyone. It should give them an idea of whether they possess the background necessary to understand the paper, and if they do, what the paper will tell them.
+
+The introduction should make sense to people with the necessary background, and should be of moderate use to people without the necessary background. It should introduce the problem we are trying to solve, why it is worth solving, give a coarse picture of where our solution sits in the landscape of solutions, and what the solution involves. It should briefly touch on the outcome of the solution.
+
+The background section provides a reasonable breadth and depth of content for people to brush up enough to understand the literature review, problem at hand, and solution. It should provide references for breadth and depth not covered in this section.
+
+* DNS, covert channels, DNS tunnels
+* Entropy
+* 
+
+The problem statement should state the problem, and give context as to its importance. It should explain the problem in terms of the information covered in the background. It should set the benchmarks for determining success or failure of the new method, ideally in terms of a comparison to an existing method, or the ability to pass a certain statistical test (desired traffic should be picked out compared to real-world traffic with some reliability measure).
+
+The literature review should cover other solutions to the problem, as well as other similar and related problems. it should put the problems examined together into a landscape and demonstrate where the proposed solution sits within the landscape of solutions.
+
+The proposed solution section should explain the proposed solution in terms of the background section. It should discuss expected performance, how it differs from existing solutions, particular strengths, and particular weaknesses.
+
+Empirical results should show how the proposed solution performs. Ideally, it would show how it performs to its nearest direct competition. If the proposed solution claims to overcome a known weakness of an existing solution, this should be demonstrated via empirical tests. If the proposed solution has any known or expected weaknesses, they should be exposed in empirical tests to see how weak it becomes. Synthetic testing should be shown next to real world data.
+
+Conclusions should be presented that wrap up the results of the empirical results. It should state whether the goals of the new approach were met, the results of the testing in revealing any weaknesses or strengths, and should show how it compares to the benchmarks set out for it.
