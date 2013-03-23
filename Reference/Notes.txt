@@ -1,3 +1,9 @@
-- Must be able to shift with the 'norm' but still detect anomalies.
-  > Essentially a continuously learning system.
-- Shouldn't be reactive, should be able to deal with new and previously unseen events.
+http://www.cs.ru.ac.za/research/g02v2468/inetvis.html
+http://www.nersc.gov/nusers/security/TheSpinningCube.php
+
+http://code.google.com/p/dnapy/
+
+Kenton Born's stuff.
+
+Network steganography paper.
+http://stegano.net/bibliography.html

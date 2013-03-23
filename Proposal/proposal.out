@@ -1,8 +1,9 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Background}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Domain Name System \(DNS\)}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Covert Channels}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.3}{DNS Tunnels}{section.2}% 5
-\BOOKMARK [3][-]{subsubsection.2.3.1}{DNS Tunnel Software}{subsection.2.3}% 6
-\BOOKMARK [1][-]{section.3}{Problem Statement}{}% 7
-\BOOKMARK [1][-]{section.4}{Review of the State of the Art}{}% 8
+\BOOKMARK [2][-]{subsection.2.1}{Entropy}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Domain Name System \(DNS\)}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Covert Channels}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{DNS Tunnels}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.4.1}{DNS Tunnel Software}{subsection.2.4}% 7
+\BOOKMARK [1][-]{section.3}{Review of the State of the Art}{}% 8
+\BOOKMARK [1][-]{section.4}{Problem Statement}{}% 9

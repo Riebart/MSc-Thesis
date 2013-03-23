@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.22)  18 MAR 2013 11:51
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.22)  22 MAR 2013 21:01
 entering extended mode
 **C:/Users/Michael/Documents/Projects/thesis/Proposal/proposal.tex
 (C:/Users/Michael/Documents/Projects/thesis/Proposal/proposal.tex
@@ -405,70 +405,68 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 (C:\Users\Michael\Documents\Projects\thesis\Proposal\proposal.toc)
 \tf@toc=\write4
  [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 95.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 111.
+
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 95.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 111.
  [3]
 
-LaTeX Warning: Citation `kenton.born.frequency' on page 4 undefined on input li
-ne 129.
-
-
-LaTeX Warning: Reference `propencode' on page 4 undefined on input line 146.
+LaTeX Warning: Reference `propencode' on page 4 undefined on input line 162.
 
 [4]
 
-LaTeX Warning: Reference `datameasurement' on page 5 undefined on input line 15
-8.
+LaTeX Warning: Reference `datameasurement' on page 5 undefined on input line 17
+4.
 
-[5]
+[5] [6] [7] [8] [9] [10] [11] [12]
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ± in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ± in font cmr10!
 
-LaTeX Warning: Citation `ietf.rfc1035' on page 6 undefined on input line 194.
+Overfull \hbox (5.11673pt too wide) in paragraph at lines 435--436
+[]\OT1/cmr/m/n/10.95 Dennis Ar-turo Ludea Ro-maa looks at en-tropy but doesn't 
+limit it to do-mains/subdomains. 
+ []
 
-
-LaTeX Warning: Citation `iana.rfc4034' on page 6 undefined on input line 197.
-
-[6] [7] [8] [9]
-
-LaTeX Warning: Citation `ietf.rfc2931' on page 10 undefined on input line 355.
-
-
-LaTeX Warning: Citation `ietf.rfc3445' on page 10 undefined on input line 356.
-
-
-LaTeX Warning: Citation `ietf.rfc3755' on page 10 undefined on input line 357.
-
-
-LaTeX Warning: Citation `ietf.rfc4025' on page 10 undefined on input line 358.
-
-[10] [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 471.
- [12]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 471.
+[13] [14] [15] [16]
+(C:\Users\Michael\Documents\Projects\thesis\Proposal\proposal.bbl
+Missing character: There is no Â in font cmr10!
+Missing character: There is no ¯ in font cmr10!
+ [17] [18]
+[19] [20]
+Missing character: There is no Â in font cmr10!
+Missing character: There is no ¼ in font cmr10!
+Missing character: There is no Â in font cmr10!
+Missing character: There is no ¤ in font cmr10!
+ [21])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 550.
+ [22]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 550.
 
 (C:\Users\Michael\Documents\Projects\thesis\Proposal\proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 471.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 471.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 550.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 550.
 Package rerunfilecheck Info: File `proposal.out' has not changed.
-(rerunfilecheck)             Checksum: CD96C8FB6A7EB6683217FF930B455EFA;494.
+(rerunfilecheck)             Checksum: 21BEABEA650E241A4F6575A2789A8100;551.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 471.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 550.
  ) 
 Here is how much of TeX's memory you used:
- 6693 strings out of 493921
- 95592 string characters out of 3147276
- 181963 words of memory out of 3000000
- 9884 multiletter control sequences out of 15000+200000
+ 6823 strings out of 493921
+ 97356 string characters out of 3147276
+ 184941 words of memory out of 3000000
+ 9941 multiletter control sequences out of 15000+200000
  14517 words of font info for 56 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,8n,28p,324b,333s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,8n,28p,908b,438s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -495,16 +493,19 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Prog
 ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
-y10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on proposal.pdf (12 pages, 168926 bytes).
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on proposal.pdf (22 pages, 239564 bytes).
 PDF statistics:
- 167 PDF objects out of 1000 (max. 8388607)
- 30 named destinations out of 1000 (max. 500000)
- 65 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 309 PDF objects out of 1000 (max. 8388607)
+ 100 named destinations out of 1000 (max. 500000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
