@@ -1,9 +1,16 @@
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}
-\contentsline {section}{\numberline {2}Background}{6}{section.2}
-\contentsline {subsection}{\numberline {2.1}Entropy}{6}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Domain Name System (DNS)}{6}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Covert Channels}{8}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}DNS Tunnels}{9}{subsection.2.4}
-\contentsline {subsubsection}{\numberline {2.4.1}DNS Tunnel Software}{11}{subsubsection.2.4.1}
-\contentsline {section}{\numberline {3}Review of the State of the Art}{13}{section.3}
+\contentsline {section}{\numberline {2}Background}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}Entropy}{5}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Domain Name System (DNS)}{5}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Covert Channels}{6}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}DNS Tunnels}{7}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.4.1}Raw DNS Tunnels}{7}{subsubsection.2.4.1}
+\contentsline {subsubsection}{\numberline {2.4.2}Conforming DNS Tunnels}{7}{subsubsection.2.4.2}
+\contentsline {subsubsection}{\numberline {2.4.3}DNS Tunnel Software}{8}{subsubsection.2.4.3}
+\contentsline {section}{\numberline {3}Review of the State of the Art}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}General Covert Channel or Anomaly Detection Research}{10}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Non-DNS Related Research}{10}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}DNS Covert Channel Research}{11}{subsection.3.3}
 \contentsline {section}{\numberline {4}Problem Statement}{15}{section.4}
+\contentsline {section}{\numberline {5}Proposed Detection Method}{15}{section.5}
+\contentsline {subsection}{\numberline {5.1}Probabilistic Encoding}{15}{subsection.5.1}

@@ -13,7 +13,7 @@ Estimation},
 \usepackage{lscape}
 
 \usepackage{setspace}
-\doublespacing
+%\doublespacing
 
 \addtolength{\oddsidemargin}{-.5in}
 \addtolength{\evensidemargin}{-.5in}
@@ -142,7 +142,7 @@ Because signature based schemes are not effective in detecting DNS tunnels in a
 zero-day\footnote{\emph{Zero-day} refers to a situation where nothing is
 known about the attack as it has never been seen or analyzed before.} situation, another
 method is required. Analysis based on character frequency is proposed
-in\cite{Born2010.cfa} by Kenton Born which uses character
+in\cite{Born2010.cfa} by Kenton Born with similar approaches proposed by several other authors (see section \ref{litreview} for more details) which uses character
 frequency analysis under the assumption that normal DNS traffic has a unique
 character frequency distribution that can be used as a discriminating fingerprint. Based on analysis of common domain names, he obtained a
 distribution that accurately describes normal DNS traffic while
@@ -156,10 +156,10 @@ was developed that demonstrates this fact. The tool performs a
 \emph{probabilistic encoding} that takes an arbitrary data source and encodes
 it into a stream of characters that conforms to a given distribution. This tool
 can be used to modify the output of any DNS tunnel application so that their
-output conforms to the distribution that Born found for normal DNS traffic. By
+output conforms to the distribution that Born found for normal DNS traffic (or any other distribution, for that matter). By
 utilizing this transformation, Born's approach fails to detect the DNS traffic
 as it becomes, from the viewpoint of his algorithm, indistinguishable from
-normal DNS traffic. Details of this are given in \ref{propencode}.
+normal DNS traffic. Details of this are given in section \ref{probencode}.
 
 Due to the weaknesses listed above, it is clear that a new approach is
 necessary that detects DNS tunnels in a zero-day situation and without the known
@@ -168,7 +168,7 @@ proposes, and demonstrates the effectiveness of, a method of detecting DNS
 tunnels that meets these requirements.
 
 The proposed method operates under the assumption that DNS tunnels move more
-data than a normal domain. By leveraging this fact, it is possible to detect
+data than a normal domain but don't necessarily do it by moving more bytes than a benign domain. This distinction is important since, on a busy network, a large content or service provider such as Google, Amazon, Facebook or Twitter may comprise orders of magnitude more DNS traffic by byte count than a DNS tunnel. By leveraging this fact, it is possible to detect
 any use of DNS to transmit arbitrary data by measuring the amount of data that
 is transmitted using a particular DNS domain or subdomain. The details of this
 measurement methodology are contained in \ref{datameasurement} and requires
@@ -315,6 +315,7 @@ DNS tunneling is the method by which arbitrary data is made to be transferred
 over the same channels as DNS. DNS tunnels come in one of two types: raw, or
 conforming.
 
+\subsubsection{Raw DNS Tunnels}
 \label{dnstunnels.types.raw}
 Raw DNS tunnels do not attempt to mimic or conform to the DNS
 specifications, and simply attempt to utilize the fact that UDP port 53 is
@@ -333,6 +334,7 @@ port 53 communication. Because these types of tunnels are effectively blocked by
 standard firewall and proxy practices, detection of these tunnels is not
 considered in this work.
 
+\subsubsection{Conforming DNS Tunnels}
 \label{dnstunnels.types.conforming}
 Conforming DNS tunnels produce DNS packets that conform to all appropriate
 specification and RFC documents and, as far as any DNS server, is concerned the
@@ -416,27 +418,55 @@ incapable of producing a covert channel that is able to penetrate a strictly
 proxied DNS environment.
 
 \newpage
-\label{litreview}
 \section{Review of the State of the Art}
+\label{litreview}
 
 The solutions that exist to date generally make very little use of complex, static, signatures but rather attempt to exploit a characteristic trait or property that the DNS tunnel will exhibit. If a tunnel can be crafted to not exhibit that feature, then those detection strategies will normally fail in their detection. This section summarizes the known detection methods, their commonalities, advantages, and disadvantages. It will then take the body of detection methods as a whole and establish the existence of any gaps, or weaknesses, that could be exploited by an application to circumvent an IDS that made use of \emph{every one of the mentioned detection methods}. This essentially identifies gaps in the current state of the art that could be filled by a new technique, or an adaptation of an existing technique.
 
-% Reference Categorization
+\subsection{General Covert Channel or Anomaly Detection Research}
+(Browne, 1994)\cite{Browne1994} establishes an entropy conservation based approach for testing the completeness of general (that is, not specific to DNS) covert channel analysis and detection methodologies. (Shaffer, 2008)\cite{Shaffer2008} Proposes a Security Domain model for assessing the surface of a piece of software for exploitable covert channels.
+
+(Ray, 2008)\cite{Ray2008} proposes a protocol for use in a covert channel that incorporates stealth, low overhead, data integrity, data confidentiality, and data reliability. The protocol can be used on top of any other covert channel transport method (ICMP, IP, HTTP, DNS, etc\ldots)
+
+(Horenbeeck, 2006)\cite{Horenbeeck2006} discusses, briefly, DNS tunnels and their implications. A short mention of proxying DNS requests is given as a potential solution but without examining the multitude of ways that a DNS tunnel could still operate in such an environment. The rest of the paper discusses the risk management and policy based mitigations that can be applied to covert channels in general.
+
+(Moskowitz, 2003)\cite{Moskowitz2003} investigates the link between anonymity and covert channels. It identifies several linking factors such as covert channel capacity and the properties of anonymizing networks, and investigates how these affect anonymity of participants in a communication.
+
+(Newman, 2007)\cite{Newman2007} discusses covert channels in a broad sense, examining the various types of covert channels along with the relationship between covert communication, cryptography, steganography and secrets. 
+
+(Okamura, 2010)\cite{Okamura2010} discusses a fascinating type of covert channel for communication between virtual machines that share a physical host. The paper proposes that virtual machines can manipulate their CPU core load, which is peripherally visible to other virtual machines on the host, in order to send and receive information.
+
+\subsection{Non-DNS Related Research}
+Tunnel Hunter\cite{Dusi2009} is an application that aims for general covert channel detection over a variety of tunneling communication channels.
+
 (Bauer, 2003)\cite{Bauer2003} discusses a new type of HTTP-based covert channel that adds the unwitting web browser application to the anonymity set.
 
 (Borders, 2004)\cite{Borders2004} discusses a method of detecting data egress using HTTP-based covert channels.
 
+(Cabuk, 2004)\cite{Cabuk2004} and (Cabuk, 2009)\cite{Cabuk2009} discuss the design and detection of IP (Internet Protocol) based covert timing channels. (Gianvecchio, 2007)\cite{Gianvecchio2007} discusses an entropy-based approach to detecting covert timing channels on the internet based on their effect on the original process' entropy properties.
 
-\begin{itemize}
-\item signatures for Proventia and Snort exist. Based on analysis of the signatures, they will not work in general. This is not unexpected
-\item Several approaches to applying entropy for analysis exist.
-\item Heyoka attempts to obfuscate itself in several special ways (ADD THIS TO THE LIST)
-\item Kenton Born's work on character frequency analysis of queries. Weak to carefully constructed encodings of the queries and response data. Proof of concept.
-\item Guy 2009 armatum proposes, among many other approaches, that host name counting be done. It is anecdotal only, and not well fleshed out. Sheer hostname counting may also fail in situations where many hostnames are used only once, but there are a few that are used many times. Sites that use DNS for image serving load balancing fall into this category. These sites will still have lower entropy than a site where every subdomain is unique.
-\item The rdata entropy analysis in looking for encrypted/compressed data (still doesn't look across packets). Again suffers from PDf encoding.
-\item Dennis Arturo Ludeña Romaña looks at entropy but doesn't limit it to domains/subdomains.
-\item Stephan Roolvink uses relative entropy and netflow to identify periods where average packet sizes increase, and this is compared to a baseline value.
-\end{itemize}
+\subsection{DNS Covert Channel Research}
+The SANS Institute's InfoSec Reading Room published a report on the design and detection of DNS tunnels\cite{SANS2013}. The report covers a very wide variety of topics including background information, tunnel-specific information, technical information, existing applications, detection techniques, detection implementations, and a sample detection scenario. This report is exceptionally good reading as a primer on the topic. The sample detection scenario employs an analysis technique very similar to the technique that will be outlined in section \ref{datameasurement}.
+
+(Karasaridis, 2006)\cite{Karasaridis2006} proposes and evaluates mechanisms that use network flow data\footnote{Flow data is a way of digesting network packet data into information per communication, stream, or (in the case of UDP since there is no inherent concept of a stream of interrelation of packets) temporally contiguous collection of packets.} to detect DNS anomalies including cache poisoning and tunnels. Their detection of DNS tunnels involves estimating average packet size distributions over a given time interval (in the paper hourly distributions were produced), and then comparing the actual distributions with a baseline distribution using cross-distribution entropy computation. The authors are able to observe considerably changes in their cross-distribution entropy measurement during the onset of the Sinit virus in their real-world traffic. This approach is discussed in additional detail in (Roolvink, 2008)\cite{Roolvink2008}.
+
+(Born, 2010)\cite{Born2010.exfil} discusses a way of using javascript in a web browser to exfiltrate data from a network, while \cite{Born2010.psudp} discusses a novel way of crafting a DNS tunnel that exploits the nature of a DNS packet and the ability to create unused space in the packet in which arbitrary data can be stored. \cite{Born2010.cfa} discusses a method of detecting DNS tunnels by examining character and $n$-gram frequencies in the names that are being queried for. \cite{Born2010.ngviz} demonstrates the effectives of data visualization when attempting to detect a DNS tunnel using a custom visualization engine using the character frequency analysis proposed in one of the Born's previous publications. If a DNS tunnel can be crafted such that its character frequencies are distributed sufficiently close to those of legitimate DNS names, then it is possible to hide a DNS tunnel from this type of analysis.
+
+(Butler, 2011)\cite{Butler, 2011} demonstrates a way of quantitatively analyzing covert communication channels with particular focus on DNS covert channels. It proposes a \emph{codeword mode} of communication over DNS where a specific lexicon is chosen that allows the two endpoints to communicate with. Each word in the dictionary has a particular meaning\footnote{The words can represent binary information, or can represent higher level constructs such as commands in the context of a botnet or piece of malware.} that is understood by both endpoints. This lexicon must be chosen \emph{a priori} and must be common to all enpoints wishing to communicate using this method. Butler also discusses the concept of perfect stealth of a covert channel based on DNS, and proposes a deep packet inspection based countermeasure that utilizes the \emph{Jensen-Shannon divergence} measure. The method relies on an assumption very similar to that in Born's character frequency analysis where the tunneled traffic uses DNS names with a measurably different character distribution than that of legitimate DNS traffic. Because of this similarity of assumption this approach suffers from the same vulnerability as Born's.
+
+(Romana, 2007)\cite{Romana2007} discusses their analysis of DNS data on a large campus network. They use the output of a DNS resolver's query logging as their input, but the process works just as well on other inputs even though they aren't discussed. Digestion of the large query log file is done with standard Unix utilities and logic available on almost all Unix-based systems. The authors estimate the entropy of the source IP address (of the DNS query) and teh queries themselves, and perform analysis based on that output. The scalability of this approach is not discussed in detail, nor is an adaptation of it to consider more refined sets of queries since this approach only takes all parts of all queries together for analysis. Adaptation of this approach for real-time analysis is not discussed either. Because this approach is does not discriminate with respect to finely grained slices of time, nor to domain or subdomain information, it necessitates that all of the query data be kept around for post-mortem analysis. The approach is able to alert to the fact that something was detected, but it cannot indicate precisely when, indicate in a timely fashion, nor can it give any indication as to what caused the alert. These details must be ascertained from the raw query data after the proposed approach throws an alert which increases response time and the manpower required to investiage an alert.
+
+(Thomas, 2011)\cite{Thomas2011} proposes and evaluates the efficacy of an FPGA (Field Programmable Gate Array) based solution for detecting malicious DNS packets on a high throughput network link. The work extends prior work to including more flexible detection and to support more current-generation network infrastructure (the previous work was limited to 100Mbit network connections, with the new work operating on 1000Mbit network connections). The fact that this approach makes use of specialized hardware makes it prohibitively complex for smaller companies to implement and use. The analysis performed on the DNS packets in order to determine their validit is done via a signature-based system where the DNS query is hashed, and the hash is compared to a blacklist of domains that are disallowed due based on the network policies. Because this is signature and blacklist based, this approach suffers from the standard problems such as weakness against zero-day situations and the inability to be agile in the face of an adaptive attacker\footnote{In this case, if the attacker chooses to use a new domain, the tunnel will succeed since the system does not have the new domain on its blacklist yet. Similarly, if an attacker is using a publicly available domain for their tunnel, the blacklist can affect other legitimate traffic on that domain.}. The tests of this system use highly synthetic testing methods that do not involve real-world data or synthetic data that attempts to resemble real-world data. 
+
+(Dietrich, 2011)\cite{Dietrich2011} examines the use of DNS for command and control of botnets based on the reverse engineering of the \emph{Feederbot} botnet application. Based on the lessons learned from Feederbot, the authors applied their methods to other real-world traffic and detected other botnets that also use DNS as their command and control medium. The authors make use of two different approaches for classifying malicious DNS traffic from benign and legitimate traffic. The first approach makes use of entropy calculated over the responses DNS queries, very similar in theory to the character frequency analysis proposed by Born\cite{Born2010.cfa} and is vulnerable to the same methods of circumvention\footnote{That is, if the botnet architected the data in the examined fields to conform to the author's model of benign traffic, then the botnet could effectively masquerade as benign traffic and become invisible to this method of detection.}. This portion of their approach operates a single packet at a time, and does not consider aggregate information. The authors also propose the use of behavioural analysis on data and statistics gathered from the aggregate of several packets to estimate the persistence of DNS queries as well as the amount of data moved over DNS by each host on the network. The persistence of the connection is estimated by considering the maximum time between DNS packets whereas the throughput over DNS is measured by counting the bytes in all of the data segments of response packets and summing over time. The persistence analysis can countered by a botnet that models its communication with the command-and-control server based on a Poisson distribution with inter-packet times imitating that of legitimate traffic. Similarly, the throughput analysis can be countered by employing codewords and rate limiting to utilize a high-level protocol compression to reduce the amount of data that needs to be sent, and to reduce the amount of data actually transmitted in a given time period to reduce the footprint of the bot on the network.
+
+(Paxson, 2011)\cite{Paxson2011} is a slide deck that discusses the author's searches through large campus networks for DNS tunnels in the wild. The author proposes an approach for detecting DNS tunnels that is very similar to the method proposed in this work in that it examines the approximate amount of data transferred per domain and/or subdomain. The author, instead of utilizing entropy measures, makes use of the utility \emph{gzip}\footnote{gzip is a compression library that is used to compress input streams such as archives or other files.} to estimate the amount of data moved under a domain in a given collection of queries. The author's assumption is that gzip already is optimized for compressing data, which can be thought of as measuring the amount of unique data that is contained in the uncompressed stream. The author also mentions the codebook/codeword method of embedding information into DNS queries, similarly as to what was discussed in \cite{Butler2011}. The author successfully applies this approach to real-world data and identifies DNS tunnels that were previously unknown. The author, however, defines absolute thresholds for use in detecting which domains classify as being a tunnel as opposed to comparing the data moved from each domain to its peers and performing a more relative and context-aware analysis. The utilization of the gzip algorithm reduces the scalability of the approach due to the computational overhead incurred, limiting the applicability to smaller networks or post-mortem (as opposed to real-time) analysis.
+
+jhind\cite{jhind2009} gave a presentation at DefCon 17 that discusses the use of artificial neural networks to identify DNS tunnel traffic. The author proposed that the neural network operate on the euclidean distance between the various queries to a particular subdomain, treating the queries as vectors in higher dimensional Euclidean space. The author successfully detected DNS tunnels as produced by several software packages (Iodine, Ozymandns and Dns2tcp) using the described approach. The approach outlined by the author suffers from the normal training problems associated with neural networks, such as over or under fitting to the training data, which may or may not prove to be problematic in the real world. The author does not go into detail about the accuracy and precision of the neural network which is very important for real-world applications where false alarms and false negatives are costly errors. Additionally, it is theoretically possible for a DNS tunnel to encode its outputs using a codebook where every word has a distance from every other code word that is within a desired range. By doing this, it is possible for a tunnel to fit within the neural network's definition of normal and to pass by undetected.
+
+Jeffrey Guy blogged in 2009 about visualization as an aid for detecting DNS tunnels by looking at frequency and request/DNS name length plotted together. In the concluding portions of the article the author mentions briefly, and in passing, that the count of the number of different host names per domain could be of value. The provides no further discussion of this topic, however, and leaves it as an anecdote to the article.
+
+Static signatures exist for at least three common network anomaly detection engines (Snort\cite{Chamberland2009.snort_iodine}, Proventia\cite{Proventia2013.ips_tunnel}, and TippingPoint\footnote{TippingPoint does not make information about its filters available as public information, but correspondence with a TippingPoint user revealed that filters 9932 and 9938 trigger on the application data contained in DNS packets generated by Ozymandns.}) engines, with others likely offering similar functionality. It is important to note that these filters and rules do not trigger on all DNS tunneling applications and may not be robust in the face of a zero-day situation.
 
 \newpage
 % ==============================================================================
@@ -477,8 +507,14 @@ The objectives that must be met for an approach to be considered successful incl
 
 The proposed approach will be evaluated against these criteria to determine whether or not it can be considered an improvement on the state of the art for this type of detection.
 
+\section{Proposed Detection Method}
+\label{datameasurement}
+
+\subsection{Probabilistic Encoding}
+\label{probencode}
+
 \newpage
-\nocite{*} 
+%\nocite{*} 
 \bibliography{../Reference/bibliography}{}
 
 % \section{Problem Statement}

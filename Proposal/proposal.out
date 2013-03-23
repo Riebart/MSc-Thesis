@@ -4,6 +4,13 @@
 \BOOKMARK [2][-]{subsection.2.2}{Domain Name System \(DNS\)}{section.2}% 4
 \BOOKMARK [2][-]{subsection.2.3}{Covert Channels}{section.2}% 5
 \BOOKMARK [2][-]{subsection.2.4}{DNS Tunnels}{section.2}% 6
-\BOOKMARK [3][-]{subsubsection.2.4.1}{DNS Tunnel Software}{subsection.2.4}% 7
-\BOOKMARK [1][-]{section.3}{Review of the State of the Art}{}% 8
-\BOOKMARK [1][-]{section.4}{Problem Statement}{}% 9
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Raw DNS Tunnels}{subsection.2.4}% 7
+\BOOKMARK [3][-]{subsubsection.2.4.2}{Conforming DNS Tunnels}{subsection.2.4}% 8
+\BOOKMARK [3][-]{subsubsection.2.4.3}{DNS Tunnel Software}{subsection.2.4}% 9
+\BOOKMARK [1][-]{section.3}{Review of the State of the Art}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{General Covert Channel or Anomaly Detection Research}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{Non-DNS Related Research}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{DNS Covert Channel Research}{section.3}% 13
+\BOOKMARK [1][-]{section.4}{Problem Statement}{}% 14
+\BOOKMARK [1][-]{section.5}{Proposed Detection Method}{}% 15
+\BOOKMARK [2][-]{subsection.5.1}{Probabilistic Encoding}{section.5}% 16
