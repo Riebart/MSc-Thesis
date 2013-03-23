@@ -1,0 +1,297 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{rfc4033}
+R.~Arends, R.~Austein, M.~Larson, D.~Massey, and S.~Rose, \emph{{DNS Security
+  Introduction and Requirements}}, RFC 4033 (Proposed Standard), March 2005,
+  Updated by RFC 6014.
+
+\bibitem{rfc4034}
+\bysame, \emph{{Resource Records for the DNS Security Extensions}}, RFC 4034
+  (Proposed Standard), March 2005, Updated by RFCs 4470, 6014.
+
+\bibitem{Bauer2003}
+Matthias Bauer, \emph{{New covert channels in HTTP: adding unwitting Web
+  browsers to anonymity sets.}}, {WPES} (Sushil Jajodia, Pierangela Samarati,
+  and Paul~F. Syverson, eds.), ACM, 2003, pp.~72--78.
+
+\bibitem{Borders2004}
+Kevin Borders and Atul Prakash, \emph{{Web tap: detecting covert web
+  traffic.}}, {ACM Conference on Computer and Communications Security}
+  (Vijayalakshmi Atluri, Birgit Pfitzmann, and Patrick~Drew McDaniel, eds.),
+  ACM, 2004, pp.~110--120.
+
+\bibitem{Born2010.exfil}
+Kenton Born, \emph{{Browser-Based Covert Data Exfiltration}}, CoRR
+  \textbf{abs/1004.4357} (2010).
+
+\bibitem{Born2010.psudp}
+\bysame, \emph{{PSUDP: A Passive Approach to Network-Wide Covert
+  Communication}},  (2010).
+
+\bibitem{Born2010.cfa}
+Kenton Born and David Gustafson, \emph{{Detecting DNS Tunnels Using Character
+  Frequency Analysis}}, CoRR \textbf{abs/1004.4358} (2010).
+
+\bibitem{Born2010.ngviz}
+\bysame, \emph{{NgViz: Detecting DNS Tunnels through N-Gram Visualization and
+  Quantitative Analysis}}, CoRR \textbf{abs/1004.4359} (2010).
+
+\bibitem{Bose2010}
+Prosenjit Bose, Karim Dou{\~A}{\^A}{\^A}{\^A}{\^A}¯eb, Vida Dujmovic, and Rolf
+  Fagerberg, \emph{{An O(log log n)-Competitive Binary Search Tree with Optimal
+  Worst-Case Access Times.}}, {SWAT} (Haim Kaplan, ed.), {Lecture Notes in
+  Computer Science}, vol. 6139, Springer, 2010, pp.~38--49.
+
+\bibitem{Browne1994}
+Randy Browne, \emph{{An Entropy Conservation Law for Testing the Completeness
+  of Convert Channel Analysis.}}, {ACM Conference on Computer and
+  Communications Security} (Dorothy~E. Denning, Raymond Pyle, Ravi Ganesan, and
+  Ravi~S. Sandhu, eds.), ACM, 1994, pp.~270--281.
+
+\bibitem{Burgess2006}
+Mark Burgess, \emph{{Probabilistic anomaly detection in distributed computer
+  networks.}}, Sci. Comput. Program. \textbf{60} (2006), no.~1, 1--26.
+
+\bibitem{Butler2011}
+Patrick Butler, Kui Xu, and Danfeng~(Daphne) Yao, \emph{{Quantitatively
+  Analyzing Stealthy Communication Channels.}}, {ACNS} (Javier Lopez and Gene
+  Tsudik, eds.), {Lecture Notes in Computer Science}, vol. 6715, 2011,
+  pp.~238--254.
+
+\bibitem{Cabuk2004}
+Serdar Cabuk, Carla~E. Brodley, and Clay Shields, \emph{{IP covert timing
+  channels: design and detection.}}, {ACM Conference on Computer and
+  Communications Security} (Vijayalakshmi Atluri, Birgit Pfitzmann, and
+  Patrick~Drew McDaniel, eds.), ACM, 2004, pp.~178--187.
+
+\bibitem{Cabuk2009}
+\bysame, \emph{{IP Covert Channel Detection.}}, ACM Trans. Inf. Syst. Secur.
+  \textbf{12} (2009), no.~4.
+
+\bibitem{Chamberland2009.snort_iodine}
+Michel Chamberland, \emph{{Snort rules for Iodine Covert DNS Tunnel
+  Detection}}, July 2009.
+
+\bibitem{Chen2008}
+Xiao-yun Chen and Yan-yan Zhan, \emph{{Multi-scale anomaly detection algorithm
+  based on infrequent pattern of time series}}, J. Comput. Appl. Math.
+  \textbf{214} (2008), no.~1, 227--237.
+
+\bibitem{Cheng2009}
+Xiaorong Cheng, Kun Xie, and Dong Wang, \emph{{Network Traffic Anomaly
+  Detection Based on Self-Similarity Using HHT and Wavelet Transform.}}, {IAS},
+  IEEE Computer Society, 2009, pp.~710--713.
+
+\bibitem{Dietrich2011}
+Christian~J. Dietrich, Christian Rossow, Felix~C. Freiling, Herbert Bos,
+  Maarten~van Steen, and Norbert Pohlmann, \emph{{On Botnets That Use DNS for
+  Command and Control}}, {Proceedings of the 2011 Seventh European Conference
+  on Computer Network Defense} (Washington, DC, USA), {EC2ND '11}, IEEE
+  Computer Society, 2011, pp.~9--16.
+
+\bibitem{Dusi2009}
+Maurizio Dusi, Manuel Crotti, Francesco Gringoli, and Luca Salgarelli,
+  \emph{{Tunnel Hunter: Detecting application-layer tunnels with statistical
+  fingerprinting.}}, Computer Networks \textbf{53} (2009), no.~1, 81--97.
+
+\bibitem{rfc2931}
+D.~{Eastlake 3rd}, \emph{{DNS Request and Transaction Signatures ( SIG(0)s )}},
+  RFC 2931 (Proposed Standard), September 2000.
+
+\bibitem{SANS2013}
+Greg Farnham, \emph{{Detecting DNS Tunneling}}, InfoSec Reading Room (2013).
+
+\bibitem{George1998}
+Binto George and Jayant~R. Haritsa, \emph{{Secure Buffering in Firm Real-Time
+  Database Systems.}}, {VLDB} (Ashish~Gupta 0001, Oded Shmueli, and Jennifer
+  Widom, eds.), Morgan Kaufmann, 1998, pp.~464--475.
+
+\bibitem{Gianvecchio2007}
+Steven Gianvecchio and Haining Wang, \emph{{Detecting covert timing channels:
+  an entropy-based approach.}}, {ACM Conference on Computer and Communications
+  Security} (Peng Ning, Sabrina De~Capitani di~Vimercati, and Paul~F. Syverson,
+  eds.), ACM, 2007, pp.~307--316.
+
+\bibitem{Guy2009.dns_vis}
+Jeffrey~J. Guy, \emph{{dns part ii: visualization}}, February 2009.
+
+\bibitem{Hirose2008}
+Shunsuke Hirose and Kenji Yamanishi, \emph{{Latent Variable Mining with Its
+  Applications to Anomalous Behavior Detection.}}, {SDM}, SIAM, 2008,
+  pp.~231--242.
+
+\bibitem{Horenbeeck2006}
+Maarten~Van Horenbeeck, \emph{{Deception on the network: thinking differently
+  about covert channels}}, 2006.
+
+\bibitem{Huang2006}
+Chin-Tser Huang, Sachin Thareja, and Yong-June Shin, \emph{{Wavelet-based Real
+  Time Detection of Network Traffic Anomalies.}}, {SecureComm}, IEEE, 2006,
+  pp.~1--7.
+
+\bibitem{jhind2009}
+jhind, \emph{{Catching DNS tunnels with A.I.}}, July 2009.
+
+\bibitem{Lehman1996}
+Tobin~J. Lehman and Michael~J. Carey, \emph{{A Study of Index Structures for
+  Main Memory Database Management Systems}}, {Proceedings of the 12th
+  International Conference on Very Large Data Bases} (San Francisco, CA, USA),
+  {VLDB '86}, Morgan Kaufmann Publishers Inc., 1986, pp.~294--303.
+
+\bibitem{Li2008}
+Min Li, Shunzheng Yu, and Li~He, \emph{{Detecting Network-Wide Traffic
+  Anomalies Based on Spatial HMM.}}, {NPC Workshops} (Jian Cao, Minglu Li,
+  Chuliang Weng, Yang Xiang, Xin Wang, Hong Tang, Feng Hong, Hong Liu, and
+  Yinglin Wang, eds.), IEEE Computer Society, 2008, pp.~198--203.
+
+\bibitem{Liu2010}
+Yang Liu, Linfeng Zhang, and Yong Guan, \emph{{Sketch-Based Streaming PCA
+  Algorithm for Network-Wide Traffic Anomaly Detection}}, {Proceedings of the
+  2010 IEEE 30th International Conference on Distributed Computing Systems}
+  (Washington, DC, USA), {ICDCS '10}, IEEE Computer Society, 2010,
+  pp.~807--816.
+
+\bibitem{Loepere1989}
+Keith Loepere, \emph{{The Covert Channel Limiter Revisited.}}, Operating
+  Systems Review \textbf{23} (1989), no.~2, 39--44.
+
+\bibitem{Luv2007}
+Jun Luv, Xing Li, and Tong Li, \emph{{The New Detection Algorithms for Network
+  Traffic Anomalies.}}, {ICN}, IEEE Computer Society, 2007, p.~52.
+
+\bibitem{Lv2007}
+Jun Lv, Tong Li, and Xing Li, \emph{{Research on Network Traffic Anomaly
+  Detection Algorithm.}}, {ISCC}, IEEE, 2007, pp.~95--100.
+
+\bibitem{Mahoney2003}
+Matthew~V. Mahoney and Philip~K. Chan, \emph{{Learning Rules for Anomaly
+  Detection of Hostile Network Traffic.}}, {ICDM}, IEEE Computer Society, 2003,
+  pp.~601--604.
+
+\bibitem{rfc3445}
+D.~Massey and S.~Rose, \emph{{Limiting the Scope of the KEY Resource Record
+  (RR)}}, RFC 3445 (Proposed Standard), December 2002, Obsoleted by RFCs 4033,
+  4034, 4035.
+
+\bibitem{rfc1035}
+P.V. Mockapetris, \emph{{Domain names - implementation and specification}}, RFC
+  1035 (INTERNET STANDARD), November 1987, Updated by RFCs 1101, 1183, 1348,
+  1876, 1982, 1995, 1996, 2065, 2136, 2181, 2137, 2308, 2535, 2845, 3425, 3658,
+  4033, 4034, 4035, 4343, 5936, 5966, 6604.
+
+\bibitem{Moskowitz2003}
+Ira~S. Moskowitz, Richard~E. Newman, Daniel~P. Crepeau, and Allen~R. Miller,
+  \emph{{Covert channels and anonymizing networks.}}, {WPES} (Sushil Jajodia,
+  Pierangela Samarati, and Paul~F. Syverson, eds.), ACM, 2003, pp.~79--88.
+
+\bibitem{Murdoch2006}
+Steven~J. Murdoch, \emph{{Hot or not: revealing hidden services by their clock
+  skew.}}, {ACM Conference on Computer and Communications Security} (Ari Juels,
+  Rebecca~N. Wright, and Sabrina De~Capitani di~Vimercati, eds.), ACM, 2006,
+  pp.~27--36.
+
+\bibitem{Naiman2004}
+Daniel~Q. Naiman, \emph{{Statistical anomaly detection via httpd data
+  analysis}}, Computational Statistics \& Data Analysis \textbf{45} (2004),
+  no.~1, 51--67.
+
+\bibitem{Newman2007}
+Robert~C. Newman, \emph{{Covert computer and network communications}},
+  {Proceedings of the 4th annual conference on Information security curriculum
+  development} (New York, NY, USA), {InfoSecCD '07}, ACM, 2007, pp.~12:1--12:8.
+
+\bibitem{Okamura2010}
+Keisuke Okamura and Yoshihiro Oyama, \emph{{Load-based covert channels between
+  Xen virtual machines.}}, {SAC} (Sung~Y. Shin, Sascha Ossowski, Michael
+  Schumacher, Mathew~J. Palakal, and Chih-Cheng Hung, eds.), ACM, 2010,
+  pp.~173--180.
+
+\bibitem{Paduch2009}
+Jaroslaw Paduch, Jamie Levy, and Bilal Khan, \emph{{Using a secure
+  permutational covert channel to detect local and wide area interposition
+  attacks.}}, {IWCMC} (Mohsen Guizani, Peter~M{\~A}{\^A}{\^A}{\^A}{\^A}¼ller
+  0002, Klaus-Peter F{\~A}{\^A}{\^A}{\^A}{\^A}¤hnrich, Athanasios~V.
+  Vasilakos, Yan Zhang, and Jun Zhang, eds.), ACM, 2009, pp.~79--83.
+
+\bibitem{Pang2006}
+Ruoming Pang, Vern Paxson, Robin Sommer, and Larry Peterson, \emph{{binpac: A
+  yacc for Writing Application Protocol Parsers}}, {Proceedings of the 2006
+  Internet Measurement Conference}, 2006.
+
+\bibitem{Park2009}
+Hyunhee Park, Meejoung Kim, and Chul-Hee Kang, \emph{{F-TAD: Traffic Anomaly
+  Detection for Sub-networks Using Fisher Linear Discriminant}}, {Proceedings
+  of the 2009 Third International Conference on Network and System Security}
+  (Washington, DC, USA), {NSS '09}, IEEE Computer Society, 2009, pp.~328--335.
+
+\bibitem{Paxson2011}
+Vern Paxson, \emph{{Behavioral Detection of Stealthy Intruders}}, September
+  2011.
+
+\bibitem{Proventia2013.ips_tunnel}
+Proventia, \emph{{Proventia Server IPS - DNS tunnel traffic detected}}, January
+  2013.
+
+\bibitem{Ray2008}
+Baishakhi Ray and Shivakant Mishra, \emph{{A Protocol for Building Secure and
+  Reliable Covert Channel}}, {Proceedings of the 2008 Sixth Annual Conference
+  on Privacy, Security and Trust} (Washington, DC, USA), {PST '08}, IEEE
+  Computer Society, 2008, pp.~246--253.
+
+\bibitem{rfc4025}
+M.~Richardson, \emph{{A Method for Storing IPsec Keying Material in DNS}}, RFC
+  4025 (Proposed Standard), March 2005.
+
+\bibitem{Romana2007}
+D.~Roma{\~n}a and Y.~Musashi, \emph{{Entropy Based Analysis of DNS Query
+  Traffic in the Campus Network}},  (2007).
+
+\bibitem{Roolvink2008}
+Stephan Roolvink, \emph{{Detecting attacks involving DNS servers}},  (2008).
+
+\bibitem{Sen2010}
+Siddhartha Sen and Robert~Endre Tarjan, \emph{{Deletion Without Rebalancing in
+  Balanced Binary Trees.}}, {SODA} (Moses Charikar, ed.), SIAM, 2010,
+  pp.~1490--1499.
+
+\bibitem{Sengar2009}
+Hemant Sengar, Xinyuan Wang, Haining Wang, Duminda Wijesekera, and Sushil
+  Jajodia, \emph{{Online detection of network traffic anomalies using
+  behavioral distance.}}, {IWQoS}, IEEE, 2009, pp.~1--9.
+
+\bibitem{Shaffer2008}
+Alan~B. Shaffer, Mikhail Auguston, Cynthia~E. Irvine, and Timothy~E. Levin,
+  \emph{{A security domain model to assess software for exploitable covert
+  channels.}}, {PLAS} ({\~A}\v{s}lfar Erlingsson and Marco Pistoia, eds.), ACM,
+  2008, pp.~45--56.
+
+\bibitem{Talpade1999}
+Rajesh~R. Talpade, Gitae Kim, and Sumit Khurana, \emph{{NOMAD: Traffic-based
+  Network Monitoring Framework for Anomaly Detection.}}, {ISCC}, IEEE Computer
+  Society, 1999, pp.~442--452.
+
+\bibitem{Thomas2011}
+Brennon Thomas, Barry~E. Mullins, Gilbert~L. Peterson, and Robert~F. Mills,
+  \emph{{An FPGA System for Detecting Malicious DNS Network Traffic.}}, {IFIP
+  Int. Conf. Digital Forensics} (Gilbert~L. Peterson and Sujeet Shenoi, eds.),
+  {IFIP Advances in Information and Communication Technology}, vol. 361,
+  Springer, 2011, pp.~195--207.
+
+\bibitem{rfc3755}
+S.~Weiler, \emph{{Legacy Resolver Compatibility for Delegation Signer (DS)}},
+  RFC 3755 (Proposed Standard), May 2004, Obsoleted by RFCs 4033, 4034, 4035,
+  updated by RFCs 3757, 3845.
+
+\bibitem{Xiang2008}
+K.~Xiang, X.~Zhou, and J.~P. Jiang, \emph{{Anomaly detection in complex system
+  based on epsilon machine.}}, Int. J. Systems Science \textbf{39} (2008),
+  no.~10, 1007--1016.
+
+\end{thebibliography}

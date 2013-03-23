@@ -1,0 +1,73 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: proposal.aux
+The style file: amsplain.bst
+Database file #1: ../Reference/bibliography.bib
+Warning--entry type for "Chamberland2009.snort_iodine" isn't style-file defined
+--line 918 of file ../Reference/bibliography.bib
+Warning--entry type for "Proventia2013.ips_tunnel" isn't style-file defined
+--line 927 of file ../Reference/bibliography.bib
+Warning--entry type for "Guy2009.dns_vis" isn't style-file defined
+--line 936 of file ../Reference/bibliography.bib
+Warning--entry type for "jhind2009" isn't style-file defined
+--line 945 of file ../Reference/bibliography.bib
+Warning--entry type for "Paxson2011" isn't style-file defined
+--line 954 of file ../Reference/bibliography.bib
+A bad cross reference---entry "Hirose2008"
+refers to entry "conf/sdm/2008", which doesn't exist
+A bad cross reference---entry "George1998"
+refers to entry "conf/vldb/98", which doesn't exist
+A bad cross reference---entry "Talpade1999"
+refers to entry "conf/iscc/1999", which doesn't exist
+A bad cross reference---entry "Mahoney2003"
+refers to entry "conf/icdm/2003", which doesn't exist
+A bad cross reference---entry "Luv2007"
+refers to entry "conf/icn/2007", which doesn't exist
+A bad cross reference---entry "Huang2006"
+refers to entry "conf/securecomm/2006", which doesn't exist
+A bad cross reference---entry "Lv2007"
+refers to entry "conf/iscc/2007", which doesn't exist
+A bad cross reference---entry "Li2008"
+refers to entry "conf/npc/2008w", which doesn't exist
+A bad cross reference---entry "Sengar2009"
+refers to entry "conf/iwqos/2009", which doesn't exist
+A bad cross reference---entry "Cheng2009"
+refers to entry "conf/IEEEias/2009", which doesn't exist
+A bad cross reference---entry "Murdoch2006"
+refers to entry "conf/ccs/2006usa", which doesn't exist
+A bad cross reference---entry "Shaffer2008"
+refers to entry "conf/pldi/2008plas", which doesn't exist
+A bad cross reference---entry "Bauer2003"
+refers to entry "conf/wpes/2003", which doesn't exist
+A bad cross reference---entry "Paduch2009"
+refers to entry "conf/iwcmc/2009", which doesn't exist
+A bad cross reference---entry "Moskowitz2003"
+refers to entry "conf/wpes/2003", which doesn't exist
+A bad cross reference---entry "Borders2004"
+refers to entry "conf/ccs/2004ccs", which doesn't exist
+A bad cross reference---entry "Okamura2010"
+refers to entry "conf/sac/2010", which doesn't exist
+A bad cross reference---entry "Cabuk2004"
+refers to entry "conf/ccs/2004ccs", which doesn't exist
+A bad cross reference---entry "Browne1994"
+refers to entry "conf/ccs/1994", which doesn't exist
+A bad cross reference---entry "Gianvecchio2007"
+refers to entry "conf/ccs/2007", which doesn't exist
+A bad cross reference---entry "Sen2010"
+refers to entry "conf/soda/2010", which doesn't exist
+A bad cross reference---entry "Bose2010"
+refers to entry "conf/swat/2010", which doesn't exist
+A bad cross reference---entry "Butler2011"
+refers to entry "conf/acns/2011", which doesn't exist
+A bad cross reference---entry "Thomas2011"
+refers to entry "conf/ifip11-9/2011", which doesn't exist
+Warning--missing pages in Born2010.exfil
+Warning--missing journal name in Born2010.psudp
+Warning--missing pages in Born2010.psudp
+Warning--missing pages in Born2010.cfa
+Warning--missing pages in Born2010.ngviz
+Warning--missing pages in Cabuk2009
+Warning--missing pages in SANS2013
+Warning--missing journal name in Romana2007
+Warning--missing pages in Romana2007
+Warning--missing journal name in Roolvink2008
+Warning--missing pages in Roolvink2008
+(There were 24 error messages)
