@@ -13,5 +13,12 @@
 \BOOKMARK [2][-]{subsection.3.3}{DNS Covert Channel Research}{section.3}% 13
 \BOOKMARK [2][-]{subsection.3.4}{DNS Tunnel Detection Landscape}{section.3}% 14
 \BOOKMARK [1][-]{section.4}{Problem Statement}{}% 15
-\BOOKMARK [1][-]{section.5}{Proposed Detection Method}{}% 16
-\BOOKMARK [2][-]{subsection.5.1}{Probabilistic Encoding}{section.5}% 17
+\BOOKMARK [2][-]{subsection.4.1}{Brief Statement}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{Detailed Problem Description}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.3}{Solution Evaluation Criteria}{section.4}% 18
+\BOOKMARK [1][-]{section.5}{Proposed Detection Method}{}% 19
+\BOOKMARK [1][-]{section.6}{Demonstration of Existing Weaknesses}{}% 20
+\BOOKMARK [2][-]{subsection.6.1}{Probabilistic Encoding}{section.6}% 21
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Sample Encoding}{subsection.6.1}% 22
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Technical Details}{subsection.6.1}% 23
+\BOOKMARK [2][-]{subsection.6.2}{Euclidean Distance Between Queries}{section.6}% 24

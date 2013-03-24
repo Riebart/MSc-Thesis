@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.22)  23 MAR 2013 16:11
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.22)  24 MAR 2013 04:45
 entering extended mode
-**C:/Users/Michael/Documents/Projects/Thesis/Proposal/proposal.tex
-(C:/Users/Michael/Documents/Projects/Thesis/Proposal/proposal.tex
+**proposal.tex
+(C:\Users\Michael\Documents\Projects\Thesis\Proposal\proposal.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -404,45 +404,221 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 (C:\Users\Michael\Documents\Projects\Thesis\Proposal\proposal.toc)
 \tf@toc=\write4
+
+(C:\Users\Michael\Documents\Projects\Thesis\Proposal\proposal.lot)
+\tf@lot=\write5
+
+(C:\Users\Michael\Documents\Projects\Thesis\Proposal\proposal.lof)
+\tf@lof=\write6
  [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 112.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 114.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
- [3] [4] [5] [6]
-[7] [8] [9]
-Overfull \hbox (1.68402pt too wide) in paragraph at lines 492--496
-\OT1/cmr/m/n/10.95 iden-ti-fies sev-eral link-ing fac-tors such as covert chan-
-nel ca-pac-ity and the prop-er-ties of anonymiz-
- []
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 114.
 
-[10] [11] [12] [13] [14] [15] [16] [17]
-(C:\Users\Michael\Documents\Projects\Thesis\Proposal\proposal.bbl [18])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 961.
 
-[19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 961.
- (C:\Users\Michael\Documents\Projects\Thesis\Proposal\proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 961.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 961.
+LaTeX Warning: Citation `Born2010.cfa' on page 3 undefined on input line 153.
+
+[3] [4]
+
+LaTeX Warning: Citation `rfc1035' on page 5 undefined on input line 260.
+
+
+LaTeX Warning: Citation `rfc4034' on page 5 undefined on input line 263.
+
+[5] [6] [7]
+
+LaTeX Warning: Citation `rfc2931' on page 8 undefined on input line 427.
+
+
+LaTeX Warning: Citation `rfc3445' on page 8 undefined on input line 428.
+
+
+LaTeX Warning: Citation `rfc3755' on page 8 undefined on input line 429.
+
+
+LaTeX Warning: Citation `rfc4025' on page 8 undefined on input line 430.
+
+[8] [9]
+
+LaTeX Warning: Citation `Browne1994' on page 10 undefined on input line 476.
+
+
+LaTeX Warning: Citation `Shaffer2008' on page 10 undefined on input line 479.
+
+
+LaTeX Warning: Citation `Ray2008' on page 10 undefined on input line 482.
+
+
+LaTeX Warning: Citation `Horenbeeck2006' on page 10 undefined on input line 487
+.
+
+
+LaTeX Warning: Citation `Moskowitz2003' on page 10 undefined on input line 494.
+
+
+
+LaTeX Warning: Citation `Newman2007' on page 10 undefined on input line 499.
+
+
+LaTeX Warning: Citation `Okamura2010' on page 10 undefined on input line 503.
+
+
+LaTeX Warning: Citation `Dusi2009' on page 10 undefined on input line 510.
+
+
+LaTeX Warning: Citation `Bauer2003' on page 10 undefined on input line 513.
+
+
+LaTeX Warning: Citation `Borders2004' on page 10 undefined on input line 516.
+
+
+LaTeX Warning: Citation `Cabuk2004' on page 10 undefined on input line 519.
+
+
+LaTeX Warning: Citation `Cabuk2009' on page 10 undefined on input line 519.
+
+
+LaTeX Warning: Citation `Gianvecchio2007' on page 10 undefined on input line 52
+1.
+
+[10]
+
+LaTeX Warning: Citation `SANS2013' on page 11 undefined on input line 527.
+
+
+LaTeX Warning: Citation `Karasaridis2006' on page 11 undefined on input line 53
+5.
+
+
+LaTeX Warning: Citation `Roolvink2008' on page 11 undefined on input line 547.
+
+
+LaTeX Warning: Citation `Born2010.exfil' on page 11 undefined on input line 549
+.
+
+
+LaTeX Warning: Citation `Born2010.psudp' on page 11 undefined on input line 550
+.
+
+
+LaTeX Warning: Citation `Born2010.cfa' on page 11 undefined on input line 553.
+
+
+LaTeX Warning: Citation `Born2010.ngviz' on page 11 undefined on input line 555
+.
+
+
+LaTeX Warning: Citation `Butler2011' on page 11 undefined on input line 562.
+
+[11]
+
+LaTeX Warning: Citation `Romana2007' on page 12 undefined on input line 579.
+
+
+LaTeX Warning: Citation `Thomas2011' on page 12 undefined on input line 598.
+
+
+LaTeX Warning: Citation `Dietrich2011' on page 12 undefined on input line 619.
+
+
+LaTeX Warning: Citation `Born2010.cfa' on page 12 undefined on input line 627.
+
+[12]
+
+LaTeX Warning: Citation `Paxson2011' on page 13 undefined on input line 647.
+
+
+LaTeX Warning: Citation `Butler2011' on page 13 undefined on input line 659.
+
+
+LaTeX Warning: Citation `jhind2009' on page 13 undefined on input line 668.
+
+[13]
+
+LaTeX Warning: Citation `Chamberland2009.snort_iodine' on page 14 undefined on 
+input line 696.
+
+
+LaTeX Warning: Citation `Proventia2013.ips_tunnel' on page 14 undefined on inpu
+t line 697.
+
+[14] [15]
+
+LaTeX Warning: Citation `Born2010.cfa' on page 16 undefined on input line 858.
+
+
+LaTeX Warning: Citation `Karasaridis2006' on page 16 undefined on input line 86
+0.
+
+
+LaTeX Warning: Citation `SANS2013' on page 16 undefined on input line 860.
+
+
+LaTeX Warning: Citation `jhind2009' on page 16 undefined on input line 861.
+
+[16]
+
+LaTeX Warning: Citation `Romana2007' on page 17 undefined on input line 889.
+
+[17] <figures/encoding_source.png, id=282, 782.925pt x 782.925pt>
+File: figures/encoding_source.png Graphic file (type png)
+
+<use figures/encoding_source.png>
+Package pdftex.def Info: figures/encoding_source.png used on input line 942.
+(pdftex.def)             Requested size: 289.07999pt x 289.0804pt.
+
+<figures/frequencies-bychar.pdf, id=285, 289.08pt x 180.02057pt>
+File: figures/frequencies-bychar.pdf Graphic file (type pdf)
+
+<use figures/frequencies-bychar.pdf>
+Package pdftex.def Info: figures/frequencies-bychar.pdf used on input line 967.
+
+(pdftex.def)             Requested size: 452.04408pt x 281.5204pt.
+
+<figures/frequencies-bytop.pdf, id=286, 289.08pt x 196.10565pt>
+File: figures/frequencies-bytop.pdf Graphic file (type pdf)
+
+<use figures/frequencies-bytop.pdf>
+Package pdftex.def Info: figures/frequencies-bytop.pdf used on input line 974.
+(pdftex.def)             Requested size: 452.04408pt x 306.67464pt.
+ [18] [19 <C:/Users/Michael/Documents/Projects/Thesis/Proposal/figures/encoding
+_source.png>] [20 <C:/Users/Michael/Documents/Projects/Thesis/Proposal/figures/
+frequencies-bychar.pdf>] [21 <C:/Users/Michael/Documents/Projects/Thesis/Propos
+al/figures/frequencies-bytop.pdf>] [22]
+[23]
+No file proposal.bbl.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1103.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1103.
+(C:\Users\Michael\Documents\Projects\Thesis\Proposal\proposal.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1103.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1103.
+
 Package rerunfilecheck Info: File `proposal.out' has not changed.
-(rerunfilecheck)             Checksum: DF159EA2DBD847C4DE39B294238A188A;1182.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 961.
+(rerunfilecheck)             Checksum: 15F37B9563A1404363C1EAB24609BEF3;1718.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1103.
  ) 
 Here is how much of TeX's memory you used:
- 6799 strings out of 493921
- 97104 string characters out of 3147276
- 186300 words of memory out of 3000000
- 9925 multiletter control sequences out of 15000+200000
- 14517 words of font info for 56 fonts, out of 3000000 for 9000
+ 6833 strings out of 493921
+ 97831 string characters out of 3147276
+ 188714 words of memory out of 3000000
+ 9962 multiletter control sequences out of 15000+200000
+ 16448 words of font info for 64 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,8n,28p,324b,438s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Hfootnote.15} has been referenced but does not ex
+ 29i,9n,28p,834b,398s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{Hfootnote.16} has been referenced but does not ex
 ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.15} has been referenced but does not exis
+t, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.14} has been referenced but does not exis
 t, replaced by a fixed one
@@ -490,17 +666,21 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on proposal.pdf (19 pages, 263293 bytes).
+ts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmtt12.pfb>
+Output written on proposal.pdf (23 pages, 313234 bytes).
 PDF statistics:
- 366 PDF objects out of 1000 (max. 8388607)
- 92 named destinations out of 1000 (max. 500000)
- 137 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 400 PDF objects out of 1000 (max. 8388607)
+ 78 named destinations out of 1000 (max. 500000)
+ 208 words of extra memory for PDF output out of 10000 (max. 10000000)
 

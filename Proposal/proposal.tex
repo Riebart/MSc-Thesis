@@ -73,6 +73,8 @@ that are able to hide tunnels from existing detection methods.}
 
 \newpage
 \tableofcontents
+\listoftables
+\listoffigures
 
 \newpage
 
@@ -87,7 +89,7 @@ that are able to hide tunnels from existing detection methods.}
 \section{Introduction}
 
 Control of the data that moves between hosts on a computer network is vitally
-important. To this end systems
+important in order to be able to enforce security policies and protect sensitive information. To this end systems
 such as firewalls, proxies, and content filters are put into place in order to
 monitor and control network traffic. Covert channels
 are utilized to circumvent these control mechanisms for purposes that range from 
@@ -539,9 +541,9 @@ poisoning and tunnels. Their detection of DNS tunnels involves estimating
 average packet size distributions over a given time interval (in the paper
 hourly distributions were produced), and then comparing the actual distributions
 with a baseline distribution using cross-distribution entropy computation. The
-authors are able to observe considerably changes in their cross-distribution
+authors are able to observe considerable changes in their cross-distribution
 entropy measurement during the onset of the Sinit virus in their real-world
-traffic. This approach is discussed in additional detail in (Roolvink,
+data. This approach is discussed in additional detail in (Roolvink,
 2008)\cite{Roolvink2008}.
 
 (Born, 2010)\cite{Born2010.exfil} discusses a way of using javascript in a web
@@ -702,8 +704,9 @@ tunnelling applications and may not be robust in the face of a zero-day
 situation.
 
 \subsection{DNS Tunnel Detection Landscape}
+\label{litsummary}
 Taken together as a collective body of work, the detection approaches for DNS
-tunnels can be summarized as follows, with the weaknesses
+tunnels can be summarized as follows, with the weaknesses and strengths of each general approach outlined.
 
 \begin{itemize}
 \item Signature based approaches exist for several popular detection platforms.
@@ -799,7 +802,7 @@ examine these queries for the keys to detecting the tunnels.
 literature include cleverly constructed queries (such that they sit within a
 ball of a desired radius in $n$ dimensional Euclidean space), they are not
 suitable for real-time analysis (such as the use of higher overhead measuring
-mechanisms like gzip) or that they do not discriminate between different domains
+mechanisms like gzip) or they do not discriminate between different domains
 or subdomains.
 \end{itemize}
 
@@ -815,6 +818,11 @@ or subdomains.
 % ==============================================================================
 \section{Problem Statement}
 
+\subsection{Brief Statement}
+\label{briefproblem}
+The purpose of this work is to investigate the feasibility of real-time DNS tunnel detection that does not suffer the common weaknesses of existing techniques.
+
+\subsection{Detailed Problem Description}
 DNS tunnel detection is a complicated task made worse by the fact that DNS
 tunnel traffic can appear to be completely legitimate network traffic that
 conforms to all standards and restrictions. It
@@ -833,38 +841,32 @@ circumvention.
 From section \ref{litreview} it is evident that there are currently several
 approaches to detecting DNS tunnels that are not signature based as well as
 signature based approaches of varying flexibility. There is only one mention of
-performing analysis at the domain/subdomin level, and it is anecdotal in nature
-with no clear analysis of its merits and validity. The only other similar
+performing real-time analysis at the domain/subdomin level, and it is anecdotal in nature
+with no clear analysis of its merits or validity. The only other similar
 approach involves aggregating all domains together and taking their queries
-together for analysis which obliterates any per-domain statistics that could be
-gathered.
+together for analysis which obliterates any per-domain statistics that could have been gathered.
 
-Looking at this landscape, it becomes evident that there is a highly advanced
+Looking at this landscape, it becomes evident that there is a highly advanced theoretical
 DNS tunnel that could evade all of the proposed real-time detection techniques.
-Any detection that would be a postmortem type of analysis that would not be
+Any detection that may occur postmortem would not be
 able to alert to the threat in an adequate time frame to stop the attack in
 progress. This tunnel would have the following traits:
 
 \begin{enumerate}
-\item All of its DNS packets conform to all appropriate DNS RFCs.
-\item Its queries are chosen such that the character frequency distribution
-matches benign DNS queries.
-\item Its queries are chosen such that they have a distribution of lengths that
-matches benign DNS queries.
-\item Its queries are chosen such that they are all within Euclidean distance of
-$r$ from each other, with $r$ chosen such that the tunnel mimics benign traffic.
+\item All of its DNS packets would conform to all appropriate DNS RFCs.
+\item Its queries would be chosen such that the character frequency distribution
+matches benign DNS queries (to evade \cite{Born2010.cfa} and similar approaches).
+\item Its queries would be chosen such that they have a distribution of lengths that
+matches benign DNS queries (to evade \cite{Karasaridis2006} and \cite{SANS2013}).
+\item Its queries are chosen such that they do not span too great a space when taken as vectors in higher dimensional Euclidean space (to evade \cite{jhind2009}).
 \end{enumerate}
 
 Item one is already demonstrated in practise by most of the tunnelling
 applications available, and item two is shown to be possible in section
-\ref{probencode}. Items three and four are related and
+\ref{probencode}. Item three is easily accomplished by simply splitting queries based on a statistical model of the desired lengths, and item four will be shown in section \ref{querydistance} to approximately follow from item two based on empirical measurements.
 
-The method proposed here examines the information theoretical properties of the
-DNS queries to each subdomain, thus retaining the flexibility to filter and
-alert per domain as opposed to more generally on the set of all DNS queries.
-
-The objectives that must be met for an approach to be considered successful
-include the following:
+\subsection{Solution Evaluation Criteria}
+The objectives that must be met for an approach to have successfully solved the problem posed in section \ref{briefproblem} are as follows:
 
 \begin{itemize}
 \item Successfully discern both synthetically generated tunnels and known tunnels
@@ -873,7 +875,6 @@ in real-world data from normal, benign, DNS traffic.
 methods.
 \item Be able to operate at high speed on general purpose, easily obtainable
 hardware.
-\item 
 \end{itemize}
 
 The proposed approach will be evaluated against these criteria to determine
@@ -883,8 +884,158 @@ this type of detection.
 \section{Proposed Detection Method}
 \label{datameasurement}
 
+The method proposed in this work examines the information theoretical properties of the
+DNS queries to each subdomain, thus retaining the flexibility to filter and
+alert per domain as opposed to more generally on the set of all DNS queries. The tools developed to test this approach utilize full packet data for its analysis, but can be modified to use name server query logs (as were used in \cite{Romana2007}) or other sources of query information. The prototype software is easily capable of running at greater than gigabit speed on inexpensive, off the shelf, hardware making this approach inexpensive to deploy on smaller networks or in resource constrained situations.
+
+\section{Demonstration of Existing Weaknesses}
+This section will demonstrate that the weaknesses listed in section \ref{litsummary} are in fact exploitable by software and are not simply theoretical in nature.
+
 \subsection{Probabilistic Encoding}
 \label{probencode}
+Several detection methods in the literature involve examining the character distribution in the queries, or responses, of DNS packets. These approaches compare the distributions obtained from the traffic being analyzed, and compare them to a known distribution that can be considered normal. If there is a sufficiently significant measurable difference, then the packet is flagged as anomalous.
+
+If it were possible for a DNS tunnel to encode its output in order to match the distribution that these detection methods consider normal, then it would be possible for it to evade detection by masquerading as benign DNS traffic. These detection methods assume that the output of a DNS tunnel will have high entropy (due to compression and/or encryption) and/or span a wide range of character values, whereas normal traffic does not have these features. The solution to this problem becomes one of encoding a high entropy source into a lower entropy encoding in a way that the high entropy stream can be recovered from the low entropy encoding, where the low entropy encoding has a specific distribution of characters.
+
+A proof-of-concept tool was written in C that performs precisely this task. The tool takes, as input, what it assumes to be a high entropy source\footnote{Since any source can be used to produce a high entropy source through encryption or compression, this is considered a safe assumption and limitation.} and a configuration file that describes the desired output distribution.
+
+\subsubsection{Sample Encoding}
+A sample encoding is given using the english character frequency distribution with the character distribution table used given in Table \ref{TABLE_unigrams}. In order to ensure that interested parties can verify this output, the source high-entropy data is contained in Table \ref{TABLE_encodingsource}. A data matrix image of the same base64 encoding is also given in Figure \ref{FIGURE_encodingsource}. This can be converted back to the original source via the standard Unix command line tool \emph{base64}. The output of the encoder using english character frequencies and the given input data is shown in Table \ref{TABLE_encodingoutput-unigram} which is clearly not english to any human observer or any analysis tool with knowledge of English di- and tri- gram frequency information.
+
+\begin{table}
+\centering
+\begin{tabular}{ | c | c || c | c | }
+Character&Count&Character&Count\\
+\hline
+$<$\emph{space}$>$&0.11965  &  u&0.0242803\\
+e&0.111823 &  m&0.0211814\\
+t&0.0797253&  w&0.0207765\\
+a&0.0718989&  f&0.0196144\\
+o&0.0660886&  g&0.0177392\\
+i&0.0613258&  y&0.0173783\\
+n&0.0594154&  p&0.0169821\\
+s&0.0557003&  b&0.013135\\
+h&0.0536491&  v&0.00860991\\
+r&0.0527071&  k&0.00679637\\
+d&0.0374417&  j&0.00134695\\
+l&0.0354345&  x&0.00132054\\
+c&0.0244916&  q&0.000836341\\
+       &    &  z&0.000651466\\
+\end{tabular}
+\caption[English character frequency]{Probability distribution used for english character frequency in the sample encoding and decoding.}
+\label{TABLE_unigrams}
+\end{table}
+
+\begin{table}
+\begin{verbatim}
+HEzQcP9uxPOzeOB1SfRP+DQ7x3X5dTA1WF3vpcnO5kgLQQEP7xnUrnUy7U8ISNdbNQd+8da64+Ci
+nNBRvu3TRlG0KJvLzb6QDBWqxVfa4VeAU+cSvj+uzoajp2F0jd5/csHxJQlguoeqT76pq8oStoLG
+3k48PZWuebgweZx5KdxAgUfN7/kvzwBzG7O+9B7J/O8y6BfGz6In0H+LuDCOsFqMljljX3SkgJq/
+yPka52SDxa3D4GXecj9d
+\end{verbatim}
+\caption[Encoding sample - source]{The base64 encoding of the binary data used for the sample encoding.}
+\label{TABLE_encodingsource}
+\end{table}
+
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/encoding_source.png}
+\caption[Encoding sample - source (data matrix)]{The base64 encoding of the binary data used in the sample encoding, represented in a data matrix image.}
+\label{FIGURE_encodingsource}
+\end{figure}
+
+\begin{table}
+\begin{verbatim}
+" mfeo  hnhaeeeewsao os eewk es fsemroh eeeewthesdre s sol sreese ea hrzltse
+wesrnyemnpaoonef  ht   hsheawnfdemue stntleewth    home esaiu s feesgealne seaoa
+hlhyp hmb ewaaeesdubotongtnploaanewefochd htugeside s oeesi   fptsmr
+hweeeesoltsnahao esde hgmuo weeeeewyl  haoesroo     frmeshtieest ewad svikefui
+hnceslphstestidau eeahl hrosoan wrthaa ft  heabpeeses eeeeewrsn    hrlucne ewr
+esesooc eeeeeewsqe eewefgeesng est f eeeeewlhhae hgao hiuggnrrancewgmob
+hdreeesgopesuoamyufiolisx esrrsloaeewtse"
+\end{verbatim}
+\caption[Encoding sample - output]{The encoded form of the binary data according to English character frequencies.}
+\label{TABLE_encodingoutput-unigram}
+\end{table}
+
+% Efficiency numbers
+% ==================
+% Unigram
+%   Efficient 0.417057 v 256946 0.06682579831758034750036661712845
+%   Accurate 0.300548 v 332774 0.00014558032328364780948779390679
+% Digram
+%   Efficient 0.410661 v 270396 0.90056751440933662212073829206813
+%   Accurate 0.280415 v 355834 0.0021880889
+
+Analyzing the frequencies of the output shows that it closely approximates english character frequencies. A larger sample of random data (one hundred thousand bytes) was also encoded, and its output analyzed as well. The small sample, the large sample, and actual english character frequencies are displayed together in figures \ref{FIGURE_frequencies-bytop} and \ref{FIGURE_frequencies-bychar}. As is evident from the combined plots of the various distributions, there does not exist a clear distinction between them and thus it becomes very difficult to perform automated classification when information is encoded using this tool.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{figures/frequencies-bychar.pdf}
+\caption[Plot of character frequencies by frequency]{The character frequencies of the small and large encoded samples, as well as the English target distribution sorted by character.}
+\label{FIGURE_frequencies-bytop}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{figures/frequencies-bytop.pdf}
+\caption[Plot of character frequencies by character]{The character frequencies of the small and large encoded samples, as well as the English target distribution sorted by frequency.}
+\label{FIGURE_frequencies-bychar}
+\end{figure}
+
+\subsubsection{Technical Details}
+The probabilistic encoder is open-source and freely available, licensed under the Mozilla Public License version 2 which is GPL compatible. The source code is available at \url{https://www.riebart.ca/hg/probcode} for download and use under the MPL2 license terms. The source code compiles on Unix and other POSIX based systems sych as Cygwin on Windows.
+
+The encoding and decoding processes can be broken up into two steps; probability distribution analysis and then the actual conversion. The analysis of the distribution is the same for both the encoding and decoding operations, however the encoding operation is somewhat more involved than the decoding operation from an algorithmic point of view.
+
+The probability distribution is analyzed in order to map each element of the distribution (character, word, etc$\ldots$) to a string of bits. An assumption is made that all bit strings of a given length are equally likely to appear in the high-entropy source, and this places a constraint in the output PDF; the most frequent symbol cannot be more frequent than the most frequent symbol in the high-entropy source. That is, no symbol in the output distribution can have a frequency above 50\%. This is considered a fair assumption since in English, the most common letter has a frequency of approximately 11\%.
+
+The mapping from symbol to bit string is done by sorting the distribution from most to least frequent, and then selecting a shortest available bit string of a length that has an expected occurrence rate not less than the symbol's occurrence rate in the output distribution. For example, the bit string to symbol mapping for the English unigram encoding sample is given in Table \ref{TABLE_unigrammapping} along with the approximate frequency of the letters in English text.
+
+Observe that it is possible to make a tradeoff between encoding accuracy (that is, how accurately the output matches the desired distribution) and encoding efficiency (that is, the ratio between output and input size with higher ratios indicating a less efficient encoding) by tuning the bit string mapping. More accurate mappings result from choosing shorter bit strings (Table \ref{TABLE_unigrammapping} chooses the shortest possible bit string mappings and achieves an efficency factor of approximately 3.3) with more efficient mappings sacrificing accuracy for efficiency. Figure \ref{FIGURE_encoding-accvseff} shows the frequencies of the English target distribution along with the most efficient encoding and the most accurate encoding. The efficient coding in that figure achieves a factor of 
+
+Once the mapping has been built, and the various lookup tables built, the encoding or decoding process can begin. For encoding, a table is maintained that keeps track of how many times each symbol in the desired distribution has been output. The purpose of this table is to facilitate the greedy selection of symbols in order to ensure that one symbol is not chosen more often than is necessary and that those symbols that are farthest from meeting their quota in the output stream get preferential selection when the input bits match their mapping.
+
+\begin{table}
+\centering
+\begin{tabular}{ c | c | c }
+Character&Bit-String&Count\\
+\hline
+$<$\emph{space}$>$&1          &0.11965   \\
+e&0    &0.111823  \\
+t&11    &0.0797253\\
+a&01    &0.0718989\\
+o&10    &0.0660886\\
+i&00    &0.0613258\\
+n&111    &0.0594154\\
+s&011    &0.0557003\\
+h&101    &0.0536491\\
+r&001    &0.0527071\\
+d&110    &0.0374417\\
+l&010    &0.0354345\\
+c&100    &0.0244916\\
+u&000    &0.0242803\\
+m&0011    &0.0211814\\
+w&1101    &0.0207765\\
+f&0101    &0.0196144\\
+g&1001    &0.0177392\\
+y&0001    &0.0173783\\
+p&1110    &0.0169821\\
+b&0110    &0.013135\\
+v&1010    &0.00860991\\
+k&0010    &0.00679637\\
+j&1100    &0.00134695\\
+x&0100    &0.00132054\\
+q&1000    &0.000836341\\
+z&0000    &0.000651466\\
+\end{tabular}
+\caption[English character bit-string mapping]{Bit-string mapping for English characters and their frequency for comparison.}
+\label{TABLE_unigrammapping}
+\end{table}
+
+
+\subsection{Euclidean Distance Between Queries}
+\label{querydistance}
 
 \newpage
 %\nocite{*} 
