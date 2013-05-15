@@ -1,24 +1,19 @@
-\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Background}{}% 2
-\BOOKMARK [2][-]{subsection.2.1}{Entropy}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Domain Name System \(DNS\)}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.3}{Covert Channels}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.4}{DNS Tunnels}{section.2}% 6
-\BOOKMARK [3][-]{subsubsection.2.4.1}{Raw DNS Tunnels}{subsection.2.4}% 7
-\BOOKMARK [3][-]{subsubsection.2.4.2}{Conforming DNS Tunnels}{subsection.2.4}% 8
-\BOOKMARK [3][-]{subsubsection.2.4.3}{DNS Tunnel Software}{subsection.2.4}% 9
-\BOOKMARK [1][-]{section.3}{Review of the State of the Art}{}% 10
-\BOOKMARK [2][-]{subsection.3.1}{General Covert Channel or Anomaly Detection Research}{section.3}% 11
-\BOOKMARK [2][-]{subsection.3.2}{Non-DNS Related Research}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.3}{DNS Covert Channel Research}{section.3}% 13
-\BOOKMARK [2][-]{subsection.3.4}{DNS Tunnel Detection Landscape}{section.3}% 14
-\BOOKMARK [1][-]{section.4}{Problem Statement}{}% 15
-\BOOKMARK [2][-]{subsection.4.1}{Brief Statement}{section.4}% 16
-\BOOKMARK [2][-]{subsection.4.2}{Detailed Problem Description}{section.4}% 17
-\BOOKMARK [2][-]{subsection.4.3}{Solution Evaluation Criteria}{section.4}% 18
-\BOOKMARK [1][-]{section.5}{Proposed Detection Method}{}% 19
-\BOOKMARK [1][-]{section.6}{Demonstration of Existing Weaknesses}{}% 20
-\BOOKMARK [2][-]{subsection.6.1}{Probabilistic Encoding}{section.6}% 21
-\BOOKMARK [3][-]{subsubsection.6.1.1}{Sample Encoding}{subsection.6.1}% 22
-\BOOKMARK [3][-]{subsubsection.6.1.2}{Technical Details}{subsection.6.1}% 23
-\BOOKMARK [2][-]{subsection.6.2}{Euclidean Distance Between Queries}{section.6}% 24
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Background}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Entropy}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{Domain Name System \(DNS\)}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.3}{Covert Channels}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.4}{DNS Tunnels}{chapter.2}% 6
+\BOOKMARK [0][-]{chapter.3}{Review of the State of the Art}{}% 7
+\BOOKMARK [1][-]{section.3.1}{General Covert Channel or Anomaly Detection Research}{chapter.3}% 8
+\BOOKMARK [1][-]{section.3.2}{Non-DNS Related Research}{chapter.3}% 9
+\BOOKMARK [1][-]{section.3.3}{DNS Covert Channel Research}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.4}{DNS Tunnel Detection Landscape}{chapter.3}% 11
+\BOOKMARK [0][-]{chapter.4}{Problem Statement}{}% 12
+\BOOKMARK [1][-]{section.4.1}{Brief Statement}{chapter.4}% 13
+\BOOKMARK [1][-]{section.4.2}{Detailed Problem Description}{chapter.4}% 14
+\BOOKMARK [1][-]{section.4.3}{Solution Evaluation Criteria}{chapter.4}% 15
+\BOOKMARK [0][-]{chapter.5}{Proposed Detection Method}{}% 16
+\BOOKMARK [0][-]{chapter.6}{Demonstration of Existing Weaknesses}{}% 17
+\BOOKMARK [1][-]{section.6.1}{Probabilistic Encoding}{chapter.6}% 18
+\BOOKMARK [1][-]{section.6.2}{Euclidean Distance Between Queries}{chapter.6}% 19

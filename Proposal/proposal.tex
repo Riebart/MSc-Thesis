@@ -1,4 +1,5 @@
-\documentclass[12pt]{article}
+%http://texblog.org/2012/08/29/changing-the-font-size-in-latex/
+\documentclass[12pt]{report}
 \usepackage{amsfonts, amsmath, amsthm, amssymb}
 \usepackage[urlcolor=blue,linkcolor=black,colorlinks=true]{hyperref}
 \hypersetup{
@@ -7,17 +8,17 @@ Estimation},
   pdfkeywords = {},
   pdfauthor = {Michael Himbeault}
 }
-\usepackage[headsep=1cm,headheight=50pt]{geometry}
+%\usepackage[headsep=1cm,headheight=50pt]{geometry}
 \usepackage[dvips]{graphicx}
 \usepackage{subfigure}
 \usepackage{lscape}
 
 \usepackage{setspace}
-%\doublespacing
+\doublespacing
 
-\addtolength{\oddsidemargin}{-.5in}
-\addtolength{\evensidemargin}{-.5in}
-\addtolength{\textwidth}{1in}
+%\addtolength{\oddsidemargin}{-.5in}
+%\addtolength{\evensidemargin}{-.5in}
+%\addtolength{\textwidth}{1in}
 
 \addtolength{\topmargin}{-.5in}
 \addtolength{\textheight}{1in}
@@ -86,7 +87,7 @@ that are able to hide tunnels from existing detection methods.}
 % what the solution involves. It should briefly touch on the outcome of the 
 % solution.
 % ==============================================================================
-\section{Introduction}
+\chapter{Introduction}
 
 Control of the data that moves between hosts on a computer network is vitally
 important in order to be able to enforce security policies and protect sensitive information. To this end systems
@@ -212,9 +213,9 @@ remains practical for monitoring very large networks.
 % and solution. It should provide references for breadth and depth not covered
 % in this section.
 % ==============================================================================
-\section{Background}
+\chapter{Background}
 
-\subsection{Entropy}
+\section{Entropy}
 Entropy is intuitively speaking, a measure of how random a particular collection
 of items is. In the context of a random variable, entropy is a measure of the
 uncertainty in the output of the random variable. A random variable that has a
@@ -239,7 +240,7 @@ the logarithm with the natural base $e$ is used then the entropy has the units
 of \emph{nats}, if the logarithm is in the common base 10, then the entropy has
 the units of \emph{digits}.
 
-\subsection{Domain Name System (DNS)}
+\section{Domain Name System (DNS)}
 
 DNS (Domain Name System) is the service through which names are mapped to
 resources. Typically, this maps a name (such as \emph{www.google.ca}) to an IP
@@ -303,7 +304,7 @@ This proxy architecture removes some naive operation modes for DNS tunnels
 that will be discussed in in more detail in \ref{dnstunnels.types.raw}, but does 
 not offer any protection against the more sophisticated forms of DNS tunnels.
 
-\subsection{Covert Channels}
+\section{Covert Channels}
 
 Covert channels are methods of communication that use non-standard means of
 communication for the purpose of evading detection and/or blocking by the
@@ -347,7 +348,7 @@ unable to support real time data transfer. This is because they need to wait for
 a system packet in order to send their data, and if the system goes for a period 
 of time without sending data then the covert channel must wait as well.
 
-\subsection{DNS Tunnels}
+\section{DNS Tunnels}
 \label{dnstunnels.types}
 
 DNS tunnelling is the method by which arbitrary data is made to be transferred
@@ -457,7 +458,7 @@ incapable of producing a covert channel that is able to penetrate a strictly
 proxied DNS environment.
 
 \newpage
-\section{Review of the State of the Art}
+\chapter{Review of the State of the Art}
 \label{litreview}
 
 The solutions that exist to date generally make very little use of complex,
@@ -472,7 +473,7 @@ made use of \emph{every one of the mentioned detection methods}. This
 essentially identifies gaps in the current state of the art that could be filled
 by a new technique, or an adaptation of an existing technique.
 
-\subsection{General Covert Channel or Anomaly Detection Research}
+\section{General Covert Channel or Anomaly Detection Research}
 (Browne, 1994)\cite{Browne1994} establishes an entropy conservation based
 approach for testing the completeness of general (that is, not specific to DNS)
 covert channel analysis and detection methodologies. (Shaffer,
@@ -506,7 +507,7 @@ proposes that virtual machines can manipulate their CPU core load, which is
 peripherally visible to other virtual machines on the host, in order to send and
 receive information.
 
-\subsection{Non-DNS Related Research}
+\section{Non-DNS Related Research}
 Tunnel Hunter\cite{Dusi2009} is an application that aims for general covert
 channel detection over a variety of tunnelling communication channels.
 
@@ -522,7 +523,7 @@ design and detection of IP (Internet Protocol) based covert timing channels.
 detecting covert timing channels on the Internet based on their effect on the
 original process' entropy properties.
 
-\subsection{DNS Covert Channel Research}
+\section{DNS Covert Channel Research}
 The SANS Institutes's InfoSec Reading Room published a report on the design and
 detection of DNS tunnels\cite{SANS2013}. The report covers a very wide variety
 of topics including background information, tunnel-specific information,
@@ -703,7 +704,7 @@ important to note that these filters and rules do not trigger on all DNS
 tunnelling applications and may not be robust in the face of a zero-day
 situation.
 
-\subsection{DNS Tunnel Detection Landscape}
+\section{DNS Tunnel Detection Landscape}
 \label{litsummary}
 Taken together as a collective body of work, the detection approaches for DNS
 tunnels can be summarized as follows, with the weaknesses and strengths of each general approach outlined.
@@ -816,13 +817,13 @@ or subdomains.
 % should be picked out compared to real-world traffic with some reliability 
 % measure).
 % ==============================================================================
-\section{Problem Statement}
+\chapter{Problem Statement}
 
-\subsection{Brief Statement}
+\section{Brief Statement}
 \label{briefproblem}
 The purpose of this work is to investigate the feasibility of real-time DNS tunnel detection that does not suffer the common weaknesses of existing techniques.
 
-\subsection{Detailed Problem Description}
+\section{Detailed Problem Description}
 DNS tunnel detection is a complicated task made worse by the fact that DNS
 tunnel traffic can appear to be completely legitimate network traffic that
 conforms to all standards and restrictions. It
@@ -865,7 +866,7 @@ Item one is already demonstrated in practise by most of the tunnelling
 applications available, and item two is shown to be possible in section
 \ref{probencode}. Item three is easily accomplished by simply splitting queries based on a statistical model of the desired lengths, and item four will be shown in section \ref{querydistance} to approximately follow from item two based on empirical measurements.
 
-\subsection{Solution Evaluation Criteria}
+\section{Solution Evaluation Criteria}
 The objectives that must be met for an approach to have successfully solved the problem posed in section \ref{briefproblem} are as follows:
 
 \begin{itemize}
@@ -881,17 +882,17 @@ The proposed approach will be evaluated against these criteria to determine
 whether or not it can be considered an improvement on the state of the art for
 this type of detection.
 
-\section{Proposed Detection Method}
+\chapter{Proposed Detection Method}
 \label{datameasurement}
 
 The method proposed in this work examines the information theoretical properties of the
 DNS queries to each subdomain, thus retaining the flexibility to filter and
 alert per domain as opposed to more generally on the set of all DNS queries. The tools developed to test this approach utilize full packet data for its analysis, but can be modified to use name server query logs (as were used in \cite{Romana2007}) or other sources of query information. The prototype software is easily capable of running at greater than gigabit speed on inexpensive, off the shelf, hardware making this approach inexpensive to deploy on smaller networks or in resource constrained situations.
 
-\section{Demonstration of Existing Weaknesses}
+\chapter{Demonstration of Existing Weaknesses}
 This section will demonstrate that the weaknesses listed in section \ref{litsummary} are in fact exploitable by software and are not simply theoretical in nature.
 
-\subsection{Probabilistic Encoding}
+\section{Probabilistic Encoding}
 \label{probencode}
 Several detection methods in the literature involve examining the character distribution in the queries, or responses, of DNS packets. These approaches compare the distributions obtained from the traffic being analyzed, and compare them to a known distribution that can be considered normal. If there is a sufficiently significant measurable difference, then the packet is flagged as anomalous.
 
@@ -1034,14 +1035,14 @@ z&0000    &0.000651466\\
 \end{table}
 
 
-\subsection{Euclidean Distance Between Queries}
+\section{Euclidean Distance Between Queries}
 \label{querydistance}
 
 \newpage
 %\nocite{*} 
 \bibliography{../Reference/bibliography}{}
 
-% \section{Problem Statement}
+% \chapter{Problem Statement}
 % 
 % As networks increase in capacity and more applications are producing traffic
 % across the same network connection, the heterogeneity of the traffic on these
