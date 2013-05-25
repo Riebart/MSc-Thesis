@@ -14,8 +14,10 @@ Estimation},
 \usepackage{lscape}
 
 % http://tex.stackexchange.com/questions/5091/what-to-do-to-switch-to-biblatex
-\usepackage[natbib=true,style=alphabetic,backend=bibtex]{biblatex}
-\addbibresource{../Reference/bibliography.bib} % Syntax for version >= 1.2
+% http://polyphys-s01.ethz.ch/images/bibstyles/
+%\usepackage[natbib=true,style=numeric-verb,backend=bibtex]{biblatex}
+%\addbibresource{../Reference/bibliography.bib} % Syntax for version >= 1.2
+\bibliographystyle{amsplain}
 
 \usepackage{setspace}
 \doublespacing
@@ -1046,7 +1048,8 @@ z&0000    &0.000651466\\
 
 \newpage
 %\nocite{*} 
-\printbibliography
+%\printbibliography
+\bibliography{../Reference/bibliography}{}
 
 % \chapter{Problem Statement}
 % 
