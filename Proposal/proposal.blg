@@ -1,14 +1,7 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: proposal.aux
-The style file: amsplain.bst
-Database file #1: ../Reference/bibliography.bib
-Warning--entry type for "Chamberland2009.snort_iodine" isn't style-file defined
---line 936 of file ../Reference/bibliography.bib
-Warning--entry type for "Proventia2013.ips_tunnel" isn't style-file defined
---line 945 of file ../Reference/bibliography.bib
-Warning--entry type for "jhind2009" isn't style-file defined
---line 963 of file ../Reference/bibliography.bib
-Warning--entry type for "Paxson2011" isn't style-file defined
---line 972 of file ../Reference/bibliography.bib
+The style file: biblatex.bst
+Database file #1: proposal-blx.bib
+Database file #2: ../Reference/bibliography.bib
 A bad cross reference---entry "Browne1994"
 refers to entry "conf/ccs/1994", which doesn't exist
 A bad cross reference---entry "Shaffer2008"
@@ -40,15 +33,5 @@ Warning--I didn't find a database entry for "conf/ccs/2007"
 Warning--I didn't find a database entry for "conf/acns/2011"
 Warning--I didn't find a database entry for "conf/ifip11-9/2011"
 Warning--I didn't find a database entry for "conf/globecom/2006"
-Warning--missing pages in Born2010.exfil
-Warning--missing journal name in Born2010.psudp
-Warning--missing pages in Born2010.psudp
-Warning--missing pages in Born2010.cfa
-Warning--missing pages in Born2010.ngviz
-Warning--missing pages in Cabuk2009
-Warning--missing pages in SANS2013
-Warning--missing journal name in Romana2007
-Warning--missing pages in Romana2007
-Warning--missing journal name in Roolvink2008
-Warning--missing pages in Roolvink2008
+Biblatex version: 2.4
 (There were 11 error messages)

@@ -1,175 +1,1360 @@
-\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
-\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
-% \MRhref is called by the amsart/book/proc definition of \MR.
-\providecommand{\MRhref}[2]{%
-  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
-}
-\providecommand{\href}[2]{#2}
-\begin{thebibliography}{10}
+% $ biblatex auxiliary file $
+% $ biblatex version 2.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\bibitem{rfc4034}
-R.~Arends, R.~Austein, M.~Larson, D.~Massey, and S.~Rose, \emph{{Resource
-  Records for the DNS Security Extensions}}, RFC 4034 (Proposed Standard),
-  March 2005, Updated by RFCs 4470, 6014.
+\entry{rfc4034}{misc}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Arends}{A.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Austein}{A.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Larson}{L.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Massey}{M.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Rose}{R.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {Internet Engineering Task Force}%
+  }
+  \list{publisher}{1}{%
+    {IETF}%
+  }
+  \strng{namehash}{AR+1}
+  \strng{fullhash}{ARARLMMDRS1}
+  \field{labelalpha}{Are+05}
+  \field{sortinit}{A}
+  \field{howpublished}{RFC 4034 (Proposed Standard)}
+  \field{note}{Updated by RFCs 4470, 6014}
+  \field{number}{4034}
+  \field{series}{{Request for Comments}}
+  \field{title}{{Resource Records for the DNS Security Extensions}}
+  \verb{url}
+  \verb http://www.ietf.org/rfc/rfc4034.txt
+  \endverb
+  \field{month}{03}
+  \field{year}{2005}
+\endentry
 
-\bibitem{Bauer2003}
-Matthias Bauer, \emph{{New covert channels in HTTP: adding unwitting Web
-  browsers to anonymity sets.}}, {WPES} (Sushil Jajodia, Pierangela Samarati,
-  and Paul~F. Syverson, eds.), ACM, 2003, pp.~72--78.
+\entry{Bauer2003}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Bauer}{B.}%
+     {Matthias}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{3}{}{%
+    {{}%
+     {Jajodia}{J.}%
+     {Sushil}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Samarati}{S.}%
+     {Pierangela}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Syverson}{S.}%
+     {Paul~F.}{P.~F.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{BM1}
+  \strng{fullhash}{BM1}
+  \field{labelalpha}{Bau06}
+  \field{sortinit}{B}
+  \field{abstract}{%
+  dblp%
+  }
+  \field{booktitle}{{WPES}}
+  \field{isbn}{1-58113-776-1}
+  \field{pages}{72\bibrangedash 78}
+  \field{title}{{New covert channels in HTTP: adding unwitting Web browsers to
+  anonymity sets.}}
+  \field{day}{15}
+  \field{month}{02}
+  \field{year}{2006}
+  \warn{\item Can't use 'date' + 'year'}
+\endentry
 
-\bibitem{Borders2004}
-Kevin Borders and Atul Prakash, \emph{{Web tap: detecting covert web
-  traffic.}}, {ACM Conference on Computer and Communications Security}
-  (Vijayalakshmi Atluri, Birgit Pfitzmann, and Patrick~Drew McDaniel, eds.),
-  ACM, 2004, pp.~110--120.
+\entry{Born2010.cfa}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Born}{B.}%
+     {Kenton}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gustafson}{G.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{BKGD1}
+  \strng{fullhash}{BKGD1}
+  \field{labelalpha}{BG10}
+  \field{extraalpha}{1}
+  \field{sortinit}{B}
+  \field{title}{{Detecting DNS Tunnels Using Character Frequency Analysis}}
+  \field{volume}{abs/1004.4358}
+  \field{journaltitle}{CoRR}
+  \field{year}{2010}
+\endentry
 
-\bibitem{Born2010.exfil}
-Kenton Born, \emph{{Browser-Based Covert Data Exfiltration}}, CoRR
-  \textbf{abs/1004.4357} (2010).
+\entry{Born2010.ngviz}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Born}{B.}%
+     {Kenton}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gustafson}{G.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{BKGD1}
+  \strng{fullhash}{BKGD1}
+  \field{labelalpha}{BG10}
+  \field{extraalpha}{2}
+  \field{sortinit}{B}
+  \field{title}{{NgViz: Detecting DNS Tunnels through N-Gram Visualization and
+  Quantitative Analysis}}
+  \field{volume}{abs/1004.4359}
+  \field{journaltitle}{CoRR}
+  \field{year}{2010}
+\endentry
 
-\bibitem{Born2010.psudp}
-\bysame, \emph{{PSUDP: A Passive Approach to Network-Wide Covert
-  Communication}},  (2010).
+\entry{Born2010.exfil}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Born}{B.}%
+     {Kenton}{K.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{BK1}
+  \strng{fullhash}{BK1}
+  \field{labelalpha}{Bor10}
+  \field{extraalpha}{1}
+  \field{sortinit}{B}
+  \field{title}{{Browser-Based Covert Data Exfiltration}}
+  \field{volume}{abs/1004.4357}
+  \field{journaltitle}{CoRR}
+  \field{year}{2010}
+\endentry
 
-\bibitem{Born2010.cfa}
-Kenton Born and David Gustafson, \emph{{Detecting DNS Tunnels Using Character
-  Frequency Analysis}}, CoRR \textbf{abs/1004.4358} (2010).
+\entry{psudpsrc}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Born}{B.}%
+     {Kenton}{K.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BK1}
+  \strng{fullhash}{BK1}
+  \field{labelalpha}{Bor10}
+  \field{extraalpha}{2}
+  \field{sortinit}{B}
+  \field{title}{{PSUDP | Kenton Born}}
+  \verb{url}
+  \verb http://www.kentonborn.com/psudp
+  \endverb
+  \field{month}{07}
+  \field{year}{2010}
+\endentry
 
-\bibitem{Born2010.ngviz}
-\bysame, \emph{{NgViz: Detecting DNS Tunnels through N-Gram Visualization and
-  Quantitative Analysis}}, CoRR \textbf{abs/1004.4359} (2010).
+\entry{Born2010.psudp}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Born}{B.}%
+     {Kenton}{K.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BK1}
+  \strng{fullhash}{BK1}
+  \field{labelalpha}{Bor10}
+  \field{extraalpha}{3}
+  \field{sortinit}{B}
+  \field{title}{{PSUDP: A Passive Approach to Network-Wide Covert
+  Communication}}
+  \field{year}{2010}
+\endentry
 
-\bibitem{Browne1994}
-Randy Browne, \emph{{An Entropy Conservation Law for Testing the Completeness
-  of Convert Channel Analysis.}}, {ACM Conference on Computer and
-  Communications Security} (Dorothy~E. Denning, Raymond Pyle, Ravi Ganesan, and
-  Ravi~S. Sandhu, eds.), ACM, 1994, pp.~270--281.
+\entry{Borders2004}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Borders}{B.}%
+     {Kevin}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Prakash}{P.}%
+     {Atul}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{3}{}{%
+    {{}%
+     {Atluri}{A.}%
+     {Vijayalakshmi}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pfitzmann}{P.}%
+     {Birgit}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {McDaniel}{M.}%
+     {Patrick~Drew}{P.~D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{BKPA1}
+  \strng{fullhash}{BKPA1}
+  \field{labelalpha}{BP04}
+  \field{sortinit}{B}
+  \field{booktitle}{{ACM Conference on Computer and Communications Security}}
+  \field{isbn}{1-58113-961-6}
+  \field{pages}{110\bibrangedash 120}
+  \field{title}{{Web tap: detecting covert web traffic.}}
+  \field{year}{2004}
+\endentry
 
-\bibitem{Butler2011}
-Patrick Butler, Kui Xu, and Danfeng~(Daphne) Yao, \emph{{Quantitatively
-  Analyzing Stealthy Communication Channels.}}, {ACNS} (Javier Lopez and Gene
-  Tsudik, eds.), {Lecture Notes in Computer Science}, vol. 6715, 2011,
-  pp.~238--254.
+\entry{Browne1994}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Browne}{B.}%
+     {Randy}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{4}{}{%
+    {{}%
+     {Denning}{D.}%
+     {Dorothy~E.}{D.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pyle}{P.}%
+     {Raymond}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ganesan}{G.}%
+     {Ravi}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sandhu}{S.}%
+     {Ravi~S.}{R.~S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{BR1}
+  \strng{fullhash}{BR1}
+  \field{labelalpha}{Bro94}
+  \field{sortinit}{B}
+  \field{booktitle}{{ACM Conference on Computer and Communications Security}}
+  \field{isbn}{0-89791-732-4}
+  \field{pages}{270\bibrangedash 281}
+  \field{title}{{An Entropy Conservation Law for Testing the Completeness of
+  Convert Channel Analysis.}}
+  \field{year}{1994}
+\endentry
 
-\bibitem{Cabuk2004}
-Serdar Cabuk, Carla~E. Brodley, and Clay Shields, \emph{{IP covert timing
-  channels: design and detection.}}, {ACM Conference on Computer and
-  Communications Security} (Vijayalakshmi Atluri, Birgit Pfitzmann, and
-  Patrick~Drew McDaniel, eds.), ACM, 2004, pp.~178--187.
+\entry{Butler2011}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Butler}{B.}%
+     {Patrick}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Xu}{X.}%
+     {Kui}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yao}{Y.}%
+     {Danfeng~(Daphne)}{D.~D.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{2}{}{%
+    {{}%
+     {Lopez}{L.}%
+     {Javier}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tsudik}{T.}%
+     {Gene}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{BPXKYDD1}
+  \strng{fullhash}{BPXKYDD1}
+  \field{labelalpha}{BXY11}
+  \field{sortinit}{B}
+  \field{booktitle}{{ACNS}}
+  \field{isbn}{978-3-642-21553-7}
+  \field{pages}{238\bibrangedash 254}
+  \field{series}{{Lecture Notes in Computer Science}}
+  \field{title}{{Quantitatively Analyzing Stealthy Communication Channels.}}
+  \field{volume}{6715}
+  \field{year}{2011}
+\endentry
 
-\bibitem{Cabuk2009}
-\bysame, \emph{{IP Covert Channel Detection.}}, ACM Trans. Inf. Syst. Secur.
-  \textbf{12} (2009), no.~4.
+\entry{Cabuk2004}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Cabuk}{C.}%
+     {Serdar}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Brodley}{B.}%
+     {Carla~E.}{C.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shields}{S.}%
+     {Clay}{C.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{3}{}{%
+    {{}%
+     {Atluri}{A.}%
+     {Vijayalakshmi}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pfitzmann}{P.}%
+     {Birgit}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {McDaniel}{M.}%
+     {Patrick~Drew}{P.~D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{CSBCESC1}
+  \strng{fullhash}{CSBCESC1}
+  \field{labelalpha}{CBS04}
+  \field{sortinit}{C}
+  \field{booktitle}{{ACM Conference on Computer and Communications Security}}
+  \field{isbn}{1-58113-961-6}
+  \field{pages}{178\bibrangedash 187}
+  \field{title}{{IP covert timing channels: design and detection.}}
+  \field{year}{2004}
+\endentry
 
-\bibitem{Chamberland2009.snort_iodine}
-Michel Chamberland, \emph{{Snort rules for Iodine Covert DNS Tunnel
-  Detection}}, July 2009.
+\entry{Cabuk2009}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Cabuk}{C.}%
+     {Serdar}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Brodley}{B.}%
+     {Carla~E.}{C.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shields}{S.}%
+     {Clay}{C.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{CSBCESC1}
+  \strng{fullhash}{CSBCESC1}
+  \field{labelalpha}{CBS09}
+  \field{sortinit}{C}
+  \field{abstract}{%
+  dblp%
+  }
+  \field{number}{4}
+  \field{title}{{IP Covert Channel Detection.}}
+  \field{volume}{12}
+  \field{journaltitle}{ACM Trans. Inf. Syst. Secur.}
+  \field{day}{20}
+  \field{month}{05}
+  \field{year}{2009}
+  \warn{\item Can't use 'date' + 'year'}
+\endentry
 
-\bibitem{Dietrich2011}
-Christian~J. Dietrich, Christian Rossow, Felix~C. Freiling, Herbert Bos,
-  Maarten~van Steen, and Norbert Pohlmann, \emph{{On Botnets That Use DNS for
-  Command and Control}}, {Proceedings of the 2011 Seventh European Conference
-  on Computer Network Defense} (Washington, DC, USA), {EC2ND '11}, IEEE
-  Computer Society, 2011, pp.~9--16.
+\entry{Chamberland2009.snort_iodine}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Chamberland}{C.}%
+     {Michel}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CM1}
+  \strng{fullhash}{CM1}
+  \field{labelalpha}{Cha09}
+  \field{sortinit}{C}
+  \field{title}{{Snort rules for Iodine Covert DNS Tunnel Detection}}
+  \verb{url}
+  \verb http://www.securitywire.com/2009/07/snort-rules-for-iodine-covert-dns-t
+  \verb unnel-detection
+  \endverb
+  \field{month}{07}
+  \field{year}{2009}
+\endentry
 
-\bibitem{Dusi2009}
-Maurizio Dusi, Manuel Crotti, Francesco Gringoli, and Luca Salgarelli,
-  \emph{{Tunnel Hunter: Detecting application-layer tunnels with statistical
-  fingerprinting.}}, Computer Networks \textbf{53} (2009), no.~1, 81--97.
+\entry{dns2tcpsrc}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Consultants}{C.}%
+     {Herv{\'e}~Schauer}{H.~S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CHS1}
+  \strng{fullhash}{CHS1}
+  \field{labelalpha}{Con12}
+  \field{sortinit}{C}
+  \field{title}{{HSC - Tools - Dns2tcp}}
+  \verb{url}
+  \verb http://hsc.fr/ressources/outils/dns2tcp/index.html.en
+  \endverb
+  \field{month}{05}
+  \field{year}{2012}
+\endentry
 
-\bibitem{rfc2931}
-D.~{Eastlake 3rd}, \emph{{DNS Request and Transaction Signatures ( SIG(0)s )}},
-  RFC 2931 (Proposed Standard), September 2000.
+\entry{iodinesrc}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Deutsch}{D.}%
+     {L.~Peter}{L.~P.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DLP1}
+  \strng{fullhash}{DLP1}
+  \field{labelalpha}{Deu10}
+  \field{sortinit}{D}
+  \field{title}{{kryo.se: iodine (IP-over-DNS, IPv4 over DNS tunnel)}}
+  \verb{url}
+  \verb http://code.kryo.se/iodine
+  \endverb
+  \field{month}{02}
+  \field{year}{2010}
+\endentry
 
-\bibitem{SANS2013}
-Greg Farnham, \emph{{Detecting DNS Tunneling}}, InfoSec Reading Room (2013).
+\entry{Dietrich2011}{inproceedings}{}
+  \name{author}{6}{}{%
+    {{}%
+     {Dietrich}{D.}%
+     {Christian~J.}{C.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Rossow}{R.}%
+     {Christian}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Freiling}{F.}%
+     {Felix~C.}{F.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bos}{B.}%
+     {Herbert}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Steen}{S.}%
+     {Maarten~van}{M.~v.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pohlmann}{P.}%
+     {Norbert}{N.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IEEE Computer Society}%
+  }
+  \keyw{malware detection; botnet detection; dns; command and control}
+  \strng{namehash}{DCJ+1}
+  \strng{fullhash}{DCJRCFFCBHSMvPN1}
+  \field{labelalpha}{Die+11}
+  \field{sortinit}{D}
+  \field{booktitle}{{Proceedings of the 2011 Seventh European Conference on
+  Computer Network Defense}}
+  \verb{doi}
+  \verb 10.1109/EC2ND.2011.16
+  \endverb
+  \field{isbn}{978-0-7695-4762-6}
+  \field{pages}{9\bibrangedash 16}
+  \field{series}{{EC2ND '11}}
+  \field{title}{{On Botnets That Use DNS for Command and Control}}
+  \verb{url}
+  \verb http://dx.doi.org/10.1109/EC2ND.2011.16
+  \endverb
+  \list{location}{1}{%
+    {Washington, DC, USA}%
+  }
+  \field{year}{2011}
+\endentry
 
-\bibitem{Gianvecchio2007}
-Steven Gianvecchio and Haining Wang, \emph{{Detecting covert timing channels:
-  an entropy-based approach.}}, {ACM Conference on Computer and Communications
-  Security} (Peng Ning, Sabrina De~Capitani di~Vimercati, and Paul~F. Syverson,
-  eds.), ACM, 2007, pp.~307--316.
+\entry{denisesrc}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Dornseif}{D.}%
+     {Maximillian}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{DM1}
+  \strng{fullhash}{DM1}
+  \field{labelalpha}{Dor06}
+  \field{sortinit}{D}
+  \field{title}{{mdornseif/DeNiSe · GitHub}}
+  \verb{url}
+  \verb https://github.com/mdornseif/DeNiSe
+  \endverb
+  \field{month}{01}
+  \field{year}{2006}
+\endentry
 
-\bibitem{Horenbeeck2006}
-Maarten~Van Horenbeeck, \emph{{Deception on the network: thinking differently
-  about covert channels}}, 2006.
+\entry{Dusi2009}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Dusi}{D.}%
+     {Maurizio}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Crotti}{C.}%
+     {Manuel}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gringoli}{G.}%
+     {Francesco}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Salgarelli}{S.}%
+     {Luca}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{DM+1}
+  \strng{fullhash}{DMCMGFSL1}
+  \field{labelalpha}{Dus+09}
+  \field{sortinit}{D}
+  \field{abstract}{%
+  dblp%
+  }
+  \field{number}{1}
+  \field{pages}{81\bibrangedash 97}
+  \field{title}{{Tunnel Hunter: Detecting application-layer tunnels with
+  statistical fingerprinting.}}
+  \field{volume}{53}
+  \field{journaltitle}{Computer Networks}
+  \field{day}{13}
+  \field{month}{01}
+  \field{year}{2009}
+  \warn{\item Can't use 'date' + 'year'}
+\endentry
 
-\bibitem{jhind2009}
-jhind, \emph{{Catching DNS tunnels with A.I.}}, July 2009.
+\entry{SANS2013}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Farnham}{F.}%
+     {Greg}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {SANS Institute}%
+  }
+  \keyw{awareness; dataprotection; enterprise; management; security}
+  \strng{namehash}{FG1}
+  \strng{fullhash}{FG1}
+  \field{labelalpha}{Far13}
+  \field{sortinit}{F}
+  \field{title}{{Detecting DNS Tunneling}}
+  \verb{url}
+  \verb http://www.sans.org/reading\_room
+  \endverb
+  \field{journaltitle}{InfoSec Reading Room}
+  \field{year}{2013}
+  \warn{\item Invalid format of field 'month'}
+\endentry
 
-\bibitem{Karasaridis2006}
-Anestis Karasaridis, Kathleen~S. Meier-Hellstern, and David~A. Hoeflin,
-  \emph{{Detection of DNS Anomalies using Flow Data Analysis.}}, {GLOBECOM},
-  IEEE, 2006.
+\entry{Gianvecchio2007}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Gianvecchio}{G.}%
+     {Steven}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wang}{W.}%
+     {Haining}{H.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{3}{}{%
+    {{}%
+     {Ning}{N.}%
+     {Peng}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vimercati}{V.}%
+     {Sabrina De~Capitani}{S.~D.~C.}%
+     {di}{d.}%
+     {}{}}%
+    {{}%
+     {Syverson}{S.}%
+     {Paul~F.}{P.~F.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{GSWH1}
+  \strng{fullhash}{GSWH1}
+  \field{labelalpha}{GW08}
+  \field{sortinit}{G}
+  \field{abstract}{%
+  dblp%
+  }
+  \field{booktitle}{{ACM Conference on Computer and Communications Security}}
+  \field{isbn}{978-1-59593-703-2}
+  \field{pages}{307\bibrangedash 316}
+  \field{title}{{Detecting covert timing channels: an entropy-based approach.}}
+  \field{day}{22}
+  \field{month}{02}
+  \field{year}{2008}
+  \warn{\item Can't use 'date' + 'year'}
+\endentry
 
-\bibitem{rfc3445}
-D.~Massey and S.~Rose, \emph{{Limiting the Scope of the KEY Resource Record
-  (RR)}}, RFC 3445 (Proposed Standard), December 2002, Obsoleted by RFCs 4033,
-  4034, 4035.
+\entry{Horenbeeck2006}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Horenbeeck}{H.}%
+     {Maarten~Van}{M.~V.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{HMV1}
+  \strng{fullhash}{HMV1}
+  \field{labelalpha}{Hor06}
+  \field{sortinit}{H}
+  \field{title}{{Deception on the network: thinking differently about covert
+  channels}}
+  \field{year}{2006}
+\endentry
 
-\bibitem{rfc1035}
-P.V. Mockapetris, \emph{{Domain names - implementation and specification}}, RFC
-  1035 (INTERNET STANDARD), November 1987, Updated by RFCs 1101, 1183, 1348,
-  1876, 1982, 1995, 1996, 2065, 2136, 2181, 2137, 2308, 2535, 2845, 3425, 3658,
-  4033, 4034, 4035, 4343, 5936, 5966, 6604.
+\entry{jhind2009}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {jhind}{j.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{j1}
+  \strng{fullhash}{j1}
+  \field{labelalpha}{jhi09}
+  \field{sortinit}{J}
+  \field{title}{{Catching DNS tunnels with A.I.}}
+  \verb{url}
+  \verb http://www.meanypants.com/meanypants
+  \endverb
+  \field{month}{07}
+  \field{year}{2009}
+\endentry
 
-\bibitem{Moskowitz2003}
-Ira~S. Moskowitz, Richard~E. Newman, Daniel~P. Crepeau, and Allen~R. Miller,
-  \emph{{Covert channels and anonymizing networks.}}, {WPES} (Sushil Jajodia,
-  Pierangela Samarati, and Paul~F. Syverson, eds.), ACM, 2003, pp.~79--88.
+\entry{Karasaridis2006}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Karasaridis}{K.}%
+     {Anestis}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Meier-Hellstern}{M.-H.}%
+     {Kathleen~S.}{K.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hoeflin}{H.}%
+     {David~A.}{D.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IEEE}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{KAMHKSHDA1}
+  \strng{fullhash}{KAMHKSHDA1}
+  \field{labelalpha}{KMHH07}
+  \field{sortinit}{K}
+  \field{abstract}{%
+  dblp%
+  }
+  \field{booktitle}{{GLOBECOM}}
+  \field{title}{{Detection of DNS Anomalies using Flow Data Analysis.}}
+  \field{day}{30}
+  \field{month}{10}
+  \field{year}{2007}
+  \warn{\item Can't use 'date' + 'year'}
+\endentry
 
-\bibitem{Newman2007}
-Robert~C. Newman, \emph{{Covert computer and network communications}},
-  {Proceedings of the 4th annual conference on Information security curriculum
-  development} (New York, NY, USA), {InfoSecCD '07}, ACM, 2007, pp.~12:1--12:8.
+\entry{rfc1035}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Mockapetris}{M.}%
+     {P.V.}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {Internet Engineering Task Force}%
+  }
+  \list{publisher}{1}{%
+    {IETF}%
+  }
+  \strng{namehash}{MP1}
+  \strng{fullhash}{MP1}
+  \field{labelalpha}{Moc87}
+  \field{sortinit}{M}
+  \field{howpublished}{RFC 1035 (INTERNET STANDARD)}
+  \field{note}{Updated by RFCs 1101, 1183, 1348, 1876, 1982, 1995, 1996, 2065,
+  2136, 2181, 2137, 2308, 2535, 2845, 3425, 3658, 4033, 4034, 4035, 4343, 5936,
+  5966, 6604}
+  \field{number}{1035}
+  \field{series}{{Request for Comments}}
+  \field{title}{{Domain names - implementation and specification}}
+  \verb{url}
+  \verb http://www.ietf.org/rfc/rfc1035.txt
+  \endverb
+  \field{month}{11}
+  \field{year}{1987}
+\endentry
 
-\bibitem{Okamura2010}
-Keisuke Okamura and Yoshihiro Oyama, \emph{{Load-based covert channels between
-  Xen virtual machines.}}, {SAC} (Sung~Y. Shin, Sascha Ossowski, Michael
-  Schumacher, Mathew~J. Palakal, and Chih-Cheng Hung, eds.), ACM, 2010,
-  pp.~173--180.
+\entry{Moskowitz2003}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Moskowitz}{M.}%
+     {Ira~S.}{I.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Newman}{N.}%
+     {Richard~E.}{R.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Crepeau}{C.}%
+     {Daniel~P.}{D.~P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Miller}{M.}%
+     {Allen~R.}{A.~R.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{3}{}{%
+    {{}%
+     {Jajodia}{J.}%
+     {Sushil}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Samarati}{S.}%
+     {Pierangela}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Syverson}{S.}%
+     {Paul~F.}{P.~F.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{MIS+1}
+  \strng{fullhash}{MISNRECDPMAR1}
+  \field{labelalpha}{Mos+06}
+  \field{sortinit}{M}
+  \field{abstract}{%
+  dblp%
+  }
+  \field{booktitle}{{WPES}}
+  \field{isbn}{1-58113-776-1}
+  \field{pages}{79\bibrangedash 88}
+  \field{title}{{Covert channels and anonymizing networks.}}
+  \field{day}{15}
+  \field{month}{02}
+  \field{year}{2006}
+  \warn{\item Can't use 'date' + 'year'}
+\endentry
 
-\bibitem{Paxson2011}
-Vern Paxson, \emph{{Behavioral Detection of Stealthy Intruders}}, September
-  2011.
+\entry{rfc3445}{misc}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Massey}{M.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Rose}{R.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {Internet Engineering Task Force}%
+  }
+  \list{publisher}{1}{%
+    {IETF}%
+  }
+  \strng{namehash}{MDRS1}
+  \strng{fullhash}{MDRS1}
+  \field{labelalpha}{MR02}
+  \field{sortinit}{M}
+  \field{howpublished}{RFC 3445 (Proposed Standard)}
+  \field{note}{Obsoleted by RFCs 4033, 4034, 4035}
+  \field{number}{3445}
+  \field{series}{{Request for Comments}}
+  \field{title}{{Limiting the Scope of the KEY Resource Record (RR)}}
+  \verb{url}
+  \verb http://www.ietf.org/rfc/rfc3445.txt
+  \endverb
+  \field{month}{12}
+  \field{year}{2002}
+\endentry
 
-\bibitem{Proventia2013.ips_tunnel}
-Proventia, \emph{{Proventia Server IPS - DNS tunnel traffic detected}}, January
-  2013.
+\entry{Newman2007}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Newman}{N.}%
+     {Robert~C.}{R.~C.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{covert channels; covert storage channels; security; steganography}
+  \strng{namehash}{NRC1}
+  \strng{fullhash}{NRC1}
+  \field{labelalpha}{New07}
+  \field{sortinit}{N}
+  \field{booktitle}{{Proceedings of the 4th annual conference on Information
+  security curriculum development}}
+  \verb{doi}
+  \verb 10.1145/1409908.1409922
+  \endverb
+  \field{isbn}{978-1-59593-909-8}
+  \field{pages}{12:1\bibrangedash 12:8}
+  \field{series}{{InfoSecCD '07}}
+  \field{title}{{Covert computer and network communications}}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/1409908.1409922
+  \endverb
+  \list{location}{1}{%
+    {Kennesaw, Georgia}%
+  }
+  \field{year}{2007}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
 
-\bibitem{Ray2008}
-Baishakhi Ray and Shivakant Mishra, \emph{{A Protocol for Building Secure and
-  Reliable Covert Channel}}, {Proceedings of the 2008 Sixth Annual Conference
-  on Privacy, Security and Trust} (Washington, DC, USA), {PST '08}, IEEE
-  Computer Society, 2008, pp.~246--253.
+\entry{Okamura2010}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Okamura}{O.}%
+     {Keisuke}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Oyama}{O.}%
+     {Yoshihiro}{Y.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{5}{}{%
+    {{}%
+     {Shin}{S.}%
+     {Sung~Y.}{S.~Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ossowski}{O.}%
+     {Sascha}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Schumacher}{S.}%
+     {Michael}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Palakal}{P.}%
+     {Mathew~J.}{M.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hung}{H.}%
+     {Chih-Cheng}{C.-C.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{OKOY1}
+  \strng{fullhash}{OKOY1}
+  \field{labelalpha}{OO10}
+  \field{sortinit}{O}
+  \field{booktitle}{{SAC}}
+  \field{isbn}{978-1-60558-639-7}
+  \field{pages}{173\bibrangedash 180}
+  \field{title}{{Load-based covert channels between Xen virtual machines.}}
+  \field{day}{25}
+  \field{month}{04}
+  \field{year}{2010}
+  \warn{\item Can't use 'date' + 'year'}
+\endentry
 
-\bibitem{rfc4025}
-M.~Richardson, \emph{{A Method for Storing IPsec Keying Material in DNS}}, RFC
-  4025 (Proposed Standard), March 2005.
+\entry{Paxson2011}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Paxson}{P.}%
+     {Vern}{V.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{PV1}
+  \strng{fullhash}{PV1}
+  \field{labelalpha}{Pax11}
+  \field{sortinit}{P}
+  \field{title}{{Behavioral Detection of Stealthy Intruders}}
+  \verb{url}
+  \verb https://seclab.cs.ucsb.edu/academic/projects/projects/cybaware/2011
+  \endverb
+  \field{month}{09}
+  \field{year}{2011}
+\endentry
 
-\bibitem{Romana2007}
-D.~Roma{\~n}a and Y.~Musashi, \emph{{Entropy Based Analysis of DNS Query
-  Traffic in the Campus Network}},  (2007).
+\entry{dnscatsrc}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Pietraszek}{P.}%
+     {Tadeusz}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{PT1}
+  \strng{fullhash}{PT1}
+  \field{labelalpha}{Pie05}
+  \field{sortinit}{P}
+  \field{title}{{DNScat}}
+  \verb{url}
+  \verb http://tadek.pietraszek.org/projects/DNScat
+  \endverb
+  \field{month}{09}
+  \field{year}{2005}
+\endentry
 
-\bibitem{Roolvink2008}
-Stephan Roolvink, \emph{{Detecting attacks involving DNS servers}},  (2008).
+\entry{ozymandnssrc}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Plenz}{P.}%
+     {Julius}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{PJ1}
+  \strng{fullhash}{PJ1}
+  \field{labelalpha}{Ple11}
+  \field{sortinit}{P}
+  \field{title}{{DNStunnel.de - free DNS tunneling service}}
+  \verb{url}
+  \verb http://dnstunnel.de
+  \endverb
+  \field{month}{06}
+  \field{year}{2011}
+\endentry
 
-\bibitem{Shaffer2008}
-Alan~B. Shaffer, Mikhail Auguston, Cynthia~E. Irvine, and Timothy~E. Levin,
-  \emph{{A security domain model to assess software for exploitable covert
-  channels.}}, {PLAS} ({\~A}\v{s}lfar Erlingsson and Marco Pistoia, eds.), ACM,
-  2008, pp.~45--56.
+\entry{Proventia2013.ips_tunnel}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Proventia}{P.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{P1}
+  \strng{fullhash}{P1}
+  \field{labelalpha}{Pro13}
+  \field{sortinit}{P}
+  \field{title}{{Proventia Server IPS - DNS tunnel traffic detected}}
+  \verb{url}
+  \verb http://www.iss.net/security_center/reference/vuln/DNS_Tunnel_Detected.h
+  \verb tm
+  \endverb
+  \field{month}{01}
+  \field{year}{2013}
+\endentry
 
-\bibitem{Thomas2011}
-Brennon Thomas, Barry~E. Mullins, Gilbert~L. Peterson, and Robert~F. Mills,
-  \emph{{An FPGA System for Detecting Malicious DNS Network Traffic.}}, {IFIP
-  Int. Conf. Digital Forensics} (Gilbert~L. Peterson and Sujeet Shenoi, eds.),
-  {IFIP Advances in Information and Communication Technology}, vol. 361,
-  Springer, 2011, pp.~195--207.
+\entry{rfc4025}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Richardson}{R.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {Internet Engineering Task Force}%
+  }
+  \list{publisher}{1}{%
+    {IETF}%
+  }
+  \strng{namehash}{RM1}
+  \strng{fullhash}{RM1}
+  \field{labelalpha}{Ric05}
+  \field{sortinit}{R}
+  \field{howpublished}{RFC 4025 (Proposed Standard)}
+  \field{number}{4025}
+  \field{series}{{Request for Comments}}
+  \field{title}{{A Method for Storing IPsec Keying Material in DNS}}
+  \verb{url}
+  \verb http://www.ietf.org/rfc/rfc4025.txt
+  \endverb
+  \field{month}{03}
+  \field{year}{2005}
+\endentry
 
-\bibitem{rfc3755}
-S.~Weiler, \emph{{Legacy Resolver Compatibility for Delegation Signer (DS)}},
-  RFC 3755 (Proposed Standard), May 2004, Obsoleted by RFCs 4033, 4034, 4035,
-  updated by RFCs 3757, 3845.
+\entry{Romana2007}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Roma{\~n}a}{R.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Musashi}{M.}%
+     {Y.}{Y.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{RDMY1}
+  \strng{fullhash}{RDMY1}
+  \field{labelalpha}{RM07}
+  \field{sortinit}{R}
+  \field{title}{{Entropy Based Analysis of DNS Query Traffic in the Campus
+  Network}}
+  \field{year}{2007}
+\endentry
 
-\end{thebibliography}
+\entry{Ray2008}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Ray}{R.}%
+     {Baishakhi}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Mishra}{M.}%
+     {Shivakant}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IEEE Computer Society}%
+  }
+  \keyw{covert channel; medium bandwidth; ICMP; reliable; chaotic dynamics}
+  \strng{namehash}{RBMS1}
+  \strng{fullhash}{RBMS1}
+  \field{labelalpha}{RM08}
+  \field{sortinit}{R}
+  \field{booktitle}{{Proceedings of the 2008 Sixth Annual Conference on
+  Privacy, Security and Trust}}
+  \verb{doi}
+  \verb 10.1109/PST.2008.26
+  \endverb
+  \field{isbn}{978-0-7695-3390-2}
+  \field{pages}{246\bibrangedash 253}
+  \field{series}{{PST '08}}
+  \field{title}{{A Protocol for Building Secure and Reliable Covert Channel}}
+  \verb{url}
+  \verb http://dx.doi.org/10.1109/PST.2008.26
+  \endverb
+  \list{location}{1}{%
+    {Washington, DC, USA}%
+  }
+  \field{year}{2008}
+\endentry
+
+\entry{Roolvink2008}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Roolvink}{R.}%
+     {Stephan}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{RS1}
+  \strng{fullhash}{RS1}
+  \field{labelalpha}{Roo08}
+  \field{sortinit}{R}
+  \field{title}{{Detecting attacks involving DNS servers}}
+  \field{year}{2008}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
+\entry{Shaffer2008}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Shaffer}{S.}%
+     {Alan~B.}{A.~B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Auguston}{A.}%
+     {Mikhail}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Irvine}{I.}%
+     {Cynthia~E.}{C.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Levin}{L.}%
+     {Timothy~E.}{T.~E.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{2}{}{%
+    {{}%
+     {Erlingsson}{E.}%
+     {{\~A}\v{s}lfar}{{\~A}.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pistoia}{P.}%
+     {Marco}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{SAB+1}
+  \strng{fullhash}{SABAMICELTE1}
+  \field{labelalpha}{Sha+08}
+  \field{sortinit}{S}
+  \field{abstract}{%
+  dblp%
+  }
+  \field{booktitle}{{PLAS}}
+  \field{isbn}{978-1-59593-936-4}
+  \field{pages}{45\bibrangedash 56}
+  \field{title}{{A security domain model to assess software for exploitable
+  covert channels.}}
+  \field{day}{16}
+  \field{month}{06}
+  \field{year}{2008}
+  \warn{\item Can't use 'date' + 'year'}
+\endentry
+
+\entry{Thomas2011}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Thomas}{T.}%
+     {Brennon}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Mullins}{M.}%
+     {Barry~E.}{B.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Peterson}{P.}%
+     {Gilbert~L.}{G.~L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Mills}{M.}%
+     {Robert~F.}{R.~F.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{2}{}{%
+    {{}%
+     {Peterson}{P.}%
+     {Gilbert~L.}{G.~L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shenoi}{S.}%
+     {Sujeet}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \keyw{dblp}
+  \strng{namehash}{TB+1}
+  \strng{fullhash}{TBMBEPGLMRF1}
+  \field{labelalpha}{Tho+11}
+  \field{sortinit}{T}
+  \field{booktitle}{{IFIP Int. Conf. Digital Forensics}}
+  \field{isbn}{978-3-642-24211-3}
+  \field{pages}{195\bibrangedash 207}
+  \field{series}{{IFIP Advances in Information and Communication Technology}}
+  \field{title}{{An FPGA System for Detecting Malicious DNS Network Traffic.}}
+  \field{volume}{361}
+  \field{year}{2011}
+\endentry
+
+\entry{rfc3755}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Weiler}{W.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {Internet Engineering Task Force}%
+  }
+  \list{publisher}{1}{%
+    {IETF}%
+  }
+  \strng{namehash}{WS1}
+  \strng{fullhash}{WS1}
+  \field{labelalpha}{Wei04}
+  \field{sortinit}{W}
+  \field{howpublished}{RFC 3755 (Proposed Standard)}
+  \field{note}{Obsoleted by RFCs 4033, 4034, 4035, updated by RFCs 3757, 3845}
+  \field{number}{3755}
+  \field{series}{{Request for Comments}}
+  \field{title}{{Legacy Resolver Compatibility for Delegation Signer (DS)}}
+  \verb{url}
+  \verb http://www.ietf.org/rfc/rfc3755.txt
+  \endverb
+  \field{month}{05}
+  \field{year}{2004}
+\endentry
+
+\entry{rfc2931}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{Eastlake 3rd}}{E.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {Internet Engineering Task Force}%
+  }
+  \list{publisher}{1}{%
+    {IETF}%
+  }
+  \strng{namehash}{ED1}
+  \strng{fullhash}{ED1}
+  \field{labelalpha}{{Eas}00}
+  \field{sortinit}{{E}}
+  \field{howpublished}{RFC 2931 (Proposed Standard)}
+  \field{number}{2931}
+  \field{series}{{Request for Comments}}
+  \field{title}{{DNS Request and Transaction Signatures ( SIG(0)s )}}
+  \verb{url}
+  \verb http://www.ietf.org/rfc/rfc2931.txt
+  \endverb
+  \field{month}{09}
+  \field{year}{2000}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput

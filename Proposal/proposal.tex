@@ -13,12 +13,16 @@ Estimation},
 \usepackage{subfigure}
 \usepackage{lscape}
 
+% http://tex.stackexchange.com/questions/5091/what-to-do-to-switch-to-biblatex
+\usepackage[natbib=true,style=alphabetic,backend=bibtex]{biblatex}
+\addbibresource{../Reference/bibliography.bib} % Syntax for version >= 1.2
+
 \usepackage{setspace}
 \doublespacing
 
-%\addtolength{\oddsidemargin}{-.5in}
-%\addtolength{\evensidemargin}{-.5in}
-%\addtolength{\textwidth}{1in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\textwidth}{1in}
 
 \addtolength{\topmargin}{-.5in}
 \addtolength{\textheight}{1in}
@@ -44,7 +48,6 @@ Estimation},
 \newtheorem{algorithm}{Algorithm}[section]
 
 \begin{document}
-\bibliographystyle{amsplain}
 \title{A Novel Approach to Detecting Covert DNS Tunnels Using Throughput
 Estimation}
 \author{Michael Himbeault}
@@ -154,13 +157,16 @@ method is required. Analysis based on character frequency is proposed
 in\cite{Born2010.cfa} by Kenton Born with similar approaches proposed by several
 other authors (see section \ref{litreview} for more details) which uses
 character
-frequency analysis under the assumption that normal DNS traffic has a unique
-character frequency distribution that can be used as a discriminating
-fingerprint. Based on analysis of common domain names, he obtained a
-distribution that accurately describes normal DNS traffic while
-effectively detecting DNS tunnel traffic. Results obtained by Born indicate
-that DNS tunnels have an approximately uniform character frequency distribution
-whereas normal DNS queries do not.
+frequency analysis under some assumed properties. More details are given in section
+\ref{litreview}.
+
+%that normal DNS traffic has a unique
+%character frequency distribution that can be used as a discriminating
+%fingerprint. Based on analysis of common domain names, he obtained a
+%distribution that accurately describes normal DNS traffic while
+%effectively detecting DNS tunnel traffic. Results obtained by Born indicate
+%that DNS tunnels have an approximately uniform character frequency distribution
+%whereas normal DNS queries do not.
 
 A weakness of the approach proposed by Born is that it relies on the assumption
 that DNS tunnel traffic \emph{necessarily} has a character frequency
@@ -399,12 +405,12 @@ is done between DNS and the raw data depends on the implementation.
 
 \subsubsection{DNS Tunnel Software}
 
-Some DNS tunneling software is OzymanDNS\footnote{\url{http://dnstunnel.de/}},
-Iodine\footnote{\url{http://code.kryo.se/iodine/}},
-Dns2tcp\footnote{\url{http://hsc.fr/ressources/outils/dns2tcp/index.html.en}},
-DNScat\footnote{\url{http://tadek.pietraszek.org/projects/DNScat/}} and
-DeNiSe\footnote{\url{http://c0re.23.nu/c0de/snap/DeNiSe-current.tar.bz2}}, and
-PSUDP\footnote{\url{http://www.kentonborn.com/psudp}}. Each of these have
+Some DNS tunneling software is OzymanDNS\cite{ozymandnssrc},
+Iodine\cite{iodinesrc},
+Dns2tcp\cite{dns2tcpsrc},
+DNScat\cite{dnscatsrc} and
+DeNiSe\cite{denisesrc}, and
+PSUDP\cite{psudpsrc}. Each of these have
 slightly different operational characteristics, but they all aim to do the same
 thing, which is transmission of arbitrary data over DNS.
 
@@ -1040,7 +1046,7 @@ z&0000    &0.000651466\\
 
 \newpage
 %\nocite{*} 
-\bibliography{../Reference/bibliography}{}
+\printbibliography
 
 % \chapter{Problem Statement}
 % 
