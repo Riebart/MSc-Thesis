@@ -4,7 +4,11 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces English character frequency}}{35}{table.6.1}
-\contentsline {table}{\numberline {6.2}{\ignorespaces Encoding sample - source}}{35}{table.6.2}
-\contentsline {table}{\numberline {6.3}{\ignorespaces Encoding sample - output}}{35}{table.6.3}
-\contentsline {table}{\numberline {6.4}{\ignorespaces English character bit-string mapping}}{40}{table.6.4}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {D.1}{\ignorespaces English character frequency}}{44}{table.1.D.1}
+\contentsline {table}{\numberline {D.2}{\ignorespaces Encoding sample - source}}{45}{table.1.D.2}
+\contentsline {table}{\numberline {D.3}{\ignorespaces Encoding sample - output}}{45}{table.1.D.3}
+\contentsline {table}{\numberline {D.4}{\ignorespaces English character bit-string mapping}}{50}{table.1.D.4}

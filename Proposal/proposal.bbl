@@ -110,6 +110,14 @@ Steven Gianvecchio and Haining Wang, \emph{{Detecting covert timing channels:
   Security} (Peng Ning, Sabrina De~Capitani di~Vimercati, and Paul~F. Syverson,
   eds.), ACM, 2007, pp.~307--316.
 
+\bibitem{Guy2009}
+Jeffrey~J. Guy, \emph{{dns part ii: visualization}},
+  \url{http://armatum.com/blog/2009/dns-part-ii}, feb 2009.
+
+\bibitem{probcodesrc}
+Michael Himbeault, \emph{{Probabilistic Encoder: Summary}},
+  \url{https://www.riebart.ca/hg/probcode}, jun 2013.
+
 \bibitem{Horenbeeck2006}
 Maarten~Van Horenbeeck, \emph{{Deception on the network: thinking differently
   about covert channels}}, 2006.

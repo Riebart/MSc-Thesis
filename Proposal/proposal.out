@@ -14,6 +14,17 @@
 \BOOKMARK [1][-]{section.4.2}{Detailed Problem Description}{chapter.4}% 14
 \BOOKMARK [1][-]{section.4.3}{Solution Evaluation Criteria}{chapter.4}% 15
 \BOOKMARK [0][-]{chapter.5}{Proposed Detection Method}{}% 16
-\BOOKMARK [0][-]{chapter.6}{Demonstration of Existing Weaknesses}{}% 17
-\BOOKMARK [1][-]{section.6.1}{Probabilistic Encoding}{chapter.6}% 18
-\BOOKMARK [1][-]{section.6.2}{Euclidean Distance Between Queries}{chapter.6}% 19
+\BOOKMARK [1][-]{section.5.1}{Theoretical Assumptions}{chapter.5}% 17
+\BOOKMARK [1][-]{section.5.2}{Implementation}{chapter.5}% 18
+\BOOKMARK [0][-]{chapter.6}{Evaluation Criteria and Testing Methodology}{}% 19
+\BOOKMARK [1][-]{section.6.1}{Detailed Testing Methodology}{chapter.6}% 20
+\BOOKMARK [2][-]{subsection.6.1.1}{Determining a Baseline}{section.6.1}% 21
+\BOOKMARK [2][-]{subsection.6.1.2}{Existing Implementation Detection}{section.6.1}% 22
+\BOOKMARK [2][-]{subsection.6.1.3}{Demonstration of Existing Weaknesses}{section.6.1}% 23
+\BOOKMARK [0][-]{section*.7}{Appendices}{}% 24
+\BOOKMARK [0][-]{Appendix.1.A}{Properties of the Network Capture}{}% 25
+\BOOKMARK [0][-]{Appendix.1.B}{Testing Software and Scripts}{}% 26
+\BOOKMARK [1][-]{section.1.B.1}{Custom DNS Tunnel Endpoint Simulator}{Appendix.1.B}% 27
+\BOOKMARK [0][-]{Appendix.1.C}{Testing Environment}{}% 28
+\BOOKMARK [0][-]{Appendix.1.D}{Probabilistic Encoding}{}% 29
+\BOOKMARK [1][-]{section.1.D.1}{Sample Encoding}{Appendix.1.D}% 30

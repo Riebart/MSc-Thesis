@@ -13,6 +13,8 @@ Estimation},
 \usepackage{subfigure}
 \usepackage{lscape}
 
+\usepackage[toc,page]{appendix}
+
 % http://tex.stackexchange.com/questions/5091/what-to-do-to-switch-to-biblatex
 % http://polyphys-s01.ethz.ch/images/bibstyles/
 %\usepackage[natbib=true,style=numeric-verb,backend=bibtex]{biblatex}
@@ -60,10 +62,10 @@ Estimation}
 
 % ==============================================================================
 % The abstract should make sense to everyone.
-% It should give them an idea of whether they possess the background necessary 
+% It should give them an idea of whether they possess the background necessary
 % to understand the paper, and if they do, what the paper will tell them.
 % ==============================================================================
-\abstract{In a world that runs on data, protection of that data and protection 
+\abstract{In a world that runs on data, protection of that data and protection
 of the \emph{motion} of that data is of the utmost importance. Covert
 communication channels attempt to circumvent established methods of control,
 such
@@ -71,7 +73,7 @@ as firewalls and proxies, by utilizing non-standard means of getting messages
 between two endpoints. DNS (Domain Name System), the system that  translates
 text-based resource names into resource records, is a very common and effective
 platform upon which covert channels can be built. This work proposes, and
-demonstrates the effectiveness of, a novel technique that estimates data  
+demonstrates the effectiveness of, a novel technique that estimates data
 transmission throughput over DNS in order to identify the existence of a DNS
 tunnel against the background noise of legitimate network traffic.
 The proposed technique is robust in the face of the obfuscation techniques
@@ -88,8 +90,8 @@ that are able to hide tunnels from existing detection methods.}
 % The introduction should make sense to people with the necessary background, and
 % should be of moderate use to people without the necessary background. It should
 % introduce the problem we are trying to solve, why it is worth solving, give a
-% coarse picture of where our solution sits in the landscape of solutions, and 
-% what the solution involves. It should briefly touch on the outcome of the 
+% coarse picture of where our solution sits in the landscape of solutions, and
+% what the solution involves. It should briefly touch on the outcome of the
 % solution.
 % ==============================================================================
 \chapter{Introduction}
@@ -98,7 +100,7 @@ Control of the data that moves between hosts on a computer network is vitally
 important in order to be able to enforce security policies and protect sensitive information. To this end systems
 such as firewalls, proxies, and content filters are put into place in order to
 monitor and control network traffic. Covert channels
-are utilized to circumvent these control mechanisms for purposes that range from 
+are utilized to circumvent these control mechanisms for purposes that range from
 benign to malicious. This work focuses specifically on DNS tunnels, however
 other types of covert channels do exist.
 
@@ -170,22 +172,8 @@ frequency analysis under some assumed properties. More details are given in sect
 %that DNS tunnels have an approximately uniform character frequency distribution
 %whereas normal DNS queries do not.
 
-A weakness of the approach proposed by Born is that it relies on the assumption
-that DNS tunnel traffic \emph{necessarily} has a character frequency
-distribution that is different from that of normal DNS queries. This assumption
-is not necessarily true, and a proof-of-concept application
-was developed that demonstrates this fact. The tool performs a
-\emph{probabilistic encoding} that takes an arbitrary data source and encodes
-it into a stream of characters that conforms to a given distribution. This tool
-can be used to modify the output of any DNS tunnel application so that their
-output conforms to the distribution that Born found for normal DNS traffic (or
-any other distribution, for that matter). By
-utilizing this transformation, Born's approach fails to detect the DNS traffic
-as it becomes, from the viewpoint of his algorithm, indistinguishable from
-normal DNS traffic. Details of this are given in section \ref{probencode}.
-
 Due to the weaknesses listed above, it is clear that a new approach is
-necessary that detects DNS tunnels in a zero-day situation and without the known 
+necessary that detects DNS tunnels in a zero-day situation and without the known
 weakness involving character frequency and probabilistic encoding. This work
 proposes, and demonstrates the effectiveness of, a method of detecting DNS
 tunnels that meets these requirements.
@@ -269,7 +257,7 @@ specification indicates the TCP should be used if the response data exceeds 512
 bytes or during a zone transfer\cite{rfc1035}. DNSSEC (Domain Name System
 Security Extensions), due to the fact that it requires a signature of
 authenticity for all responses, will often cause the response to
-require TCP\cite{rfc4034}. 
+require TCP\cite{rfc4034}.
 % http://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml
 Because there is no \emph{requirement} for when
 TCP be used, some resolvers may be implemented to use TCP for all responses as
@@ -291,7 +279,7 @@ queries that are destined for the Internet (as opposed to the proxy) are
 typically dropped by the
 firewall in this type of configuration. The DNS proxy server operates in
 \emph{recursive mode}, which means that if a question is asked of it to which
-it does not know the answer, the proxy server will then query for the answer (by 
+it does not know the answer, the proxy server will then query for the answer (by
 issuing its own query to the global DNS system) and then respond to the initial
 request using this response.
 
@@ -309,7 +297,7 @@ as low as one minute, while for others a considerably longer (months) may be
 appropriate.
 
 This proxy architecture removes some naive operation modes for DNS tunnels
-that will be discussed in in more detail in \ref{dnstunnels.types.raw}, but does 
+that will be discussed in in more detail in \ref{dnstunnels.types.raw}, but does
 not offer any protection against the more sophisticated forms of DNS tunnels.
 
 \section{Covert Channels}
@@ -352,8 +340,8 @@ is being sent before a full window has been accumulated. The TCP PUSH flag
 is used, for example, during an SSH connection in order to provide
 interactivity. Timing channels, or any channel that relies on modifying normal
 system traffic instead of generating their own traffic, by their nature, are
-unable to support real time data transfer. This is because they need to wait for 
-a system packet in order to send their data, and if the system goes for a period 
+unable to support real time data transfer. This is because they need to wait for
+a system packet in order to send their data, and if the system goes for a period
 of time without sending data then the covert channel must wait as well.
 
 \section{DNS Tunnels}
@@ -368,7 +356,7 @@ conforming.
 Raw DNS tunnels do not attempt to mimic or conform to the DNS
 specifications, and simply attempt to utilize the fact that UDP port 53 is
 often left open in firewalls. Raw tunnels attempt to exploit this by
-transmitting arbitrary traffic using UDP port 53 packets with arbitrary payload. 
+transmitting arbitrary traffic using UDP port 53 packets with arbitrary payload.
 This is the most efficient exploitation of the ubiquity of DNS as it incurs the
 lowest amount of overhead, both computationally and in terms of network
 throughput. The trade off for this efficiency is that it is the least
@@ -378,7 +366,7 @@ dedicated DNS server, raw DNS tunnels will fail to operate as expected. This is
 because when the UDP port 53 traffic is redirected to the proxy, the DNS server
 will attempt to interpret the arbitrary payload as a DNS packet and will likely
 fail. When it fails, it will drop the packet thereby preventing all raw UDP
-port 53 communication. Because these types of tunnels are effectively blocked by 
+port 53 communication. Because these types of tunnels are effectively blocked by
 standard firewall and proxy practises, detection of these tunnels is not
 considered in this work.
 
@@ -398,7 +386,7 @@ levels of government and industry.
 Conforming DNS tunnels operate by embedding the data for transmission into the
 query string and the response and require a modified, non-conforming, DNS
 server on one end of the connection and a piece of software on the client end.
-Typically these types of DNS tunnels have one endpoint that is controlled by the 
+Typically these types of DNS tunnels have one endpoint that is controlled by the
 tunnel user, with that controlled endpoint running dedicated server software
 that. The client and server software is responsible for transforming arbitrary
 information into DNS queries, and for translating DNS responses back into the
@@ -442,7 +430,7 @@ solution.
 
 All of the above tools utilize encoding and decoding mechanisms that would
 successfully propagate through a proxy server, at the cost of the fact
-that the tunnel applications have to generate their own traffic. PSUDP, 
+that the tunnel applications have to generate their own traffic. PSUDP,
 proposed by Kenton Born, aims to remove the latter requirement by creating slack space
 within an existing DNS packets at the UDP transport layer. He proposes two ways
 of creating this slack space: naively placing it at the end of the packet, and
@@ -567,6 +555,20 @@ the character frequency analysis proposed in one of the Born's previous
 publications. If a DNS tunnel can be crafted such that its character frequencies
 are distributed sufficiently close to those of legitimate DNS names, then it is
 possible to hide a DNS tunnel from this type of analysis.
+
+A weakness of the approach proposed by Born is that it relies on the assumption
+that DNS tunnel traffic \emph{necessarily} has a character frequency
+distribution that is different from that of normal DNS queries. This assumption
+is not necessarily true, and a proof-of-concept application
+was developed that demonstrates this fact. The tool performs a
+\emph{probabilistic encoding} that takes an arbitrary data source and encodes
+it into a stream of characters that conforms to a given distribution. This tool
+can be used to modify the output of any DNS tunnel application so that their
+output conforms to the distribution that Born found for normal DNS traffic (or
+any other distribution, for that matter). By
+utilizing this transformation, Born's approach fails to detect the DNS traffic
+as it becomes, from the viewpoint of his algorithm, indistinguishable from
+normal DNS traffic. Details of this are given in section \ref{probencode}.
 
 (Butler, 2011)\cite{Butler2011} demonstrates a way of quantitatively analyzing
 covert communication channels with particular focus on DNS covert channels. It
@@ -694,7 +696,7 @@ radius $r$ where $r$ is the maximum desired distance. By doing this, it is
 possible for a tunnel to fit within the neural network's definition of normal
 and to pass by undetected.
 
-Jeffrey Guy blogged in 2009 about visualization as an aid for detecting DNS
+Jeffrey Guy\cite{Guy2009} blogged in 2009 about visualization as an aid for detecting DNS
 tunnels by looking at frequency and request/DNS name length plotted together. In
 the concluding portions of the article the author mentions briefly, and in
 passing, that the count of the number of different host names per domain could
@@ -705,7 +707,7 @@ Static signatures exist for at least three common network anomaly detection
 engines (Snort\cite{Chamberland2009.snort_iodine},
 Proventia\cite{Proventia2013.ips_tunnel}, and TippingPoint\footnote{TippingPoint
 does not make information about its filters available as public information,
-however correspondence with a TippingPoint user revealed that filters 9932 and
+however a personal correspondence with a TippingPoint user revealed that filters 9932 and
 9938 trigger on the application data contained in DNS packets generated by
 Ozymandns.}) engines, with others likely offering similar functionality. It is
 important to note that these filters and rules do not trigger on all DNS
@@ -817,12 +819,12 @@ or subdomains.
 
 \newpage
 % ==============================================================================
-% The problem statement should state the problem, and give context as to its 
+% The problem statement should state the problem, and give context as to its
 % importance. It should explain the problem in terms of the information covered
-% in the background. It should set the benchmarks for determining success or 
-% failure of the new method, ideally in terms of a comparison to an existing 
-% method, or the ability to pass a certain statistical test (desired traffic 
-% should be picked out compared to real-world traffic with some reliability 
+% in the background. It should set the benchmarks for determining success or
+% failure of the new method, ideally in terms of a comparison to an existing
+% method, or the ability to pass a certain statistical test (desired traffic
+% should be picked out compared to real-world traffic with some reliability
 % measure).
 % ==============================================================================
 \chapter{Problem Statement}
@@ -861,6 +863,7 @@ Any detection that may occur postmortem would not be
 able to alert to the threat in an adequate time frame to stop the attack in
 progress. This tunnel would have the following traits:
 
+\label{supertunnel}
 \begin{enumerate}
 \item All of its DNS packets would conform to all appropriate DNS RFCs.
 \item Its queries would be chosen such that the character frequency distribution
@@ -872,7 +875,7 @@ matches benign DNS queries (to evade \cite{Karasaridis2006} and \cite{SANS2013})
 
 Item one is already demonstrated in practise by most of the tunnelling
 applications available, and item two is shown to be possible in section
-\ref{probencode}. Item three is easily accomplished by simply splitting queries based on a statistical model of the desired lengths, and item four will be shown in section \ref{querydistance} to approximately follow from item two based on empirical measurements.
+\ref{probencode}. Item three is easily accomplished by simply splitting queries based on a statistical model of the desired lengths, and item four will be shown in section \ref{querydistance} to approximately follow from item two based on empirical measurements. TODO Actually show this?
 
 \section{Solution Evaluation Criteria}
 The objectives that must be met for an approach to have successfully solved the problem posed in section \ref{briefproblem} are as follows:
@@ -888,19 +891,80 @@ hardware.
 
 The proposed approach will be evaluated against these criteria to determine
 whether or not it can be considered an improvement on the state of the art for
-this type of detection.
+this type of detection. Items 1 and 3 in the list of criteria require additional quantification, however the quantification criteria are different for each of the classes of tests. Details will be given in the sections \ref{existingtest} and \ref{weaknesstest} on how detection methods will be scored for their respective tests.
 
 \chapter{Proposed Detection Method}
 \label{datameasurement}
 
 The method proposed in this work examines the information theoretical properties of the
 DNS queries to each subdomain, thus retaining the flexibility to filter and
-alert per domain as opposed to more generally on the set of all DNS queries. The tools developed to test this approach utilize full packet data for its analysis, but can be modified to use name server query logs (as were used in \cite{Romana2007}) or other sources of query information. The prototype software is easily capable of running at greater than gigabit speed on inexpensive, off the shelf, hardware making this approach inexpensive to deploy on smaller networks or in resource constrained situations.
+alert per domain as opposed to more generally on the set of all DNS queries. The tools developed to test this approach utilize full packet data for its analysis, but can be modified to use name server query logs (as were used in \cite{Romana2007}) or other sources of query information. The prototype software is easily capable of running at greater than gigabit speed on inexpensive, off the shelf, hardware making this approach practical and uncomplicated to deploy on smaller networks or in resource constrained situations. Deployment in large environments is similarly straight forward.
 
-\chapter{Demonstration of Existing Weaknesses}
-This section will demonstrate that the weaknesses listed in section \ref{litsummary} are in fact exploitable by software and are not simply theoretical in nature.
+\section{Theoretical Assumptions}
+The detection approach proposed in this work makes certain assumptions about the nature of DNS tunnels in order to effectively detect them. The primary assumption made is that DNS tunnels move more data than a normal DNS subdomain, with a very particular meaning of \emph{data} that goes beyond simply counting bytes or the number of queries. The concept of the amount of data moved under a DNS domain invovles considering the entropy of the queries as a whole, and not the characters that make up a query.
 
-\section{Probabilistic Encoding}
+\section{Implementation}
+TODO Flesh out
+
+\chapter{Evaluation Criteria and Testing Methodology}
+
+\section{Detailed Testing Methodology}
+A collection of tests will be run on several detection methods, emphasizing the performance of this work's proposed method when compared to existing methods from the literature, in several situations. The detection methods chosen for comparison is composed of the $n$-gram detection proposed by Born\cite{Born2010.cfa}, the use of \emph{gzip} on domain and subdomain packet data as proposed by Paxson\cite{Paxson2011}, and a naive approach that simply measure the volume (in bytes and number) of packets per domain/subdomain. The collection of methods will be put through several tests in an attempt to demonstrate their performance in average (using existing implementations) and worst case scenarios.
+
+These detection methods were chosen for the following reasons:
+
+\begin{itemize}
+\item Born's approach is chosen because it is well defined and was the most prevalent approach found during the literature search.
+\item Paxson's appriach is chosen beycase it involves looking at data that is very similar to the approach outlined in section \ref{datameasurement}, but makes use of different methods for measuring the data throughput.
+\item The naive approach is chosen to illustrate that simple volume of queries is a highly inadequate approach, and that more sophisticated approach can perform considerably better.
+\end{itemize}
+
+All of the tests involving traffic generation will be performed in a virutal environment, with technical configuration and testing details given in section \ref{testingsetup}.
+
+\subsection{Determining a Baseline}
+\label{baselinetest}
+Through cooperation with Merlin, an educational internet service provider in Manitoba, DNS traffic was collected over a period from Thursday November 4 2010 until Friday November 26 including over one billion DNS packets. The hosts responsible for the DNS traffic observed include several dozen school divisions totalling tens of thousands of individual computers. The capture includes just over one billion packets destined to, or sourced form, UDP port 53 (the standard DNS port). Not all packets are valid DNS, however, however more information on the properties of the sample can be found in \ref{capturestats}.
+
+This capture of DNS traffic will be used to determine the baseline behaviour of normal, benign DNS domains such as \texttt{google.com}, \texttt{yahoo.com}, and other large commonly used domains. This dataset will also be used to give context to the results obtained by the detection approaches when run on the synthetically generated tunnel traffic. It is important to note that even if one method picks out the synthetic tunnels more clearly than others, all that matters in the end is that the tunnels are distinguishable from the background noise.
+
+\subsection{Existing Implementation Detection}
+\label{existingtest}
+This test will involve the two hosts communicating at varying throughput rates using the existing DNS tunnel implementations. The throughput rates will scale from as little as several bytes per second, to several megabytes (or as high as the tunnel applications can support) per second. The wide range of throughputs used is done to give an indication of how the detection methods scale with throughput speed.
+
+The existing implementations chosen for testing in this section are Iodine\cite{iodinesrc}, DNScat\cite{dnscatsrc}, and DNS2TCP\cite{dns2tcpsrc}. Iodine is chosen due to the fact that it provides a full VPN solution without additional work by the user. DNScat is chosen due to being written in Java and so runs on multiple platforms\footnote{DNScat will run on any platform that supports Java 1.4 or later\ref{dnscatsrc}} without the need for a compiler or other complex dependencies that the user must obtain. DNS2TCP is chosen since it does not require root access, and is written in C indicating potentially better throughput than other mechanisms.
+
+The detection results of each of the approaches on the existing tunneling applications is of value to those wishing to identify uses of DNS tunneling currently in the wild. A method will be said to successfuly satisfy criteria 1 if it has a false-alarm rate of no more than one percent, and a detection rate of greater than ninety percent. A method will be said to satisfy criteria three if it can process packets are one gigabit of DNS throughput or faster. It is important to note that even on very busy links, it is unlikely that there is a consistent full gigabit of DNS traffic for processing due to caching and the nature of DNS.
+
+\subsection{Demonstration of Existing Weaknesses}
+\label{weaknesstest}
+The tests in this section will demonstrate that the weaknesses listed in section \ref{litsummary} are in fact exploitable by software and are not simply theoretical in nature. For each of the detection approaches chosen for evaluation, a worst-case scnenario will be constructed involving queries designed to circumvent detection. All detection methods will be run against each worst-cast scenario (including the ones that do not apply directly to it).
+
+For the tests in this section, a tool will be used that generates queries according to potentially more complicated rules that would be difficult to integrate into existing solutions. The implementation details for this tool are given in section \ref{customdns}.
+
+Because of the nature of the tests performed in this section, requiring successful detection of a high percentage of the tunneled traffic is unreasonable. Instead, a detection method will be said to sastisfy critera 1 if it is able to detect \emph{any} of the tunnels in its own worst-case scenario test. Since the methods will not have changed, criteria 3 does not need to be evaluated here as the results from the existing implementation testing will be used.
+
+%Iodine
+%* S2C = 300 K/s
+%* C2S = 120 K/s
+%DNS2TCP
+%* S2C = 1.05 M/s
+%* C2S = 300 K/s
+%DNScat
+%* S2C = 1.43 K/s
+%* C2S = 460 K/s
+
+\begin{appendices}
+\chapter{Properties of the Network Capture}
+\label{capturestats}
+
+\chapter{Testing Software and Scripts}
+\section{Custom DNS Tunnel Endpoint Simulator}
+\label{customdns}
+
+\chapter{Testing Environment}
+\label{testingsetup}
+
+\chapter{Probabilistic Encoding}
 \label{probencode}
 Several detection methods in the literature involve examining the character distribution in the queries, or responses, of DNS packets. These approaches compare the distributions obtained from the traffic being analyzed, and compare them to a known distribution that can be considered normal. If there is a sufficiently significant measurable difference, then the packet is flagged as anomalous.
 
@@ -908,7 +972,7 @@ If it were possible for a DNS tunnel to encode its output in order to match the 
 
 A proof-of-concept tool was written in C that performs precisely this task. The tool takes, as input, what it assumes to be a high entropy source\footnote{Since any source can be used to produce a high entropy source through encryption or compression, this is considered a safe assumption and limitation.} and a configuration file that describes the desired output distribution.
 
-\subsubsection{Sample Encoding}
+\section{Sample Encoding}
 A sample encoding is given using the english character frequency distribution with the character distribution table used given in Table \ref{TABLE_unigrams}. In order to ensure that interested parties can verify this output, the source high-entropy data is contained in Table \ref{TABLE_encodingsource}. A data matrix image of the same base64 encoding is also given in Figure \ref{FIGURE_encodingsource}. This can be converted back to the original source via the standard Unix command line tool \emph{base64}. The output of the encoder using english character frequencies and the given input data is shown in Table \ref{TABLE_encodingoutput-unigram} which is clearly not english to any human observer or any analysis tool with knowledge of English di- and tri- gram frequency information.
 
 \begin{table}
@@ -978,22 +1042,28 @@ hdreeesgopesuoamyufiolisx esrrsloaeewtse"
 
 Analyzing the frequencies of the output shows that it closely approximates english character frequencies. A larger sample of random data (one hundred thousand bytes) was also encoded, and its output analyzed as well. The small sample, the large sample, and actual english character frequencies are displayed together in figures \ref{FIGURE_frequencies-bytop} and \ref{FIGURE_frequencies-bychar}. As is evident from the combined plots of the various distributions, there does not exist a clear distinction between them and thus it becomes very difficult to perform automated classification when information is encoded using this tool.
 
+\newpage
+
+\begin{landscape}
 \begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{figures/frequencies-bychar.pdf}
+\includegraphics[width=1.15\textwidth]{figures/plots_unigram.pdf}
 \caption[Plot of character frequencies by frequency]{The character frequencies of the small and large encoded samples, as well as the English target distribution sorted by character.}
 \label{FIGURE_frequencies-bytop}
 \end{figure}
+\end{landscape}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.9\textwidth]{figures/frequencies-bytop.pdf}
-\caption[Plot of character frequencies by character]{The character frequencies of the small and large encoded samples, as well as the English target distribution sorted by frequency.}
-\label{FIGURE_frequencies-bychar}
-\end{figure}
+\newpage
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.9\textwidth]{figures/frequencies-bytop.pdf}
+%\caption[Plot of character frequencies by character]{The character frequencies of the small and large encoded samples, as well as the English target distribution sorted by frequency.}
+%\label{FIGURE_frequencies-bychar}
+%\end{figure}
 
 \subsubsection{Technical Details}
-The probabilistic encoder is open-source and freely available, licensed under the Mozilla Public License version 2 which is GPL compatible. The source code is available at \url{https://www.riebart.ca/hg/probcode} for download and use under the MPL2 license terms. The source code compiles on Unix and other POSIX based systems sych as Cygwin on Windows.
+The probabilistic encoder is open-source and freely available, licensed under the Mozilla Public License version 2 which is GPL compatible. The source code is available at \cite{probcodesrc} for download and use under the MPL2 license terms. The source code compiles on Unix and other POSIX based systems sych as Cygwin on Windows.
 
 The encoding and decoding processes can be broken up into two steps; probability distribution analysis and then the actual conversion. The analysis of the distribution is the same for both the encoding and decoding operations, however the encoding operation is somewhat more involved than the decoding operation from an algorithmic point of view.
 
@@ -1001,7 +1071,7 @@ The probability distribution is analyzed in order to map each element of the dis
 
 The mapping from symbol to bit string is done by sorting the distribution from most to least frequent, and then selecting a shortest available bit string of a length that has an expected occurrence rate not less than the symbol's occurrence rate in the output distribution. For example, the bit string to symbol mapping for the English unigram encoding sample is given in Table \ref{TABLE_unigrammapping} along with the approximate frequency of the letters in English text.
 
-Observe that it is possible to make a tradeoff between encoding accuracy (that is, how accurately the output matches the desired distribution) and encoding efficiency (that is, the ratio between output and input size with higher ratios indicating a less efficient encoding) by tuning the bit string mapping. More accurate mappings result from choosing shorter bit strings (Table \ref{TABLE_unigrammapping} chooses the shortest possible bit string mappings and achieves an efficency factor of approximately 3.3) with more efficient mappings sacrificing accuracy for efficiency. Figure \ref{FIGURE_encoding-accvseff} shows the frequencies of the English target distribution along with the most efficient encoding and the most accurate encoding. The efficient coding in that figure achieves a factor of 
+Observe that it is possible to make a tradeoff between encoding accuracy (that is, how accurately the output matches the desired distribution) and encoding efficiency (that is, the ratio between output and input size with higher ratios indicating a less efficient encoding) by tuning the bit string mapping. More accurate mappings result from choosing shorter bit strings (Table \ref{TABLE_unigrammapping} chooses the shortest possible bit string mappings and achieves an efficency factor of approximately 3.3) with more efficient mappings sacrificing accuracy for efficiency. Figure \ref{FIGURE_encoding-accvseff} shows the frequencies of the English target distribution along with the most efficient encoding and the most accurate encoding. The efficient coding in that figure achieves a factor of
 
 Once the mapping has been built, and the various lookup tables built, the encoding or decoding process can begin. For encoding, a table is maintained that keeps track of how many times each symbol in the desired distribution has been output. The purpose of this table is to facilitate the greedy selection of symbols in order to ensure that one symbol is not chosen more often than is necessary and that those symbols that are farthest from meeting their quota in the output stream get preferential selection when the input bits match their mapping.
 
@@ -1042,24 +1112,22 @@ z&0000    &0.000651466\\
 \label{TABLE_unigrammapping}
 \end{table}
 
-
-\section{Euclidean Distance Between Queries}
-\label{querydistance}
+\end{appendices}
 
 \newpage
-%\nocite{*} 
+%\nocite{*}
 %\printbibliography
 \bibliography{../Reference/bibliography}{}
 
 % \chapter{Problem Statement}
-% 
+%
 % As networks increase in capacity and more applications are producing traffic
 % across the same network connection, the heterogeneity of the traffic on these
 % links is increasing. With this increasing diversity in network traffic comes
 % an
 % ever widening range of acceptable behaviour patterns which results in a very
 % hostile and complicated environment for anomaly detection algorithms.
-% 
+%
 % The goal of this research is to investigate the feasibility of detecting DNS
 % tunnels in near real time at high throughput on a complex network link. This
 % detection method should also be robust against known methods of avoiding
@@ -1072,7 +1140,7 @@ z&0000    &0.000651466\\
 % of approximately 2.5Mbps which translates into approximately fifty megabytes for
 % a three minute video. If a average person watches four such videos in a day,
 % then ten thousand clients can produce two terabytes of traffic in a day.}.
-% 
+%
 % Included in this is data generated by hundreds, if not thousands, of unique
 % applications including web browsers, operating systems, video games,
 % communication programs, office programs and machine-to-machine communications.
@@ -1081,7 +1149,7 @@ z&0000    &0.000651466\\
 % type of traffic from each application has its own specific pattern that
 % describes the traffic it produces under normal circumstances and deviations from
 % this pattern contain important information.
-% 
+%
 % The problem of identifying what portions of the data are either malicious or
 % otherwise abnormal becomes one of both scale and discrimination. When looking at
 % network links sufficiently busy to supply enough information for analysis, there
@@ -1090,13 +1158,13 @@ z&0000    &0.000651466\\
 % events\footnote{A DNS tunnel, for example, can be as few as ten to twenty
 % packets within billions over a day.} without incurring a large number of false
 % positive is essential for an effective detection method.
-% 
+%
 % Covert communication channels can fall into the category of a 'needle in a hay
 % stack', or they can be very obvious but this depends on, primarily, how much
 % data they are moving. The more data that is being moved across a covert channel,
 % the more likely it is to show up as an anomaly due to the number of packets and
 % the proportion of the total traffic it represents.
-% 
+%
 % Covert channels can be formed over any existing protocol or messaging system,
 % but need not require one. One example of a covert channel that does not use
 % existing protocols or data transmission mechanisms is called a \emph{timing
@@ -1108,8 +1176,8 @@ z&0000    &0.000651466\\
 % the number of devices performing the analysis on the network, the point at which
 % the interception is done needs to be moved closer to the centre of the network.
 % Throughput on a given link increase rapidly as the chosen link gets closer to
-% the centre of the network, due to aggregation of traffic. 
-% 
+% the centre of the network, due to aggregation of traffic.
+%
 % Sifting through gigabits of traffic becomes a very computationally expensive
 % problem; one which is normally solved by applying more, or specialized,
 % hardware\footnote{See proprietary solutions, such as those offered by
@@ -1117,6 +1185,6 @@ z&0000    &0.000651466\\
 % FPGAs to improve performance. Other vendors, such as Wedge Networks products,
 % improve performance by exploiting the ability to perform portions of its
 % workload in parallel and add more commodity processors.}. In order to combat
-% this inevitable march of requirements, 
+% this inevitable march of requirements,
 
 \end{document}

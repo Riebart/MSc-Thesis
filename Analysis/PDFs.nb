@@ -1,0 +1,694 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     30965,        685]
+NotebookOptionsPosition[     30382,        661]
+NotebookOutlinePosition[     30725,        676]
+CellTagsIndexPosition[     30682,        673]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{"Needs", "[", "\"\<PlotLegends`\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pdfs", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{"Import", "[", "\"\<pdfs.csv\>\"", "]"}], ",", "27"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pdfs2", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Sort", "[", 
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Transpose", "[", "#", "]"}], "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Transpose", "[", "#", "]"}], "[", 
+            RowBox[{"[", "2", "]"}], "]"}], "/", 
+           RowBox[{"Total", "[", 
+            RowBox[{
+             RowBox[{"Transpose", "[", "#", "]"}], "[", 
+             RowBox[{"[", "2", "]"}], "]"}], "]"}]}]}], "}"}], "]"}], "]"}], 
+      "&"}], ",", "pdfs"}], "]"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.5819622071828165`*^9, 3.581962231809946*^9}}],
+
+Cell[BoxData["\<\"D:\\\\Documents\\\\Projects\\\\Thesis\\\\Analysis\"\>"], \
+"Output",
+ CellChangeTimes->{{3.58196223875983*^9, 3.5819622586753607`*^9}, 
+   3.581962471193371*^9, 3.581962912967518*^9, 3.581962988507121*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      FractionBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"Transpose", "[", "#", "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "-", 
+        RowBox[{
+         RowBox[{"Transpose", "[", 
+          RowBox[{"pdfs2", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "]"}], "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], 
+       RowBox[{
+        RowBox[{"Transpose", "[", 
+         RowBox[{"pdfs2", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}]], "&"}], ",", "pdfs2"}], "]"}], ",", 
+   RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+   RowBox[{"PlotStyle", "\[Rule]", "Thick"}], ",", 
+   RowBox[{"ImageSize", "\[Rule]", "700"}], ",", 
+   RowBox[{"PlotLegend", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+     "\"\<Original\>\"", ",", 
+      "\"\<\!\(\*SuperscriptBox[\(10\), \(3\)]\) bytes\>\"", ",", 
+      "\"\<\!\(\*SuperscriptBox[\(10\), \(4\)]\) bytes\>\"", ",", 
+      "\"\<\!\(\*SuperscriptBox[\(10\), \(5\)]\) bytes\>\"", ",", 
+      "\"\<\!\(\*SuperscriptBox[\(10\), \(6\)]\) bytes\>\"", ",", 
+      "\"\<\!\(\*SuperscriptBox[\(10\), \(7\)]\) bytes\>\"", ",", 
+      "\"\<Adjusted \!\(\*SuperscriptBox[\(10\), \(7\)]\)\>\"", ",", 
+      "\"\<\!\(\*SuperscriptBox[\(10\), \(6\)]\) w/ Adjusted\>\""}], "}"}]}], 
+   ",", 
+   RowBox[{"LegendSize", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "0.15"}], "}"}]}], ",", 
+   RowBox[{"LegendOrientation", "\[Rule]", "Horizontal"}], ",", 
+   RowBox[{"AxesLabel", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Character\>\"", ",", "\"\<Relative error\>\""}], "}"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5819501517486315`*^9, 3.5819502678563876`*^9}, {
+  3.5819503099927435`*^9, 3.581950358802947*^9}, {3.5819505415451717`*^9, 
+  3.5819505483450365`*^9}, {3.581950899085614*^9, 3.5819509250309114`*^9}, {
+  3.5819509574890366`*^9, 3.5819509915083632`*^9}, {3.581951033067642*^9, 
+  3.5819510546383834`*^9}, {3.5819511285917826`*^9, 3.581951137599928*^9}, {
+  3.581961980939061*^9, 3.581961996524042*^9}, {3.5819622674854803`*^9, 
+  3.5819622711199417`*^9}, {3.581962918085168*^9, 3.5819629213765864`*^9}, {
+  3.581962991874546*^9, 3.581962995398994*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    GraphicsBox[{{}, {}, 
+      {Hue[0.67, 0.6, 0.6], Thickness[Large], LineBox[CompressedData["
+1:eJxdx8sKQFAYReE/I0MDA8UA6SRJ7tcBz+ARlLFXP4+AlDpr1W73Rce1n5aI
++M/e/9KrmG0mbdiBXdiDAziEYziBFZzCGZzDBVzCFVzDDdzCHdzDAzzCEzzD
+y+8bCqYNkg==
+        "]]}, 
+      {Hue[0.9060679774997897, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7JfcFGsLXbBxP1TAYeOv7vs372y2h3A5HEp1
+fGu6ODZA5QUcVFuPL00uhKkXcSgL7jVsfrAZypdwWL1jQmNn3BaofhkHQ58a
+NtuDO6DyCg5vpLX8V0RvhcorOfwWEjxq5r0TKq/icPDvg2nTuWDyag6Mt9X6
+98XvhfI1HJo9SoTnlG6Cqtdy4F/FsKikA+ZeHQfJVZ+kn5XA3KvnIPdVlqdx
+IYxv4MD7apHKx00w/YYOQlIzljapwNxr5KBvoxj++hDMPGOHR6ecb+5SgLnH
+xEH/KvcJxxWboHxTh0OPD8nrXIaFh5nD6WeFr9Yt2AaVN3eYmBUhMP00zHwL
+B8P5k6XjLmyE8i0dope6WDYrbYfqt3L4fbV1S4Tcxv0iTcZHC6usHNzCObfv
+/XnIHgDifX8/
+        "]]}, 
+      {Hue[0.1421359549995791, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7NdE7gr8N33pfqiAg5yUgJyK+nJ7CJfD4Ua5
+U+oiG5i8gMOyILX1KRkwvojDjDksf6zPwvgSDmfDHp3suw/TL+Nw6dy3xwET
+lkHlFRxSWre2WfyAySs5uNl+/dRaB5NXcWifcu/EiZkweTWH+WGX54VdXgHl
+azjUWM99vurkEqh6LQee0jkfLUJh6nUc1p7ffpVhN8w9eg43PC677JkC4xs4
+fOJKtV+/H8Y3dJiSFTG/Ox2m38jh2r37EhFvN0P5xg7MSzikN8+FyZs4NJt4
+ABGMb+rw9fZO/kUrYeaZOejFLpVh44G519whq/LqfGY+GN/CQXpbB0NGHEy/
+pYOVXW1u4QaY/60cgs9O/hDVBzPP2sF6ozAQLdgPAMK6fi0=
+        "]]}, 
+      {Hue[0.37820393249936934`, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7L84NOrs/b5wP1TAQfRq8jrZusX2EC6Hg230
+VFf91zB5AYeTP5YHqv6C8UUcbms/vy3+EcaXcMiQmZGu1AzTL+Ow6XUq85Wf
+MHkFh+C5J8QiG2DySg4xrS9PHGZaBJVXcVgpKrrjAFxezYH/auaVZJ8lUL6G
+w97TDJcLzsHM03Jw75TWWNwEU6/jcFhx1wmbVzB5PYd/rCs3S/yA8Q0cmGO5
+JlpywOwzdJioK3bhbQ9Mv5FDvXj6E/uVML6xw0k95zxHuH9MHG5ytRUJwPmm
+DtKW7LKqX2Hmmzmk/lg872AbTN7coaFvt7HAQhjfwiHgRYFjSiaMb+kw7Zfk
+vMl/YfqtHLZumOT8GR5e1g5Fu/89P8q5YD8AKYh9vw==
+        "]]}, 
+      {Hue[0.6142719099991583, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7JNW2XrP4Fu4HyrgwFBY+vd68yJ7CJfDISHv
+WL8JL0xewOHN1Jz+lXC+iEPNxrnrrsP1SzgssT5xxLEVpl/GoYzP4MlZuLyC
+A7urulg7XF7J4f+emtqPcHkVh4OxJ9m2wuXVHIxzc59emwrjazjkCc4+I8sP
+U6/lECewfp12C0xex0Em83vcHrh5eg4Tzt1SXQPnGzjkz3tTnwfnGzpYbT1Y
+Pguu38hht2th/aE+GN/YIW7a0fsI/5g4fH0cv7CkCcY3dZgT3XInEm6emYOi
+9AT9F3DzzB2+ZuXObIbrt3AQd9ZNEIXLWzqoB/uVPILrt3LwPWzLmCsA41s7
+RG7S7e/8vWA/AMWEeFg=
+        "]]}, 
+      {Hue[0.8503398874989481, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7M95fjHSdlm4HyrgcC0+/+uWfYvsIVwOB6Zk
+0XtfnWHyAg4F+48/N4KrF3Gw0VjtGg3nSzhYv/K5xbUfpl/GwWBW71KEegUH
+T9m6QwJweSUHv4nyn4zh8ioOSwwDp/6H26/m0Prf/lDTQRhfw8Hvxq1+Drh6
+LYe17esvHoer13Foy3j0TQIur+ewfMXJBA8438DB7uL1BgM439ChKmgB8x24
+fiOH5HVfU+MPwfjGDtkvTgv8hsubOHzec8RoOZxv6lC/vUEBYb6ZQ/HDpyGy
+cP+ZOzQu5Zv9Da7ewiFTN9hwJZxv6VB55P3XI44w/VYO65tCb7jDzbN26NDK
+3+oC5AMAO8iARA==
+        "]]}, 
+      {Hue[0.08640786499873876, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7H32O2teL5TdDxVw+P2Wc7bDdnl7CJfDYeqi
+9re2h2Wg8gIOly5P1M3NgqkXcai622XQehfGl3Awib6m9EpHAapfxuF8ToPC
+kXSYvILDkdVGbpvEYPJKDnMyfAS2zoLJqzh0rc4o8pSHyas5nEtTusUbpQzl
+azg8Tff6xcYFU6/lcKeKaYHMGZh7dRwK3aKnLsiHyes58OqEKJ/fCuMbOGTx
+HjyR2AXjGzr4fV5tFQB3j5HDpvvz2z7FKkH5xg4HdQKe7ZKFyZs4hHxW6ODr
+h9ln6rA+eV/6n30w88wc8iZXbQ6ygqk3d3iirf9mvj6Mb+FgXhL81fwkTL+l
+w7TpNaK9uyWh+q0cHpbPWK+1F2aetYP0Wa7Qxbfl9wMA4otuZw==
+        "]]}, 
+      {Hue[0.3224758424985268, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7AO3XUm9yLRoP1TAwd4nWHtO72J7CJfDQVnm
+9noeRpi8gMP89QnT+JlhfBGHgC9PG87A9Us4dN5SKNXug+mXcZi1dZLSPhaY
+vIJDkWSGxWe4vJLDxsQz05/D9as4PBLTNf0It1/NQbtkmuT/2TC+hkPiycO6
+lXD7tRw2abP2voGr13HozHgq4gmX13MInyV/fDKcb+BgffTSLGU439CB5fbb
+035w9xg5HLpwVsh/BYxv7ODytM6lDW6+iQPz6g1SBXC+qUOWvJ/5Xbj7zRzm
+Wb90fQuXN3dYNMf90yU438Kh8Xfkk1i4fZYOe4X2JRb/WwjVb+VwrKll/Xx4
+eFs7SPwRYgh5t3A/AIiTeUs=
+        "]]}},
+     AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+     Axes->True,
+     AxesLabel->{
+       FormBox["\"Character\"", TraditionalForm], 
+       FormBox["\"Relative error\"", TraditionalForm]},
+     AxesOrigin->{0, 0},
+     DisplayFunction:>$DisplayFunction,
+     FormatType->TraditionalForm,
+     ImageSize->700,
+     PlotRange->{{0., 27.}, {-0.09880392371367101, 0.1482464927418567}},
+     PlotRangeClipping->True,
+     PlotRangePadding->{
+       Scaled[0.02], 
+       Scaled[0.02]}], {-1, -0.6180339887498948}, {
+    Left, Bottom}, {2, 1.2360679774997896`}], GraphicsGroupBox[{
+     {GrayLevel[0], 
+      RectangleBox[{-1.15, -0.8680339887498949}, \
+{0.8500000000000001, -0.7180339887498949}]}, 
+     {GrayLevel[1], EdgeForm[{GrayLevel[0], Thickness[0.001]}], 
+      GraphicsGroupBox[{
+        RectangleBox[{-1.2, -0.8180339887498949}, {0.8, -0.6680339887498948}],
+         InsetBox[
+         GraphicsBox[{{{InsetBox[
+              GraphicsBox[{
+                {Hue[0.67, 0.6, 0.6], Thickness[Large], 
+                 LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+               PlotRange->{{0, 1}, {0, 1}}], {0.08, 0.08}, {
+              Left, Bottom}, {1, 1}], 
+             InsetBox["\<\"Original\"\>", {0.58, 1.1600000000000001`}, {0, -1},
+               Automatic, {1, 0}]}, {InsetBox[
+              GraphicsBox[{
+                {Hue[0.9060679774997897, 0.6, 0.6], Thickness[Large], 
+                 LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+               PlotRange->{{0, 1}, {0, 1}}], {1.24, 0.08}, {
+              Left, Bottom}, {1, 1}], 
+             InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \\(3\\)]\\) \
+bytes\"\>", {1.74, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}, {
+             InsetBox[
+              GraphicsBox[{
+                {Hue[0.1421359549995791, 0.6, 0.6], Thickness[Large], 
+                 LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+               PlotRange->{{0, 1}, {0, 1}}], {2.4, 0.08}, {
+              Left, Bottom}, {1, 1}], 
+             InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \\(4\\)]\\) \
+bytes\"\>", {2.9, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}, {
+             InsetBox[
+              GraphicsBox[{
+                {Hue[0.37820393249936846`, 0.6, 0.6], Thickness[Large], 
+                 LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+               PlotRange->{{0, 1}, {0, 1}}], {3.56, 0.08}, {
+              Left, Bottom}, {1, 1}], 
+             InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \\(5\\)]\\) \
+bytes\"\>", {4.0600000000000005`, 1.1600000000000001`}, {0, -1}, Automatic, {
+              1, 0}]}, {InsetBox[
+              GraphicsBox[{
+                {Hue[0.6142719099991583, 0.6, 0.6], Thickness[Large], 
+                 LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+               PlotRange->{{0, 1}, {0, 1}}], {4.72, 0.08}, {
+              Left, Bottom}, {1, 1}], 
+             InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \\(6\\)]\\) \
+bytes\"\>", {5.22, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}, {
+             InsetBox[
+              GraphicsBox[{
+                {Hue[0.8503398874989481, 0.6, 0.6], Thickness[Large], 
+                 LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+               PlotRange->{{0, 1}, {0, 1}}], {5.88, 0.08}, {
+              Left, Bottom}, {1, 1}], 
+             InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \\(7\\)]\\) \
+bytes\"\>", {6.38, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}, {
+             InsetBox[
+              GraphicsBox[{
+                {Hue[0.08640786499873698, 0.6, 0.6], Thickness[Large], 
+                 LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+               PlotRange->{{0, 1}, {0, 1}}], {7.04, 0.08}, {
+              Left, Bottom}, {1, 1}], 
+             InsetBox["\<\"Adjusted \\!\\(\\*SuperscriptBox[\\(10\\), \
+\\(7\\)]\\)\"\>", {7.54, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}, {
+             InsetBox[
+              GraphicsBox[{
+                {Hue[0.3224758424985268, 0.6, 0.6], Thickness[Large], 
+                 LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+               PlotRange->{{0, 1}, {0, 1}}], {8.2, 0.08}, {
+              Left, Bottom}, {1, 1}], 
+             InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \\(6\\)]\\) w/ \
+Adjusted\"\>", {8.7, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}}, {}},
+          AspectRatio->0.075,
+          FormatType->TraditionalForm,
+          
+          PlotRange->{{-0.1, 9.379999999999999}, {-0.1, 
+           2.2600000000000002`}}], {-1.2, -0.8180339887498949}, {
+         Left, Bottom}, {2, 0.15}]}]}}]},
+  AspectRatio->Automatic,
+  Background->None,
+  ColorOutput->Automatic,
+  ImageSize->700.,
+  PlotRange->All]], "Output",
+ CellChangeTimes->{{3.581962261141679*^9, 3.5819622718060293`*^9}, 
+   3.5819624732396307`*^9, 3.5819629226627493`*^9, 3.581962996458129*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    GraphicsBox[{{}, {}, 
+      {Hue[0.67, 0.6, 0.6], Thickness[Large], LineBox[CompressedData["
+1:eJxdx8sKQFAYReE/I0MDA8UA6SRJ7tcBz+ARlLFXP4+AlDpr1W73Rce1n5aI
++M/e/9KrmG0mbdiBXdiDAziEYziBFZzCGZzDBVzCFVzDDdzCHdzDAzzCEzzD
+y+8bCqYNkg==
+        "]]}, 
+      {Hue[0.9060679774997897, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7L84NOrs/b5wP1TAQfRq8jrZusX2EC6Hg230
+VFf91zB5AYeTP5YHqv6C8UUcbms/vy3+EcaXcMiQmZGu1AzTL+Ow6XUq85Wf
+MHkFh+C5J8QiG2DySg4xrS9PHGZaBJVXcVgpKrrjAFxezYH/auaVZJ8lUL6G
+w97TDJcLzsHM03Jw75TWWNwEU6/jcFhx1wmbVzB5PYd/rCs3S/yA8Q0cmGO5
+JlpywOwzdJioK3bhbQ9Mv5FDvXj6E/uVML6xw0k95zxHuH9MHG5ytRUJwPmm
+DtKW7LKqX2Hmmzmk/lg872AbTN7coaFvt7HAQhjfwiHgRYFjSiaMb+kw7Zfk
+vMl/YfqtHLZumOT8GR5e1g5Fu/89P8q5YD8AKYh9vw==
+        "]]}, 
+      {Hue[0.1421359549995791, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7JNW2XrP4Fu4HyrgwFBY+vd68yJ7CJfDISHv
+WL8JL0xewOHN1Jz+lXC+iEPNxrnrrsP1SzgssT5xxLEVpl/GoYzP4MlZuLyC
+A7urulg7XF7J4f+emtqPcHkVh4OxJ9m2wuXVHIxzc59emwrjazjkCc4+I8sP
+U6/lECewfp12C0xex0Em83vcHrh5eg4Tzt1SXQPnGzjkz3tTnwfnGzpYbT1Y
+Pguu38hht2th/aE+GN/YIW7a0fsI/5g4fH0cv7CkCcY3dZgT3XInEm6emYOi
+9AT9F3DzzB2+ZuXObIbrt3AQd9ZNEIXLWzqoB/uVPILrt3LwPWzLmCsA41s7
+RG7S7e/8vWA/AMWEeFg=
+        "]]}, 
+      {Hue[0.37820393249936934`, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7M95fjHSdlm4HyrgcC0+/+uWfYvsIVwOB6Zk
+0XtfnWHyAg4F+48/N4KrF3Gw0VjtGg3nSzhYv/K5xbUfpl/GwWBW71KEegUH
+T9m6QwJweSUHv4nyn4zh8ioOSwwDp/6H26/m0Prf/lDTQRhfw8Hvxq1+Drh6
+LYe17esvHoer13Foy3j0TQIur+ewfMXJBA8438DB7uL1BgM439ChKmgB8x24
+fiOH5HVfU+MPwfjGDtkvTgv8hsubOHzec8RoOZxv6lC/vUEBYb6ZQ/HDpyGy
+cP+ZOzQu5Zv9Da7ewiFTN9hwJZxv6VB55P3XI44w/VYO65tCb7jDzbN26NDK
+3+oC5AMAO8iARA==
+        "]]}, 
+      {Hue[0.6142719099991583, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7Nd0pBmskC/ZDxVwOCzu7MN7o9QewuVwEFug
+sylJFiYv4JDHJcbxBq5exOHBn9vWLYowvoRD79mqCZNuwfTLOBRs4jxgogCT
+V3AwW31doxcur+Sw3eCE3Re4eSoOFfqzdX/dhMmrOeycaCbf8QbG13CYmrFM
+PA2uXsvBXiI4bTXcvToOOYsDPt+Tg8nrOSy+Fij3GG6/gcNZ1odlR+D6DR2q
+pjHFnoHbZ+SQZ73i17pHML6xg9dvsQkWcPeaOHDOShWKvw7jmzpcMpo46Rrc
+fDMHkeMHEm1vw+TNHcpu8gTOgOu3cHhS0Sk2Ha7f0iG4aXllKCdMv5XDItG1
+/Qfh5lk7cAhIiFw2LdkPAPWPc9M=
+        "]]}, 
+      {Hue[0.8503398874989481, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7DVW37DZ/Hz5fqiAQ6bCN+EZGqvsIVwOB8uN
+r90znsLkBRxsZml84NgyBcoXcZi5eEpD0nYYX8JBUnHGvYmaMP0yDjFBmbZH
+4eYrOGguffj7OlxeycHvyErnO9tg+lUcFu0w39EKt1/NoWPZZLYKbRhfw+Gn
+p0XTs8cw87QcbmZK84XbT4fK6zgsWvbiy3m4e/QcHGfNesgD5xs4xEXUhLq/
+gOk3dFj4pHotoxNMv5FD1oc0Li1zmH3GDhfL+3sLbWHyJg6Bx5a4XrWD8U0d
+njm6196G+8/M4eE96dAwR5i8uYNol8pWfR2YeRYOj06v/iUJ12/pkMIoHnH+
+AUy/lUP/qkd732yFudfaYUPGIYHrT5bvBwA8YH95
+        "]]}},
+     AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+     Axes->True,
+     AxesLabel->{
+       FormBox["\"Character\"", TraditionalForm], 
+       FormBox["\"Relative error\"", TraditionalForm]},
+     AxesOrigin->{0, 0},
+     DisplayFunction:>$DisplayFunction,
+     FormatType->TraditionalForm,
+     ImageSize->700,
+     PlotRange->{{0., 27.}, {-0.046694020447987525`, 0.05120211960772354}},
+     PlotRangeClipping->True,
+     PlotRangePadding->{
+       Scaled[0.02], 
+       Scaled[0.02]}], {-1, -0.6180339887498948}, {
+    Left, Bottom}, {2, 1.2360679774997896`}], 
+   GeometricTransformationBox[GraphicsGroupBox[{
+      {GrayLevel[0], 
+       RectangleBox[{-1.15, -0.8680339887498949}, \
+{-0.6499999999999999, -0.6180339887498949}]}, 
+      {GrayLevel[1], EdgeForm[{GrayLevel[0], Thickness[0.001]}], 
+       GraphicsGroupBox[{
+         RectangleBox[{-1.2, -0.8180339887498949}, \
+{-0.7, -0.5680339887498949}], InsetBox[
+          GraphicsBox[{{{InsetBox[
+               GraphicsBox[{
+                 {Hue[0.67, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {0.08, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"Original\"\>", {0.58, 1.1600000000000001`}, {0, -1},
+                Automatic, {1, 0}]}, {InsetBox[
+               GraphicsBox[{
+                 {Hue[0.9060679774997897, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {1.24, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \\(5\\)]\\) \
+bytes\"\>", {1.74, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}, {
+              InsetBox[
+               GraphicsBox[{
+                 {Hue[0.1421359549995791, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {2.4, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \\(6\\)]\\) \
+bytes\"\>", {2.9, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}, {
+              InsetBox[
+               GraphicsBox[{
+                 {Hue[0.37820393249936846`, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {3.56, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \\(7\\)]\\) \
+bytes\"\>", {4.0600000000000005`, 1.1600000000000001`}, {0, -1}, Automatic, {
+               1, 0}]}, {InsetBox[
+               GraphicsBox[{
+                 {Hue[0.6142719099991583, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {4.72, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"Adjusted \\!\\(\\*SuperscriptBox[\\(10\\), \
+\\(7\\)]\\)\"\>", {5.22, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}, {
+              InsetBox[
+               GraphicsBox[{
+                 {Hue[0.8503398874989481, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {5.88, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \\(6\\)]\\) w/ \
+Adjusted\"\>", {6.38, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}}, {}},
+           AspectRatio->0.5,
+           FormatType->TraditionalForm,
+           
+           PlotRange->{{-0.1, 7.059999999999999}, {-0.1, 
+            2.2600000000000002`}}], {-1.2, -0.8180339887498949}, {
+          Left, Bottom}, {0.5, 0.25}]}]}}], {{{{3.7205044476817473`, 0.}, {0.,
+       0.609804681502856}}, {3.318563345562869, -0.30390159462443367`}}}]},
+  AspectRatio->Automatic,
+  Background->None,
+  ColorOutput->Automatic,
+  ImagePadding->{{0., 518.911917}, {1., 371.416682}},
+  ImageSize->700.,
+  PlotRange->{{-1.2114583333333333`, -0.6385416666666666}, \
+{-0.8790339887498949, -0.5570339887498948}},
+  PlotRangePadding->Automatic]], "Input",
+ CellChangeTimes->{{3.581962011162937*^9, 3.581962020165047*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    GraphicsBox[{{}, {}, 
+      {Hue[0.67, 0.6, 0.6], Thickness[Large], LineBox[CompressedData["
+1:eJxdx8sKQFAYReE/I0MDA8UA6SRJ7tcBz+ARlLFXP4+AlDpr1W73Rce1n5aI
++M/e/9KrmG0mbdiBXdiDAziEYziBFZzCGZzDBVzCFVzDDdzCHdzDAzzCEzzD
+y+8bCqYNkg==
+        "]]}, 
+      {Hue[0.9060679774997897, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7L84NOrs/b5wP1TAQfRq8jrZusX2EC6Hg230
+VFf91zB5AYeTP5YHqv6C8UUcbms/vy3+EcaXcMiQmZGu1AzTL+Ow6XUq85Wf
+MHkFh+C5J8QiG2DySg4xrS9PHGZaBJVXcVgpKrrjAFxezYH/auaVZJ8lUL6G
+w97TDJcLzsHM03Jw75TWWNwEU6/jcFhx1wmbVzB5PYd/rCs3S/yA8Q0cmGO5
+JlpywOwzdJioK3bhbQ9Mv5FDvXj6E/uVML6xw0k95zxHuH9MHG5ytRUJwPmm
+DtKW7LKqX2Hmmzmk/lg872AbTN7coaFvt7HAQhjfwiHgRYFjSiaMb+kw7Zfk
+vMl/YfqtHLZumOT8GR5e1g5Fu/89P8q5YD8AKYh9vw==
+        "]]}, 
+      {Hue[0.1421359549995791, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7JNW2XrP4Fu4HyrgwFBY+vd68yJ7CJfDISHv
+WL8JL0xewOHN1Jz+lXC+iEPNxrnrrsP1SzgssT5xxLEVpl/GoYzP4MlZuLyC
+A7urulg7XF7J4f+emtqPcHkVh4OxJ9m2wuXVHIxzc59emwrjazjkCc4+I8sP
+U6/lECewfp12C0xex0Em83vcHrh5eg4Tzt1SXQPnGzjkz3tTnwfnGzpYbT1Y
+Pguu38hht2th/aE+GN/YIW7a0fsI/5g4fH0cv7CkCcY3dZgT3XInEm6emYOi
+9AT9F3DzzB2+ZuXObIbrt3AQd9ZNEIXLWzqoB/uVPILrt3LwPWzLmCsA41s7
+RG7S7e/8vWA/AMWEeFg=
+        "]]}, 
+      {Hue[0.37820393249936934`, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7M95fjHSdlm4HyrgcC0+/+uWfYvsIVwOB6Zk
+0XtfnWHyAg4F+48/N4KrF3Gw0VjtGg3nSzhYv/K5xbUfpl/GwWBW71KEegUH
+T9m6QwJweSUHv4nyn4zh8ioOSwwDp/6H26/m0Prf/lDTQRhfw8Hvxq1+Drh6
+LYe17esvHoer13Foy3j0TQIur+ewfMXJBA8438DB7uL1BgM439ChKmgB8x24
+fiOH5HVfU+MPwfjGDtkvTgv8hsubOHzec8RoOZxv6lC/vUEBYb6ZQ/HDpyGy
+cP+ZOzQu5Zv9Da7ewiFTN9hwJZxv6VB55P3XI44w/VYO65tCb7jDzbN26NDK
+3+oC5AMAO8iARA==
+        "]]}},
+     AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+     Axes->True,
+     AxesLabel->{
+       FormBox["\"Character\"", TraditionalForm], 
+       FormBox["\"Relative error\"", TraditionalForm]},
+     AxesOrigin->{0, 0},
+     DisplayFunction:>$DisplayFunction,
+     FormatType->TraditionalForm,
+     ImageSize->700,
+     PlotRange->{{0., 27.}, {-0.03521900077356046, 0.03964530914246655}},
+     PlotRangeClipping->True,
+     PlotRangePadding->{
+       Scaled[0.02], 
+       Scaled[0.02]}], {-1, -0.6180339887498948}, {
+    Left, Bottom}, {2, 1.2360679774997896`}], 
+   GeometricTransformationBox[GraphicsGroupBox[{
+      {GrayLevel[0], 
+       RectangleBox[{-1.15, -0.8680339887498949}, \
+{-0.6499999999999999, -0.6180339887498949}]}, 
+      {GrayLevel[1], EdgeForm[{GrayLevel[0], Thickness[0.001]}], 
+       GraphicsGroupBox[{
+         RectangleBox[{-1.2, -0.8180339887498949}, \
+{-0.7, -0.5680339887498949}], InsetBox[
+          GraphicsBox[{{{InsetBox[
+               GraphicsBox[{
+                 {Hue[0.67, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {0.08, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"Original\"\>", {0.58, 1.1600000000000001`}, {0, -1},
+                Automatic, {1, 0}]}, {InsetBox[
+               GraphicsBox[{
+                 {Hue[0.9060679774997897, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {1.24, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \\(5\\)]\\) \
+bytes\"\>", {1.74, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}, {
+              InsetBox[
+               GraphicsBox[{
+                 {Hue[0.1421359549995791, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {2.4, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \\(6\\)]\\) \
+bytes\"\>", {2.9, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}, {
+              InsetBox[
+               GraphicsBox[{
+                 {Hue[0.37820393249936846`, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {3.56, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \\(7\\)]\\) \
+bytes\"\>", {4.0600000000000005`, 1.1600000000000001`}, {0, -1}, Automatic, {
+               1, 0}]}}, {}},
+           AspectRatio->0.5,
+           FormatType->TraditionalForm,
+           
+           PlotRange->{{-0.1, 4.739999999999999}, {-0.1, 
+            2.2600000000000002`}}], {-1.2, -0.8180339887498949}, {
+          Left, Bottom}, {0.5, 0.25}]}]}}], {{{{1.7304525684050358`, 0.}, {0.,
+       0.6941712368535898}}, {1.8098949078886355`, -0.22434106541494186`}}}]},
+  AspectRatio->Automatic,
+  Background->None,
+  ColorOutput->Automatic,
+  ImagePadding->{{0., 518.911917}, {1., 371.416682}},
+  ImageSize->700.,
+  PlotRange->{{-1.2114583333333333`, -0.6385416666666666}, \
+{-0.8790339887498949, -0.5570339887498948}},
+  PlotRangePadding->Automatic]], "Input",
+ CellChangeTimes->{{3.581951142239552*^9, 3.581951155491207*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{InsetBox[
+    GraphicsBox[{{}, {}, 
+      {Hue[0.67, 0.6, 0.6], Thickness[Large], LineBox[CompressedData["
+1:eJxdx8sKQFAYReE/I0MDA8UA6SRJ7tcBz+ARlLFXP4+AlDpr1W73Rce1n5aI
++M/e/9KrmG0mbdiBXdiDAziEYziBFZzCGZzDBVzCFVzDDdzCHdzDAzzCEzzD
+y+8bCqYNkg==
+        "]]}, 
+      {Hue[0.9060679774997897, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7L84NOrs/b5wP1TAQfRq8jrZusX2EC6Hg230
+VFf91zB5AYeTP5YHqv6C8UUcbms/vy3+EcaXcMiQmZGu1AzTL+Ow6XUq85Wf
+MHkFh+C5J8QiG2DySg4xrS9PHGZaBJVXcVgpKrrjAFxezYH/auaVZJ8lUL6G
+w97TDJcLzsHM03Jw75TWWNwEU6/jcFhx1wmbVzB5PYd/rCs3S/yA8Q0cmGO5
+JlpywOwzdJioK3bhbQ9Mv5FDvXj6E/uVML6xw0k95zxHuH9MHG5ytRUJwPmm
+DtKW7LKqX2Hmmzmk/lg872AbTN7coaFvt7HAQhjfwiHgRYFjSiaMb+kw7Zfk
+vMl/YfqtHLZumOT8GR5e1g5Fu/89P8q5YD8AKYh9vw==
+        "]]}, 
+      {Hue[0.1421359549995791, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7JNW2XrP4Fu4HyrgwFBY+vd68yJ7CJfDISHv
+WL8JL0xewOHN1Jz+lXC+iEPNxrnrrsP1SzgssT5xxLEVpl/GoYzP4MlZuLyC
+A7urulg7XF7J4f+emtqPcHkVh4OxJ9m2wuXVHIxzc59emwrjazjkCc4+I8sP
+U6/lECewfp12C0xex0Em83vcHrh5eg4Tzt1SXQPnGzjkz3tTnwfnGzpYbT1Y
+Pguu38hht2th/aE+GN/YIW7a0fsI/5g4fH0cv7CkCcY3dZgT3XInEm6emYOi
+9AT9F3DzzB2+ZuXObIbrt3AQd9ZNEIXLWzqoB/uVPILrt3LwPWzLmCsA41s7
+RG7S7e/8vWA/AMWEeFg=
+        "]]}, 
+      {Hue[0.37820393249936934`, 0.6, 0.6], Thickness[Large], 
+       LineBox[CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQEf7M95fjHSdlm4HyrgcC0+/+uWfYvsIVwOB6Zk
+0XtfnWHyAg4F+48/N4KrF3Gw0VjtGg3nSzhYv/K5xbUfpl/GwWBW71KEegUH
+T9m6QwJweSUHv4nyn4zh8ioOSwwDp/6H26/m0Prf/lDTQRhfw8Hvxq1+Drh6
+LYe17esvHoer13Foy3j0TQIur+ewfMXJBA8438DB7uL1BgM439ChKmgB8x24
+fiOH5HVfU+MPwfjGDtkvTgv8hsubOHzec8RoOZxv6lC/vUEBYb6ZQ/HDpyGy
+cP+ZOzQu5Zv9Da7ewiFTN9hwJZxv6VB55P3XI44w/VYO65tCb7jDzbN26NDK
+3+oC5AMAO8iARA==
+        "]]}},
+     AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+     Axes->True,
+     AxesLabel->{
+       FormBox["\"Character\"", TraditionalForm], 
+       FormBox["\"Relative error\"", TraditionalForm]},
+     AxesOrigin->{0, 0},
+     DisplayFunction:>$DisplayFunction,
+     FormatType->TraditionalForm,
+     ImageSize->700,
+     PlotRange->{{0., 27.}, {-0.03521900077356046, 0.03964530914246655}},
+     PlotRangeClipping->True,
+     PlotRangePadding->{
+       Scaled[0.02], 
+       Scaled[0.02]}], {-1, -0.6180339887498948}, {
+    Left, Bottom}, {2, 1.2360679774997896`}], 
+   GeometricTransformationBox[GraphicsGroupBox[{
+      {GrayLevel[0], 
+       RectangleBox[{-1.15, -0.8680339887498949}, \
+{-0.6499999999999999, -0.6180339887498949}]}, 
+      {GrayLevel[1], EdgeForm[{GrayLevel[0], Thickness[0.001]}], 
+       GraphicsGroupBox[{
+         RectangleBox[{-1.2, -0.8180339887498949}, \
+{-0.7, -0.5680339887498949}], InsetBox[
+          GraphicsBox[{{{InsetBox[
+               GraphicsBox[{
+                 {Hue[0.67, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {0.08, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"Original\"\>", {0.58, 1.1600000000000001`}, {0, -1},
+                Automatic, {1, 0}]}, {InsetBox[
+               GraphicsBox[{
+                 {Hue[0.9060679774997897, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {1.24, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \
+\\(5\\)]\\)\"\>", {1.74, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}, {
+              InsetBox[
+               GraphicsBox[{
+                 {Hue[0.1421359549995791, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {2.4, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \
+\\(6\\)]\\)\"\>", {2.9, 1.1600000000000001`}, {0, -1}, Automatic, {1, 0}]}, {
+              InsetBox[
+               GraphicsBox[{
+                 {Hue[0.37820393249936846`, 0.6, 0.6], Thickness[Large], 
+                  LineBox[{{0, 0.5}, {1, 0.5}}]}, {}},
+                PlotRange->{{0, 1}, {0, 1}}], {3.56, 0.08}, {
+               Left, Bottom}, {1, 1}], 
+              InsetBox["\<\"\\!\\(\\*SuperscriptBox[\\(10\\), \
+\\(7\\)]\\)\"\>", {4.0600000000000005`, 1.1600000000000001`}, {0, -1}, 
+               Automatic, {1, 0}]}}, {}},
+           AspectRatio->0.5,
+           FormatType->TraditionalForm,
+           
+           PlotRange->{{-0.1, 4.739999999999999}, {-0.1, 
+            2.2600000000000002`}}], {-1.2, -0.8180339887498949}, {
+          Left, Bottom}, {0.5, 0.25}]}]}}], {{{{1.5751595026811305`, 0.}, {0.,
+       0.7996294310420072}}, {1.71211816099375, -0.19291093915460691`}}}]},
+  AspectRatio->Automatic,
+  Background->None,
+  ColorOutput->Automatic,
+  ImagePadding->{{0., 518.911917}, {1., 371.416682}},
+  ImageSize->700.,
+  PlotRange->{{-1.2114583333333333`, -0.6385416666666666}, \
+{-0.8790339887498949, -0.5570339887498948}},
+  PlotRangePadding->Automatic]], "Input",
+ CellChangeTimes->{{3.5819510584329004`*^9, 3.5819510685591536`*^9}}]
+},
+WindowSize->{1067, 867},
+WindowMargins->{{6, Automatic}, {Automatic, 13}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 1181, 32, 92, "Input",
+ InitializationCell->True],
+Cell[1763, 56, 223, 3, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2023, 64, 2291, 51, 97, "Input"],
+Cell[4317, 117, 8685, 176, 492, "Output"]
+}, Open  ]],
+Cell[13017, 296, 7042, 143, 489, "Input"],
+Cell[20062, 441, 5165, 108, 489, "Input"],
+Cell[25230, 551, 5148, 108, 489, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

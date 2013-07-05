@@ -13,6 +13,8 @@ Warning--entry type for "Chamberland2009.snort_iodine" isn't style-file defined
 --line 936 of file ../Reference/bibliography.bib
 Warning--entry type for "Proventia2013.ips_tunnel" isn't style-file defined
 --line 945 of file ../Reference/bibliography.bib
+Warning--entry type for "Guy2009" isn't style-file defined
+--line 954 of file ../Reference/bibliography.bib
 Warning--entry type for "jhind2009" isn't style-file defined
 --line 963 of file ../Reference/bibliography.bib
 Warning--entry type for "Paxson2011" isn't style-file defined
@@ -29,6 +31,8 @@ Warning--entry type for "psudpsrc" isn't style-file defined
 --line 1017 of file ../Reference/bibliography.bib
 Warning--entry type for "denisesrc" isn't style-file defined
 --line 1027 of file ../Reference/bibliography.bib
+Warning--entry type for "probcodesrc" isn't style-file defined
+--line 1036 of file ../Reference/bibliography.bib
 A bad cross reference---entry "Browne1994"
 refers to entry "conf/ccs/1994", which doesn't exist
 A bad cross reference---entry "Shaffer2008"

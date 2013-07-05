@@ -4,6 +4,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Encoding sample - source (data matrix)}}{36}{figure.6.1}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Plot of character frequencies by frequency}}{37}{figure.6.2}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Plot of character frequencies by character}}{38}{figure.6.3}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {D.1}{\ignorespaces Encoding sample - source (data matrix)}}{45}{figure.1.D.1}
+\contentsline {figure}{\numberline {D.2}{\ignorespaces Plot of character frequencies by frequency}}{47}{figure.1.D.2}
