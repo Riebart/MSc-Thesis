@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.22)  4 JUL 2013 23:40
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.22)  5 AUG 2013 12:50
 entering extended mode
 **D:/Documents/Projects/Thesis/Proposal/proposal.tex
 (D:/Documents/Projects/Thesis/Proposal/proposal.tex
@@ -379,148 +379,167 @@ l.82 \newpage
  [5
 
 ]
+Overfull \hbox (506.57272pt too wide) in paragraph at lines 88--94
+[]\OT1/cmr/m/n/12 and should give a so-lu-tions, and out-come of the ==========
+==================================================================== 
+ []
+
+[6]
 Chapter 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 122.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 117.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 122.
- [6
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 117.
+ [7
 
-] [7] [8] [9]
+] [8] [9] [10]
+Overfull \hbox (345.55588pt too wide) in paragraph at lines 197--199
+[]\OT1/cmr/m/n/12 in this sec-tion. ===========================================
+=================================== 
+ []
+
+[11]
 Chapter 2.
-[10
+[12
 
-] [11] [12] [13] [14] [15] [16] [17]
+]
+Overfull \hbox (24.20552pt too wide) in paragraph at lines 238--249
+\OT1/cmr/m/n/12 http://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg
+-numbers.xml Be-cause there
+ []
+
+[13] [14] [15] [16] [17] [18] [19]
 Chapter 3.
-[18
+[20
 
-] [19] [20] [21]
-Overfull \hbox (4.7239pt too wide) in paragraph at lines 609--629
+] [21] [22] [23]
+
+LaTeX Warning: Reference `tests-probdns' on page 24 undefined on input line 557
+.
+
+[24]
+Overfull \hbox (4.7239pt too wide) in paragraph at lines 605--625
 []\OT1/cmr/m/n/12 (Thomas, 2011)[[]] pro-poses and eval-u-ates the ef-fi-cacy o
 f an FPGA (Field Pro-grammable
  []
 
-[22] [23] [24] [25] [26] [27] [28] [29]
+[25] [26] [27] [28] [29] [30] [31] [32]
 Chapter 4.
-[30
+[33
+
+] [34] [35] [36]
+Chapter 5.
+[37
 
 ]
 
-LaTeX Warning: Reference `querydistance' on page 31 undefined on input line 878
-.
+LaTeX Warning: Reference `datameasurement' on page 38 undefined on input line 9
+74.
 
-[31] [32]
-Chapter 5.
-[33
+[38] [39]
 
-] [34]
-Chapter 6.
-[35
-
-] [36]
-
-LaTeX Warning: Reference `dnscatsrc' on page 37 undefined on input line 934.
+LaTeX Warning: Reference `dnscatsrc' on page 40 undefined on input line 1016.
 
 
-Overfull \hbox (5.9196pt too wide) in paragraph at lines 934--935
+Overfull \hbox (5.9196pt too wide) in paragraph at lines 1011--1020
 []\OT1/cmr/m/n/12 The ex-ist-ing im-ple-men-ta-tions cho-sen for test-ing in th
 is sec-tion are Iodine[[]], DNScat[[]],
  []
 
-[37] [38] [39
+[40] [41] [42
 
 
 ]
 Appendix A.
-[40
-
-]
-Appendix B.
-[41
-
-]
-Appendix C.
-[42
-
-]
-Appendix D.
 [43
 
 ]
-Overfull \hbox (7.03024pt too wide) in paragraph at lines 1008--1008
+Appendix B.
+[44
+
+]
+Appendix C.
+[45
+
+]
+Appendix D.
+[46
+
+]
+Overfull \hbox (7.03024pt too wide) in paragraph at lines 1141--1141
 []\OT1/cmtt/m/n/12 HEzQcP9uxPOzeOB1SfRP+DQ7x3X5dTA1WF3vpcnO5kgLQQEP7xnUrnUy7U8I
 SNdbNQd+8da64+Ci[] 
  []
 
 
-Overfull \hbox (7.03024pt too wide) in paragraph at lines 1008--1008
+Overfull \hbox (7.03024pt too wide) in paragraph at lines 1141--1141
 []\OT1/cmtt/m/n/12 nNBRvu3TRlG0KJvLzb6QDBWqxVfa4VeAU+cSvj+uzoajp2F0jd5/csHxJQlg
 uoeqT76pq8oStoLG[] 
  []
 
 
-Overfull \hbox (7.03024pt too wide) in paragraph at lines 1008--1008
+Overfull \hbox (7.03024pt too wide) in paragraph at lines 1141--1141
 []\OT1/cmtt/m/n/12 3k48PZWuebgweZx5KdxAgUfN7/kvzwBzG7O+9B7J/O8y6BfGz6In0H+LuDCO
 sFqMljljX3SkgJq/[] 
  []
 
-<figures/encoding_source.png, id=510, 782.925pt x 782.925pt>
+<figures/encoding_source.png, id=525, 782.925pt x 782.925pt>
 File: figures/encoding_source.png Graphic file (type png)
 
 <use figures/encoding_source.png>
-Package pdftex.def Info: figures/encoding_source.png used on input line 1015.
+Package pdftex.def Info: figures/encoding_source.png used on input line 1148.
 (pdftex.def)             Requested size: 289.07999pt x 289.0804pt.
 
-Overfull \hbox (7.03024pt too wide) in paragraph at lines 1029--1029
+Overfull \hbox (7.03024pt too wide) in paragraph at lines 1162--1162
 []\OT1/cmtt/m/n/12 " mfeo  hnhaeeeewsao os eewk es fsemroh eeeewthesdre s sol s
 reese ea hrzltse[] 
  []
 
 
-Overfull \hbox (31.73026pt too wide) in paragraph at lines 1029--1029
+Overfull \hbox (31.73026pt too wide) in paragraph at lines 1162--1162
 []\OT1/cmtt/m/n/12 wesrnyemnpaoonef  ht   hsheawnfdemue stntleewth    home esai
 u s feesgealne seaoa[] 
  []
 
 
-Overfull \hbox (19.38025pt too wide) in paragraph at lines 1029--1029
+Overfull \hbox (19.38025pt too wide) in paragraph at lines 1162--1162
 []\OT1/cmtt/m/n/12 hweeeesoltsnahao esde hgmuo weeeeewyl  haoesroo     frmeshti
 eest ewad svikefui[] 
  []
 
 
-Overfull \hbox (19.38025pt too wide) in paragraph at lines 1029--1029
+Overfull \hbox (19.38025pt too wide) in paragraph at lines 1162--1162
 []\OT1/cmtt/m/n/12 hnceslphstestidau eeahl hrosoan wrthaa ft  heabpeeses eeeeew
 rsn    hrlucne ewr[] 
  []
 
 
-LaTeX Warning: Reference `FIGURE_frequencies-bychar' on page 44 undefined on in
-put line 1043.
+LaTeX Warning: Reference `FIGURE_frequencies-bychar' on page 47 undefined on in
+put line 1181.
 
-[44] [45 <D:/Documents/Projects/Thesis/Proposal/figures/encoding_source.png>]
-[46] <figures/plots_unigram.pdf, id=526, 1084.05pt x 921.20964pt>
+[47] [48 <D:/Documents/Projects/Thesis/Proposal/figures/encoding_source.png>]
+[49] <figures/plots_unigram.pdf, id=542, 1084.05pt x 921.20964pt>
 File: figures/plots_unigram.pdf Graphic file (type pdf)
 
 <use figures/plots_unigram.pdf>
-Package pdftex.def Info: figures/plots_unigram.pdf used on input line 1050.
+Package pdftex.def Info: figures/plots_unigram.pdf used on input line 1191.
 (pdftex.def)             Requested size: 531.60765pt x 451.76215pt.
 
 
-LaTeX Warning: Float too large for page by 30.82547pt on input line 1053.
+LaTeX Warning: Float too large for page by 30.82547pt on input line 1194.
 
-[47 <D:/Documents/Projects/Thesis/Proposal/figures/plots_unigram.pdf>]
+[50 <D:/Documents/Projects/Thesis/Proposal/figures/plots_unigram.pdf>]
 
-LaTeX Warning: Reference `FIGURE_encoding-accvseff' on page 48 undefined on inp
-ut line 1074.
+LaTeX Warning: Reference `FIGURE_encoding-accvseff' on page 51 undefined on inp
+ut line 1242.
 
-[48
+[51
 
 
-] [49] [50] (D:\Documents\Projects\Thesis\Proposal\proposal.bbl [51
+] [52] [53] (D:\Documents\Projects\Thesis\Proposal\proposal.bbl [54
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 70--74
@@ -534,7 +553,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--74
 p : / / www . securitywire . com / 2009 / 07 /$
  []
 
-[52]
+[55]
 Missing character: There is no Â in font cmti12!
 Missing character: There is no · in font cmti12!
 
@@ -544,30 +563,30 @@ on\OT1/cmr/m/n/12 , [][]$\OT1/cmtt/m/n/12 http : / / armatum . com / blog / 200
 9 /$
  []
 
-[53] [54])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1190.
- [55]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1190.
+[56] [57])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1368.
+ [58]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1368.
  (D:\Documents\Projects\Thesis\Proposal\proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1190.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1190.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1368.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1368.
 
 Package rerunfilecheck Info: File `proposal.out' has not changed.
-(rerunfilecheck)             Checksum: FF1E1F28F6FF3980C1DC3BCEAAB399CF;2073.
+(rerunfilecheck)             Checksum: EBB0E994487BF594287BE87CAAB6CD4D;2041.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1190.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1368.
  ) 
 Here is how much of TeX's memory you used:
- 6596 strings out of 493921
- 93631 string characters out of 3147276
- 178520 words of memory out of 3000000
- 9649 multiletter control sequences out of 15000+200000
- 14824 words of font info for 57 fonts, out of 3000000 for 9000
+ 6608 strings out of 493921
+ 93766 string characters out of 3147276
+ 178654 words of memory out of 3000000
+ 9655 multiletter control sequences out of 15000+200000
+ 16064 words of font info for 61 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,9n,28p,879b,431s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,9n,28p,310b,431s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{Hfootnote.11} has been referenced but does not ex
 ist, replaced by a fixed one
 
@@ -614,9 +633,9 @@ am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files
 /MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on proposal.pdf (56 pages, 408763 bytes).
+Output written on proposal.pdf (59 pages, 416543 bytes).
 PDF statistics:
- 697 PDF objects out of 1000 (max. 8388607)
- 157 named destinations out of 1000 (max. 500000)
- 251 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 712 PDF objects out of 1000 (max. 8388607)
+ 159 named destinations out of 1000 (max. 500000)
+ 243 words of extra memory for PDF output out of 10000 (max. 10000000)
 

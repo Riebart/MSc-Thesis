@@ -9,22 +9,21 @@
 \BOOKMARK [1][-]{section.3.2}{Non-DNS Related Research}{chapter.3}% 9
 \BOOKMARK [1][-]{section.3.3}{DNS Covert Channel Research}{chapter.3}% 10
 \BOOKMARK [1][-]{section.3.4}{DNS Tunnel Detection Landscape}{chapter.3}% 11
-\BOOKMARK [0][-]{chapter.4}{Problem Statement}{}% 12
+\BOOKMARK [0][-]{chapter.4}{Problem Statement and Evaluation Criteria}{}% 12
 \BOOKMARK [1][-]{section.4.1}{Brief Statement}{chapter.4}% 13
 \BOOKMARK [1][-]{section.4.2}{Detailed Problem Description}{chapter.4}% 14
 \BOOKMARK [1][-]{section.4.3}{Solution Evaluation Criteria}{chapter.4}% 15
-\BOOKMARK [0][-]{chapter.5}{Proposed Detection Method}{}% 16
+\BOOKMARK [0][-]{chapter.5}{Proposed Detection Method and Testing Methodology}{}% 16
 \BOOKMARK [1][-]{section.5.1}{Theoretical Assumptions}{chapter.5}% 17
 \BOOKMARK [1][-]{section.5.2}{Implementation}{chapter.5}% 18
-\BOOKMARK [0][-]{chapter.6}{Evaluation Criteria and Testing Methodology}{}% 19
-\BOOKMARK [1][-]{section.6.1}{Detailed Testing Methodology}{chapter.6}% 20
-\BOOKMARK [2][-]{subsection.6.1.1}{Determining a Baseline}{section.6.1}% 21
-\BOOKMARK [2][-]{subsection.6.1.2}{Existing Implementation Detection}{section.6.1}% 22
-\BOOKMARK [2][-]{subsection.6.1.3}{Demonstration of Existing Weaknesses}{section.6.1}% 23
-\BOOKMARK [0][-]{section*.7}{Appendices}{}% 24
-\BOOKMARK [0][-]{Appendix.1.A}{Properties of the Network Capture}{}% 25
-\BOOKMARK [0][-]{Appendix.1.B}{Testing Software and Scripts}{}% 26
-\BOOKMARK [1][-]{section.1.B.1}{Custom DNS Tunnel Endpoint Simulator}{Appendix.1.B}% 27
-\BOOKMARK [0][-]{Appendix.1.C}{Testing Environment}{}% 28
-\BOOKMARK [0][-]{Appendix.1.D}{Probabilistic Encoding}{}% 29
-\BOOKMARK [1][-]{section.1.D.1}{Sample Encoding}{Appendix.1.D}% 30
+\BOOKMARK [1][-]{section.5.3}{Detailed Testing Methodology}{chapter.5}% 19
+\BOOKMARK [2][-]{subsection.5.3.1}{Determining a Baseline}{section.5.3}% 20
+\BOOKMARK [2][-]{subsection.5.3.2}{Existing Implementation Detection}{section.5.3}% 21
+\BOOKMARK [2][-]{subsection.5.3.3}{Demonstration of Existing Weaknesses}{section.5.3}% 22
+\BOOKMARK [0][-]{section*.7}{Appendices}{}% 23
+\BOOKMARK [0][-]{Appendix.1.A}{Properties of the Network Capture}{}% 24
+\BOOKMARK [0][-]{Appendix.1.B}{Testing Software and Scripts}{}% 25
+\BOOKMARK [1][-]{section.1.B.1}{Custom DNS Tunnel Endpoint Simulator}{Appendix.1.B}% 26
+\BOOKMARK [0][-]{Appendix.1.C}{Testing Environment}{}% 27
+\BOOKMARK [0][-]{Appendix.1.D}{Probabilistic Encoding}{}% 28
+\BOOKMARK [1][-]{section.1.D.1}{Sample Encoding}{Appendix.1.D}% 29
