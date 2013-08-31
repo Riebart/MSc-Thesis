@@ -1,0 +1,85 @@
+*I am going to talk about a novel new way of detecting DNS tunnels using throughput estimation.
+*First, some background:
+<br/>
+*Magic glue. Type in Google...
+<br/>
+*Type in Google get back many ip addresses
+*All kinds of lookups
+<br/>
+*hierarchical. Authoritative name servers
+<br/>
+*TLDs, root servers, home routers, ISPs
+<br/>
+*Now to talk about covert channels.
+*designed to be sneaky
+<br/>
+*Don’t follow RFCs/protocols
+<br/>
+*Get around firewalls/IDS/IPS/etc...
+<br/>
+*Deep magic (timing channels)
+<br/>
+*Existing software: iodine, ozymandns, dns2tcp, and more.
+*Works well to circumvent airport free wifi
+*Requires a ‘special’ end server and a domain. Easy to set up.
+*Contained in Ubuntu repos.
+<br/>
+*All sorts of flavours...
+*Focusing on conforming one
+<br/>
+*bidirectional = exfiltration
+*Full VPN
+<br/>
+*Conforming = difficult to reject without false positives
+<br/>
+*Very tough to pick out
+<br/>
+*Ozymandns, not reliable in the face of protocol changes.
+<br/>
+*Can be tough to do with major DNS servers.
+<br/>
+*TXT records are often abused
+*Blocks some things like Google Apps which uses them legitimately.
+<br/>
+*Took the Alexa top 1-million, built a distribution.
+*Close to English, differs in digrams and trigrams mostly.
+*Assumes tunnels compress and have near-uniform frequencies.
+<br/>
+*Still not complete
+<br/>
+*Measure traffic
+<br/>
+*Instead of abusing it as a general classifier...
+<br/>
+*Length adds more information to our calculation
+<br/>
+*Take some time interval.
+*Depending on link business. Seconds to minutes...
+*NOT entropy of query strings, but entropy of PDF formed by all query strings...
+*Necessary because same query could be very common...
+<br/>
+*Gets us some magical measure of data amount
+<br/>
+*Sort with highest first.
+<br/>
+*Doesn't care about character distribution
+<br/>
+*Length adds to it with entropy
+<br/>
+*Fun things come out when run against real traffic.
+<br/>
+*Talk briefly about PDf encoder PoC
+<br/>
+*DNS for load balancing
+*Hash of images to pick servers
+<br/>
+*Using Iodine
+<br/>
+*Commodity hardware = ~5 Gbits of DNS throughput as implemented
+<br/>
+*MPLv2 license. PoC is stdin-stdout
+<br/>
+*Without data sets with known DNS tunnels, a combined real-world/synthetic approach is necessary for validation.
+<br/>
+*Data exfiltration is a problem.
+<br/>
