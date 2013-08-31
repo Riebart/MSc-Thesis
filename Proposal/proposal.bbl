@@ -7,6 +7,21 @@
 \providecommand{\href}[2]{#2}
 \begin{thebibliography}{10}
 
+\bibitem{isoeic10918-1}
+\emph{{Information technology -- Digital compression and coding of
+  continuous-tone still images: Requirements and guidelines}}, 1994, ISO/IEC
+  10918-1:1994.
+
+\bibitem{WolframAlpha-EntropyWord}
+Wolfram Alpha, \emph{{entropy - Wolfram|Alpha}},
+  \url{http://www.wolframalpha.com/input/?i=entropy&a=*C.entropy-_*Word-}, aug
+  2013.
+
+\bibitem{WolframAlpha-EntropyMath}
+\bysame, \emph{{entropy - Wolfram|Alpha}},
+  \url{http://www.wolframalpha.com/input/?i=entropy&a=*C.entropy-_*MathWorld-},
+  aug 2013.
+
 \bibitem{rfc4034}
 R.~Arends, R.~Austein, M.~Larson, D.~Massey, and S.~Rose, \emph{{Resource
   Records for the DNS Security Extensions}},
@@ -136,6 +151,11 @@ D.~Massey and S.~Rose, \emph{{Limiting the Scope of the KEY Resource Record
   (RR)}}, \url{http://www.ietf.org/rfc/rfc3445.txt}, dec 2002, RFC 3445
   (Proposed Standard).
 
+\bibitem{rfc1034}
+P.V. Mockapetris, \emph{{Domain names - concepts and facilities}}, RFC 1034
+  (INTERNET STANDARD), November 1987, Updated by RFCs 1101, 1183, 1348, 1876,
+  1982, 2065, 2181, 2308, 2535, 4033, 4034, 4035, 4343, 4035, 4592, 5936.
+
 \bibitem{rfc1035}
 P.V. Mockapetris, \emph{{Domain names - implementation and specification}},
   \url{http://www.ietf.org/rfc/rfc1035.txt}, nov 1987, RFC 1035 (INTERNET
@@ -192,6 +212,11 @@ D.~Roma{\~n}a and Y.~Musashi, \emph{{Entropy Based Analysis of DNS Query
 
 \bibitem{Roolvink2008}
 Stephan Roolvink, \emph{{Detecting attacks involving DNS servers}},  (2008).
+
+\bibitem{Sellke2009}
+Sarah~H Sellke, Chih-Chun Wang, Saurabh Bagchi, and Ness Shroff, \emph{Tcp/ip
+  timing channels: Theory to implementation}, INFOCOM 2009, IEEE, IEEE, 2009,
+  pp.~2204--2212.
 
 \bibitem{Shaffer2008}
 Alan~B. Shaffer, Mikhail Auguston, Cynthia~E. Irvine, and Timothy~E. Levin,

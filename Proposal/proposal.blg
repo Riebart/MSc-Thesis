@@ -4,35 +4,39 @@ Database file #1: ../Reference/bibliography.bib
 Warning--I'm ignoring rfc1035's extra "note" field
 --line 807 of file ../Reference/bibliography.bib
 Warning--I'm ignoring rfc3445's extra "note" field
---line 836 of file ../Reference/bibliography.bib
+--line 850 of file ../Reference/bibliography.bib
 Warning--I'm ignoring rfc3755's extra "note" field
---line 851 of file ../Reference/bibliography.bib
+--line 865 of file ../Reference/bibliography.bib
 Warning--I'm ignoring rfc4034's extra "note" field
---line 880 of file ../Reference/bibliography.bib
+--line 894 of file ../Reference/bibliography.bib
 Warning--entry type for "Chamberland2009.snort_iodine" isn't style-file defined
---line 936 of file ../Reference/bibliography.bib
+--line 950 of file ../Reference/bibliography.bib
 Warning--entry type for "Proventia2013.ips_tunnel" isn't style-file defined
---line 945 of file ../Reference/bibliography.bib
+--line 959 of file ../Reference/bibliography.bib
 Warning--entry type for "Guy2009" isn't style-file defined
---line 954 of file ../Reference/bibliography.bib
+--line 968 of file ../Reference/bibliography.bib
 Warning--entry type for "jhind2009" isn't style-file defined
---line 963 of file ../Reference/bibliography.bib
+--line 977 of file ../Reference/bibliography.bib
 Warning--entry type for "Paxson2011" isn't style-file defined
---line 972 of file ../Reference/bibliography.bib
+--line 986 of file ../Reference/bibliography.bib
 Warning--entry type for "ozymandnssrc" isn't style-file defined
---line 981 of file ../Reference/bibliography.bib
+--line 995 of file ../Reference/bibliography.bib
 Warning--entry type for "iodinesrc" isn't style-file defined
---line 990 of file ../Reference/bibliography.bib
+--line 1004 of file ../Reference/bibliography.bib
 Warning--entry type for "dns2tcpsrc" isn't style-file defined
---line 999 of file ../Reference/bibliography.bib
+--line 1013 of file ../Reference/bibliography.bib
 Warning--entry type for "dnscatsrc" isn't style-file defined
---line 1008 of file ../Reference/bibliography.bib
+--line 1022 of file ../Reference/bibliography.bib
 Warning--entry type for "psudpsrc" isn't style-file defined
---line 1017 of file ../Reference/bibliography.bib
+--line 1031 of file ../Reference/bibliography.bib
 Warning--entry type for "denisesrc" isn't style-file defined
---line 1027 of file ../Reference/bibliography.bib
+--line 1041 of file ../Reference/bibliography.bib
 Warning--entry type for "probcodesrc" isn't style-file defined
---line 1036 of file ../Reference/bibliography.bib
+--line 1050 of file ../Reference/bibliography.bib
+Warning--entry type for "WolframAlpha-EntropyMath" isn't style-file defined
+--line 1068 of file ../Reference/bibliography.bib
+Warning--entry type for "WolframAlpha-EntropyWord" isn't style-file defined
+--line 1077 of file ../Reference/bibliography.bib
 A bad cross reference---entry "Browne1994"
 refers to entry "conf/ccs/1994", which doesn't exist
 A bad cross reference---entry "Shaffer2008"
@@ -55,6 +59,7 @@ A bad cross reference---entry "Butler2011"
 refers to entry "conf/acns/2011", which doesn't exist
 A bad cross reference---entry "Thomas2011"
 refers to entry "conf/ifip11-9/2011", which doesn't exist
+Warning--I didn't find a database entry for "WolAlphaBotnet"
 Warning--I didn't find a database entry for "conf/pldi/2008plas"
 Warning--I didn't find a database entry for "conf/wpes/2003"
 Warning--I didn't find a database entry for "conf/ccs/2004ccs"
@@ -64,6 +69,7 @@ Warning--I didn't find a database entry for "conf/ccs/2007"
 Warning--I didn't find a database entry for "conf/acns/2011"
 Warning--I didn't find a database entry for "conf/ifip11-9/2011"
 Warning--I didn't find a database entry for "conf/globecom/2006"
+Warning--to sort, need author or key in isoeic10918-1
 Warning--missing pages in Born2010.exfil
 Warning--missing journal name in Born2010.psudp
 Warning--missing pages in Born2010.psudp

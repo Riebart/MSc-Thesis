@@ -70,14 +70,14 @@ of the \emph{motion} of that data is of the utmost importance. Covert
 communication channels attempt to circumvent established methods of control,
 such
 as firewalls and proxies, by utilizing non-standard means of getting messages
-between two endpoints. DNS (Domain Name System), the system that  translates
-text-based resource names into resource records, is a very common and effective
-platform upon which covert channels can be built. This work proposes, and
-demonstrates the effectiveness of, a novel technique that estimates data
-transmission throughput over DNS in order to identify the existence of a DNS
-tunnel against the background noise of legitimate network traffic.
-The proposed technique is robust in the face of the obfuscation techniques
-that are able to hide tunnels from existing detection methods.}
+between two endpoints. The Domain Name System (DNS), the system that translates
+text-based resource names into machine-readable resource records, is a very
+common and effective platform upon which covert channels can be built. This work
+proposes, and demonstrates the effectiveness of, a novel technique thatf
+estimates data transmission throughput over DNS in order to identify the
+existence of a DNS tunnel against the background noise of legitimate network
+traffic. The proposed technique is robust in the face of the obfuscation
+techniques that are able to hide tunnels from existing detection methods.}
 
 \newpage
 \tableofcontents \listoftables \listoffigures
@@ -85,12 +85,12 @@ that are able to hide tunnels from existing detection methods.}
 
 % ==============================================================================
 % The introduction should make sense to people with the necessary background,
-and % should be of moderate use to people without the necessary background. It
-should % introduce the problem we are trying to solve, why it is worth solving,
-give a % coarse picture of where our solution sits in the landscape of
-solutions, and % what the solution involves. It should briefly touch on the
-outcome of the % solution. %
-==============================================================================
+% and should be of moderate use to people without the necessary background. It
+% should introduce the problem we are trying to solve, why it is worth solving,
+% give a coarse picture of where our solution sits in the landscape of
+% solutions, and what the solution involves. It should briefly touch on the
+% outcome of the solution.
+% ==============================================================================
 \chapter{Introduction}
 
 Control of the data that moves between hosts on a computer network is vitally
@@ -111,37 +111,37 @@ a definition of normal and alerting based on deviations from that norm.
 A highly sensitive and specific detection of DNS tunnels on a busy network link
 is an important problem in the arena of network security as it enables
 administrators to block or otherwise control these potential sources of
-compromise. A non-exhaustive, but informative, list of things that covert
-channels (including DNS tunnels) can be used for is:
+compromise. A non-exhaustive, but informative, list of potential uses for covert
+channels (including DNS tunnels) is:
 
 \begin{itemize} \item Data exfiltration \item Communication through restrictive
 firewalls \item Receiving commands or information from a remote source \item
 Transport layer for complete VPN solutions \end{itemize}
 
-In enterprises that deal with sensitive information such as financial, health,
-personal or intellectual property information it is of the utmost importance to
+In enterprises that deal with sensitive data such as financial, health,
+personal or intellectual property information, it is of the utmost importance to
 control the access to this information. Even if an enterprise does not have
 information that needs protecting, DNS tunnels should still be blocked in order
-to prevent malware from communicating. Because DNS tunnels can be used for
+to prevent malware from communicating\cite{Dietrich2011}. Because DNS tunnels can be used for
 arbitrary communication, they can be used as command-and-control channels for
-botnets or any other malicious system that relies on data transmission.
-Preventing botnets from operating is of the best interest for the Internet as a
+botnets\cite{WolAlphaBotnet} or any other malicious system that relies on data transmission.
+Preventing botnets from operating is in the best interest for the Internet as a
 whole and should be a concern of every user of the Internet.
 
-Existing methods of detection rely on one of two methods, character frequency
-analysis and signatures, to detect the presence of a DNS tunnel. The
-signature-based solutions attempt to identify portions of the tunnelling
-application data (as opposed to the user data that is sent using the tunnelling
-application) for which a signature can be built. These signature based solutions
-are subject to many of the same problems that plague signature based anti-virus
-solutions including their inability to detect zero-day situations. For example,
-if the application changes its communication schemes, the signatures may no
-longer be valid and may no longer trigger when they are intended and expected
-to. Additionally, signatures cannot be built for applications that are not
-available for study, or that aren't known of. For applications that use a custom
-communication scheme that has not had a signature built specifically for it, it
-is very likely that an existing signature will not be relevant and will not
-detect it.
+Existing algorithms for detection of DNS tunnels rely on one of two primary
+methods, character frequency analysis and signatures, to detect the presence of
+a DNS tunnel. The signature-based solutions attempt to identify portions of the
+tunnelling application data (as opposed to the user data that is sent using the
+tunnelling application) for which a signature can be built. These signature
+based solutions are subject to many of the same problems that plague signature
+based anti-virus solutions including their inability to detect zero-day
+situations. For example, if the application changes its communication schemes,
+the signatures may no longer be valid and may no longer trigger when they are
+intended and expected to. Additionally, signatures cannot be built for
+applications that are not available for study, or that are not known of. For
+applications that use a custom communication scheme that has not had a signature
+built specifically for it, it is very unlikely that an existing signature will
+be relevant and will successfully detect it.
 
 Because signature based schemes are not effective in detecting DNS tunnels in a
 zero-day\footnote{\emph{Zero-day} refers to a situation where nothing is known
@@ -152,25 +152,19 @@ other authors (see section \ref{litreview-dns} for more details) which uses
 character frequency analysis under some assumed properties. More details are
 given in section \ref{litreview-dns-cfa}.
 
-%that normal DNS traffic has a unique %character frequency distribution that can
-be used as a discriminating %fingerprint. Based on analysis of common domain
-names, he obtained a %distribution that accurately describes normal DNS traffic
-while %effectively detecting DNS tunnel traffic. Results obtained by Born
-indicate %that DNS tunnels have an approximately uniform character frequency
-distribution %whereas normal DNS queries do not.
-
 Due to the weaknesses listed above, it is clear that a new approach is necessary
 that detects DNS tunnels in a zero-day situation and without the known weakness
-involving character frequency and probabilistic encoding. This work proposes,
+involving character frequency and probabilistic encoding. A demonstration of
+this weakness is given in section \ref{appendix-probcode}. This work proposes,
 and demonstrates the effectiveness of, a method of detecting DNS tunnels that
 meets these requirements.
 
 The proposed method operates under the assumption that DNS tunnels move more
 data than a normal domain but don't necessarily do it by moving more bytes than
 a benign domain. This distinction is important since, on a busy network, a large
-content or service provider such as Google, Amazon, Facebook or Twitter may
-comprise orders of magnitude more DNS traffic by byte count than a DNS tunnel.
-By leveraging this fact, it is possible to detect any use of DNS to transmit
+content or service provider such as Google, Amazon, Facebook or Twitter may make
+up orders of magnitude more DNS traffic by byte count than a DNS tunnel. By
+leveraging this fact, it is possible to detect any use of DNS to transmit
 arbitrary data by measuring the amount of data that is transmitted using a
 particular DNS domain or subdomain. The details of this measurement methodology
 are contained in chapter \ref{proposed-method} and requires estimating the
@@ -178,37 +172,40 @@ amount of unique data that is transmitted by analyzing the queries themselves
 and not simply counting characters in the query string.
 
 This proposed detection methodology is shown to detect DNS tunnels in as few as
-ten packets and continues to be robust in highly hostile detection environments
-such as those that contain a great deal of non-tunnel traffic as well as benign
-uses of DNS for transmitting arbitrary data\footnote{Many security vendors
-utilize the fact that DNS and UDP port 53 are so loosely controlled in order to
-ensure that their deployed devices can communicate with the vendor intelligence
-unimpeded.}. Detector performance on commodity hardware is shown to scale to
-greater than two gigabits of UDP port 53 throughput per second, indicating that
-this methodology does not sacrifice performance for detection accuracy and
-remains practical for monitoring very large networks.
+ten packets (as shown in section \ref{test-existing} and continues to be robust
+in highly hostile detection environments such as those that contain a great deal
+of non-tunnel traffic as well as benign uses of DNS for transmitting arbitrary
+data\footnote{Many security vendors utilize the fact that DNS and UDP port 53
+are so loosely controlled in order to ensure that their deployed devices can
+communicate with the vendor intelligence unimpeded.}. Detector performance on
+commodity hardware is shown to scale to greater than two gigabits of UDP port 53
+throughput per second, indicating that this methodology does not sacrifice
+performance for detection accuracy and remains practical for monitoring very
+large networks.
 
 \newpage
 
 % ==============================================================================
 % The background section provides a reasonable breadth and depth of content for
 % people to brush up enough to understand the literature review, problem at hand
-% and solution. It should provide references for breadth and depth not covered %
-in this section. %
-==============================================================================
+% and solution. It should provide references for breadth and depth not covered
+% in this section.
+% ==============================================================================
 \chapter{Background}
 
-\section{Entropy} Entropy is intuitively speaking, a measure of how random a
-particular collection of items is. In the context of a random variable, entropy
-is a measure of the uncertainty in the output of the random variable. A random
-variable that has a distribution that outputs a particular symbol seventy five
-percent of the time has considerably less uncertainty, and thus less entropy,
-than one that outputs all symbols with equal frequency. In the context of a
-collection of symbols in a stream, or data source, entropy can be though of as a
-measure of the information content of that collection. If the collection
-comprises almost entirely a single symbol, then that collection can be thought
-of as containing less information, and thus having less entropy, than a
-collection where all symbols occur with equal frequency.
+\section{Entropy}
+Entropy\cite{WolframAlpha-EntropyWord}\cite{WolframAlpha-EntropyMath} is
+intuitively speaking, a measure of how random a particular collection of items
+is. In the context of a random variable, entropy is a measure of the uncertainty
+in the output of the random variable. A random variable that has a distribution
+that outputs a particular symbol seventy five percent of the time has
+considerably less uncertainty, and thus less entropy, than one that outputs all
+symbols with equal frequency. In the context of a collection of symbols in a
+stream, or data source, entropy can be though of as a measure of the information
+content of that collection. If the collection comprises almost entirely a single
+symbol, then that collection can be thought of as containing less information,
+and thus having less entropy, than a collection where all symbols occur with
+equal frequency.
 
 Entropy can be calculated for a collection of symbols
 $\mathcal{C}=\{c_1,\ldots,c_n\}$ with symbol $c_i$ appearing with proportion
@@ -219,52 +216,54 @@ $0\leq p_i\leq 1$ where $\sum_{i=1}^n{p_i}=1$ as
 The base of the logarithm determines the units of the resulting value. If a
 logarithm in base 2 is used, then the entropy has the units of \emph{bits}, if
 the logarithm with the natural base $e$ is used then the entropy has the units
-of \emph{nats}, if the logarithm is in the common base 10, then the entropy has
+of \emph{nats}, and if the logarithm is in the common base 10, then the entropy has
 the units of \emph{digits}.
 
 \section{Domain Name System (DNS)}
 
-DNS (Domain Name System) is the service through which names are mapped to
-resources. Typically, this maps a name (such as \emph{www.google.ca}) to an IP
-address. The value of this service is that names are considerably more flexible,
-and considerably easier to remember, than the resource or record that they point
-to. For example, \emph{google.com} is considerably easier to remember than one
-of the IP addresses that it points to, such as 74.125.226.34. \emph{google.com}
-is also considerably more flexible, since it points to not just one but several
-addresses, and successive responses will receive different records in a
-round-robin, or random, fashion. This rotation of responses allows for a crude
-form of load balancing and automatic fail over, while retaining its ease of use.
+DNS is the service through which names are mapped to
+resources\cite{rfc1034}\cite{rfc1035}. Typically, this maps a name (such as
+\emph{www.google.ca}) to an IP address. The value of this service is that names
+are considerably more flexible, and typically considerably easier to remember,
+than the resource or record that they point to. For example, \emph{google.com}
+is considerably easier to remember than one of the IP addresses that it points
+to, such as 74.125.226.34. \emph{google.com} is also considerably more flexible,
+since it points to not just one but several addresses, and successive responses
+will receive different records in a round-robin, or random, fashion. This
+rotation of responses allows for a crude, but natural, form of load balancing
+and automatic fail over, while retaining its ease of use.
 
-The DNS protocol is assigned both UDP and TCP port 53 for communication with
-most communication operating over UDP as opposed to TCP. The use of TCP depends
-on the implementation of the resolver, however the specification indicates the
-TCP should be used if the response data exceeds 512 bytes or during a zone
-transfer\cite{rfc1035}. DNSSEC (Domain Name System Security Extensions), due to
+The DNS protocol is assigned both User Datagram Protocol (UDP) and Transmission
+Control Protocol (TCP) port 53 for communication with most communication
+operating over UDP as opposed to TCP. The use of TCP depends on the
+implementation of the resolver, however the specification indicates the TCP
+should be used if the response data exceeds 512 bytes or during a zone
+transfer\cite{rfc1035}. Domain Name System Security Extensions (DNSSEC), due to
 the fact that it requires a signature of authenticity for all responses, will
-often cause the response to require TCP\cite{rfc4034}. %
-http://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml
-Because there is no \emph{requirement} for when TCP be used, some resolvers may
-be implemented to use TCP for all responses as this does not violate the
-specifications for DNS.
+often cause the response to require TCP\cite{rfc4034}. Because there are no
+restrictions on when TCP may be used, some resolvers may be implemented to use
+TCP for all responses as this does not violate the specifications for DNS.
+
+%http://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xml
 
 The experiments related to this work do not consider the situation of DNS over
-TCP since the analysis techniques are identical since the formats of the UDP and
+TCP since the analysis techniques are identical due to the fact that the formats of the UDP and
 TCP responses is identical once the TCP stream is reassembled. Modification of
 the tools developed for this work would require the ability to perform TCP
 stream reassembly in order to extract the responses from the TCP response.
 
 Because DNS is such an integral component of Internet communication it is not
 generally reasonable to simply block it while still expecting functional
-Internet connectivity. A common approach is called DNS \emph{proxying} which
+Internet connectivity. A common approach, called DNS \emph{proxying}, which
 forces all DNS queries to be made to a DNS proxy server that is controlled by
-the interested entity (ISP, company, etc...). This DNS proxy server is
+the interested entity (Internet Service Provider (ISP), company, etc...). This DNS proxy server is
 responsible for handling all DNS queries for the internal network, and any DNS
 queries that are destined for the Internet (as opposed to the proxy) are
 typically dropped by the firewall in this type of configuration. The DNS proxy
 server operates in \emph{recursive mode}, which means that if a question is
 asked of it to which it does not know the answer, the proxy server will then
 query for the answer (by issuing its own query to the global DNS system) and
-then respond to the initial request using this response.
+then respond to the initial request using the response from the global network.
 
 DNS is a heavily cached protocol due to how often data can be reused between
 queries. Consider how often a desktop Internet user causes a request for
@@ -275,12 +274,12 @@ includes, among other things, how long it can be cached for. Standard caching
 lengths put it around one hour which means that a DNS server will only
 recursively pass on a query for a record once an hour. This caching period is
 not constant and can be set differently, depending on the information the record
-contains. Some records require a considerably lower TTL (Time To Live), as low
+contains. Some records require a considerably lower Time To Live (TTL), as low
 as one minute, while for others a considerably longer (months) may be
 appropriate.
 
 This proxy architecture removes some naive operation modes for DNS tunnels that
-will be discussed in in more detail in \ref{dnstunnels-types-raw}, but does not
+will be discussed in in more detail in \ref{tunnels-types-raw}, but does not
 offer any protection against the more sophisticated forms of DNS tunnels.
 
 \section{Covert Channels}
@@ -288,120 +287,127 @@ offer any protection against the more sophisticated forms of DNS tunnels.
 Covert channels are methods of communication that use non-standard means of
 communication for the purpose of evading detection and/or blocking by the
 existing security infrastructure. Covert channels may utilize portions of an
-existing protocol or communication channel, or they may find ways of
+existing protocol\cite{Born2010.psudp} or communication channel, or they may find ways of
 transporting information utilizing a completely new medium. An example of the
-latter is called a \emph{timing channel}, which can utilize the timing between
+latter is called a \emph{timing channel}\cite{Sellke2009}, which can utilize the timing between
 packets to convey information. A timing channel carefully controls the timing
 between packets sent to a remote server to encode information, thereby utilizing
-a method of communication that is not utilized by any \emph{legitimate} protocol
+a method of communication that is not utilized by any standardized protocol
 or communication method.
 
 Covert channels come in may forms and not all types support the properties that
 are normally associated with a communication channel. Because they are built on
 unorthodox, or unreliable, transmission media and are subject to the effects of
 intermediate routing and networking devices they cannot always offer all of the
-same functionality as a legitimate channel.
-
-Covert channels need not support bi-directionality due to either the constraints
-of the underlying medium, or the effect of intermediate devices. A covert
-channel that is only useful for reception is one that utilizes a third-party
-image hosting service. It is possible to embed arbitrary information into the
-header portion of an otherwise completely benign JPEG image file which could
-then be posted to Facebook, Flickr, or any other publicly accessible image
-hosting service. This image file can then be checked by the remote hosts to pull
-the information however, due to the nature of the image services, the remote
-hosts may have no way of posting information back to the other endpoint, making
+same functionality as a legitimate channel. For example, covert channels need
+not support bi-directionality due to either the constraints of the underlying
+medium, or the effect of intermediate devices. A covert channel that is only
+useful for reception is one that utilizes a third-party image hosting service.
+It is possible to embed arbitrary information into the header portion of an
+otherwise completely benign JPEG image file\cite{isoeic10918-1} which could then
+be posted to Facebook, Flickr, or any other publicly accessible image hosting
+service. This image file can then be checked by the remote hosts to pull the
+information however, due to the nature of the image services, the remote hosts
+may have no way of posting information back to the other endpoint, thus making
 the communication channel unidirectional.
 
 Real time data transfer refers to the ability for a communication channel to
 send data immediately. UDP, by its very nature, supports this and TCP supports
 this via the PUSH flag which indicates that data is being sent before a full
-window has been accumulated. The TCP PUSH flag is used, for example, during an
-SSH connection in order to provide interactivity. Timing channels, or any
-channel that relies on modifying normal system traffic instead of generating
-their own traffic, by their nature, are unable to support real time data
-transfer. This is because they need to wait for a system packet in order to send
-their data, and if the system goes for a period of time without sending data
-then the covert channel must wait as well.
+window has been accumulated. The TCP PUSH flag is used, for example, during a
+Secure Shell (SSH) connection in order to provide interactivity when typing and
+viewing output. Timing channels, or any channel that relies on modifying normal
+system traffic instead of generating their own traffic, by their nature, are
+unable to support real time data transfer. This is because they need to wait for
+a system packet in order to send their data, and if the system goes for a period
+of time without sending data then the covert channel must wait as well.
 
-\section{DNS Tunnels} \label{dnstunnels-types}
-DNS tunnelling is the method by which arbitrary data is made to be transferred
-over the same channels as DNS. DNS tunnels come in one of two types: raw, or
+\section{DNS Tunnels}
+\label{tunnels-types}
+DNS tunnelling is the method by which arbitrary data is transferred
+over the same channels as DNS. DNS tunnels come in one of two primary types: raw, or
 conforming.
 
-\subsubsection{Raw DNS Tunnels} \label{dnstunnels-types-raw} Raw DNS tunnels do
-not attempt to mimic or conform to the DNS specifications, and simply attempt to
-utilize the fact that UDP port 53 is often left open in firewalls. Raw tunnels
-attempt to exploit this by transmitting arbitrary traffic using UDP port 53
-packets with arbitrary payload. This is the most efficient exploitation of the
-ubiquity of DNS as it incurs the lowest amount of overhead, both computationally
-and in terms of network throughput. The trade off for this efficiency is that it
-is the least conforming and the most likely to get stopped by either a firewall
-or a proxy. In the situation where all DNS queries are forced to be proxied
-through a dedicated DNS server, raw DNS tunnels will fail to operate as
-expected. This is because when the UDP port 53 traffic is redirected to the
-proxy, the DNS server will attempt to interpret the arbitrary payload as a DNS
-packet and will likely fail. When it fails, it will drop the packet thereby
-preventing all raw UDP port 53 communication. Because these types of tunnels are
-effectively blocked by standard firewall and proxy practises, detection of these
-tunnels is not considered in this work.
+\subsubsection{Raw DNS Tunnels}
+\label{tunnels-types-raw}
+Raw DNS tunnels do not attempt to mimic or conform to the DNS specifications,
+and simply attempt to utilize the fact that UDP port 53 is often left relatively
+uncontrolled in firewalls. Raw tunnels attempt to exploit this by transmitting
+arbitrary traffic using UDP port 53 packets with arbitrary payload 
+\footnote{Iodine demonstrates this behaviour when operating in its raw
+transport mode}. This is the most efficient exploitation of the ubiquity of DNS
+as it incurs the lowest amount of overhead, both computationally and in terms of
+network throughput. The trade off for this efficiency is that it is the least
+conforming and the most likely to get stopped by either a firewall or a proxy.
+In the situation where all DNS queries are forced to be proxied through a
+dedicated DNS server, raw DNS tunnels will fail to operate as expected. This is
+because when the UDP port 53 traffic is redirected to the proxy, the DNS server
+will attempt to interpret the arbitrary payload as a DNS packet and will likely
+fail. When it fails, it will drop the packet thereby preventing all raw UDP port
+53 communication. Because these types of tunnels are effectively blocked by
+standard firewall and proxy practises, detection of these tunnels is not
+considered in this work.
 
-\subsubsection{Conforming DNS Tunnels} \label{dnstunnels-types-conforming}
+\subsubsection{Conforming DNS Tunnels}
+\label{tunnels-types-conforming}
 Conforming DNS tunnels produce DNS packets that conform to all appropriate
-specification and RFC documents and, as far as any DNS server, is concerned the
+specification and RFC documents and, as far as any DNS server is concerned, the
 traffic generated is valid DNS traffic. These tunnels incur the highest
 computational and throughput overhead, but have the advantage that detecting and
 blocking them is a very difficult process. The detection of this type of DNS
-tunnels is the topic of this work. This type of tunnel is capable of operating,
-even in an environment with very strict firewall and proxy policies. Because
+tunnels is the topic of this work. This type of tunnel is capable of operating
+in almost any environment, even those with very strict firewall and proxy policies. Because
 this type of tunnel operates in very hostile (to the operation of the tunnel)
-environment, detection of this type of DNS tunnel is of interest to all levels
+environments, detection of this type of DNS tunnel is of interest to all levels
 of government and industry.
 
 Conforming DNS tunnels operate by embedding the data for transmission into the
-query string and the response and require a modified, non-conforming, DNS server
-on one end of the connection and a piece of software on the client end.
-Typically these types of DNS tunnels have one endpoint that is controlled by the
-tunnel user, with that controlled endpoint running dedicated server software
-that. The client and server software is responsible for transforming arbitrary
-information into DNS queries, and for translating DNS responses back into the
-arbitrary data that it represents. The precise details of how the translation is
+query string and response, requiring a modified, non-conforming, server on one
+end of the connection and a piece of software on the client end. Typically these
+types of DNS tunnels have one endpoint that is controlled by the tunnel user,
+with that controlled endpoint running dedicated server software. The client and
+server software are responsible for transforming arbitrary information to and
+from DNS queries and responses. The precise details of how the translation is
 done between DNS and the raw data depends on the implementation.
 
 \subsubsection{DNS Tunnel Software}
-
-Some DNS tunneling software is OzymanDNS\cite{ozymandnssrc},
+\label{tunnels-existing}
+Some existing DNS tunneling software currently available is OzymanDNS\cite{ozymandnssrc},
 Iodine\cite{iodinesrc}, Dns2tcp\cite{dns2tcpsrc}, DNScat\cite{dnscatsrc} and
 DeNiSe\cite{denisesrc}, and PSUDP\cite{psudpsrc}. Each of these have slightly
 different operational characteristics, but they all aim to do the same thing,
 which is transmission of arbitrary data over DNS.
 
 Iodine supports raw tunnels, as well as moving information back from the server
-in A (IPv4 addresses), MX (mail server), TXT (arbitrary text) and may other
-supported DNS record types.TXT records are rarely used by consumers or end-user
+in IPv4 addresses (A), mail server (MX), arbitrary text (TXT) and many other
+supported DNS record types. TXT records are rarely used by consumers or end-user
 applications, and so a blanket block policy of TXT records for end-user devices
 would have very little impact on end-user applications. TXT records are as close
-to a raw tunnel that a conforming tunnel can get to in terms of throughput.
+to a raw tunnel that a conforming tunnel can get to in terms of throughput since
+they allow large blocks of largely uncontrolled content.
 
-DNScat utilizes CNAME (alias to another record) records and a supplementary A
-record, when appropriate, however the A record is not actually used for
-throughput. OzymanDNS and DeNiSe utilize solely the TXT record, which is as
-close to the raw tunnel as possible, however can be easily neutered by simply
-blocking TXT records. Because these tools only uses TXT records it is possible
-that it is the least flexible and deployable out of those listed above given a
-hostile environment. Dns2tcp utilizes either TXT or KEY records, which makes it
-as flexible as OzymanDNS and DeNiSe. The KEY DNS record was designated for
-specific uses\cite{rfc2931}, but has been deprecated now\cite{rfc3445} in favour
-of the DNSKEY record for use with DNSSEC\cite{rfc3755} and the IPSECKEY for use
-with IPSEC\cite{rfc4025}. Because of this deprecation, use of the KEY record is
-subject to strict filtering which greatly reduces the effectiveness of this
-solution.
+DNScat utilizes a type of DNS record that is an alias to another record (a CNAME
+record) and a supplementary A record, when appropriate\footnote{The A record is
+not actually used for throughput but rather to give a 'termination' point for a
+sequence of CNAME records}. OzymanDNS and DeNiSe utilize solely the TXT record,
+which is as close to the raw tunnel as possible, however can be easily blocked
+by simply blocking TXT records. Because these tools only use TXT records it is
+possible that they are the least flexible and deployable out of those listed
+above given a hostile environment. Dns2tcp utilizes either TXT or KEY
+records\footnote{Historically KEY records were used to transmit encryption
+related keys, however their use has been phased out by other DNS record types}
+which makes it as flexible as OzymanDNS and DeNiSe. The KEY DNS record was
+designated for specific uses\cite{rfc2931}, but has been deprecated
+now\cite{rfc3445} in favour of the DNSKEY record for use with
+DNSSEC\cite{rfc3755} and IPSECKEY for use with IPSEC\cite{rfc4025}. Because of
+this deprecation, use of the KEY record is subject to strict filtering which
+greatly reduces the effectiveness of this solution.
 
 All of the above tools utilize encoding and decoding mechanisms that would
 successfully propagate through a proxy server, at the cost of the fact that the
 tunnel applications have to generate their own traffic. PSUDP, proposed by
 Kenton Born, aims to remove the latter requirement by creating slack space
-within an existing DNS packets at the UDP transport layer. He proposes two ways
+within existing DNS packets at the UDP transport layer. He proposes two ways
 of creating this slack space: naively placing it at the end of the packet, and
 rearranging the DNS query string to utilize pointers to create this slack space
 in the middle of the packet. Pointers allow for the re-use of DNS query strings
@@ -421,17 +427,20 @@ environment where all DNS queries must go through a proxy, this method is
 incapable of producing a covert channel that is able to penetrate a strictly
 proxied DNS environment.
 
-\newpage \chapter{Review of the State of the Art} \label{litreview}
-The solutions that exist to date generally make very little use of complex,
-static, signatures but rather attempt to exploit a characteristic trait or
+\newpage
+
+\chapter{Review of the State of the Art}
+\label{litreview}
+The solutions that exist to date generally make very little use of complex and
+static signatures, but rather attempt to exploit a characteristic trait or
 property that the DNS tunnel will exhibit. If a tunnel can be crafted to not
 exhibit that feature, then those detection strategies will normally fail in
 their detection. This section summarizes the known detection methods, their
 commonalities, advantages, and disadvantages. It will then take the body of
 detection methods as a whole and establish the existence of any gaps, or
 weaknesses, that could be exploited by an application to circumvent an IDS that
-made use of \emph{every one of the mentioned detection methods}. This
-essentially identifies gaps in the current state of the art that could be filled
+made use of \emph{every one of the mentioned detection methods}. This will 
+essentially identify gaps in the current state of the art that could be filled
 by a new technique, or an adaptation of an existing technique.
 
 \section{General Covert Channel or Anomaly Detection Research} All of the work
@@ -492,7 +501,9 @@ design and detection of IP (Internet Protocol) based covert timing channels.
 detecting covert timing channels on the Internet based on their effect on the
 original process' entropy properties.
 
-\section{DNS Covert Channel Research} \label{litreview-dns} The SANS
+\section{DNS Covert Channel Research}
+\label{litreview-dns}
+The SANS
 Institutes's InfoSec Reading Room published a report on the design and detection
 of DNS tunnels\cite{SANS2013}. The report covers a very wide variety of topics
 including background information, tunnel-specific information, technical
@@ -517,7 +528,7 @@ entropy measurement during the onset of the Sinit virus in their real-world
 data. This approach is discussed in additional detail in (Roolvink,
 2008)\cite{Roolvink2008}.
 
-Because this technique makes of flow-level data instead of packet level data, it
+Because this technique makes use of flow-level data instead of packet level data, it
 is inherently less able to make distinctions based on information contained in
 the packets. Information that typically gets removed in the process of digesting
 the packets into a flow includes query/response information as well as burst and
@@ -532,7 +543,7 @@ a method of detecting DNS tunnels by examining character and $n$-gram
 frequencies in the names that are being queried for. \cite{Born2010.ngviz}
 demonstrates the effectives of data visualization when attempting to detect a
 DNS tunnel using a custom visualization engine using the character frequency
-analysis proposed in one of the Born's previous publications. If a DNS tunnel
+analysis proposed in \cite{Born2010.ngviz}. If a DNS tunnel
 can be crafted such that its character frequencies are distributed sufficiently
 close to those of legitimate DNS names, then it is possible to hide a DNS tunnel
 from this type of analysis.
@@ -549,12 +560,12 @@ that Born found for normal DNS traffic (or any other distribution, for that
 matter). By utilizing this transformation, Born's approach fails to detect the
 DNS traffic as it becomes, from the viewpoint of his algorithm,
 indistinguishable from normal DNS traffic. Details of proof-of-concept tool are
-given in appendix \ref{probencode} and a demonstration of its effectiveness in
-this situation is given in section \ref{weaknesstest}.
+given in appendix \ref{appendix-probcode} and a demonstration of its effectiveness in
+this situation is given in section \ref{test-weakness}.
 
 The method proposed in chapter \ref{proposed-method} does not suffer from this
 vulnerability, which is demonstrated through empirical tests in section
-\ref{tests-probdns}.
+\ref{test-weakness}.
 
 (Butler, 2011)\cite{Butler2011} demonstrates a way of quantitatively analyzing
 covert communication channels with particular focus on DNS covert channels. It
@@ -589,7 +600,7 @@ analysis is not discussed either. Because this approach does not discriminate
 with respect to finely grained slices of time, nor to domain or subdomain
 information, it necessitates that all of the query data be kept around for
 postmortem analysis. The approach is able to alert to the fact that something
-was detected, but it cannot indicate precisely when, indicate in a timely
+was detected, but it cannot indicate precisely when, alert in a timely
 fashion, nor can it give any indication as to what caused the alert. These
 details must be ascertained from the raw query data after the proposed approach
 throws an alert which increases response time and the manpower required to
@@ -600,12 +611,12 @@ In essence the approach given by Romana is very similar to that given in chapter
 details, however, are vastly different and represent the most significant
 drawbacks of Romana's approach. The method in chapter \ref{proposed-method} is
 able to alert within seconds of the triggering event as well as include
-contextual that facilitates fast response and low manpower requirements.
+contextual information that facilitates fast response and low manpower requirements.
 
-(Thomas, 2011)\cite{Thomas2011} proposes and evaluates the efficacy of an FPGA
-(Field Programmable Gate Array) based solution for detecting malicious DNS
+(Thomas, 2011)\cite{Thomas2011} proposes and evaluates the efficacy of an Field 
+Programmable Gate Array (FPGA) based solution for detecting malicious DNS
 packets on a high throughput network link. The work extends prior work to
-including more flexible detection and to support more current-generation network
+include more flexible detection and to support more current-generation network
 infrastructure (the previous work was limited to 100Mbit network connections,
 with the new work operating on 1000Mbit network connections). The fact that this
 approach makes use of specialized hardware makes it prohibitively complex for
@@ -616,7 +627,7 @@ domains that are disallowed based on the network policies. Because this is
 signature and blacklist based, this approach suffers from the standard problems
 such as weakness against zero-day situations and the inability to be agile in
 the face of an adaptive attacker\footnote{In this case, if the attacker chooses
-to use a new domain, the tunnel will succeed since the system does not have the
+to use a new domain the tunnel will succeed since the system does not have the
 new domain on its blacklist yet. Similarly, if an attacker is using a publicly
 available domain for their tunnel, the blacklist can affect other legitimate
 traffic on that domain.}. The tests of this system use highly synthetic testing
@@ -631,11 +642,11 @@ that also use DNS as their command and control medium. The authors make use of
 two different approaches for classifying malicious DNS traffic from benign and
 legitimate traffic. The first approach makes use of entropy calculated over the
 DNS queries, very similar in theory to the character frequency analysis proposed
-by Born\cite{Born2010.cfa} and is vulnerable to the same methods of
+by Born\cite{Born2010.cfa} and is vulnerable to similar methods of
 circumvention\footnote{That is, if the botnet architected the data in the
 examined fields to conform to the author's model of benign traffic, then the
 botnet could effectively masquerade as benign traffic and become invisible to
-this method of detection.}. This portion of their approach operates a single
+this method of detection.}. This portion of their approach operates on a single
 packet at a time, and does not consider aggregate information. The authors also
 propose the use of behavioural analysis on data and statistics gathered from the
 aggregate of several packets to estimate the persistence of DNS queries as well
@@ -653,11 +664,12 @@ given time period to reduce the footprint of the bot on the network.
 
 This approach makes use of techniques that rely on having host-level
 identification on the network. Applying these techniques at an upstream location
-that may only be looking at network traffic through a NAT would be difficult due
-to the compression of many different hosts behind a much smaller number of
-addresses (typically one). It may still be possible for this to operate
-effectively, however this was not investigated by the authors. The approach
-proposed in chapter \ref{proposed-method} does not suffer in this situation.
+that may only be looking at network traffic through a Network Address
+Translation (NAT) would be difficult due to the compression of many different
+hosts behind a much smaller number of addresses (typically one). It may still be
+possible for this to operate effectively, however this was not investigated by
+the authors. The approach proposed in chapter \ref{proposed-method} does not
+suffer in this situation.
 
 (Paxson, 2011)\cite{Paxson2011} is a slide deck that discusses the author's
 searches through large campus networks for DNS tunnels in the wild. The author
@@ -669,7 +681,7 @@ compression utility that is used to compress input streams such as archives or
 other files.} to estimate the amount of data moved under a domain in a given
 collection of queries. The author's assumption is that gzip already is optimized
 for compressing data, which can be thought of as measuring the amount of unique
-data that is contained in the uncompressed stream. The author also mentions the
+data that is contained in the input stream. The author also mentions the
 codebook/codeword method of embedding information into DNS queries, similarly as
 to what was discussed in \cite{Butler2011}. The author successfully applies this
 approach to real-world data and identifies DNS tunnels that were previously
@@ -700,7 +712,10 @@ desired range. Such a codebook could be constructed by including all words that,
 when treated as vectors in $n$ dimensional Euclidean space, lie within a ball of
 radius $r$ where $r$ is the maximum desired distance. By doing this, it is
 possible for a tunnel to fit within the neural network's definition of normal
-and to pass by undetected.
+and to pass by undetected. It is demonstrated in section \ref{supertunnel} that
+by bounding the output distribution of the queries both in character frequency
+and in length, the queries span a bounded ball in higher dimensional Euclidean
+space.
 
 Jeffrey Guy\cite{Guy2009} blogged in 2009 about visualization as an aid for
 detecting DNS tunnels by looking at frequency and request/DNS name length
@@ -722,7 +737,15 @@ is important to note that these filters and rules do not trigger on all DNS
 tunnelling applications and may not be robust in the face of a zero-day
 situation or version update.
 
-\section{DNS Tunnel Detection Landscape} \label{litreview-summary} Taken
+Due to limitations of various platforms, the existence of a signature for one
+does not imply the ability for a signature on all platforms. For example, HP's
+TippingPoint platform utilizes regular expression matching to perform its
+operations, and so any signatures that rely on stateful analysis will not be
+implementable on a TippingPoint.
+
+\section{DNS Tunnel Detection Landscape}
+\label{litreview-summary}
+Taken
 together as a collective body of work, the detection approaches for DNS tunnels
 can be summarized as follows, with the weaknesses and strengths of each general
 approach outlined.
@@ -789,14 +812,13 @@ distributions are measurably different, if a DNS tunnel were able to construct
 its queries such that its character distribution matched the expected
 distribution, then it would be able to evade this type of detection. A
 proof-of-concept approach and software application are presented in appendix
-\ref{probencode} that is able to perform a loss-less two-way coding from a high
+\ref{appendix-probcode} that is able to perform a loss-less two-way coding from a high
 entropy source (such as compressed or encrypted data) to a stream whose
 character frequency matches any\footnote{There are some small caveats that are
 explained in detail along with the rest of the algorithm.} given distribution.
 
-\item Hashes and blacklists are used along with an FPGA based implementation of
-the algorithm for analyzing DNS traffic and blocking packets deemed to be
-malicious.
+\item Hashes and blacklists are used along with an FPGA based implementation for 
+analyzing DNS traffic and blocking packets deemed to be malicious.
 
 \textbf{Strength:} This approach, due to its fast hashing algorithm and FPGA
 based implementation, scales to very high throughput.
@@ -809,7 +831,7 @@ smaller network operators to deploy.
 
 \item A few approaches examine the behaviour of DNS tunnels and their effects on
 the statistical properties of the queries themselves over time. These approaches
-consider very similar approaches to the one given in this paper, explained in
+consider very similar techniques to the one given in this work, explained in
 detail in section \ref{proposed-method}.
 
 \textbf{Strength:} These approaches are considering the most fundamental source
@@ -821,8 +843,9 @@ examine these queries for the keys to detecting the tunnels.
 literature include cleverly constructed queries (such that they sit within a
 ball of a desired radius in $n$ dimensional Euclidean space), they are not
 suitable for real-time analysis (such as the use of higher overhead measuring
-mechanisms like gzip) or they do not discriminate between different domains
-or subdomains.
+mechanisms like gzip), they do not discriminate between different domains
+or subdomains, or they do not offer temporal resolution that enables adequate 
+response times.
 \end{itemize}
 
 \newpage
@@ -837,7 +860,9 @@ or subdomains.
 % ==============================================================================
 \chapter{Problem Statement and Evaluation Criteria}
 
-\section{Brief Statement} \label{briefproblem} The purpose of this work is to
+\section{Brief Statement}
+\label{briefproblem}
+The purpose of this work is to
 investigate the feasibility of real-time DNS tunnel detection that does not
 suffer the common weaknesses of existing techniques as outlined in section
 \ref{litreview-summary}
@@ -871,7 +896,8 @@ techniques. Any detection that may occur postmortem would not be able to alert
 to the threat in an adequate time frame to stop the attack in progress. This
 tunnel would have the following traits:
 
-\label{supertunnel} \begin{enumerate} \item All of its DNS packets would conform
+\label{supertunnel}
+\begin{enumerate} \item All of its DNS packets would conform
 to all appropriate DNS RFCs. \item Its queries would be chosen such that the
 character frequency distribution matches benign DNS queries (to evade
 \cite{Born2010.cfa} and similar approaches). \item Its queries would be chosen
@@ -882,7 +908,7 @@ higher dimensional Euclidean space (to evade \cite{jhind2009}). \end{enumerate}
 
 Item one is already demonstrated in practise by most of the tunnelling
 applications available, and item two is shown to be possible in appendix
-\ref{probencode}. Item three is easily accomplished by splitting queries based
+\ref{appendix-probcode}. Item three is easily accomplished by splitting queries based
 on a statistical model of the desired lengths, and item four can be shown to
 approximately follow from items two and three as follows.
 
@@ -900,16 +926,16 @@ approximately follow from items two and three as follows.
 Consider two $n$-dimensional Euclidean vectors, $\mathbf p$ and $\mathbf q$,
 such that every component is non-negative and $\mathbf p$ and $\mathbf q$ are
 chosen from a set of vectors with a finite maximum norm of $N$. Since every
-component of $\mathbf p$ and $\mathbf q$ is non-negative
+component of $\mathbf p=\{p_i\}$ and $\mathbf q=\{q_i\}$ is non-negative
 $|p_i-q_i|\leq\max{(p_i,q_i)}\leq|p_i+q_i|$. This together with the triangle
 inequality show that
 
 \[N\geq\|\mathbf p\|,N\geq\|\mathbf q\|\Rightarrow 2N\geq\|\mathbf p\|+\|\mathbf q\|\geq\|\mathbf p+\mathbf q\|\geq\|\mathbf p-\mathbf q\|\]
 
 Since DNS queries can be thought of as vectors satisfying the above conditions,
-the result applies. The consequences of this is that by enforcing that DNS
-queries from a tunnel follow an appropriate character distribution, a maximum is
-place on the diameter of the space spanned by the resulting queries. Thus, by
+the result applies. The consequences of this are that by enforcing that DNS
+queries from a tunnel follow an appropriate character and length distribution, a maximum is
+placed on the diameter of the space spanned by the resulting queries. Thus, by
 controlling the target character distribution and query length distributions, it
 is possible to control the diameter of the resulting query space, thus
 satisfying item four.
@@ -929,8 +955,8 @@ The proposed approach will be evaluated against these criteria to determine
 whether or not it can be considered an improvement on the state of the art for
 this type of detection. Items 1 and 3 in the list of criteria require additional
 quantification, however the quantification criteria are different for each of
-the classes of tests. Details will be given in sections \ref{existingtest} and
-\ref{weaknesstest} on how detection methods will be scored for their respective
+the classes of tests. Details will be given in sections \ref{test-existing} and
+\ref{test-weakness} on how detection methods will be scored for their respective
 tests.
 
 \chapter{Proposed Detection Method and Testing Methodology}
@@ -947,7 +973,8 @@ the shelf hardware making this approach practical and uncomplicated to deploy on
 smaller networks or in resource constrained situations. Deployment in large
 environments is similarly straight forward.
 
-\section{Theoretical Assumptions} The detection approach proposed in this work
+\section{Theoretical Assumptions}
+The detection approach proposed in this work
 makes certain assumptions about the nature of DNS tunnels in order to
 effectively detect them. The primary assumption made is that DNS tunnels move
 more data than a normal DNS subdomain, with a very particular meaning of
@@ -955,8 +982,12 @@ more data than a normal DNS subdomain, with a very particular meaning of
 concept of the amount of data moved under a DNS domain invovles considering the
 entropy of the queries as a whole, and not the characters that make up a query.
 
-\section{Implementation} TODO Flesh out
-\section{Detailed Testing Methodology} A collection of tests will be run on
+\section{Implementation}
+\label{implementation}
+TODO Flesh out
+
+\section{Detailed Testing Methodology}
+A collection of tests will be run on
 several detection methods, emphasizing the performance of this work's proposed
 method when compared to existing methods from the literature, in several
 situations. The detection methods chosen for comparison is composed of the
@@ -969,20 +1000,26 @@ implementations) and worst case scenarios.
 
 These detection methods were chosen for the following reasons:
 
-\begin{itemize} \item Born's approach is chosen because it is well defined and
-was the most prevalent approach found during the literature search. \item
-Paxson's appriach is chosen beycase it involves looking at data that is very
-similar to the approach outlined in section \ref{datameasurement}, but makes use
-of different methods for measuring the data throughput. \item The naive approach
+\begin{itemize}
+\item Born's approach is chosen because it is well defined and
+was the most prevalent approach found during the literature search.
+
+\item Paxson's approach is chosen because it involves looking at data that is very
+similar to the approach outlined in section \ref{implementation}, but makes use
+of different methods for measuring the data throughput.
+
+\item The naive approach
 is chosen to illustrate that simple volume of queries is a highly inadequate
 approach, and that more sophisticated approach can perform considerably better.
 \end{itemize}
 
-All of the tests involving traffic generation will be performed in a virutal
+All of the tests involving traffic generation will be performed in a virtual
 environment, with technical configuration and testing details given in section
-\ref{testingsetup}.
+\ref{appendix-setup}.
 
-\subsection{Determining a Baseline} \label{baselinetest} Through cooperation
+\subsection{Determining a Baseline}
+\label{baseline}
+Through cooperation
 with Merlin, an educational internet service provider in Manitoba, DNS traffic
 was collected over a period from Thursday November 4 2010 until Friday November
 26 including over one billion DNS packets. The hosts responsible for the DNS
@@ -990,7 +1027,7 @@ traffic observed include several dozen school divisions totalling tens of
 thousands of individual computers. The capture includes just over one billion
 packets destined to, or sourced form, UDP port 53 (the standard DNS port). Not
 all packets are valid DNS with more detailed information on the properties of
-the sample available in appendix \ref{capturestats}.
+the sample available in appendix \ref{appendix-capturestats}.
 
 This capture of DNS traffic will be used to determine the baseline behaviour of
 normal, benign DNS domains such as \texttt{google.com}, \texttt{yahoo.com}, and
@@ -1001,7 +1038,9 @@ method picks out the synthetic tunnels more clearly than others, all that
 matters in the end is that the tunnels are distinguishable from the background
 noise of normal traffic.
 
-\subsection{Existing Implementation Detection} \label{existingtest} This test
+\subsection{Existing Implementation Detection}
+\label{test-existing}
+This test
 will involve the two hosts communicating at varying throughput rates using the
 existing DNS tunnel implementations. The throughput rates will scale from as
 little as several bytes per second, to several megabytes (or as high as the
@@ -1014,7 +1053,7 @@ Iodine\cite{iodinesrc}, DNScat\cite{dnscatsrc}, and DNS2TCP\cite{dns2tcpsrc}.
 Iodine is chosen due to the fact that it provides a full VPN solution without
 additional work by the user. DNScat is chosen due to being written in Java and
 so runs on multiple platforms\footnote{DNScat will run on any platform that
-supports Java 1.4 or later\ref{dnscatsrc}} without the need for a compiler or
+supports Java 1.4 or later\cite{dnscatsrc}} without the need for a compiler or
 other complex dependencies that the user must obtain. DNS2TCP is chosen since it
 does not require root access, and is written in C indicating potentially better
 throughput than other mechanisms.
@@ -1029,7 +1068,9 @@ faster. It is important to note that even on very busy links, it is unlikely
 that there is a consistent full gigabit of DNS traffic for processing due to
 caching and the intermittent nature of DNS.
 
-\subsection{Demonstration of Existing Weaknesses} \label{weaknesstest} The tests
+\subsection{Demonstration of Existing Weaknesses}
+\label{test-weakness}
+The tests
 in this section will demonstrate that the weaknesses listed in section
 \ref{litreview-summary} are in fact exploitable by software and are not simply
 theoretical in nature. For each of the detection approaches chosen for
@@ -1040,7 +1081,7 @@ worst-cast scenario (including the ones that do not apply directly to it).
 For the tests in this section, a tool will be used that generates queries
 according to potentially more complicated rules that would be difficult to
 integrate into existing solutions. The implementation details for this tool are
-given in section \ref{customdns}.
+given in section \ref{appendix-customdns}.
 
 Because of the nature of the tests performed in this section, requiring
 successful detection of a high percentage of the tunnelled traffic is
@@ -1062,18 +1103,139 @@ used.
 %* S2C = 1.43 K/s
 %* C2S = 460 K/s
 
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/alexa_iodine_prob_v_english-r.pdf}
+\caption[DNS Query, Iodine and Prob-coded Comparison - Ratio]{A plot comparing the statistical properties of the Alexa top one million domains names, Iodine generated queries, and queries generated by the prob-coding tunnel software. This compares the frequencies of each charater in the three considered sets of output against the baseline of english.}
+\label{FIGURE_alexa-iodine-prob-v-english-r}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/alexa_iodine_prob_v_english-a.pdf}
+\caption[DNS Query, Iodine and Prob-coded Comparison - Absolute]{A plot comparing the statistical properties of the Alexa top one million domains names, Iodine generated queries, and queries generated by the prob-coding tunnel software. This compares the absolute frequencies of each charater both sorted by character (dashed) and sorted by frequency (solid).}
+\label{FIGURE_alexa-iodine-prob-v-english-a}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/alexa_iodine_v_english-a.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/alexa_iodine_v_english-r.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/alexa_v_english-a.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/alexa_v_english-r.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/markov2-a.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/markov3-a.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/markov-a.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/metric-tun_v_norm.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/metric-tun_v_norm-norm-zoom.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/metric-tun_v_norm-zoom.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/metric-tun-dns2tcp.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/metric-tun-dnscat.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/metric-tun-iodine.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/metric-tun-probdns.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/pdf_convergence.pdf}
+\end{figure}
+\clearpage
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/pdf_convergence_adjusted.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/pdf_convergence_adjusted2.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/plots_best.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/plots_digram.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/plots_markov1.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/plots_markov2.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/plots_markov3.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/plots_unigram.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/tunnels-freqabs.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/tunnels-freqrel.pdf}
+\end{figure}
+\clearpage
+
+
+
 \begin{appendices}
 \chapter{Properties of the Network Capture}
-\label{capturestats}
+\label{appendix-capturestats}
 
 \chapter{Testing Software and Scripts}
 \section{Custom DNS Tunnel Endpoint Simulator}
-\label{customdns}
+\label{appendix-customdns}
 
 \chapter{Testing Environment}
-\label{testingsetup}
+\label{appendix-setup}
 
-\chapter{Probabilistic Encoding} \label{probencode} Several detection methods in
+\chapter{Probabilistic Encoding}
+\label{appendix-probcode}
+Several detection methods in
 the literature involve examining the character distribution in the queries, or
 responses, of DNS packets. These approaches compare the distributions obtained
 from the traffic being analyzed, and compare them to a known distribution that
