@@ -944,9 +944,8 @@ satisfying item four.
 approach to have successfully solved the problem posed in section
 \ref{briefproblem} are as follows:
 
-\begin{itemize} \item Successfully discern both synthetically generated tunnels
-and known tunnels in real-world data from normal, benign, DNS traffic. \item Be
-resistant to known obfuscation methods compared to existing detection methods.
+\begin{itemize} \item Successfully discern tunnel traffic generated from existing tunnel applications and theoretical tunnel traffic (built using additional parameters to attempt to hide from known detection methods) from a baseline of normal traffic.
+\item Be resistant to known obfuscation methods compared to existing detection methods.
 \item Be able to operate at high speed on general purpose, easily obtainable
 hardware.
 \end{itemize}
@@ -1022,21 +1021,23 @@ environment, with technical configuration and testing details given in section
 Through cooperation
 with Merlin, an educational internet service provider in Manitoba, DNS traffic
 was collected over a period from Thursday November 4 2010 until Friday November
-26 including over one billion DNS packets. The hosts responsible for the DNS
+26 2010. The hosts responsible for the DNS
 traffic observed include several dozen school divisions totalling tens of
 thousands of individual computers. The capture includes just over one billion
 packets destined to, or sourced form, UDP port 53 (the standard DNS port). Not
 all packets are valid DNS with more detailed information on the properties of
 the sample available in appendix \ref{appendix-capturestats}.
 
-This capture of DNS traffic will be used to determine the baseline behaviour of
-normal, benign DNS domains such as \texttt{google.com}, \texttt{yahoo.com}, and
-other large commonly used domains. This dataset will also be used to give
-context to the results obtained by the detection approaches when run on the
-synthetically generated tunnel traffic. It is important to note that even if one
-method picks out the synthetic tunnels more clearly than others, all that
-matters in the end is that the tunnels are distinguishable from the background
-noise of normal traffic.
+This captured traffic will be used to determine a baseline distribution to which the metrics produced on isolated tunnel traffic can be compared. This baseline will provide context in order to determine if a method is able to detect a tunnel with sufficiently low expected false-positive/false-negative rates.
+
+%This capture of DNS traffic will be used to determine the baseline behaviour of
+%normal, benign DNS domains such as \texttt{google.com}, \texttt{yahoo.com}, and
+%other large commonly used domains. This dataset will also be used to give
+%context to the results obtained by the detection approaches when run on the
+%synthetically generated tunnel traffic. It is important to note that even if one
+%method picks out the synthetic tunnels more clearly than others, all that
+%matters in the end is that the tunnels are distinguishable from the background
+%noise of normal traffic.
 
 \subsection{Existing Implementation Detection}
 \label{test-existing}
@@ -1090,18 +1091,6 @@ it is able to detect \emph{any} of the tunnels in its own worst-case scenario
 test. Since the methods will not have changed, criteria 3 does not need to be
 evaluated here as the results from the existing implementation testing will be
 used.
-
-
-
-%Iodine
-%* S2C = 300 K/s
-%* C2S = 120 K/s
-%DNS2TCP
-%* S2C = 1.05 M/s
-%* C2S = 300 K/s
-%DNScat
-%* S2C = 1.43 K/s
-%* C2S = 460 K/s
 
 \begin{figure}
 \centering
@@ -1217,6 +1206,71 @@ used.
 \begin{figure}
 \centering
 \includegraphics[width=4in]{figures/tunnels-freqrel.pdf}
+\end{figure}
+\clearpage
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/mpbtt.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/mpbv.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/mphv.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/mphv-100.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/mpnv.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/mppv.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/mppv-500.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/pmat.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/pmqr.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/pmqr-250.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/ppi-born.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/ppi-himbeault.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/ppi-naive.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/ppi-paxson.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/tunrates.pdf}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=4in]{figures/cplot.pdf}
 \end{figure}
 \clearpage
 

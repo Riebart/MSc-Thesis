@@ -1,0 +1,41 @@
+= Client-To-Server =
+On Server:
+* Iodine
+** start_srv.sh iodine
+** nc -vnkw 1 -l 10.1.0.1 12345 > /dev/null
+* Dns2TCP
+** start_srv.sh dns2tcp
+** nc -vnkw 1 -l 127.0.0.1 12345 > /dev/null
+* DNScat
+** while [ true ]; do ./DNScatServer -o iodine.riebart.ca -l 192.168.1.1 -p 53 > /dev/null; done
+
+On Client:
+* Iodine
+** start_cli.sh iodine
+** iodine/c2s.sh 90 2>&1 | tee out_c.txt
+* Dns2TCP
+** start_cli.sh dns2tcp
+** dns2tcp/c2s.sh 90 2>&1 | tee out_c.txt
+* DNScat
+** dnscat/c2s.sh 90 2>&1 | tee out_c.txt
+
+= Server-To-Client =
+On Server:
+* Iodine
+** start_srv.sh iodine
+** iodine/s2c.sh 90 2>&1 | tee out_s.txt
+* Dns2TCP
+** start_srv.sh dns2tcp
+** dns2tcp/s2c.sh 90 2>&1 | tee out_s.txt
+* DNScat
+** dnscat/s2c.sh 90 2>&1 | tee out_s.txt
+
+On Client:
+* Iodine
+** start_cli.sh iodine
+** nc -vnkw 1 -l 10.1.0.2 12345 > /dev/null
+* Dns2TCP
+** start_cli.sh dns2tcp
+** while [ true ]; do nc -vnw 1 127.0.0.1 5300 > /dev/null; done
+* DNScat
+** while [ true ]; do ./DNScatClient -o iodine.riebart.ca -d 192.168.1.1 -A -p 53 | pv > /dev/null; sleep 0.1; done
