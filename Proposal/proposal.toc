@@ -1,33 +1,55 @@
-\contentsline {chapter}{\numberline {1}Introduction}{6}{chapter.1}
-\contentsline {chapter}{\numberline {2}Background}{10}{chapter.2}
-\contentsline {section}{\numberline {2.1}Entropy}{10}{section.2.1}
-\contentsline {section}{\numberline {2.2}Domain Name System (DNS)}{11}{section.2.2}
-\contentsline {section}{\numberline {2.3}Covert Channels}{13}{section.2.3}
-\contentsline {section}{\numberline {2.4}DNS Tunnels}{14}{section.2.4}
-\contentsline {subsubsection}{Raw DNS Tunnels}{14}{section*.4}
-\contentsline {subsubsection}{Conforming DNS Tunnels}{15}{section*.5}
-\contentsline {subsubsection}{DNS Tunnel Software}{16}{section*.6}
-\contentsline {chapter}{\numberline {3}Review of the State of the Art}{18}{chapter.3}
-\contentsline {section}{\numberline {3.1}General Covert Channel or Anomaly Detection Research}{18}{section.3.1}
-\contentsline {section}{\numberline {3.2}Non-DNS Related Research}{20}{section.3.2}
-\contentsline {section}{\numberline {3.3}DNS Covert Channel Research}{20}{section.3.3}
-\contentsline {section}{\numberline {3.4}DNS Tunnel Detection Landscape}{27}{section.3.4}
-\contentsline {chapter}{\numberline {4}Problem Statement and Evaluation Criteria}{31}{chapter.4}
-\contentsline {section}{\numberline {4.1}Brief Statement}{31}{section.4.1}
-\contentsline {section}{\numberline {4.2}Detailed Problem Description}{31}{section.4.2}
-\contentsline {section}{\numberline {4.3}Solution Evaluation Criteria}{33}{section.4.3}
-\contentsline {chapter}{\numberline {5}Proposed Detection Method and Testing Methodology}{35}{chapter.5}
-\contentsline {section}{\numberline {5.1}Theoretical Assumptions}{35}{section.5.1}
-\contentsline {section}{\numberline {5.2}Implementation}{36}{section.5.2}
-\contentsline {section}{\numberline {5.3}Detailed Testing Methodology}{36}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Determining a Baseline}{37}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Existing Implementation Detection}{37}{subsection.5.3.2}
-\contentsline {subsection}{\numberline {5.3.3}Demonstration of Existing Weaknesses}{38}{subsection.5.3.3}
-\contentsline {chapter}{Appendices}{56}{section*.7}
-\contentsline {chapter}{\numberline {A}Properties of the Network Capture}{57}{Appendix.1.A}
-\contentsline {chapter}{\numberline {B}Testing Software and Scripts}{58}{Appendix.1.B}
-\contentsline {section}{\numberline {B.1}Custom DNS Tunnel Endpoint Simulator}{58}{section.1.B.1}
-\contentsline {chapter}{\numberline {C}Testing Environment}{59}{Appendix.1.C}
-\contentsline {chapter}{\numberline {D}Probabilistic Encoding}{60}{Appendix.1.D}
-\contentsline {section}{\numberline {D.1}Sample Encoding}{61}{section.1.D.1}
-\contentsline {subsubsection}{Technical Details}{65}{section*.8}
+\contentsline {chapter}{\numberline {1}Introduction}{7}{chapter.1}
+\contentsline {chapter}{\numberline {2}Background}{11}{chapter.2}
+\contentsline {section}{\numberline {2.1}Entropy}{11}{section.2.1}
+\contentsline {section}{\numberline {2.2}Domain Name System (DNS)}{12}{section.2.2}
+\contentsline {section}{\numberline {2.3}Covert Channels}{14}{section.2.3}
+\contentsline {section}{\numberline {2.4}DNS Tunnels}{15}{section.2.4}
+\contentsline {subsubsection}{Raw DNS Tunnels}{15}{section*.4}
+\contentsline {subsubsection}{Conforming DNS Tunnels}{16}{section*.5}
+\contentsline {subsubsection}{DNS Tunnel Software}{17}{section*.6}
+\contentsline {chapter}{\numberline {3}Review of the State of the Art}{19}{chapter.3}
+\contentsline {section}{\numberline {3.1}General Covert Channel or Anomaly Detection Research}{19}{section.3.1}
+\contentsline {section}{\numberline {3.2}Non-DNS Related Research}{21}{section.3.2}
+\contentsline {section}{\numberline {3.3}DNS Covert Channel Research}{21}{section.3.3}
+\contentsline {section}{\numberline {3.4}DNS Tunnel Detection Landscape}{28}{section.3.4}
+\contentsline {chapter}{\numberline {4}Problem Statement and Evaluation Criteria}{32}{chapter.4}
+\contentsline {section}{\numberline {4.1}Brief Statement}{32}{section.4.1}
+\contentsline {section}{\numberline {4.2}Detailed Problem Description}{32}{section.4.2}
+\contentsline {section}{\numberline {4.3}Solution Evaluation Criteria}{34}{section.4.3}
+\contentsline {chapter}{\numberline {5}Proposed Detection Method}{36}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{36}{section.5.1}
+\contentsline {section}{\numberline {5.2}Theoretical Basis}{37}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Assumptions}{37}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Theory}{37}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Implementation}{37}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}General}{37}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}C++}{37}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Python}{37}{subsection.5.3.3}
+\contentsline {chapter}{\numberline {6}Detailed Testing Methodology}{38}{chapter.6}
+\contentsline {subsection}{\numberline {6.0.4}Determining a Baseline}{39}{subsection.6.0.4}
+\contentsline {subsection}{\numberline {6.0.5}Existing Implementation Detection}{39}{subsection.6.0.5}
+\contentsline {subsection}{\numberline {6.0.6}Demonstration of Existing Weaknesses}{40}{subsection.6.0.6}
+\contentsline {section}{\numberline {6.1}Analysis Method Implementations}{41}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Common Scaffolding}{41}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Naive}{41}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Born}{41}{subsection.6.1.3}
+\contentsline {subsection}{\numberline {6.1.4}Paxson}{41}{subsection.6.1.4}
+\contentsline {subsection}{\numberline {6.1.5}Himbeault}{41}{subsection.6.1.5}
+\contentsline {subsection}{\numberline {6.1.6}Python Interpreter Performance}{41}{subsection.6.1.6}
+\contentsline {chapter}{\numberline {7}Evaluation}{42}{chapter.7}
+\contentsline {section}{\numberline {7.1}Baseline}{42}{section.7.1}
+\contentsline {section}{\numberline {7.2}Tunnel Data}{42}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Iodine}{42}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}dnscat}{42}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}DNS2TCP}{42}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Nextgen}{42}{subsection.7.2.4}
+\contentsline {section}{\numberline {7.3}Packet Throughput Performance}{42}{section.7.3}
+\contentsline {section}{\numberline {7.4}Tunnel Detection Performance}{42}{section.7.4}
+\contentsline {chapter}{Appendices}{59}{section*.7}
+\contentsline {chapter}{\numberline {A}Properties of the Network Capture}{60}{Appendix.1.A}
+\contentsline {chapter}{\numberline {B}Testing Software and Scripts}{61}{Appendix.1.B}
+\contentsline {section}{\numberline {B.1}Custom DNS Tunnel Endpoint Simulator}{61}{section.1.B.1}
+\contentsline {chapter}{\numberline {C}Testing Environment}{62}{Appendix.1.C}
+\contentsline {chapter}{\numberline {D}Probabilistic Encoding}{63}{Appendix.1.D}
+\contentsline {section}{\numberline {D.1}Sample Encoding}{64}{section.1.D.1}
+\contentsline {subsubsection}{Technical Details}{68}{section*.8}

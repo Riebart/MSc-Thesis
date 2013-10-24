@@ -250,7 +250,7 @@ The experiments related to this work do not consider the situation of DNS over
 TCP since the analysis techniques are identical due to the fact that the formats of the UDP and
 TCP responses is identical once the TCP stream is reassembled. Modification of
 the tools developed for this work would require the ability to perform TCP
-stream reassembly in order to extract the responses from the TCP response.
+stream reassembly in order to extract the responses from the TCP response\footnote{A tool that performs this reassembly is included in the same source distribution as the code for this work.}.
 
 Because DNS is such an integral component of Internet communication it is not
 generally reasonable to simply block it while still expecting functional
@@ -275,7 +275,7 @@ lengths put it around one hour which means that a DNS server will only
 recursively pass on a query for a record once an hour. This caching period is
 not constant and can be set differently, depending on the information the record
 contains. Some records require a considerably lower Time To Live (TTL), as low
-as one minute, while for others a considerably longer (months) may be
+as one minute, while for others a considerably longer duration (months) may be
 appropriate.
 
 This proxy architecture removes some naive operation modes for DNS tunnels that
@@ -368,7 +368,7 @@ types of DNS tunnels have one endpoint that is controlled by the tunnel user,
 with that controlled endpoint running dedicated server software. The client and
 server software are responsible for transforming arbitrary information to and
 from DNS queries and responses. The precise details of how the translation is
-done between DNS and the raw data depends on the implementation.
+done between DNS and the raw data depends entirely on the implementation.
 
 \subsubsection{DNS Tunnel Software}
 \label{tunnels-existing}
@@ -470,7 +470,7 @@ channels in general.
 (Moskowitz, 2003)\cite{Moskowitz2003} investigates the link between anonymity
 and covert channels. It identifies several linking factors such as covert
 channel capacity and the properties of anonymizing networks, and investigates
-how these affect anonymity of participants in a communication.
+how these affect the anonymity of participants in a communication.
 
 (Newman, 2007)\cite{Newman2007} discusses covert channels in a broad sense,
 examining the various types of covert channels along with the relationship
@@ -958,9 +958,10 @@ the classes of tests. Details will be given in sections \ref{test-existing} and
 \ref{test-weakness} on how detection methods will be scored for their respective
 tests.
 
-\chapter{Proposed Detection Method and Testing Methodology}
+\chapter{Proposed Detection Method}
 \label{proposed-method}
 
+\section{Introduction}
 The method proposed in this work examines the information theoretical properties
 of the DNS queries to each subdomain, thus retaining the flexibility to filter
 and alert per domain as opposed to more generally on the set of all DNS queries.
@@ -972,7 +973,8 @@ the shelf hardware making this approach practical and uncomplicated to deploy on
 smaller networks or in resource constrained situations. Deployment in large
 environments is similarly straight forward.
 
-\section{Theoretical Assumptions}
+\section{Theoretical Basis}
+\subsection{Assumptions}
 The detection approach proposed in this work
 makes certain assumptions about the nature of DNS tunnels in order to
 effectively detect them. The primary assumption made is that DNS tunnels move
@@ -980,12 +982,16 @@ more data than a normal DNS subdomain, with a very particular meaning of
 \emph{data} that goes beyond simply counting bytes or the number of queries. The
 concept of the amount of data moved under a DNS domain invovles considering the
 entropy of the queries as a whole, and not the characters that make up a query.
+\subsection{Theory}
 
 \section{Implementation}
 \label{implementation}
-TODO Flesh out
+\subsection{General}
+\subsection{C++}
+\subsection{Python}
+\label{proposed-method-python}
 
-\section{Detailed Testing Methodology}
+\chapter{Detailed Testing Methodology}
 A collection of tests will be run on
 several detection methods, emphasizing the performance of this work's proposed
 method when compared to existing methods from the literature, in several
@@ -1059,9 +1065,9 @@ other complex dependencies that the user must obtain. DNS2TCP is chosen since it
 does not require root access, and is written in C indicating potentially better
 throughput than other mechanisms.
 
-The detection results of each of the approaches on the existing tunneling
-applications is of value to those wishing to identify uses of DNS tunneling
-currently in the wild. A detection method will be said to successfuly satisfy
+The detection results of each of the approaches on the existing tunnelling
+applications is of value to those wishing to identify uses of DNS tunnelling
+currently in the wild. A detection method will be said to successfully satisfy
 criteria 1 if it has a false-alarm rate of no more than one percent, and a
 detection rate of greater than ninety percent. A method will be said to satisfy
 criteria three if it can process packets at one gigabit of DNS throughput or
@@ -1091,6 +1097,26 @@ it is able to detect \emph{any} of the tunnels in its own worst-case scenario
 test. Since the methods will not have changed, criteria 3 does not need to be
 evaluated here as the results from the existing implementation testing will be
 used.
+
+\section{Analysis Method Implementations}
+\subsection{Common Scaffolding}
+\subsection{Naive}
+\subsection{Born}
+\subsection{Paxson}
+\subsection{Himbeault}
+CITE BACK \ref{proposed-method-python}
+
+\subsection{Python Interpreter Performance}
+
+\chapter{Evaluation}
+\section{Baseline}
+\section{Tunnel Data}
+\subsection{Iodine}
+\subsection{dnscat}
+\subsection{DNS2TCP}
+\subsection{Nextgen}
+\section{Packet Throughput Performance}
+\section{Tunnel Detection Performance}
 
 \begin{figure}
 \centering

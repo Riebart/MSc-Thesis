@@ -3,11 +3,13 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces DNS Query, Iodine and Prob-coded Comparison - Ratio}}{39}{figure.5.1}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces DNS Query, Iodine and Prob-coded Comparison - Absolute}}{40}{figure.5.2}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces DNS Query, Iodine and Prob-coded Comparison - Ratio}}{43}{figure.7.1}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces DNS Query, Iodine and Prob-coded Comparison - Absolute}}{43}{figure.7.2}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {D.1}{\ignorespaces Encoding sample - source (data matrix)}}{62}{figure.1.D.1}
-\contentsline {figure}{\numberline {D.2}{\ignorespaces Plot of character frequencies by frequency}}{64}{figure.1.D.2}
+\contentsline {figure}{\numberline {D.1}{\ignorespaces Encoding sample - source (data matrix)}}{65}{figure.1.D.1}
+\contentsline {figure}{\numberline {D.2}{\ignorespaces Plot of character frequencies by frequency}}{67}{figure.1.D.2}

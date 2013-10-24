@@ -7,7 +7,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {D.1}{\ignorespaces English character frequency}}{61}{table.1.D.1}
-\contentsline {table}{\numberline {D.2}{\ignorespaces Encoding sample - source}}{62}{table.1.D.2}
-\contentsline {table}{\numberline {D.3}{\ignorespaces Encoding sample - output}}{62}{table.1.D.3}
-\contentsline {table}{\numberline {D.4}{\ignorespaces English character bit-string mapping}}{67}{table.1.D.4}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {D.1}{\ignorespaces English character frequency}}{64}{table.1.D.1}
+\contentsline {table}{\numberline {D.2}{\ignorespaces Encoding sample - source}}{65}{table.1.D.2}
+\contentsline {table}{\numberline {D.3}{\ignorespaces Encoding sample - output}}{65}{table.1.D.3}
+\contentsline {table}{\numberline {D.4}{\ignorespaces English character bit-string mapping}}{70}{table.1.D.4}

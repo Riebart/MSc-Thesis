@@ -13,17 +13,39 @@
 \BOOKMARK [1][-]{section.4.1}{Brief Statement}{chapter.4}% 13
 \BOOKMARK [1][-]{section.4.2}{Detailed Problem Description}{chapter.4}% 14
 \BOOKMARK [1][-]{section.4.3}{Solution Evaluation Criteria}{chapter.4}% 15
-\BOOKMARK [0][-]{chapter.5}{Proposed Detection Method and Testing Methodology}{}% 16
-\BOOKMARK [1][-]{section.5.1}{Theoretical Assumptions}{chapter.5}% 17
-\BOOKMARK [1][-]{section.5.2}{Implementation}{chapter.5}% 18
-\BOOKMARK [1][-]{section.5.3}{Detailed Testing Methodology}{chapter.5}% 19
-\BOOKMARK [2][-]{subsection.5.3.1}{Determining a Baseline}{section.5.3}% 20
-\BOOKMARK [2][-]{subsection.5.3.2}{Existing Implementation Detection}{section.5.3}% 21
-\BOOKMARK [2][-]{subsection.5.3.3}{Demonstration of Existing Weaknesses}{section.5.3}% 22
-\BOOKMARK [0][-]{section*.7}{Appendices}{}% 23
-\BOOKMARK [0][-]{Appendix.1.A}{Properties of the Network Capture}{}% 24
-\BOOKMARK [0][-]{Appendix.1.B}{Testing Software and Scripts}{}% 25
-\BOOKMARK [1][-]{section.1.B.1}{Custom DNS Tunnel Endpoint Simulator}{Appendix.1.B}% 26
-\BOOKMARK [0][-]{Appendix.1.C}{Testing Environment}{}% 27
-\BOOKMARK [0][-]{Appendix.1.D}{Probabilistic Encoding}{}% 28
-\BOOKMARK [1][-]{section.1.D.1}{Sample Encoding}{Appendix.1.D}% 29
+\BOOKMARK [0][-]{chapter.5}{Proposed Detection Method}{}% 16
+\BOOKMARK [1][-]{section.5.1}{Introduction}{chapter.5}% 17
+\BOOKMARK [1][-]{section.5.2}{Theoretical Basis}{chapter.5}% 18
+\BOOKMARK [2][-]{subsection.5.2.1}{Assumptions}{section.5.2}% 19
+\BOOKMARK [2][-]{subsection.5.2.2}{Theory}{section.5.2}% 20
+\BOOKMARK [1][-]{section.5.3}{Implementation}{chapter.5}% 21
+\BOOKMARK [2][-]{subsection.5.3.1}{General}{section.5.3}% 22
+\BOOKMARK [2][-]{subsection.5.3.2}{C++}{section.5.3}% 23
+\BOOKMARK [2][-]{subsection.5.3.3}{Python}{section.5.3}% 24
+\BOOKMARK [0][-]{chapter.6}{Detailed Testing Methodology}{}% 25
+\BOOKMARK [1][-]{subsection.6.0.4}{Determining a Baseline}{chapter.6}% 26
+\BOOKMARK [2][-]{subsection.6.0.5}{Existing Implementation Detection}{subsection.6.0.4}% 27
+\BOOKMARK [2][-]{subsection.6.0.6}{Demonstration of Existing Weaknesses}{subsection.6.0.4}% 28
+\BOOKMARK [1][-]{section.6.1}{Analysis Method Implementations}{chapter.6}% 29
+\BOOKMARK [2][-]{subsection.6.1.1}{Common Scaffolding}{section.6.1}% 30
+\BOOKMARK [2][-]{subsection.6.1.2}{Naive}{section.6.1}% 31
+\BOOKMARK [2][-]{subsection.6.1.3}{Born}{section.6.1}% 32
+\BOOKMARK [2][-]{subsection.6.1.4}{Paxson}{section.6.1}% 33
+\BOOKMARK [2][-]{subsection.6.1.5}{Himbeault}{section.6.1}% 34
+\BOOKMARK [2][-]{subsection.6.1.6}{Python Interpreter Performance}{section.6.1}% 35
+\BOOKMARK [0][-]{chapter.7}{Evaluation}{}% 36
+\BOOKMARK [1][-]{section.7.1}{Baseline}{chapter.7}% 37
+\BOOKMARK [1][-]{section.7.2}{Tunnel Data}{chapter.7}% 38
+\BOOKMARK [2][-]{subsection.7.2.1}{Iodine}{section.7.2}% 39
+\BOOKMARK [2][-]{subsection.7.2.2}{dnscat}{section.7.2}% 40
+\BOOKMARK [2][-]{subsection.7.2.3}{DNS2TCP}{section.7.2}% 41
+\BOOKMARK [2][-]{subsection.7.2.4}{Nextgen}{section.7.2}% 42
+\BOOKMARK [1][-]{section.7.3}{Packet Throughput Performance}{chapter.7}% 43
+\BOOKMARK [1][-]{section.7.4}{Tunnel Detection Performance}{chapter.7}% 44
+\BOOKMARK [0][-]{section*.7}{Appendices}{}% 45
+\BOOKMARK [0][-]{Appendix.1.A}{Properties of the Network Capture}{}% 46
+\BOOKMARK [0][-]{Appendix.1.B}{Testing Software and Scripts}{}% 47
+\BOOKMARK [1][-]{section.1.B.1}{Custom DNS Tunnel Endpoint Simulator}{Appendix.1.B}% 48
+\BOOKMARK [0][-]{Appendix.1.C}{Testing Environment}{}% 49
+\BOOKMARK [0][-]{Appendix.1.D}{Probabilistic Encoding}{}% 50
+\BOOKMARK [1][-]{section.1.D.1}{Sample Encoding}{Appendix.1.D}% 51
