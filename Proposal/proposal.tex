@@ -124,7 +124,7 @@ control the access to this information. Even if an enterprise does not have
 information that needs protecting, DNS tunnels should still be blocked in order
 to prevent malware from communicating\cite{Dietrich2011}. Because DNS tunnels can be used for
 arbitrary communication, they can be used as command-and-control channels for
-botnets\cite{WolAlphaBotnet} or any other malicious system that relies on data transmission.
+botnets\cite{WoframlAlpha-Botnet} or any other malicious system that relies on data transmission.
 Preventing botnets from operating is in the best interest for the Internet as a
 whole and should be a concern of every user of the Internet.
 
@@ -897,12 +897,16 @@ to the threat in an adequate time frame to stop the attack in progress. This
 tunnel would have the following traits:
 
 \label{supertunnel}
-\begin{enumerate} \item All of its DNS packets would conform
-to all appropriate DNS RFCs. \item Its queries would be chosen such that the
+\begin{enumerate}
+\item All of its DNS packets would conform
+to all appropriate DNS RFCs.
+\item Its queries would be chosen such that the
 character frequency distribution matches benign DNS queries (to evade
-\cite{Born2010.cfa} and similar approaches). \item Its queries would be chosen
+\cite{Born2010.cfa} and similar approaches).
+\item Its queries would be chosen
 such that they have a distribution of lengths that matches benign DNS queries
-(to evade \cite{Karasaridis2006} and \cite{SANS2013}). \item Its queries are
+(to evade \cite{Karasaridis2006} and \cite{SANS2013}).
+\item Its queries are
 chosen such that they do not span too great a space when taken as vectors in
 higher dimensional Euclidean space (to evade \cite{jhind2009}). \end{enumerate}
 
@@ -930,14 +934,35 @@ component of $\mathbf p=\{p_i\}$ and $\mathbf q=\{q_i\}$ is non-negative
 $|p_i-q_i|\leq\max{(p_i,q_i)}\leq|p_i+q_i|$. This together with the triangle
 inequality show that
 
-\[N\geq\|\mathbf p\|,N\geq\|\mathbf q\|\Rightarrow 2N\geq\|\mathbf p\|+\|\mathbf q\|\geq\|\mathbf p+\mathbf q\|\geq\|\mathbf p-\mathbf q\|\]
+\[N\geq\|\mathbf p\|,N\geq\|\mathbf q\|\Rightarrow 2N\geq\|\mathbf p\|+\|\mathbf
+q\|\geq\|\mathbf p+\mathbf q\|\geq\|\mathbf p-\mathbf q\|\]
 
 Since DNS queries can be thought of as vectors satisfying the above conditions,
-the result applies. The consequences of this are that by enforcing that DNS
-queries from a tunnel follow an appropriate character and length distribution, a maximum is
-placed on the diameter of the space spanned by the resulting queries. Thus, by
-controlling the target character distribution and query length distributions, it
-is possible to control the diameter of the resulting query space, thus
+the result applies. By further restricting that the queries follow a prescribed
+character distribution, there are statistical properties that the norms of the
+queries in $\mathbb E^n$ will have. By observing that queries can be considered
+(Independent Identically Distributed) IID observations from a fixed alphabet,
+$\mathcal C=\{c_i\}$, with a known probability distribution, $\forall
+c\in\mathcal C, 0\leq P(c)\leq1$ satisfying $\sum_{c\in\mathcal C}{P(c)}=1$, the
+notion of a typical set can be applied. As $n$ (the length of a query/the
+dimension of the vector) grows, a typical sequence can be assumed to have each
+symbol $c\in\mathcal C$ appearing $nP(c)$ times. If $v\in\mathcal C^n$ is a
+vector with the Euclidean $n$-norm, then asymptotically
+
+\[\|\mathbf v\|\approx k\sqrt n E[(\mathcal C,P)] \]
+
+Further, since the aggregate probability of the typical set approaches unity as
+the length increases, the probability distribution of norms of vectors in
+$\mathcal C^n$ becomes very tightly packed around the norm of a typical vector.
+This is a consequence of the \emph{Central Limit Theorem} since the components
+of the vectors (characters in the DNS query) are IID, and a variance that
+decreases as the inverse of the dimensionality.
+
+The consequences of these results indicate that by enforcing that DNS queries
+from a tunnel follow an appropriate character and length distribution, a maximum
+is placed on the diameter of the space spanned by the resulting queries. Thus,
+by controlling the target character distribution and query length distributions,
+it is possible to control the diameter of the resulting query space, thus
 satisfying item four.
 
 \section{Solution Evaluation Criteria} The objectives that must be met for an
@@ -961,7 +986,6 @@ tests.
 \chapter{Proposed Detection Method}
 \label{proposed-method}
 
-\section{Introduction}
 The method proposed in this work examines the information theoretical properties
 of the DNS queries to each subdomain, thus retaining the flexibility to filter
 and alert per domain as opposed to more generally on the set of all DNS queries.
@@ -980,7 +1004,7 @@ makes certain assumptions about the nature of DNS tunnels in order to
 effectively detect them. The primary assumption made is that DNS tunnels move
 more data than a normal DNS subdomain, with a very particular meaning of
 \emph{data} that goes beyond simply counting bytes or the number of queries. The
-concept of the amount of data moved under a DNS domain invovles considering the
+concept of the amount of data moved under a DNS domain involves considering the
 entropy of the queries as a whole, and not the characters that make up a query.
 \subsection{Theory}
 

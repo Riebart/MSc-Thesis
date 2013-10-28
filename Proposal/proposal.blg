@@ -33,6 +33,8 @@ Warning--entry type for "denisesrc" isn't style-file defined
 --line 1041 of file ../Reference/bibliography.bib
 Warning--entry type for "probcodesrc" isn't style-file defined
 --line 1050 of file ../Reference/bibliography.bib
+Warning--entry type for "WoframlAlpha-Botnet" isn't style-file defined
+--line 1059 of file ../Reference/bibliography.bib
 Warning--entry type for "WolframAlpha-EntropyMath" isn't style-file defined
 --line 1068 of file ../Reference/bibliography.bib
 Warning--entry type for "WolframAlpha-EntropyWord" isn't style-file defined
@@ -59,7 +61,6 @@ A bad cross reference---entry "Butler2011"
 refers to entry "conf/acns/2011", which doesn't exist
 A bad cross reference---entry "Thomas2011"
 refers to entry "conf/ifip11-9/2011", which doesn't exist
-Warning--I didn't find a database entry for "WolAlphaBotnet"
 Warning--I didn't find a database entry for "conf/pldi/2008plas"
 Warning--I didn't find a database entry for "conf/wpes/2003"
 Warning--I didn't find a database entry for "conf/ccs/2004ccs"
