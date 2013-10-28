@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.22)  27 OCT 2013 18:15
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.22)  28 OCT 2013 01:55
 entering extended mode
 **D:/Documents/Projects/Thesis/Proposal/proposal.tex
 (D:/Documents/Projects/Thesis/Proposal/proposal.tex
@@ -401,371 +401,399 @@ Chapter 3.
 Chapter 4.
 [32
 
-] [33] [34] [35]
-Chapter 5.
-[36
+] [33] [34] [35] [36]
+<figures/dnssampling-ev_growth.pdf, id=653, 631.35875pt x 322.20375pt>
+File: figures/dnssampling-ev_growth.pdf Graphic file (type pdf)
 
-] [37]
-Chapter 6.
-[38
+<use figures/dnssampling-ev_growth.pdf>
+Package pdftex.def Info: figures/dnssampling-ev_growth.pdf used on input line 1
+046.
+(pdftex.def)             Requested size: 462.26999pt x 235.91473pt.
+ [37 <D:/Documents/Projects/Thesis/Proposal/figures/dnssampling-ev_growth.pdf>]
+
+<figures/dnssampling-muerror.pdf, id=677, 361.35pt x 248.93pt>
+File: figures/dnssampling-muerror.pdf Graphic file (type pdf)
+
+<use figures/dnssampling-muerror.pdf>
+Package pdftex.def Info: figures/dnssampling-muerror.pdf used on input line 108
+8.
+(pdftex.def)             Requested size: 323.58757pt x 222.9182pt.
+
+<figures/dnssampling-sigmafit.pdf, id=680, 553.06625pt x 251.94125pt>
+File: figures/dnssampling-sigmafit.pdf Graphic file (type pdf)
+
+<use figures/dnssampling-sigmafit.pdf>
+Package pdftex.def Info: figures/dnssampling-sigmafit.pdf used on input line 11
+00.
+(pdftex.def)             Requested size: 462.26999pt x 210.5797pt.
+ [38] [39 <D:/Documents/Projects/Thesis/Proposal/figures/dnssampling-muerror.pd
+f> <D:/Documents/Projects/Thesis/Proposal/figures/dnssampling-sigmafit.pdf>] [4
+0
 
 ]
+Chapter 5.
+[41
 
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 1049.
+] [42] [43] [44]
+Chapter 6.
+[45
 
-
-Overfull \hbox (5.9196pt too wide) in paragraph at lines 1082--1091
+] [46]
+Overfull \hbox (5.9196pt too wide) in paragraph at lines 1293--1302
 []\OT1/cmr/m/n/12 The ex-ist-ing im-ple-men-ta-tions cho-sen for test-ing in th
 is sec-tion are Iodine[[]], DNScat[[]],
  []
 
-[39] [40] [41]
+[47] [48]
 Chapter 7.
-<figures/alexa_iodine_prob_v_english-r.pdf, id=639, 505.89pt x 344.4619pt>
+[49
+
+]
+Chapter 8.
+<figures/alexa_iodine_prob_v_english-r.pdf, id=794, 505.89pt x 344.4619pt>
 File: figures/alexa_iodine_prob_v_english-r.pdf Graphic file (type pdf)
 
 <use figures/alexa_iodine_prob_v_english-r.pdf>
 Package pdftex.def Info: figures/alexa_iodine_prob_v_english-r.pdf used on inpu
-t line 1147.
+t line 1363.
 (pdftex.def)             Requested size: 289.07999pt x 196.83939pt.
 
-<figures/alexa_iodine_prob_v_english-a.pdf, id=640, 505.89pt x 367.41768pt>
+<figures/alexa_iodine_prob_v_english-a.pdf, id=795, 505.89pt x 367.41768pt>
 File: figures/alexa_iodine_prob_v_english-a.pdf Graphic file (type pdf)
 
 <use figures/alexa_iodine_prob_v_english-a.pdf>
 Package pdftex.def Info: figures/alexa_iodine_prob_v_english-a.pdf used on inpu
-t line 1154.
+t line 1370.
 (pdftex.def)             Requested size: 289.07999pt x 209.95724pt.
 
-<figures/alexa_iodine_v_english-a.pdf, id=641, 505.89pt x 367.41768pt>
+<figures/alexa_iodine_v_english-a.pdf, id=796, 505.89pt x 367.41768pt>
 File: figures/alexa_iodine_v_english-a.pdf Graphic file (type pdf)
 
 <use figures/alexa_iodine_v_english-a.pdf>
 Package pdftex.def Info: figures/alexa_iodine_v_english-a.pdf used on input lin
-e 1161.
+e 1377.
 (pdftex.def)             Requested size: 289.07999pt x 209.95724pt.
 
-<figures/alexa_iodine_v_english-r.pdf, id=642, 505.89pt x 344.4619pt>
+<figures/alexa_iodine_v_english-r.pdf, id=797, 505.89pt x 344.4619pt>
 File: figures/alexa_iodine_v_english-r.pdf Graphic file (type pdf)
 
 <use figures/alexa_iodine_v_english-r.pdf>
 Package pdftex.def Info: figures/alexa_iodine_v_english-r.pdf used on input lin
-e 1165.
+e 1381.
 (pdftex.def)             Requested size: 289.07999pt x 196.83939pt.
 
-<figures/alexa_v_english-a.pdf, id=643, 505.89pt x 367.41768pt>
+<figures/alexa_v_english-a.pdf, id=798, 505.89pt x 367.41768pt>
 File: figures/alexa_v_english-a.pdf Graphic file (type pdf)
 
 <use figures/alexa_v_english-a.pdf>
-Package pdftex.def Info: figures/alexa_v_english-a.pdf used on input line 1169.
+Package pdftex.def Info: figures/alexa_v_english-a.pdf used on input line 1385.
 
 (pdftex.def)             Requested size: 289.07999pt x 209.95724pt.
 
-<figures/alexa_v_english-r.pdf, id=644, 505.89pt x 344.4619pt>
+<figures/alexa_v_english-r.pdf, id=799, 505.89pt x 344.4619pt>
 File: figures/alexa_v_english-r.pdf Graphic file (type pdf)
 
 <use figures/alexa_v_english-r.pdf>
-Package pdftex.def Info: figures/alexa_v_english-r.pdf used on input line 1173.
+Package pdftex.def Info: figures/alexa_v_english-r.pdf used on input line 1389.
 
 (pdftex.def)             Requested size: 289.07999pt x 196.83939pt.
 
-<figures/markov2-a.pdf, id=645, 505.89pt x 367.41768pt>
+<figures/markov2-a.pdf, id=800, 505.89pt x 367.41768pt>
 File: figures/markov2-a.pdf Graphic file (type pdf)
 
 <use figures/markov2-a.pdf>
-Package pdftex.def Info: figures/markov2-a.pdf used on input line 1177.
+Package pdftex.def Info: figures/markov2-a.pdf used on input line 1393.
 (pdftex.def)             Requested size: 289.07999pt x 209.95724pt.
 
-<figures/markov3-a.pdf, id=646, 505.89pt x 367.41768pt>
+<figures/markov3-a.pdf, id=801, 505.89pt x 367.41768pt>
 File: figures/markov3-a.pdf Graphic file (type pdf)
 
 <use figures/markov3-a.pdf>
-Package pdftex.def Info: figures/markov3-a.pdf used on input line 1181.
+Package pdftex.def Info: figures/markov3-a.pdf used on input line 1397.
 (pdftex.def)             Requested size: 289.07999pt x 209.95724pt.
 
-<figures/markov-a.pdf, id=647, 505.89pt x 367.41768pt>
+<figures/markov-a.pdf, id=802, 505.89pt x 367.41768pt>
 File: figures/markov-a.pdf Graphic file (type pdf)
 
 <use figures/markov-a.pdf>
-Package pdftex.def Info: figures/markov-a.pdf used on input line 1185.
+Package pdftex.def Info: figures/markov-a.pdf used on input line 1401.
 (pdftex.def)             Requested size: 289.07999pt x 209.95724pt.
 
-<figures/metric-tun_v_norm.pdf, id=648, 505.89pt x 315.38228pt>
+<figures/metric-tun_v_norm.pdf, id=803, 505.89pt x 315.38228pt>
 File: figures/metric-tun_v_norm.pdf Graphic file (type pdf)
 
 <use figures/metric-tun_v_norm.pdf>
-Package pdftex.def Info: figures/metric-tun_v_norm.pdf used on input line 1189.
+Package pdftex.def Info: figures/metric-tun_v_norm.pdf used on input line 1405.
 
 (pdftex.def)             Requested size: 289.07999pt x 180.22212pt.
 
-<figures/metric-tun_v_norm-norm-zoom.pdf, id=649, 505.89pt x 315.38228pt>
+<figures/metric-tun_v_norm-norm-zoom.pdf, id=804, 505.89pt x 315.38228pt>
 File: figures/metric-tun_v_norm-norm-zoom.pdf Graphic file (type pdf)
 
 <use figures/metric-tun_v_norm-norm-zoom.pdf>
 Package pdftex.def Info: figures/metric-tun_v_norm-norm-zoom.pdf used on input 
-line 1193.
+line 1409.
 (pdftex.def)             Requested size: 289.07999pt x 180.22212pt.
 
-<figures/metric-tun_v_norm-zoom.pdf, id=650, 505.89pt x 315.38228pt>
+<figures/metric-tun_v_norm-zoom.pdf, id=805, 505.89pt x 315.38228pt>
 File: figures/metric-tun_v_norm-zoom.pdf Graphic file (type pdf)
 
 <use figures/metric-tun_v_norm-zoom.pdf>
 Package pdftex.def Info: figures/metric-tun_v_norm-zoom.pdf used on input line 
-1197.
+1413.
 (pdftex.def)             Requested size: 289.07999pt x 180.22212pt.
 
-<figures/metric-tun-dns2tcp.pdf, id=651, 505.89pt x 302.54329pt>
+<figures/metric-tun-dns2tcp.pdf, id=806, 505.89pt x 302.54329pt>
 File: figures/metric-tun-dns2tcp.pdf Graphic file (type pdf)
 
 <use figures/metric-tun-dns2tcp.pdf>
-Package pdftex.def Info: figures/metric-tun-dns2tcp.pdf used on input line 1201
+Package pdftex.def Info: figures/metric-tun-dns2tcp.pdf used on input line 1417
 .
 (pdftex.def)             Requested size: 289.07999pt x 172.8854pt.
 
-<figures/metric-tun-dnscat.pdf, id=652, 505.89pt x 302.54329pt>
+<figures/metric-tun-dnscat.pdf, id=807, 505.89pt x 302.54329pt>
 File: figures/metric-tun-dnscat.pdf Graphic file (type pdf)
 
 <use figures/metric-tun-dnscat.pdf>
-Package pdftex.def Info: figures/metric-tun-dnscat.pdf used on input line 1205.
+Package pdftex.def Info: figures/metric-tun-dnscat.pdf used on input line 1421.
 
 (pdftex.def)             Requested size: 289.07999pt x 172.8854pt.
 
-<figures/metric-tun-iodine.pdf, id=653, 505.89pt x 302.54329pt>
+<figures/metric-tun-iodine.pdf, id=808, 505.89pt x 302.54329pt>
 File: figures/metric-tun-iodine.pdf Graphic file (type pdf)
 
 <use figures/metric-tun-iodine.pdf>
-Package pdftex.def Info: figures/metric-tun-iodine.pdf used on input line 1209.
+Package pdftex.def Info: figures/metric-tun-iodine.pdf used on input line 1425.
 
 (pdftex.def)             Requested size: 289.07999pt x 172.8854pt.
 
-<figures/metric-tun-probdns.pdf, id=654, 505.89pt x 302.54329pt>
+<figures/metric-tun-probdns.pdf, id=809, 505.89pt x 302.54329pt>
 File: figures/metric-tun-probdns.pdf Graphic file (type pdf)
 
 <use figures/metric-tun-probdns.pdf>
-Package pdftex.def Info: figures/metric-tun-probdns.pdf used on input line 1213
+Package pdftex.def Info: figures/metric-tun-probdns.pdf used on input line 1429
 .
 (pdftex.def)             Requested size: 289.07999pt x 172.8854pt.
 
-<figures/pdf_convergence.pdf, id=655, 505.89pt x 342.70033pt>
+<figures/pdf_convergence.pdf, id=810, 505.89pt x 342.70033pt>
 File: figures/pdf_convergence.pdf Graphic file (type pdf)
 
 <use figures/pdf_convergence.pdf>
-Package pdftex.def Info: figures/pdf_convergence.pdf used on input line 1217.
+Package pdftex.def Info: figures/pdf_convergence.pdf used on input line 1433.
 (pdftex.def)             Requested size: 289.07999pt x 195.83276pt.
- [42
+ [50
 
-] [43 <D:/Documents/Projects/Thesis/Proposal/figures/alexa_iodine_prob_v_englis
+] [51 <D:/Documents/Projects/Thesis/Proposal/figures/alexa_iodine_prob_v_englis
 h-r.pdf> <D:/Documents/Projects/Thesis/Proposal/figures/alexa_iodine_prob_v_eng
-lish-a.pdf>] [44 <D:/Documents/Projects/Thesis/Proposal/figures/alexa_iodine_v_
+lish-a.pdf>] [52 <D:/Documents/Projects/Thesis/Proposal/figures/alexa_iodine_v_
 english-a.pdf> <D:/Documents/Projects/Thesis/Proposal/figures/alexa_iodine_v_en
-glish-r.pdf>] [45 <D:/Documents/Projects/Thesis/Proposal/figures/alexa_v_englis
+glish-r.pdf>] [53 <D:/Documents/Projects/Thesis/Proposal/figures/alexa_v_englis
 h-a.pdf> <D:/Documents/Projects/Thesis/Proposal/figures/alexa_v_english-r.pdf>]
- [46 <D:/Documents/Projects/Thesis/Proposal/figures/markov2-a.pdf> <D:/Document
-s/Projects/Thesis/Proposal/figures/markov3-a.pdf>] [47 <D:/Documents/Projects/T
+ [54 <D:/Documents/Projects/Thesis/Proposal/figures/markov2-a.pdf> <D:/Document
+s/Projects/Thesis/Proposal/figures/markov3-a.pdf>] [55 <D:/Documents/Projects/T
 hesis/Proposal/figures/markov-a.pdf> <D:/Documents/Projects/Thesis/Proposal/fig
 ures/metric-tun_v_norm.pdf> <D:/Documents/Projects/Thesis/Proposal/figures/metr
-ic-tun_v_norm-norm-zoom.pdf>] [48 <D:/Documents/Projects/Thesis/Proposal/figure
+ic-tun_v_norm-norm-zoom.pdf>] [56 <D:/Documents/Projects/Thesis/Proposal/figure
 s/metric-tun_v_norm-zoom.pdf> <D:/Documents/Projects/Thesis/Proposal/figures/me
 tric-tun-dns2tcp.pdf> <D:/Documents/Projects/Thesis/Proposal/figures/metric-tun
--dnscat.pdf>] [49 <D:/Documents/Projects/Thesis/Proposal/figures/metric-tun-iod
+-dnscat.pdf>] [57 <D:/Documents/Projects/Thesis/Proposal/figures/metric-tun-iod
 ine.pdf> <D:/Documents/Projects/Thesis/Proposal/figures/metric-tun-probdns.pdf>
  <D:/Documents/Projects/Thesis/Proposal/figures/pdf_convergence.pdf>]
-<figures/pdf_convergence_adjusted.pdf, id=903, 505.89pt x 342.70033pt>
+<figures/pdf_convergence_adjusted.pdf, id=1057, 505.89pt x 342.70033pt>
 File: figures/pdf_convergence_adjusted.pdf Graphic file (type pdf)
 
 <use figures/pdf_convergence_adjusted.pdf>
 Package pdftex.def Info: figures/pdf_convergence_adjusted.pdf used on input lin
-e 1222.
+e 1438.
 (pdftex.def)             Requested size: 289.07999pt x 195.83276pt.
 
-<figures/pdf_convergence_adjusted2.pdf, id=904, 505.89pt x 344.4619pt>
+<figures/pdf_convergence_adjusted2.pdf, id=1058, 505.89pt x 344.4619pt>
 File: figures/pdf_convergence_adjusted2.pdf Graphic file (type pdf)
 
 <use figures/pdf_convergence_adjusted2.pdf>
 Package pdftex.def Info: figures/pdf_convergence_adjusted2.pdf used on input li
-ne 1226.
+ne 1442.
 (pdftex.def)             Requested size: 289.07999pt x 196.83939pt.
 
-<figures/plots_best.pdf, id=905, 1084.05pt x 576.99463pt>
+<figures/plots_best.pdf, id=1059, 1084.05pt x 576.99463pt>
 File: figures/plots_best.pdf Graphic file (type pdf)
 
 <use figures/plots_best.pdf>
-Package pdftex.def Info: figures/plots_best.pdf used on input line 1230.
+Package pdftex.def Info: figures/plots_best.pdf used on input line 1446.
 (pdftex.def)             Requested size: 289.07999pt x 153.8625pt.
 
-<figures/plots_digram.pdf, id=906, 1084.05pt x 921.20964pt>
+<figures/plots_digram.pdf, id=1060, 1084.05pt x 921.20964pt>
 File: figures/plots_digram.pdf Graphic file (type pdf)
 
 <use figures/plots_digram.pdf>
-Package pdftex.def Info: figures/plots_digram.pdf used on input line 1234.
+Package pdftex.def Info: figures/plots_digram.pdf used on input line 1450.
 (pdftex.def)             Requested size: 289.07999pt x 245.65155pt.
 
-<figures/plots_markov1.pdf, id=907, 1084.05pt x 576.99463pt>
+<figures/plots_markov1.pdf, id=1061, 1084.05pt x 576.99463pt>
 File: figures/plots_markov1.pdf Graphic file (type pdf)
 
 <use figures/plots_markov1.pdf>
-Package pdftex.def Info: figures/plots_markov1.pdf used on input line 1238.
+Package pdftex.def Info: figures/plots_markov1.pdf used on input line 1454.
 (pdftex.def)             Requested size: 289.07999pt x 153.8625pt.
 
-<figures/plots_markov2.pdf, id=908, 1084.05pt x 576.99463pt>
+<figures/plots_markov2.pdf, id=1062, 1084.05pt x 576.99463pt>
 File: figures/plots_markov2.pdf Graphic file (type pdf)
 
 <use figures/plots_markov2.pdf>
-Package pdftex.def Info: figures/plots_markov2.pdf used on input line 1242.
+Package pdftex.def Info: figures/plots_markov2.pdf used on input line 1458.
 (pdftex.def)             Requested size: 289.07999pt x 153.8625pt.
 
-<figures/plots_markov3.pdf, id=909, 1084.05pt x 576.99463pt>
+<figures/plots_markov3.pdf, id=1063, 1084.05pt x 576.99463pt>
 File: figures/plots_markov3.pdf Graphic file (type pdf)
 
 <use figures/plots_markov3.pdf>
-Package pdftex.def Info: figures/plots_markov3.pdf used on input line 1246.
+Package pdftex.def Info: figures/plots_markov3.pdf used on input line 1462.
 (pdftex.def)             Requested size: 289.07999pt x 153.8625pt.
 
-<figures/plots_unigram.pdf, id=910, 1084.05pt x 921.20964pt>
+<figures/plots_unigram.pdf, id=1064, 1084.05pt x 921.20964pt>
 File: figures/plots_unigram.pdf Graphic file (type pdf)
 
 <use figures/plots_unigram.pdf>
-Package pdftex.def Info: figures/plots_unigram.pdf used on input line 1250.
+Package pdftex.def Info: figures/plots_unigram.pdf used on input line 1466.
 (pdftex.def)             Requested size: 289.07999pt x 245.65155pt.
 
-<figures/tunnels-freqabs.pdf, id=911, 505.89pt x 367.41768pt>
+<figures/tunnels-freqabs.pdf, id=1065, 505.89pt x 367.41768pt>
 File: figures/tunnels-freqabs.pdf Graphic file (type pdf)
 
 <use figures/tunnels-freqabs.pdf>
-Package pdftex.def Info: figures/tunnels-freqabs.pdf used on input line 1254.
+Package pdftex.def Info: figures/tunnels-freqabs.pdf used on input line 1470.
 (pdftex.def)             Requested size: 289.07999pt x 209.95724pt.
 
-<figures/tunnels-freqrel.pdf, id=912, 505.89pt x 344.4619pt>
+<figures/tunnels-freqrel.pdf, id=1066, 505.89pt x 344.4619pt>
 File: figures/tunnels-freqrel.pdf Graphic file (type pdf)
 
 <use figures/tunnels-freqrel.pdf>
-Package pdftex.def Info: figures/tunnels-freqrel.pdf used on input line 1258.
+Package pdftex.def Info: figures/tunnels-freqrel.pdf used on input line 1474.
 (pdftex.def)             Requested size: 289.07999pt x 196.83939pt.
- [50 <D:/Documents/Projects/Thesis/Proposal/figures/pdf_convergence_adjusted.pd
+ [58 <D:/Documents/Projects/Thesis/Proposal/figures/pdf_convergence_adjusted.pd
 f> <D:/Documents/Projects/Thesis/Proposal/figures/pdf_convergence_adjusted2.pdf
-> <D:/Documents/Projects/Thesis/Proposal/figures/plots_best.pdf>] [51 <D:/Docum
+> <D:/Documents/Projects/Thesis/Proposal/figures/plots_best.pdf>] [59 <D:/Docum
 ents/Projects/Thesis/Proposal/figures/plots_digram.pdf> <D:/Documents/Projects/
 Thesis/Proposal/figures/plots_markov1.pdf> <D:/Documents/Projects/Thesis/Propos
-al/figures/plots_markov2.pdf>] [52 <D:/Documents/Projects/Thesis/Proposal/figur
+al/figures/plots_markov2.pdf>] [60 <D:/Documents/Projects/Thesis/Proposal/figur
 es/plots_markov3.pdf> <D:/Documents/Projects/Thesis/Proposal/figures/plots_unig
-ram.pdf>] [53 <D:/Documents/Projects/Thesis/Proposal/figures/tunnels-freqabs.pd
+ram.pdf>] [61 <D:/Documents/Projects/Thesis/Proposal/figures/tunnels-freqabs.pd
 f> <D:/Documents/Projects/Thesis/Proposal/figures/tunnels-freqrel.pdf>]
-<figures/mpbtt.pdf, id=1069, 768.8725pt x 392.46625pt>
+<figures/mpbtt.pdf, id=1224, 768.8725pt x 392.46625pt>
 File: figures/mpbtt.pdf Graphic file (type pdf)
  <use figures/mpbtt.pdf>
-Package pdftex.def Info: figures/mpbtt.pdf used on input line 1263.
+Package pdftex.def Info: figures/mpbtt.pdf used on input line 1479.
 (pdftex.def)             Requested size: 289.07999pt x 147.56372pt.
 
-<figures/mpbv.pdf, id=1070, 664.4825pt x 381.425pt>
+<figures/mpbv.pdf, id=1225, 664.4825pt x 381.425pt>
 File: figures/mpbv.pdf Graphic file (type pdf)
  <use figures/mpbv.pdf>
-Package pdftex.def Info: figures/mpbv.pdf used on input line 1267.
+Package pdftex.def Info: figures/mpbv.pdf used on input line 1483.
 (pdftex.def)             Requested size: 289.07999pt x 165.93599pt.
 
-<figures/mphv.pdf, id=1071, 664.4825pt x 381.425pt>
+<figures/mphv.pdf, id=1226, 664.4825pt x 381.425pt>
 File: figures/mphv.pdf Graphic file (type pdf)
  <use figures/mphv.pdf>
-Package pdftex.def Info: figures/mphv.pdf used on input line 1271.
+Package pdftex.def Info: figures/mphv.pdf used on input line 1487.
 (pdftex.def)             Requested size: 289.07999pt x 165.93599pt.
 
-<figures/mphv-100.pdf, id=1072, 664.4825pt x 381.425pt>
+<figures/mphv-100.pdf, id=1227, 664.4825pt x 381.425pt>
 File: figures/mphv-100.pdf Graphic file (type pdf)
 
 <use figures/mphv-100.pdf>
-Package pdftex.def Info: figures/mphv-100.pdf used on input line 1275.
+Package pdftex.def Info: figures/mphv-100.pdf used on input line 1491.
 (pdftex.def)             Requested size: 289.07999pt x 165.93599pt.
- <figures/mpnv.pdf, id=1073, 664.4825pt x 381.425pt>
+ <figures/mpnv.pdf, id=1228, 664.4825pt x 381.425pt>
 File: figures/mpnv.pdf Graphic file (type pdf)
 
 <use figures/mpnv.pdf>
-Package pdftex.def Info: figures/mpnv.pdf used on input line 1279.
+Package pdftex.def Info: figures/mpnv.pdf used on input line 1495.
 (pdftex.def)             Requested size: 289.07999pt x 165.93599pt.
- <figures/mppv.pdf, id=1074, 664.4825pt x 381.425pt>
+ <figures/mppv.pdf, id=1229, 664.4825pt x 381.425pt>
 File: figures/mppv.pdf Graphic file (type pdf)
 
 <use figures/mppv.pdf>
-Package pdftex.def Info: figures/mppv.pdf used on input line 1283.
+Package pdftex.def Info: figures/mppv.pdf used on input line 1499.
 (pdftex.def)             Requested size: 289.07999pt x 165.93599pt.
- <figures/mppv-500.pdf, id=1075, 664.4825pt x 381.425pt>
+ <figures/mppv-500.pdf, id=1230, 664.4825pt x 381.425pt>
 File: figures/mppv-500.pdf Graphic file (type pdf)
 
 <use figures/mppv-500.pdf>
-Package pdftex.def Info: figures/mppv-500.pdf used on input line 1287.
+Package pdftex.def Info: figures/mppv-500.pdf used on input line 1503.
 (pdftex.def)             Requested size: 289.07999pt x 165.93599pt.
- <figures/pmat.pdf, id=1076, 654.445pt x 365.365pt>
+ <figures/pmat.pdf, id=1231, 654.445pt x 365.365pt>
 File: figures/pmat.pdf Graphic file (type pdf)
 
 <use figures/pmat.pdf>
-Package pdftex.def Info: figures/pmat.pdf used on input line 1291.
+Package pdftex.def Info: figures/pmat.pdf used on input line 1507.
 (pdftex.def)             Requested size: 289.07999pt x 161.3855pt.
- <figures/pmqr.pdf, id=1077, 654.445pt x 365.365pt>
+ <figures/pmqr.pdf, id=1232, 654.445pt x 365.365pt>
 File: figures/pmqr.pdf Graphic file (type pdf)
 
 <use figures/pmqr.pdf>
-Package pdftex.def Info: figures/pmqr.pdf used on input line 1295.
+Package pdftex.def Info: figures/pmqr.pdf used on input line 1511.
 (pdftex.def)             Requested size: 289.07999pt x 161.3855pt.
 
-<figures/pmqr-250.pdf, id=1078, 654.445pt x 362.35374pt>
+<figures/pmqr-250.pdf, id=1233, 654.445pt x 362.35374pt>
 File: figures/pmqr-250.pdf Graphic file (type pdf)
 
 <use figures/pmqr-250.pdf>
-Package pdftex.def Info: figures/pmqr-250.pdf used on input line 1299.
+Package pdftex.def Info: figures/pmqr-250.pdf used on input line 1515.
 (pdftex.def)             Requested size: 289.07999pt x 160.05539pt.
 
-<figures/ppi-born.pdf, id=1079, 745.78625pt x 365.365pt>
+<figures/ppi-born.pdf, id=1234, 745.78625pt x 365.365pt>
 File: figures/ppi-born.pdf Graphic file (type pdf)
 
 <use figures/ppi-born.pdf>
-Package pdftex.def Info: figures/ppi-born.pdf used on input line 1303.
+Package pdftex.def Info: figures/ppi-born.pdf used on input line 1519.
 (pdftex.def)             Requested size: 289.07999pt x 141.62207pt.
 
-<figures/ppi-himbeault.pdf, id=1080, 745.78625pt x 365.365pt>
+<figures/ppi-himbeault.pdf, id=1235, 745.78625pt x 365.365pt>
 File: figures/ppi-himbeault.pdf Graphic file (type pdf)
 
 <use figures/ppi-himbeault.pdf>
-Package pdftex.def Info: figures/ppi-himbeault.pdf used on input line 1307.
+Package pdftex.def Info: figures/ppi-himbeault.pdf used on input line 1523.
 (pdftex.def)             Requested size: 289.07999pt x 141.62207pt.
 
-<figures/ppi-naive.pdf, id=1081, 745.78625pt x 365.365pt>
+<figures/ppi-naive.pdf, id=1236, 745.78625pt x 365.365pt>
 File: figures/ppi-naive.pdf Graphic file (type pdf)
 
 <use figures/ppi-naive.pdf>
-Package pdftex.def Info: figures/ppi-naive.pdf used on input line 1311.
+Package pdftex.def Info: figures/ppi-naive.pdf used on input line 1527.
 (pdftex.def)             Requested size: 289.07999pt x 141.62207pt.
 
-<figures/ppi-paxson.pdf, id=1082, 745.78625pt x 365.365pt>
+<figures/ppi-paxson.pdf, id=1237, 745.78625pt x 365.365pt>
 File: figures/ppi-paxson.pdf Graphic file (type pdf)
 
 <use figures/ppi-paxson.pdf>
-Package pdftex.def Info: figures/ppi-paxson.pdf used on input line 1315.
+Package pdftex.def Info: figures/ppi-paxson.pdf used on input line 1531.
 (pdftex.def)             Requested size: 289.07999pt x 141.62207pt.
 
-<figures/tunrates.pdf, id=1083, 791.95876pt x 392.46625pt>
+<figures/tunrates.pdf, id=1238, 791.95876pt x 392.46625pt>
 File: figures/tunrates.pdf Graphic file (type pdf)
 
 <use figures/tunrates.pdf>
-Package pdftex.def Info: figures/tunrates.pdf used on input line 1319.
+Package pdftex.def Info: figures/tunrates.pdf used on input line 1535.
 (pdftex.def)             Requested size: 289.07999pt x 143.25797pt.
- <figures/cplot.pdf, id=1084, 440.64626pt x 240.9pt>
+ <figures/cplot.pdf, id=1239, 440.64626pt x 240.9pt>
 File: figures/cplot.pdf Graphic file (type pdf)
 
 <use figures/cplot.pdf>
-Package pdftex.def Info: figures/cplot.pdf used on input line 1323.
+Package pdftex.def Info: figures/cplot.pdf used on input line 1539.
 (pdftex.def)             Requested size: 289.07999pt x 158.04611pt.
- [54 <D:/Documents/Projects/Thesis/Proposal/figures/mpbtt.pdf> <D:/Documents/Pr
+ [62 <D:/Documents/Projects/Thesis/Proposal/figures/mpbtt.pdf> <D:/Documents/Pr
 ojects/Thesis/Proposal/figures/mpbv.pdf> <D:/Documents/Projects/Thesis/Proposal
-/figures/mphv.pdf>] [55 <D:/Documents/Projects/Thesis/Proposal/figures/mphv-100
+/figures/mphv.pdf>] [63 <D:/Documents/Projects/Thesis/Proposal/figures/mphv-100
 .pdf> <D:/Documents/Projects/Thesis/Proposal/figures/mpnv.pdf> <D:/Documents/Pr
-ojects/Thesis/Proposal/figures/mppv.pdf>] [56 <D:/Documents/Projects/Thesis/Pro
+ojects/Thesis/Proposal/figures/mppv.pdf>] [64 <D:/Documents/Projects/Thesis/Pro
 posal/figures/mppv-500.pdf> <D:/Documents/Projects/Thesis/Proposal/figures/pmat
-.pdf> <D:/Documents/Projects/Thesis/Proposal/figures/pmqr.pdf>] [57 <D:/Documen
+.pdf> <D:/Documents/Projects/Thesis/Proposal/figures/pmqr.pdf>] [65 <D:/Documen
 ts/Projects/Thesis/Proposal/figures/pmqr-250.pdf> <D:/Documents/Projects/Thesis
 /Proposal/figures/ppi-born.pdf> <D:/Documents/Projects/Thesis/Proposal/figures/
 ppi-himbeault.pdf> <D:/Documents/Projects/Thesis/Proposal/figures/ppi-naive.pdf
->] [58 <D:/Documents/Projects/Thesis/Proposal/figures/ppi-paxson.pdf> <D:/Docum
+>] [66 <D:/Documents/Projects/Thesis/Proposal/figures/ppi-paxson.pdf> <D:/Docum
 ents/Projects/Thesis/Proposal/figures/tunrates.pdf> <D:/Documents/Projects/Thes
-is/Proposal/figures/cplot.pdf>] [59
+is/Proposal/figures/cplot.pdf>] [67
 
 
 
@@ -773,91 +801,91 @@ is/Proposal/figures/cplot.pdf>] [59
 
 ]
 Appendix A.
-[60
+[68
 
 ]
 Appendix B.
-[61
+[69
 
 ]
 Appendix C.
-[62
+[70
 
 ]
 Appendix D.
-[63
+[71
 
 ]
-Overfull \hbox (7.03024pt too wide) in paragraph at lines 1408--1408
+Overfull \hbox (7.03024pt too wide) in paragraph at lines 1624--1624
 []\OT1/cmtt/m/n/12 HEzQcP9uxPOzeOB1SfRP+DQ7x3X5dTA1WF3vpcnO5kgLQQEP7xnUrnUy7U8I
 SNdbNQd+8da64+Ci[] 
  []
 
 
-Overfull \hbox (7.03024pt too wide) in paragraph at lines 1408--1408
+Overfull \hbox (7.03024pt too wide) in paragraph at lines 1624--1624
 []\OT1/cmtt/m/n/12 nNBRvu3TRlG0KJvLzb6QDBWqxVfa4VeAU+cSvj+uzoajp2F0jd5/csHxJQlg
 uoeqT76pq8oStoLG[] 
  []
 
 
-Overfull \hbox (7.03024pt too wide) in paragraph at lines 1408--1408
+Overfull \hbox (7.03024pt too wide) in paragraph at lines 1624--1624
 []\OT1/cmtt/m/n/12 3k48PZWuebgweZx5KdxAgUfN7/kvzwBzG7O+9B7J/O8y6BfGz6In0H+LuDCO
 sFqMljljX3SkgJq/[] 
  []
 
-<figures/encoding_source.png, id=1340, 782.925pt x 782.925pt>
+<figures/encoding_source.png, id=1494, 782.925pt x 782.925pt>
 File: figures/encoding_source.png Graphic file (type png)
 
 <use figures/encoding_source.png>
-Package pdftex.def Info: figures/encoding_source.png used on input line 1415.
+Package pdftex.def Info: figures/encoding_source.png used on input line 1631.
 (pdftex.def)             Requested size: 289.07999pt x 289.0804pt.
 
-Overfull \hbox (7.03024pt too wide) in paragraph at lines 1429--1429
+Overfull \hbox (7.03024pt too wide) in paragraph at lines 1645--1645
 []\OT1/cmtt/m/n/12 " mfeo  hnhaeeeewsao os eewk es fsemroh eeeewthesdre s sol s
 reese ea hrzltse[] 
  []
 
 
-Overfull \hbox (31.73026pt too wide) in paragraph at lines 1429--1429
+Overfull \hbox (31.73026pt too wide) in paragraph at lines 1645--1645
 []\OT1/cmtt/m/n/12 wesrnyemnpaoonef  ht   hsheawnfdemue stntleewth    home esai
 u s feesgealne seaoa[] 
  []
 
 
-Overfull \hbox (19.38025pt too wide) in paragraph at lines 1429--1429
+Overfull \hbox (19.38025pt too wide) in paragraph at lines 1645--1645
 []\OT1/cmtt/m/n/12 hweeeesoltsnahao esde hgmuo weeeeewyl  haoesroo     frmeshti
 eest ewad svikefui[] 
  []
 
 
-Overfull \hbox (19.38025pt too wide) in paragraph at lines 1429--1429
+Overfull \hbox (19.38025pt too wide) in paragraph at lines 1645--1645
 []\OT1/cmtt/m/n/12 hnceslphstestidau eeahl hrosoan wrthaa ft  heabpeeses eeeeew
 rsn    hrlucne ewr[] 
  []
 
 
-LaTeX Warning: Reference `FIGURE_frequencies-bychar' on page 64 undefined on in
-put line 1448.
+LaTeX Warning: Reference `FIGURE_frequencies-bychar' on page 72 undefined on in
+put line 1664.
 
-[64] [65 <D:/Documents/Projects/Thesis/Proposal/figures/encoding_source.png>]
-[66]
+[72] [73 <D:/Documents/Projects/Thesis/Proposal/figures/encoding_source.png>]
+[74]
 File: figures/plots_unigram.pdf Graphic file (type pdf)
  <use figures/plots_unigram.pdf>
-Package pdftex.def Info: figures/plots_unigram.pdf used on input line 1458.
+Package pdftex.def Info: figures/plots_unigram.pdf used on input line 1674.
 (pdftex.def)             Requested size: 531.60765pt x 451.76215pt.
 
 
-LaTeX Warning: Float too large for page by 30.82547pt on input line 1461.
+LaTeX Warning: Float too large for page by 30.82547pt on input line 1677.
 
-[67]
+[75]
 
-LaTeX Warning: Reference `FIGURE_encoding-accvseff' on page 68 undefined on inp
-ut line 1509.
+LaTeX Warning: Reference `FIGURE_encoding-accvseff' on page 76 undefined on inp
+ut line 1725.
 
-[68
+[76
 
 
-] [69] [70] (D:\Documents\Projects\Thesis\Proposal\proposal.bbl
+] [77] [78] (D:\Documents\Projects\Thesis\Proposal\proposal.bbl
 Underfull \hbox (badness 1694) in paragraph at lines 20--23
 [][]\OT1/cmr/m/n/12 , \OT1/cmr/m/it/12 en-tropy - Wol-fram|Alpha\OT1/cmr/m/n/12
  , [][]$\OT1/cmtt/m/n/12 http : / / www . wolframalpha . com / input / ?i =$
@@ -869,7 +897,7 @@ Underfull \hbox (badness 1694) in paragraph at lines 25--28
  , [][]$\OT1/cmtt/m/n/12 http : / / www . wolframalpha . com / input / ?i =$
  []
 
-[71
+[79
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 89--93
@@ -883,40 +911,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 89--93
 p : / / www . securitywire . com / 2009 / 07 /$
  []
 
-[72]
+[80]
 Missing character: There is no Â in font cmti12!
 Missing character: There is no · in font cmti12!
-
-Underfull \hbox (badness 2460) in paragraph at lines 133--135
+ [81]
+Underfull \hbox (badness 2460) in paragraph at lines 137--139
 []\OT1/cmr/m/n/12 Jeffrey J. Guy, \OT1/cmr/m/it/12 dns part ii: vi-su-al-iza-ti
 on\OT1/cmr/m/n/12 , [][]$\OT1/cmtt/m/n/12 http : / / armatum . com / blog / 200
 9 /$
  []
 
-[73] [74] [75])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1635.
- [76]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1635.
+[82] [83])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1851.
+ [84]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1851.
  (D:\Documents\Projects\Thesis\Proposal\proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1635.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1635.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1851.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1851.
 
 Package rerunfilecheck Info: File `proposal.out' has not changed.
-(rerunfilecheck)             Checksum: 95C47F8D9502F89A8D633B140C3CFA01;3358.
+(rerunfilecheck)             Checksum: 7BDF530503887B236A60DBECCCC0865A;3825.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1635.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1851.
  ) 
 Here is how much of TeX's memory you used:
- 6898 strings out of 493921
- 100746 string characters out of 3147276
- 179153 words of memory out of 3000000
- 9852 multiletter control sequences out of 15000+200000
+ 6956 strings out of 493921
+ 101822 string characters out of 3147276
+ 180696 words of memory out of 3000000
+ 9880 multiletter control sequences out of 15000+200000
  16064 words of font info for 61 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 29i,9n,28p,431b,431s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,9n,28p,632b,431s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{Hfootnote.15} has been referenced but does not ex
 ist, replaced by a fixed one
 
@@ -969,16 +997,17 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX
 s/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/symbols/msbm10.pfb>
-Output written on proposal.pdf (77 pages, 16171062 bytes).
+cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmtt12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/symbols/msbm10.pfb>
+Output written on proposal.pdf (85 pages, 20152720 bytes).
 PDF statistics:
- 1536 PDF objects out of 1728 (max. 8388607)
- 210 named destinations out of 1000 (max. 500000)
- 621 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1703 PDF objects out of 1728 (max. 8388607)
+ 237 named destinations out of 1000 (max. 500000)
+ 684 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -123,6 +123,10 @@ D.~{Eastlake 3rd}, \emph{{DNS Request and Transaction Signatures ( SIG(0)s )}},
 \bibitem{SANS2013}
 Greg Farnham, \emph{{Detecting DNS Tunneling}}, InfoSec Reading Room (2013).
 
+\bibitem{Friesen2013}
+Travis Friesen, \emph{An in-memory database for prototyping anomaly detection
+  algorithms at gigabit speeds}, 2013.
+
 \bibitem{Gianvecchio2007}
 Steven Gianvecchio and Haining Wang, \emph{{Detecting covert timing channels:
   an entropy-based approach.}}, {ACM Conference on Computer and Communications
@@ -140,6 +144,11 @@ Michael Himbeault, \emph{{Probabilistic Encoder: Summary}},
 \bibitem{Horenbeeck2006}
 Maarten~Van Horenbeeck, \emph{{Deception on the network: thinking differently
   about covert channels}}, 2006.
+
+\bibitem{asciitable}
+http://www.lookuptables.com, \emph{{Ascii Table - ASCII character codes and
+  html, octal, hex and decimal chart conversion}},
+  \url{http://www.asciitable.com/}, oct 2013.
 
 \bibitem{jhind2009}
 jhind, \emph{{Catching DNS tunnels with A.I.}},

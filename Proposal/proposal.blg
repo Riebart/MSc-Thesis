@@ -39,6 +39,8 @@ Warning--entry type for "WolframAlpha-EntropyMath" isn't style-file defined
 --line 1068 of file ../Reference/bibliography.bib
 Warning--entry type for "WolframAlpha-EntropyWord" isn't style-file defined
 --line 1077 of file ../Reference/bibliography.bib
+Warning--entry type for "asciitable" isn't style-file defined
+--line 1103 of file ../Reference/bibliography.bib
 A bad cross reference---entry "Browne1994"
 refers to entry "conf/ccs/1994", which doesn't exist
 A bad cross reference---entry "Shaffer2008"
@@ -78,6 +80,7 @@ Warning--missing pages in Born2010.cfa
 Warning--missing pages in Born2010.ngviz
 Warning--missing pages in Cabuk2009
 Warning--missing pages in SANS2013
+Warning--missing publisher in Friesen2013
 Warning--missing journal name in Romana2007
 Warning--missing pages in Romana2007
 Warning--missing journal name in Roolvink2008

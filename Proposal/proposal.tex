@@ -927,36 +927,78 @@ approximately follow from items two and three as follows.
 %component of $\mathbf p$ and $\mathbf q$ is non-negative
 %$|p_i-q_i|\leq\max{(p_i,q_i)}$. It follows then:
 
-Consider two $n$-dimensional Euclidean vectors, $\mathbf p$ and $\mathbf q$,
+\subsection{Theoretical Proof of Satisfaction of Item Four for Higher Dimensions}
+\label{item-four-theory}
+
+\paragraph{Part I} Consider two $n$-dimensional Euclidean vectors, $\mathbf p$ and $\mathbf q$,
 such that every component is non-negative and $\mathbf p$ and $\mathbf q$ are
 chosen from a set of vectors with a finite maximum norm of $N$. Since every
 component of $\mathbf p=\{p_i\}$ and $\mathbf q=\{q_i\}$ is non-negative
 $|p_i-q_i|\leq\max{(p_i,q_i)}\leq|p_i+q_i|$. This together with the triangle
 inequality show that
 
-\[N\geq\|\mathbf p\|,N\geq\|\mathbf q\|\Rightarrow 2N\geq\|\mathbf p\|+\|\mathbf
-q\|\geq\|\mathbf p+\mathbf q\|\geq\|\mathbf p-\mathbf q\|\]
+\begin{equation}
+N\geq\|\mathbf p\|,N\geq\|\mathbf q\|\Rightarrow 2N\geq\|\mathbf p\|+\|\mathbf
+q\|\geq\|\mathbf p+\mathbf q\|\geq\|\mathbf p-\mathbf q\|
+\end{equation}
 
-Since DNS queries can be thought of as vectors satisfying the above conditions,
-the result applies. By further restricting that the queries follow a prescribed
+This result indicates that if vectors with nonnegative components have an upper
+bound on their norm, then there is an upper bound on the diameter of the space
+spanned by those vectors. Since DNS queries can be thought of as vectors
+satisfying the above conditions when considering the characters as having values
+according to the ASCII character code table\cite{asciitable}, the result
+applies.
+
+\paragraph{Part II} By further restricting that the queries follow a prescribed
 character distribution, there are statistical properties that the norms of the
-queries in $\mathbb E^n$ will have. By observing that queries can be considered
-(Independent Identically Distributed) IID observations from a fixed alphabet,
-$\mathcal C=\{c_i\}$, with a known probability distribution, $\forall
-c\in\mathcal C, 0\leq P(c)\leq1$ satisfying $\sum_{c\in\mathcal C}{P(c)}=1$, the
-notion of a typical set can be applied. As $n$ (the length of a query/the
-dimension of the vector) grows, a typical sequence can be assumed to have each
-symbol $c\in\mathcal C$ appearing $nP(c)$ times. If $v\in\mathcal C^n$ is a
-vector with the Euclidean $n$-norm, then asymptotically
+queries treated as vectors in $\mathbb E^n$ will have.
 
-\[\|\mathbf v\|\approx k\sqrt n E[(\mathcal C,P)] \]
+For this discussion, let $\chi$ be the random variable that chooses symbols from
+the set $\mathcal C$ with probability distribution $\forall c\in\mathcal C,
+0\leq P(c)=p_i\leq1$ satisfying $\sum{p_i}=1$.
+
+By observing that queries can be considered Independent Identically Distributed
+(IID) observations of $\chi$, the notion of a typical set and the Central Limit 
+Theorem (CLT) can be applied. Note that for this discussion, the dimension of
+the vector and the length of the query have the same value and which one is
+being discussed depends how the object is being interpreted. If the object is
+being treated as a vector in $\mathbb E^n$, then its components are the ASCII
+character codes of the characters of the DNS query string.
+
+As the length of the query grows, a typical sequence can be assumed to have each
+symbol $c\in\mathcal C$ appearing approximately $nP(c)$ times. If $v\in\mathcal
+C^n$ is a typical vector with the Euclidean $n$-norm and $E[\chi]$
+being the expected value of the random variable, then asymptotically
+
+\begin{equation}
+\label{dnssampling-evgrowth-eq}
+\exists k\in\mathbb R \ni \|\mathbf v\|\approx k\sqrt n E[\chi]
+\end{equation}
 
 Further, since the aggregate probability of the typical set approaches unity as
 the length increases, the probability distribution of norms of vectors in
-$\mathcal C^n$ becomes very tightly packed around the norm of a typical vector.
-This is a consequence of the \emph{Central Limit Theorem} since the components
-of the vectors (characters in the DNS query) are IID, and a variance that
-decreases as the inverse of the dimensionality.
+$\mathcal C^n$ becomes very tightly packed (having a small variance) around the
+norm of typical vector as given above.
+
+The above relationships are consequences of the Central Limit Theorem (CLT)
+since the components of the vectors (characters in the DNS query) are IID with a
+finite variance. By the CLT, the variance decreases proportionally to
+$\frac{1}{\sqrt n}$ and the expected value increases proportionally to
+$\sqrt{n}E[\chi]$.
+
+\paragraph{Part III} By combining part I and part II, it is possible to make
+statements about the properties of IID observations of $\chi$ for large numbers
+of observations, $n$.
+
+Part II shows that for large $n$, it is reasonable to assume that the queries
+fall into the typical set, and thus will have a norm very close to that of a
+typical vector which is approximately proportional to $\sqrt{n}E[\chi]$. Part I
+indicates that if there is an upper bound on the norm of a collection of
+vectors, then in the case of DNS queries there is an upper bound on the diameter
+of the the ball containing all such vectors. In this case, it is reasonable to
+assume that vectors will have a norm of approximately that of a typical vector,
+and thus the ball will have a diameter of approximately twice that, or
+proportional to $2\sqrt{n}E[\chi]$.
 
 The consequences of these results indicate that by enforcing that DNS queries
 from a tunnel follow an appropriate character and length distribution, a maximum
@@ -965,11 +1007,119 @@ by controlling the target character distribution and query length distributions,
 it is possible to control the diameter of the resulting query space, thus
 satisfying item four.
 
-\section{Solution Evaluation Criteria} The objectives that must be met for an
+\subsection{Empirical Demonstration for Smaller Dimensions}
+Because the results in section \ref{item-four-theory} rely on typical sets and the CLT, they only hold for very large query-lengths (dimensionality). It is important to demonstrate that the results apply for more reasonable query lengths and observation counts.
+
+The empirical results were obtained by selecting a probability distribution that matches common DNS domain names. Such a distribution was built from the Alexa top one-million domain names as retrieved in June 2013 and is given in table \ref{TABLE_dnssampling}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ | c | l || c | l || c | l | }
+Character&Count&Character&Count&Character&Count\\
+\hline
+-& 0.0117991  &C& 0.0366638 &P& 0.0276835\\
+0& 0.0023847  &D& 0.0321575 &Q& 0.00204425\\
+1& 0.00317953 &E& 0.0986792 &R& 0.0635874\\
+2& 0.00292606 &F& 0.0166497 &S& 0.0654764\\
+3& 0.00190129 &G& 0.0243943 &T& 0.0611875\\
+4& 0.0018249  &H& 0.0253057 &U& 0.0328546\\
+5& 0.00136287 &I& 0.0731983 &V& 0.0129516\\
+6& 0.0012152  &J& 0.0055877 &W& 0.0127842\\
+7& 0.00113832 &K& 0.0184679 &X& 0.00655439\\
+8& 0.00151475 &L& 0.0468207 &Y& 0.0178645\\
+9& 0.00124893 &M& 0.0332358 &Z& 0.00695053\\
+A& 0.091269   &N& 0.0606199 &\_& 0.000025004\\
+B& 0.0240761  &O& 0.0724148 & & \\
+
+\end{tabular}
+\caption[Alexa Top One-Million Character Distribution]{Probability distribution used for DNS character frequency simulation when sampling vectors.}
+\label{TABLE_dnssampling}
+\end{table}
+
+The distribution in table \ref{TABLE_dnssampling}, when considering the ASCII character code values of the given characters \cite{asciitable}, has an expected value of 74.8797 and a mean value (that is, not considering the likelihood of a character) of 70.5263.
+
+For dimensions up to $n=100$, vectors were sampled from the spaces with components chosen IID from the distribution given in table \ref{TABLE_dnssampling}. From the sampled vectors the expected and mean values were computed and a function of the form $a\sqrt{n}$ was fit to both. The growth of the expected and mean values is shown in figure \ref{dnssampling-evgrowth} as well as the best-fit curves and curves with coefficients taken from the seed distribution.
+
+\begin{figure}
+\label{dnssampling-evgrowth}
+\centering
+\includegraphics[width=\textwidth]{figures/dnssampling-ev_growth.pdf}
+\caption[Growth of Expected and Mean Norms of Sampled Vectors]{The computed
+expected and mean values of the norms of the vectors from higher-dimensional
+spaces formed by IID observations from the distribution in table
+\ref{TABLE_dnssampling} are shown as points. The variation of the expected value from the best-fit
+curve is due to the relatively small sample taken from the enormous spaces.}
+\end{figure}
+
+It is important to observe how the various functions compare to the sampled
+data. Observe that the best-fit curve for the mean value of the norms of the
+sampled data almost perfectly describes the sampled data. The best-fit curve for
+the mean values is given by $71.8527\sqrt{n}$ while the yellow curve is given by
+$70.5263\sqrt{n}$. The marked difference is indicative that $k$ (as in equation
+\ref{dnssampling-evgrowth-eq}) is non-unitary. Similarly, the best-fit curve for
+the expected value of the norms is given by $74.3039\sqrt{n}$ while the green
+curve is given by $74.8797\sqrt{n}$. Note that the best-fit curve in this
+situation is subject to much higher uncertainty which may be responsible for
+some of the deviation.
+
+In addition to the above, a cumulative density function (CDF) was built from the sampled vectors and then
+a function of form given by the CDF of the normal distribution with mean $\mu$
+and standard deviation $\sigma$
+
+\begin{equation}
+\frac{1}{2} \text{erfc}\left(\frac{\mu -x}{\sqrt{2} \sigma}\right)
+\end{equation}
+
+was fit to the data where 
+
+\begin{equation}
+\textrm{erfc}(n)=\frac{2}{\sqrt{\pi}} \int_n^{\infty}
+e^{-t^2}\,\mathrm dt
+\end{equation}
+
+is the complementary error function (used in the CDF of the normal
+distribution). Fitting a function of this form to the data allows for an estimation
+of the mean and variance of the distribution of the sampled vectors as predicted
+by the CLT.
+
+\begin{figure}
+\label{dnssampling-muerror}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/dnssampling-muerror.pdf}
+\caption[Relative Error of $\mu$ of Best-Fit Normal Distribution of Sampled Expected Value]
+{For each $n$, vectors were sampled from $\chi^n$ where $\chi$ is given by the
+distribution in table \ref{TABLE_dnssampling} and a normal distribution
+$N(\mu,\sigma)$ was fit to their CDF. This plot shows the relative error of the
+best-fit $\mu$ compared to $E[\chi]$. The trend toward zero for small dimensions
+becomes dwarfed by error due to sampling as $n$ grows.}
+\end{figure}
+
+\begin{figure}
+\label{dnssampling-sigmafit}
+\centering
+\includegraphics[width=\textwidth]{figures/dnssampling-sigmafit.pdf}
+\caption[Trend of $\sigma$ of Best-Fit Normal Distribution of Sampled Expected Value]
+{For each $n$, vectors were sampled from $\chi^n$ where $\chi$ is given by the
+distribution in table \ref{TABLE_dnssampling} and a normal distribution
+$N(\mu,\sigma)$ was fit to their CDF. This plot shows the trend of the best-fit
+$\sigma$ as $n$ increases. The trend toward zero for small dimensions becomes
+dwarfed by error due to sampling as $n$ grows.}
+\end{figure}
+
+These empirical results show that the theoretical results given in section \ref{item-four-theory} still hold and are valid for query lengths/dimensionality within the practical ranges.
+
+\clearpage
+\section{Solution Evaluation Criteria}
+
+The objectives that must be met for an
 approach to have successfully solved the problem posed in section
 \ref{briefproblem} are as follows:
 
-\begin{itemize} \item Successfully discern tunnel traffic generated from existing tunnel applications and theoretical tunnel traffic (built using additional parameters to attempt to hide from known detection methods) from a baseline of normal traffic.
+\begin{itemize}
+\item Successfully discern tunnel traffic generated from
+existing tunnel applications and theoretical tunnel traffic (built using
+additional parameters to attempt to hide from known detection methods) from a
+baseline of normal traffic.
 \item Be resistant to known obfuscation methods compared to existing detection methods.
 \item Be able to operate at high speed on general purpose, easily obtainable
 hardware.
@@ -1005,15 +1155,75 @@ effectively detect them. The primary assumption made is that DNS tunnels move
 more data than a normal DNS subdomain, with a very particular meaning of
 \emph{data} that goes beyond simply counting bytes or the number of queries. The
 concept of the amount of data moved under a DNS domain involves considering the
-entropy of the queries as a whole, and not the characters that make up a query.
-\subsection{Theory}
+entropy of the queries as a whole, and not the characters that make up a query. The list of assumptions follows:
+
+\begin{itemize}
+\item DNS tunnel applications use the queries themselves to transport data from
+the client to server.
+\item This mechanism will force there to be more unique
+queries per domain (or subdomain) proportional to the amount of data transferred
+from the client to the server.
+\item In a server-to-client transfer of data, there will still need to be
+acknowledgements sent from the client to the server, with the acknowledgement
+data encoded in the query string.
+\end{itemize}
+
+The primary assumption, in the language of DNS queries, is that DNS tunnels will
+cause more unique DNS queries to a domain (or subdomain) than benign traffic. If
+a DNS tunnel is able to construct its network traffic in such a way that this
+assumption is no longer true, then the proposed approach will be ineffective in
+detecting it.
+
+\subsection{Theory} In a large internet provider network, it is possible that
+there could be many copies of the same DNS query - say \emph{google.com} - each
+of which would count towards the total number of bytes transferred to/from that
+domain. If a naive approach to detection is used, such as counting bytes or
+queries to/from a domain, then this kind of repetition will have a detrimental
+effect on the metric calculated for some popular domains.
+
+In order to get around this, the proposed approach takes a different stance on
+unique data and instead uses entropy to measure the amount of data moved in the
+queries to a domain or subdomain. By considering queries as atomic objects, and
+maintaining a tally of the queries to a domain, and their counts over an
+interval, a probability distribution function (PDF) is generated. By computing
+the entropy of this PDF, a basic measure of throughput is achieved. However,
+since there is value in the capturing the length of the queries that were sent
+(since longer queries are moving more bytes than shorter ones), the entropy is
+multipled by the average query length (in bytes) over that interval.
+
+This metric, which will be referred as the Domain Length-Weighted Entropy
+(DLWE), is the primary mechanism through which the proposed approach detects DNS
+tunnels.
+
+With this new measure of data, the approach considers intervals of time and
+computes the amount of data estimated to be moved by each domain over that
+interval. By sorting all domains by their data throughput, the heavy-hitters can
+be examined in each time interval with white-listing allowing many of the top
+contenders from causing alerts.
+
+As will be shown in chapter \ref{chap-evaluation}, this approach is capable of
+processing packets nearly as fast as a naive approach with equivalent or better
+detection performance.
 
 \section{Implementation}
 \label{implementation}
 \subsection{General}
+The implementation specifics of this approach differ slightly between the C++ and Python implementations. The differences come primarily in efficiency and performance of the approach, with the C++ implementaiton designed for very high throughput applications. Both implementations, however, share a common architecture:
+
+\begin{itemize}
+\item The input is DNS queries and a timestamp at which the query was seen
+\item The DNS query is broken down into a top-level domain (TLD) - such as \emph{google.com}, \emph{yahoo.ca} or similar - and the rest of the query.
+\item For each top-level-domain, a data structure is created that maps queries to an integer, which represents the number of times that query was seen.
+\item At the end of each time interval, the DLWE of each TLD is calculated, and the collection of TLD+DLWE pairs is output.
+\end{itemize}
+
 \subsection{C++}
+The C++ implementation ingests raw packet data in the PCAP file format, relying on a network protocol dissector written for this project for the extraction of the DNS query string, TLD, and any response information. The query timestamps are obtained from the packet header which is part of the PCAP format.
+
+The data structure used for storing the query-count mappings for each TLD is a custom high-performance, low memory usage, red-black tree written as part of libodb\cite{Friesen2013}. Computation of the DLWE for each TLD at the end of each interval is handled asynchronously in a separate thread so as not to block the ingestion of packets on the main thread. This asynchronous behaviour allows the processing to operate on very busy networks and allows for inherent and elegant non-blocking buffering of bursts of traffic beyond the processing rate of the host.
+
 \subsection{Python}
-\label{proposed-method-python}
+The Python implementation details are described in detail in section \ref{proposed-method-python}.
 
 \chapter{Detailed Testing Methodology}
 A collection of tests will be run on
@@ -1046,6 +1256,7 @@ All of the tests involving traffic generation will be performed in a virtual
 environment, with technical configuration and testing details given in section
 \ref{appendix-setup}.
 
+\section{Situational Performance Goals}
 \subsection{Determining a Baseline}
 \label{baseline}
 Through cooperation
@@ -1128,11 +1339,12 @@ used.
 \subsection{Born}
 \subsection{Paxson}
 \subsection{Himbeault}
-CITE BACK \ref{proposed-method-python}
+\label{proposed-method-python}
 
 \subsection{Python Interpreter Performance}
 
 \chapter{Evaluation}
+\label{chap-evaluation}
 \section{Baseline}
 \section{Tunnel Data}
 \subsection{Iodine}
@@ -1141,6 +1353,10 @@ CITE BACK \ref{proposed-method-python}
 \subsection{Nextgen}
 \section{Packet Throughput Performance}
 \section{Tunnel Detection Performance}
+
+\chapter{Conclusion}
+\section{Performance Summary}
+\section{Future Work}
 
 \begin{figure}
 \centering
