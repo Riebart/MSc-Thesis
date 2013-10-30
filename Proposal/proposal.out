@@ -33,24 +33,18 @@
 \BOOKMARK [2][-]{subsection.6.2.2}{Naive}{section.6.2}% 33
 \BOOKMARK [2][-]{subsection.6.2.3}{Born}{section.6.2}% 34
 \BOOKMARK [2][-]{subsection.6.2.4}{Paxson}{section.6.2}% 35
-\BOOKMARK [2][-]{subsection.6.2.5}{Himbeault}{section.6.2}% 36
-\BOOKMARK [2][-]{subsection.6.2.6}{Python Interpreter Performance}{section.6.2}% 37
-\BOOKMARK [0][-]{chapter.7}{Evaluation}{}% 38
-\BOOKMARK [1][-]{section.7.1}{Baseline}{chapter.7}% 39
-\BOOKMARK [1][-]{section.7.2}{Tunnel Data}{chapter.7}% 40
-\BOOKMARK [2][-]{subsection.7.2.1}{Iodine}{section.7.2}% 41
-\BOOKMARK [2][-]{subsection.7.2.2}{dnscat}{section.7.2}% 42
-\BOOKMARK [2][-]{subsection.7.2.3}{DNS2TCP}{section.7.2}% 43
-\BOOKMARK [2][-]{subsection.7.2.4}{Nextgen}{section.7.2}% 44
-\BOOKMARK [1][-]{section.7.3}{Packet Throughput Performance}{chapter.7}% 45
-\BOOKMARK [1][-]{section.7.4}{Tunnel Detection Performance}{chapter.7}% 46
-\BOOKMARK [0][-]{chapter.8}{Conclusion}{}% 47
-\BOOKMARK [1][-]{section.8.1}{Performance Summary}{chapter.8}% 48
-\BOOKMARK [1][-]{section.8.2}{Future Work}{chapter.8}% 49
-\BOOKMARK [0][-]{section*.10}{Appendices}{}% 50
-\BOOKMARK [0][-]{Appendix.1.A}{Properties of the Network Capture}{}% 51
-\BOOKMARK [0][-]{Appendix.1.B}{Testing Software and Scripts}{}% 52
-\BOOKMARK [1][-]{section.1.B.1}{Custom DNS Tunnel Endpoint Simulator}{Appendix.1.B}% 53
-\BOOKMARK [0][-]{Appendix.1.C}{Testing Environment}{}% 54
-\BOOKMARK [0][-]{Appendix.1.D}{Probabilistic Encoding}{}% 55
-\BOOKMARK [1][-]{section.1.D.1}{Sample Encoding}{Appendix.1.D}% 56
+\BOOKMARK [2][-]{subsection.6.2.5}{Proposed Approach}{section.6.2}% 36
+\BOOKMARK [2][-]{subsection.6.2.6}{Tunneling Application Throughput}{section.6.2}% 37
+\BOOKMARK [2][-]{subsection.6.2.7}{Detection Method and Python Interpreter Processing Performance}{section.6.2}% 38
+\BOOKMARK [2][-]{subsection.6.2.8}{Processing Performance Conclusion}{section.6.2}% 39
+\BOOKMARK [0][-]{chapter.7}{Evaluation}{}% 40
+\BOOKMARK [0][-]{chapter.8}{Conclusion}{}% 41
+\BOOKMARK [1][-]{section.8.1}{Performance Summary}{chapter.8}% 42
+\BOOKMARK [1][-]{section.8.2}{Future Work}{chapter.8}% 43
+\BOOKMARK [0][-]{section*.10}{Appendices}{}% 44
+\BOOKMARK [0][-]{Appendix.1.A}{Properties of the Network Capture}{}% 45
+\BOOKMARK [0][-]{Appendix.1.B}{Testing Software and Scripts}{}% 46
+\BOOKMARK [1][-]{section.1.B.1}{Custom DNS Tunnel Endpoint Simulator}{Appendix.1.B}% 47
+\BOOKMARK [0][-]{Appendix.1.C}{Testing Environment}{}% 48
+\BOOKMARK [0][-]{Appendix.1.D}{Probabilistic Encoding}{}% 49
+\BOOKMARK [1][-]{section.1.D.1}{Sample Encoding}{Appendix.1.D}% 50

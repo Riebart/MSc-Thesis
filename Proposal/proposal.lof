@@ -2,18 +2,35 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Growth of Expected and Mean Norms of Sampled Vectors}}{37}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Relative Error of $\mu $ of Best-Fit Normal Distribution of Sampled Expected Value}}{39}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Trend of $\sigma $ of Best-Fit Normal Distribution of Sampled Expected Value}}{39}{figure.4.3}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Growth of Expected and Mean Norms of Sampled Vectors}}{38}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Relative Error of $\mu $ of Best-Fit Normal Distribution of Sampled Expected Value}}{40}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Trend of $\sigma $ of Best-Fit Normal Distribution of Sampled Expected Value}}{40}{figure.4.3}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces DNS Tunneling Application Throughput Scaling}}{53}{figure.6.1}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Performance of Analysis Method and Python Interpreter on Aggregate Tunnel Data}}{54}{figure.6.2}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Performance of Analysis Method and Python Interpreter on Real World Data}}{55}{figure.6.3}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Performance of Analysis Method and Python Interpreter on Real World Data - Early Time}}{56}{figure.6.4}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Performance of Naive Method on Tunnel Data by Python Interpreter}}{57}{figure.6.5}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Performance of Born's Method on Tunnel Data by Python Interpreter}}{58}{figure.6.6}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Performance of Paxson's Method on Tunnel Data by Python Interpreter}}{59}{figure.6.7}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Performance of the Proposed Method on Tunnel Data by Python Interpreter}}{60}{figure.6.8}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Performance Ratio of the Naive Method to the Proposed Method on Tunnel Data by Python Interpreter}}{62}{figure.6.9}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Scaling of Detection Metrics by Tunnel Throughput}}{66}{figure.7.1}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Detection Thresholds Under the Naive Metric}}{67}{figure.7.2}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Detection Thresholds Under Born's Metric}}{68}{figure.7.3}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Detection Thresholds Under Paxson's Metric}}{68}{figure.7.4}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Detection Thresholds Under Paxson's Metric - Truncated View}}{69}{figure.7.5}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Detection Thresholds Under the Proposed Metric}}{70}{figure.7.6}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Detection Thresholds Under the Proposed Metric - Truncated View}}{71}{figure.7.7}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Plot of Certainty of Detection by Tunnel Application and Detection Method}}{71}{figure.7.8}
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Plot of Certainty of Detection by Tunnel Application and Detection Method - 0.80 to 1.00}}{72}{figure.7.9}
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Plot of Certainty of Detection by Tunnel Application and Detection Method - 0.95 to 1.00}}{72}{figure.7.10}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces DNS Query, Iodine and Prob-coded Comparison - Ratio}}{51}{figure.8.1}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces DNS Query, Iodine and Prob-coded Comparison - Absolute}}{51}{figure.8.2}
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {D.1}{\ignorespaces Encoding sample - source (data matrix)}}{73}{figure.1.D.1}
-\contentsline {figure}{\numberline {D.2}{\ignorespaces Plot of character frequencies by frequency}}{75}{figure.1.D.2}
+\contentsline {figure}{\numberline {D.1}{\ignorespaces Encoding sample - source (data matrix)}}{80}{figure.1.D.1}
+\contentsline {figure}{\numberline {D.2}{\ignorespaces Plot of character frequencies by frequency}}{82}{figure.1.D.2}

@@ -237,6 +237,16 @@ Alan~B. Shaffer, Mikhail Auguston, Cynthia~E. Irvine, and Timothy~E. Levin,
   channels.}}, {PLAS} ({\~A}\v{s}lfar Erlingsson and Marco Pistoia, eds.), ACM,
   2008, pp.~45--56.
 
+\bibitem{python-strlencplx}
+CPython Team, \emph{{TimeComplexity - Python Wiki}},
+  \url{https://wiki.python.org/moin/TimeComplexity}, oct 2013.
+
+\bibitem{pypyvc-strfmt}
+PyPy Team, \emph{{PyPy Status Blog: PyPy is faster than C, again: string
+  formatting}},
+  \url{http://morepypy.blogspot.com/2011/08/pypy-is-faster-than-c-again-string.html},
+  oct 2013.
+
 \bibitem{Thomas2011}
 Brennon Thomas, Barry~E. Mullins, Gilbert~L. Peterson, and Robert~F. Mills,
   \emph{{An FPGA System for Detecting Malicious DNS Network Traffic.}}, {IFIP

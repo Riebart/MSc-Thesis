@@ -39,8 +39,12 @@ Warning--entry type for "WolframAlpha-EntropyMath" isn't style-file defined
 --line 1068 of file ../Reference/bibliography.bib
 Warning--entry type for "WolframAlpha-EntropyWord" isn't style-file defined
 --line 1077 of file ../Reference/bibliography.bib
+Warning--entry type for "pypyvc-strfmt" isn't style-file defined
+--line 1086 of file ../Reference/bibliography.bib
+Warning--entry type for "python-strlencplx" isn't style-file defined
+--line 1095 of file ../Reference/bibliography.bib
 Warning--entry type for "asciitable" isn't style-file defined
---line 1103 of file ../Reference/bibliography.bib
+--line 1121 of file ../Reference/bibliography.bib
 A bad cross reference---entry "Browne1994"
 refers to entry "conf/ccs/1994", which doesn't exist
 A bad cross reference---entry "Shaffer2008"
@@ -63,6 +67,7 @@ A bad cross reference---entry "Butler2011"
 refers to entry "conf/acns/2011", which doesn't exist
 A bad cross reference---entry "Thomas2011"
 refers to entry "conf/ifip11-9/2011", which doesn't exist
+Warning--I didn't find a database entry for "Born2010"
 Warning--I didn't find a database entry for "conf/pldi/2008plas"
 Warning--I didn't find a database entry for "conf/wpes/2003"
 Warning--I didn't find a database entry for "conf/ccs/2004ccs"

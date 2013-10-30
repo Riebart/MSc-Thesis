@@ -1,6 +1,4 @@
 = TODO =
-* 
-
 * See the "TODO" tags in the document
 * Add a "debunking other methods" (see CFA) section.
 
