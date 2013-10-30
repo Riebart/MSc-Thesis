@@ -1437,6 +1437,15 @@ the total of all of the metrics for each query are summed together resulting in
 a single value that counts all of the characters that appeared in queries to
 that TLD.
 
+Because the packet capture was done in an environment where a large portion of
+the clients use one of only a few different DNS servers, the effects of caching
+will cause the naive approach to have decent detection performance. If this were
+an environment such as a large ISP or internet backbone where such DNS caching
+is not present then the naive approach will have far different detection
+performance and characteristics. Unfortunately, due to the nature of the network
+capture obtained for this work, it is not possible to demonstrate how the naive
+approach performs in a uncached DNS environment.
+
 \subsection{Born}
 %Since the technique proposed by Born relies on having a notion of normal
 %traffic, a PDF of the character frequencies from the Alexa top one-million
@@ -1446,16 +1455,22 @@ that TLD.
 %approximately follow Zipf's Law, and not that they match the exact character
 %frequencies.
 
-Since Born's\cite{Born2010} assumption is that normal DNS queries approximately follow Zipf's
-Law, and that tunnels produce character distributions that are much closer to
-uniform, this was used to determine a metric. At the end of each interval, for
-each TLD all of the queries to that TLD are taken together and joined into a
-single long string. The character distribution of that string is then
-calculated, and its standard deviation calculated.
+Since Born's\cite{Born2010.cfa} assumption is that normal DNS queries
+approximately follow Zipf's Law, and that tunnels produce character
+distributions that are much closer to uniform, this was used to determine a
+metric. At the end of each interval, for each TLD all of the queries to that TLD
+are taken together and joined into a single long string. The character
+distribution of that string is then calculated, and its standard deviation
+calculated.
 
 Since it is expected that tunnel traffic is close to uniform, then it is assumed
 that tunnels will have a very low standard deviation while normal queries will
 increase very quickly by comparison.
+
+Because the next-gen tunnel used in the tests is designed to circumvent Born's
+detection method (any any other method that relies on character frequency
+analysis), it is expected that this approach will have poor detection
+performance on the next-gen tunnel.
 
 \subsection{Paxson}
 Paxson's\cite{Paxson2011} approach uses the \emph{gzip} utility to compress the
@@ -1469,6 +1484,14 @@ As with the previous implementations, the queries for each TLD over an interval
 are accumulated and joined together into a single long string. This string is
 then passed to the \texttt{zlib.compress()} resulting in a string whose length
 becomes the metric for that TLD in the current interval.
+
+Because Paxson's approach uses very similar assumptions, that DNS tunnels can be
+detected by measuring the amount of unique data transferred to each domain
+and/or subdomain, it is expected that Paxon's approach and the proposed approach
+will have very similar detection performance. However, due to the fact that
+Paxson's approach relies on a general-purpose compression library whereas the
+proposed approach uses a tailored algorithm and optimized data structures, it is
+expected that the proposed approach will have superior processing performance.
 
 \subsection{Proposed Approach}
 \label{proposed-method-python}
