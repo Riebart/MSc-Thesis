@@ -1134,6 +1134,7 @@ The objectives that must be met for an
 approach to have successfully solved the problem posed in section
 \ref{briefproblem} are as follows:
 
+\label{methodreqs}
 \begin{itemize}
 \item Successfully discern tunnel traffic generated from
 existing tunnel applications and theoretical tunnel traffic (built using
@@ -1278,19 +1279,23 @@ code is included in the libodb source code distribution\cite{Friesen2013}.
 \subsection{Python} The Python implementation details are described in section
 \ref{proposed-method-python}.
 
-\chapter{Detailed Testing Methodology} A collection of tests will be run on
+\chapter{Detailed Testing Methodology}
+A collection of tests will be run on
 several detection methods, demonstrating the performance of this work's proposed
 method when compared to existing methods from the literature. The detection
 methods chosen for comparison is composed of
 
+\label{chosen-methods}
 \begin{itemize}
 \item The $n$-gram detection proposed by Born\cite{Born2010.cfa} because it is
 well defined and was the most prevalent approach found during the literature
 search.
+
 \item The use of \emph{gzip} on domain and subdomain packet data as proposed by
 Paxson\cite{Paxson2011} because it involves looking at data that is very similar
 to the approach outlined in section \ref{implementation}, but makes use of
 different methods for measuring the data throughput.
+
 \item A naive approach that simply measures the volume (in number of characters
 in the query strings) of packets per domain/subdomain to illustrate that simple
 volume of queries is a highly inadequate approach, and that more sophisticated
@@ -1300,8 +1305,10 @@ approaches can perform considerably better.
 The collection of methods will be put through several tests in an attempt to
 demonstrate their performance in average (using existing implementations) and
 worst case scenarios. All of the tests involving traffic generation will be
-performed in a virtual environment, with technical configuration and testing
-details given in section \ref{appendix-setup}.
+performed in a virtual environment of two linux-based virtual guests directly
+connected via a virtual network on a single physical host.
+%, with technical configuration and testing
+%details given in section \ref{appendix-setup}.
 
 \section{Situational Performance Goals}
 \subsection{Determining a Baseline}
@@ -1387,6 +1394,7 @@ evaluate the efficacy of the detection methods on this more advanced type of
 traffic.
 
 \section{Analysis Method Implementations}
+\label{implementations}
 \subsection{Common Scaffolding}
 \label{scaffolding}
 All implementations of the analysis methods are built on the same basic
@@ -1431,6 +1439,7 @@ parsing and verifying the packet protocols from the performance figures for
 these implementations.
 
 \subsection{Naive}
+\label{implementation-naive}
 The metric returned for each query (stripped of its TLD) is simply the number of
 characters in the query. After all of the packets are processed, for each TLD,
 the total of all of the metrics for each query are summed together resulting in
@@ -1445,6 +1454,32 @@ is not present then the naive approach will have far different detection
 performance and characteristics. Unfortunately, due to the nature of the network
 capture obtained for this work, it is not possible to demonstrate how the naive
 approach performs in a uncached DNS environment.
+
+In order to grant some possible context to the effects that DNS caching has had
+on the naive method's performance, a simple comparison is offered. Data was
+taken from a home network serving five computers and smartphones, with DNS
+traffic logged over a twenty-two day period to match the time frame of the
+capture for real world data. Over that twenty two day period,
+\emph{www.google.com} was queried 5645 times compared to the 268842 times the
+same query was seen in the real world traffic. It is important to modulate this
+discrepancy by the number of hosts that the real world traffic represents, which
+is on the order of approximately thirty thousand, or six thousand times the
+number of hosts the home network was supporting.
+
+Approximately scaling the home network by a factor of six thousand results in an
+estimated three million queries to \emph{google.com} occurring in the real world
+traffic, of which only a twelfth of that actually appeared in the capture due to
+DNS caching. This is only one common domain name, so applying similar logic to
+other domains, it is easy to see that in these scenarios, the normal curves
+would take on a car different shape, easily obscuring tunnel traffic for low
+throughputs.
+
+As can be seen from the other method's underlying mechanisms, the DNS caching
+actually provides a \emph{more pessimistic} detection environment compared to
+the uncached environment. Unlike the naive method, whose performance results
+will not be applicable in an uncached environment, the other three methods can
+be expected to perform better in an uncached environment than they do in the
+testing in section \ref{detection-perf}.
 
 \subsection{Born}
 %Since the technique proposed by Born relies on having a notion of normal
@@ -1885,70 +1920,309 @@ of the shorter plots.}
 \end{figure}
 \end{landscape}
 
-The following plots show how the various tunnel application fare when compared to normal traffic. On each plot the vertical axis is "percent of samples with a metric greater than $x$". The black curve represents normal traffic, and the vertical coloured bars represent the various DNS tunnels. The vertical bars, coloured and dashed/solid according to the legend, mark the target throughput levels given in section \ref{tunapptp}, but are not identified otherwise. As can be seen in figure \ref{mbtt}, in almost all cases, the metric is approximately montonic with the lowest throughput samples having the smallest metric. Due to the plot ranges on the following figures, not all bars are visible on all plots. Due to the tendency of Born's metric to produce small values for tunnels, most of the tunnel bars are visible on the plot of Born's metric.
+\section{Detection Performance Against Real World Data}
+\label{detection-perf}
+
+The plots shown here illustrate how the various tunnel application fare when
+compared to normal traffic. On each plot the vertical axis is "percent of
+samples with a metric greater than $x$" with the horizontal axis being the
+metric produced by the method. The black curve represents normal traffic, with
+the vertical coloured bars represent the various DNS tunnels. The vertical bars,
+coloured and dashed/solid according to the legend, mark the target throughput
+levels given in section \ref{tunapptp}, but are not identified otherwise. As can
+be seen in figure \ref{mbtt}, in almost all cases, the metric is approximately
+montonic with the lowest throughput samples having the smallest metric. Due to
+the plot ranges on the following figures, not all bars are visible on all plots.
+Due to the tendency of Born's metric to produce small values for tunnels, most
+of the tunnel bars are visible on the plot of Born's metric.
+
+Due to the layout of the plots, the approximate detectability of a tunnel is
+related to the $y$ value of the crossing of the vertical markers with the normal
+curve. This crossing indicates how near the outliers the marker sits with an
+intersection at $y$ values very near 0 or 1 representing the best detection
+probability. The closer to the outliers the tunnel is measured to be, the less
+ambiguity there is as to whether or not the analyzed traffic represents normal
+traffic or not. A value of 0 or 1 would indicate a perfectly detectable tunnel,
+while a value of 0.5 would indicate a tunnel that suffers from a very high
+ambiguity of classification. This value will be referred to as the
+\emph{crossing value} in subsequent discussion.
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/mpnv.pdf}
-\caption[Detection Thresholds Under the Naive Metric]{This visualizes the performance of the naive metric to discern a DNS tunnel from normal DNS traffic.}
+\caption[Tunnel Detection Performance - Naive Metric]{This visualizes the
+ability of the naive metric to discern a DNS tunnel from normal DNS traffic.}
 \label{mpnv}
 \end{figure}
 
 \begin{figure}
 \centering
+\includegraphics[width=\textwidth]{figures/cnplot.pdf}
+\caption[Trend of Crossing Value for Tunnels - Naive Metric]{This plot shows the
+trend of the crossing values for tunnels when compared to real-world data for the
+naive metric.}
+\label{cnplot}
+\end{figure}
+
+Figure \ref{mpnv} shows the performance of the naive metric, with markers
+visible for the next-gen and DNSCat tunnels. The lowest marker belongs to the
+next-gen tunnel, and crosses at a value of 0.0799815, followed by a DNSCat
+server-to-client transfer crossing at 0.0496253. Iodine's client-to-server
+transfers are the most easily detectable with its lowest transfer rate crossing
+at 0.00164529 indicating a very low ambiguity when classifying traffic.
+
+The naive method, due to the nature of the the capture involving very few
+duplicate queries, performs quite well overall even on the next-gen tunnel
+traffic. Figure \ref{cnplot} shows the trends of the crossing values for the
+tunnelling applications as a function of the data throughput.
+
+\begin{figure}
+\centering
 \includegraphics[width=\textwidth]{figures/mpbv.pdf}
-\caption[Detection Thresholds Under Born's Metric]{This visualizes the performance of Born's metric to discern a DNS tunnel from normal DNS traffic.}
+\caption[Tunnel Detection Performance - Born's Metric]{This visualizes the
+ability of Born's metric to discern a DNS tunnel from normal DNS traffic.}
 \label{mpbv}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/mppv.pdf}
-\caption[Detection Thresholds Under Paxson's Metric]{This visualizes the performance of Paxson's metric to discern a DNS tunnel from normal DNS traffic.}
-\label{mppv}
+\includegraphics[width=\textwidth]{figures/cbplot.pdf}
+\caption[Trend of Crossing Value for Tunnels - Born's Metric]{This plot shows
+the trend of the crossing values for tunnels when compared to real-world data 
+for Born's metric.}
+\label{cbplot}
 \end{figure}
+
+Figure \ref{mpbv} shows the performance of Born's metric with almost all markers
+visible clustered near the smaller metric values. Since the implementation of
+Born's metric produces smaller metrics for tunnels, the highest values are the
+ones of interest. The highest crossing value of 0.529347 occurs for the next-gen
+tunnels. It is not easily seen in the plot, but all sixteen of the next-gen
+tunnel markers are superimposed on each other at that value. This is due to how
+the tunnel was implemented for the proof-of-concept, as all traffic generated
+very closely conforms to a specified distribution. This distribution produces a
+particular metric under the implementation of Born's approach, independent of
+the amount of throughput. The next-gen tunnel markers are followed by the DNSCat
+server-to-client market with a crossing value of 0.367036. Similarly to the
+naive metric, Iodine's client-to-server tunnel was the most easily detected
+tunnel with the lowest throughput samples achieve a crossing value of
+0.00133572.
+
+It is easily seen that Born's metric will not be able to identify the next-gen
+tunnel with any reasonable certainty due to the ambiguity caused by the tunnel's
+traffic generating metrics very near to the median of real-world traffic. It is
+possible to augment the next-gen tunnel to adhere less tightly to a given
+distribution in order to spread its metrics over a wider range surrounding the
+median, further increasing the difficulty of detection. Figure \ref{cbplot}
+shows the trends of the crossing values for the tunnelling applications as a
+function of the data throughput.
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=\textwidth]{figures/mppv.pdf}
+%\caption[Tunnel Detection Performance - Paxson's Metric]{This visualizes the
+%ability of Paxson's metric to discern a DNS tunnel from normal DNS traffic.}
+%\label{mppv}
+%\end{figure}
+
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/mppv-500.pdf}
-\caption[Detection Thresholds Under Paxson's Metric - Truncated View]{A cropped plot of figure \ref{mppv} that offers more resolution in the smaller metric ranges.}
-\label{mppv-500}
+%\caption[Tunnel Detection Performance - Naive Metric (Truncated View)]{A cropped
+%plot of figure \ref{mppv} that offers more resolution in the smaller metric
+%ranges.}
+%\label{mppv-500}
+\caption[Tunnel Detection Performance - Paxson's Metric]{This visualizes the
+ability of Paxson's metric to discern a DNS tunnel from normal DNS traffic.}
+\label{mppv}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/mphv.pdf}
-\caption[Detection Thresholds Under the Proposed Metric]{This visualizes the performance of the proposed metric to discern a DNS tunnel from normal DNS traffic.}
-\label{mphv}
+\includegraphics[width=\textwidth]{figures/cpplot.pdf}
+\caption[Trend of Crossing Value for Tunnels - Paxson's Metric]{This plot shows
+the trend of the crossing values for tunnels when compared to real-world data for
+Paxson's metric.}
+\label{cpplot}
 \end{figure}
+
+Figure \ref{mppv} shows the performance of Paxson's metric similar to the plot
+shown for the naive method. The lowest metric is shown by the DNSCat
+client-to-server transfer with crossing value of 0.0239753 followed very closely
+by DNSCat's server-to-client transfer with a crossing value of 0.0239753. The
+next-gen tunnel produces a crossing value of 0.0212873 and again Iodine is the
+most easily detected with its client-to-server transfers producing crossing
+values no larger than 0.00392552.
+
+As is expected, Paxson's method shows considerable improvement over both the
+approach proposed by Born and the naive methods in terms of ambiguity of tunnel
+detection. Figure \ref{cpplot} shows the trends of the crossing values for the
+tunnelling applications as a function of the data throughput.
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=\textwidth]{figures/mphv.pdf}
+%\caption[Tunnel Detection Performance - Proposed Metric]{This visualizes the
+%ability of the proposed metric to discern a DNS tunnel from normal DNS traffic.}
+%\label{mphv}
+%\end{figure}
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/mphv-100.pdf}
-\caption[Detection Thresholds Under the Proposed Metric - Truncated View]{A cropped plot of figure \ref{mphv} that offers more resolution in the smaller metric ranges.}
-\label{mphv-100}
+%\caption[Tunnel Detection Performance - Proposed Metric (Truncated View)]{A
+%cropped plot of figure \ref{mphv} that offers more resolution in the smaller
+%metric ranges.}
+%\label{mphv-100}
+\caption[Tunnel Detection Performance - Proposed Metric]{This visualizes the
+ability of the proposed metric to discern a DNS tunnel from normal DNS traffic.}
+\label{mphv}
 \end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/chplot.pdf}
+\caption[Trend of Crossing Value for Tunnels - Proposed Metric]{This plot shows
+the trend of the crossing values for tunnels when compared to real-world data for
+the proposed metric.}
+\label{chplot}
+\end{figure}
+
+Figure \ref{mphv} shows the performance of the proposed metric in a fashion
+similar to the naive method and for Paxson's method. The first crossing value
+encountered is from the next-gen tunnel at 0.0184927. This is followed by two of
+the samples generated by the DNSCat server-to-client transfers, the first of
+crossing value being at 0.00751152. As has been the case for all metrics thus
+far, Iodine is the most easily detected tunnel generating crossing values for
+its lowest throughput client-to-server and server-to-client of
+$5.19129\times10^{-6}$ and $5.73392\times10^{-6}$ respectively.
+
+The proposed approach produces the lowest crossing values of all approaches,
+with the figure \ref{chplot} showing the trends of the crossing values for the
+tunnelling applications as a function of the data throughput.
+
+\section{Certainty and Ambiguity of Tunnel Classification}
+\label{detection-perf-cert}
+
+It is possible to simplify the above plots and figures into a single chart that
+plots the minimum detection certainty observed for each method and each
+tunnelling application. The certainty shown in the following plots is
+intuitively a measure of how much ambiguity there is when classifying the tunnel
+sample based on how far the sample lies from 'typical' normal traffic. It is
+calculated as
+
+\[\textrm{certainty}=1-\textrm{crossing\_value}\]
+
+The following charts only consider the certainty of detecting the tunnel in
+which the method is least certain. By comparing the methods in their most
+hostile scenarios more substantial distinctions can be observed with clearer
+distinction between the best two methods. In all cases, this corresponded to one
+of the tunnelling applications at the ten bytes per second throughput level,
+which demonstrates the effectiveness of these methods to solve the
+\emph{needle-in-a-haystack} problem of low throughput DNS tunnels on a very busy
+network link.
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/cplot.pdf}
-\caption[Plot of Certainty of Detection by Tunnel Application and Detection Method]{By selecting the }
+\caption[Chart of Certainty of Detection by Tunnel Application and Detection
+Method]{Comparison of the certainty of classification of a tunnel against
+real-world traffic for the least certain tunnel in each detection scenario
+(method/application pair).}
 \label{cplot}
 \end{figure}
+
+Figure \ref{cplot} shows the certainties of each method for each tunnelling
+application, with the certainty in the interval $[0,1]$. Observe the extremely
+low certainty of Born's metric on two tunnelling applications (next-gen and
+DNSCat's server-to-client), with lackluster performances for DNSCat's
+client-to-server and both DNS2TCP transfer directions. The only tunnelling
+application that Born's method reliably picks out is Iodine, however as was
+shown earlier Iodine was by far the most easily distinguished tunnel by a large
+margin for all detection methods. The naive and proposed methods as well as
+Paxson's method perform similarly with differences that are not easily
+distinguished in this chart.
+
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/cplot2.pdf}
-\caption[Plot of Certainty of Detection by Tunnel Application and Detection Method - 0.80 to 1.00]{}
+\caption[Chart of Certainty of Detection by Tunnel Application and Detection
+Method - 0.80 to 1.00]{Figure \ref{cplot} replotted with a reduced range to
+accentuate small differences.}
 \label{cplot80}
 \end{figure}
+
+Figure \ref{cplot80} shows the same data as in figure \ref{cplot} with a
+restricted range spanning the interval $[0.80,1.00]$ as opposed to $[0,1]$. This
+restricted charting range makes the the differences between the top performing
+methods more easily visible. In this chart, it is easily seen that the naive
+method outperforms Born's method in all except the Iodine case. The Iodine
+performance differences are not easily visible due to the very close values. The
+naive method has a certainty of 0.998355 for both transfer directions while
+Born's method has certainties of 0.998664 and 0.998512 for the client-to-server
+and server-to-client directions respectively. The differences, on the order of
+0.0003, are not visible in the charts. The performance of the proposed method
+and Paxson's method relative to the naive method is clearly visible in this
+chart.
+
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figures/cplot3.pdf}
-\caption[Plot of Certainty of Detection by Tunnel Application and Detection Method - 0.95 to 1.00]{}
+\caption[Chart of Certainty of Detection by Tunnel Application and Detection
+Method - 0.95 to 1.00]{Figure \ref{cplot} replotted with a reduced range to
+accentuate \emph{very} small differences.}
 \label{cplot95}
 \end{figure}
 
+The differences between Paxson's method and the proposed method are visible, but
+an additional chart further accentuating them is instructive and is shown in
+figure \ref{cplot95}. In this final chart which shows a range of certainties in
+the interval $[0.95,1.00]$, the differences between the two methods are clearly
+visible, with the proposed approach achieving a higher certainty in every
+detection scenario.
+
+\section{Tunnel Detection Performance Conclusion}
+It is visible from the detailed plots in sections \ref{detection-perf} and
+\ref{detection-perf-cert} that the proposed method is superior to its peers in
+its ability to detect tunnels with certainty in excess of ninety eight percent.
+This extremely high detection rate is achieved at a very short time scale and
+with very low tunnel throughput. Depending on the tunnelling application,
+detection performance rises above ninety nine percent for all except the
+next-gen application, and above 99.999\% for Iodine tunnelling applications.
+
 \chapter{Conclusion}
-\section{Performance Summary}
+
+In this work, a new method of detecting DNS tunnels was proposed, described, and
+evaluated. The existing landscape of detection methods was summarized (section
+\ref{litreview}) and a gap identified indicating a need for a new method
+(section \ref{methodreqs}) that has both high processing performance on
+commodity hardware, and robust tunnel detection. A prototypical next-gen tunnel
+application was postulated (section \ref{supertunnel}) and simulated in order to
+present a more difficult detection task during evaluation alongside existing
+detection methods. Several detection methods from the literature as well as the
+proposed method were selected (section \ref{chosen-methods}) and implemented on
+a common framework (section \ref{implementations}). The implemented methods were
+tested for processing performance (section \ref{processing-perf}) and tunnel
+detection performance on a large sample of real world DNS traffic as well as
+existing and next-gen tunnelling application data (section
+\ref{chap-evaluation}).
+
+As is shown in the relevant sections, the proposed method outperforms its peers
+in both processing performance and tunnel detection in almost every situation.
+The exception is the naive method which outperforms the proposed method in
+processing performance by approximately fifty percent at the expense of
+detection performance. As was mentioned in section \ref{implementation-naive}
+however, the naive method's detection performance is only as good as it is in
+this case due to the lack of duplication of DNS queries.
+
+The end product of these results is a contribution to the field comprising a new
+detection method with superior processing and detection performance. The new
+detection method falls short of matching the naive method's processing
+performance in many situations with the tradeoff of far superior detection
+performance.
+
 \section{Future Work}
+
+
 
 %\begin{figure}
 %\centering
@@ -2075,12 +2349,53 @@ The following plots show how the various tunnel application fare when compared t
 \chapter{Properties of the Network Capture}
 \label{appendix-capturestats}
 
-\chapter{Testing Software and Scripts}
-\section{Custom DNS Tunnel Endpoint Simulator}
-\label{appendix-customdns}
+The packet capture used to represent real world data performed in cooperation with Merlin, an ISP in Manitoba for educational institutions.
 
-\chapter{Testing Environment}
-\label{appendix-setup}
+\begin{table}[h]
+\centering
+\begin{tabular}{ l l }
+File name:           &data1.udp53.pcap\\
+File type:           &Wireshark/tcpdump/... - libpcap\\
+File encapsulation:  &Ethernet\\
+Packet size limit:   &file hdr: 65535 bytes\\
+Number of packets:   &1035425650\\
+File size:           &156484681395 bytes\\
+Data size:           &139917870971 bytes\\
+Capture duration:    &1915055 seconds\\
+Start time:          &Thu Nov  4 15:05:58 2010\\
+End time:            &Fri Nov 26 18:03:33 2010\\
+Data byte rate:      &73062.06 bytes/sec\\
+Data bit rate:       &584496.51 bits/sec\\
+Average packet size: &135.13 bytes\\
+Average packet rate: &540.68 packets/sec\\
+SHA1:                &6fb043f37e659d9a65a45b5c8074d55eae386600\\
+RIPEMD160:           &4aba72d43f5726f0a8576f35d60845f895080a43\\
+MD5:                 &32956ef8efe5c3873226386e1608561a\\
+Strict time order:   &True\\
+\end{tabular}
+\caption[Packet Capture Statistics from \emph{capinfos}]{Statistics and information as reported by Wireshark's utility \emph{capinfos}.}
+\label{TABLE_capinfos}
+\end{table}
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=\textwidth]{figures/pcap-tpb.pdf}
+%\caption[Throughput in Bytes per Second of Packet Capture]{Throughput in bytes per second of the packet capture, with each sample being the average throughput over ten-second windows.}
+%\label{cplot}
+%\end{figure}
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=\textwidth]{figures/pcap-tpp.pdf}
+%\caption[Throughput in Packets per Second of Packet Capture]{Throughput in packets per second of the packet capture, with each sample being the average throughput over ten-second windows.}
+%\label{cplot}
+%\end{figure}
+
+
+%\chapter{Testing Software and Scripts}
+
+%\chapter{Testing Environment}
+%\label{appendix-setup}
 
 \chapter{Probabilistic Encoding}
 \label{appendix-probcode}
@@ -2108,7 +2423,9 @@ any source can be used to produce a high entropy source through encryption or
 compression, this is considered a safe assumption and limitation.} and a
 configuration file that describes the desired output distribution.
 
-\section{Sample Encoding} A sample encoding is given using the english character
+\section{Sample Encoding - English Unigrams}
+
+A sample encoding is given using the english character
 frequency distribution with the character distribution table used given in Table
 \ref{TABLE_unigrams}. In order to ensure that interested parties can verify this
 output, the source high-entropy data is contained in Table
@@ -2195,8 +2512,6 @@ various distributions, there does not exist a clear distinction between them and
 thus it becomes very difficult to perform automated classification when
 information is encoded using this tool.
 
-\newpage
-
 \begin{landscape}
 \begin{figure}
 \centering
@@ -2206,16 +2521,7 @@ information is encoded using this tool.
 \end{figure}
 \end{landscape}
 
-\newpage
-
-%\begin{figure}
-%\centering
-%\includegraphics[width=0.9\textwidth]{figures/frequencies-bytop.pdf}
-%\caption[Plot of character frequencies by character]{The character frequencies of the small and large encoded samples, as well as the English target distribution sorted by frequency.}
-%\label{FIGURE_frequencies-bychar}
-%\end{figure}
-
-\subsubsection{Technical Details} The probabilistic encoder is open-source and
+\subsection{Technical Details} The probabilistic encoder is open-source and
 freely available, licensed under the Mozilla Public License version 2 which is
 GPL compatible. The source code is available at \cite{probcodesrc} for download
 and use under the MPL2 license terms. The source code compiles on Unix and other
@@ -2301,6 +2607,62 @@ z&0000    &0.000651466\\
 \caption[English character bit-string mapping]{Bit-string mapping for English characters and their frequency for comparison.}
 \label{TABLE_unigrammapping}
 \end{table}
+
+The examples given above show the unigram mapping process, however since the
+theory and implementation are symbol agnostic, the symbol set can be as large as
+is desired, with each symbol being arbitrarily long. One could potentially use
+this tool to build a mapping on all words in a language paired with the nominal
+frequencies if one so desired, however the Markov chain coding portion of the
+tool may be a better choice.
+
+\section{Markov Chain Coding}
+
+Markov chain support was added 
+
+\section{Custom DNS Tunnel Endpoint Simulator}
+\label{appendix-customdns}
+
+The next-gen tunnel that was used alongside the existing implementations was
+built by using standard Unix utilities and the application described in the
+previous section. The utility was only capable of unidirectional transfer, from
+server to client, and relied on three standard Unix utilities: \emph{gzip},
+\emph{fold} and \emph{nslookup}. The basic flow was as follows:
+
+\begin{enumerate} \item The data to be transferred was piped through \emph{gzip}
+in order to compress a potentially low entropy stream, reducing its size and
+guaranteeing a high entropy stream as input to the next stage of the pipeline.
+
+\item The high entropy stream is used as input to the tool described in the
+previous section which was targeting a character distribution that matched the
+Alexa top one million domains, as shown in table \ref{TABLE_dnssampling}. The
+output of this step is a stream of characters that asymptotically converges to
+the given domain.
+
+\item Because DNS queries have a maximum length of a token (a string of
+characters in between periods) at sixty three characters, the Unix utility
+\emph{fold} is used to insert newline characters in the stream no less often
+than every sixty-fourth character. Depending on the targeted input rate and
+desired output parameters, folding could produce queries of any length from one
+to sixty three characters. If one was looking to target a query length
+distribution, the use of \emph{fold} could be replaced by another tool that used
+a more intelligent method of deciding when to insert newline characters. The
+output of this stage is a stream of lines of equal length, each of which will
+represent a query that is sent to the server.
+
+\item The Unix utility \emph{nslookup} allows for command-line issuing of DNS
+queries to a server. The output of fold was piped into \emph{nslookup} with the
+queries directed at the localhost address. This resulted in a relatively high
+throughput as \emph{nslookup} read a line from its input, issued the query to
+the localhost, was met with a negative response (specifically, an NXDOMAIN
+response indicating that the address was not something that the localhost knew
+about), at which point it would grab a new line of input and repeat.
+\end{enumerate}
+
+All traffic used for the analysis of the next-gen tunnelling application
+involved this flow of information. By combining existing applications with the
+application in the previous section, it was possible to very quickly, and
+simply, prototype a unidirectional DNS tunnelling application that runs on any
+linux or Unix based host.
 
 \end{appendices}
 
