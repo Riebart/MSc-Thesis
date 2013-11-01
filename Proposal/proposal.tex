@@ -22,7 +22,6 @@ Estimation},
 \bibliographystyle{amsplain}
 
 \usepackage{setspace}
-\doublespacing
 
 \addtolength{\oddsidemargin}{-.5in}
 \addtolength{\evensidemargin}{-.5in}
@@ -52,12 +51,68 @@ Estimation},
 \newtheorem{algorithm}{Algorithm}[section]
 
 \begin{document}
-\title{A Novel Approach to Detecting Covert DNS Tunnels Using Throughput
-Estimation}
-\author{Michael Himbeault}
+%\title{A Novel Approach to Detecting Covert DNS Tunnels Using Throughput
+%Estimation}
+%\author{Michael Himbeault}
 
-\maketitle
+%\title{
+%\huge{\textbf{An In-memory Database for Prototyping Anomaly Detection Algorithms at Gigabit Speeds}}\\[1.75cm]
+%\Large{by} \\ [0.5cm]
+%\Large{Travis Friesen} \\ [1.2cm]
+%\Large{A Thesis\\
+%Submitted to the Faculty of Graduate Studies\\
+%of the University of Manitoba\\
+%in partial fulfilment of the requirements\\
+%for the degree of}\\[1cm]    
+%\Large{MASTER OF SCIENCE}\\[1cm]
+%\Large{Department of Electrical and Computer Engineering\\
+%University of Manitoba\\
+%Winnipeg} \\
+%%\Large{Advisors: Bob McLeod, Ph.D., P.Eng.\\
+%%Paul Card, Ph.D.}\\
+%\vfill
+%\Large{Copyright \copyright 2013 by Travis Friesen}
+%}
+%% \author{} \date{}
+%% \date{Decembruary 2012.5}
+%\date{}
+%
+%\maketitle
 
+\pagestyle{empty}
+
+\begin{titlepage}
+\centerline{\huge{A Novel Approach to Detecting Covert DNS}}
+\vspace{10mm}
+\centerline{\huge{Tunnels Using Throughput Estimation}}
+\vspace{20mm}
+\centerline{by}
+\vspace{5mm}
+\centerline{\large{Michael Himbeault}}
+\vspace{20mm}
+\centerline{\large{A Thesis}}
+\vspace{3mm}
+\centerline{\large{Submitted to the Faculty of Graduate Studies}}
+\vspace{3mm}
+\centerline{\large{of the University of Manitoba}}
+\vspace{3mm}
+\centerline{\large{in partial fulfilment of the requirements}}
+\vspace{3mm}
+\centerline{\large{for the degree of}}
+\vspace{13mm}
+\centerline{\LARGE{MASTER OF SCIENCE}}
+\vspace{15mm}
+\centerline{\large{Department of Electrical and Computer Engineering}}
+\centerline{\large{University of Manitoba}}
+\centerline{\large{Winnipeg, Manitoba, Canada}}
+\vspace{30mm}
+\centerline{\large{Copyright \copyright 2013 Michael Himbeault}}
+\centerline{}
+\vfill
+\centerline{\today}
+\end{titlepage}
+
+\doublespacing
 % http://www.sce.carleton.ca/faculty/chinneck/thesis.html
 
 % ==============================================================================
@@ -65,7 +120,8 @@ Estimation}
 % It should give them an idea of whether they possess the background necessary
 % to understand the paper, and if they do, what the paper will tell them.
 % ==============================================================================
-\abstract{In a world that runs on data, protection of that data and protection
+
+\abstract{In a world that relies very heavily on data, protection of that data and protection
 of the \emph{motion} of that data is of the utmost importance. Covert
 communication channels attempt to circumvent established methods of control,
 such
@@ -79,9 +135,17 @@ existence of a DNS tunnel against the background noise of legitimate network
 traffic. The proposed technique is robust in the face of the obfuscation
 techniques that are able to hide tunnels from existing detection methods.}
 
+
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\addtocontents{lot}{\protect\thispagestyle{empty}}
+\addtocontents{lof}{\protect\thispagestyle{empty}}
+
+\tableofcontents
+\listoftables
+\listoffigures
+
 \newpage
-\tableofcontents \listoftables \listoffigures
-\newpage
+
 
 % ==============================================================================
 % The introduction should make sense to people with the necessary background,
@@ -91,6 +155,10 @@ techniques that are able to hide tunnels from existing detection methods.}
 % solutions, and what the solution involves. It should briefly touch on the
 % outcome of the solution.
 % ==============================================================================
+
+\pagestyle{plain}
+\setcounter{page}{1}
+
 \chapter{Introduction}
 
 Control of the data that moves between hosts on a computer network is vitally
@@ -867,8 +935,10 @@ investigate the feasibility of real-time DNS tunnel detection that does not
 suffer the common weaknesses of existing techniques as outlined in section
 \ref{litreview-summary}
 
-\section{Detailed Problem Description} DNS tunnel detection is a complicated
-task made worse by the fact that DNS tunnel traffic can appear to be completely
+\section{Detailed Problem Description}
+
+DNS tunnel detection is a complicated
+task made more difficult by the fact that DNS tunnel traffic can appear to be completely
 legitimate network traffic that conforms to all standards and restrictions. It
 need not violate any established standards or conventions, which makes it
 difficult to detect against the background of normal DNS traffic based on
@@ -914,7 +984,7 @@ Item one is already demonstrated in practise by most of the tunnelling
 applications available, and item two is shown to be possible in appendix
 \ref{appendix-probcode}. Item three is easily accomplished by splitting queries based
 on a statistical model of the desired lengths, and item four can be shown to
-approximately follow from items two and three as follows.
+approximately follow from items two and three.
 
 %Consider a probability distribution function $\mathcal P$ that describes the
 %characteristic frequency distribution of the values of components of vectors
@@ -945,8 +1015,8 @@ q\|\geq\|\mathbf p+\mathbf q\|\geq\|\mathbf p-\mathbf q\|
 This result indicates that if vectors with nonnegative components have an upper
 bound on their norm, then there is an upper bound on the diameter of the space
 spanned by those vectors. Since DNS queries can be thought of as vectors
-satisfying the above conditions when considering the characters as having values
-according to the ASCII character code table\cite{asciitable}, the result
+satisfying the above conditions (when considering the characters as having values
+according to the ASCII character code table\cite{asciitable}), the result
 applies.
 
 \paragraph{Part II} By further restricting that the queries follow a prescribed
@@ -980,7 +1050,7 @@ the length increases, the probability distribution of norms of vectors in
 $\mathcal C^n$ becomes very tightly packed (having a small variance) around the
 norm of typical vector as given above.
 
-The above relationships are consequences of the Central Limit Theorem (CLT)
+The above relationships are consequences of the CLT
 since the components of the vectors (characters in the DNS query) are IID with a
 finite variance. By the CLT, the variance decreases proportionally to
 $\frac{1}{\sqrt n}$ and the expected value increases proportionally to
@@ -1022,7 +1092,7 @@ top one-million domain names as retrieved in June 2013 and is given in table
 \begin{table}[h]
 \centering
 \begin{tabular}{ | c | l || c | l || c | l | }
-Character&Count&Character&Count&Character&Count\\
+Character&Frequency&Character&Frequency&Character&Frequency\\
 \hline
 -& 0.0117991  &C& 0.0366638 &P& 0.0276835\\
 0& 0.0023847  &D& 0.0321575 &Q& 0.00204425\\
@@ -1046,7 +1116,7 @@ used for DNS character frequency simulation when sampling vectors.}
 
 The distribution in table \ref{TABLE_dnssampling}, when considering the ASCII
 character code values of the given characters \cite{asciitable}, has an expected
-value of 74.8797 and a mean value (that is, not considering the likelihood of a
+value of 74.8797 and a mean value (that is, not considering the probability of a
 character) of 70.5263.
 
 For dimensions up to $n=100$, vectors were sampled from the spaces with
@@ -1072,10 +1142,10 @@ It is important to observe how the various functions compare to the sampled
 data. Observe that the best-fit curve for the mean value of the norms of the
 sampled data almost perfectly describes the sampled data. The best-fit curve for
 the mean values is given by $71.8527\sqrt{n}$ while the yellow curve is given by
-$70.5263\sqrt{n}$. The marked difference is indicative that $k$ (as in equation
+$\overline{\chi}\sqrt{n}=70.5263\sqrt{n}$. The marked difference is indicative that $k$ (as in equation
 \ref{dnssampling-evgrowth-eq}) is non-unitary. Similarly, the best-fit curve for
 the expected value of the norms is given by $74.3039\sqrt{n}$ while the green
-curve is given by $74.8797\sqrt{n}$. Note that the best-fit curve in this
+curve is given by $E[\chi]\sqrt{n}=74.8797\sqrt{n}$. Note that the best-fit curve in this
 situation is subject to much higher uncertainty which may be responsible for
 some of the deviation.
 
@@ -1084,7 +1154,7 @@ sampled vectors and then a function of form given by the CDF of the normal
 distribution with mean $\mu$ and standard deviation $\sigma$
 
 \begin{equation}
-\frac{1}{2} \text{erfc}\left(\frac{\mu -x}{\sqrt{2} \sigma}\right)
+CDF[N(\mu,\sigma)]=\frac{1}{2} \text{erfc}\left(\frac{\mu -x}{\sqrt{2} \sigma}\right)
 \end{equation}
 
 was fit to the data where 
@@ -1105,9 +1175,9 @@ by the CLT.
 \caption[Relative Error of $\mu$ of Best-Fit Normal Distribution of Sampled Expected Value]
 {For each $n$, vectors were sampled from $\chi^n$ where $\chi$ is given by the
 distribution in table \ref{TABLE_dnssampling} and a normal distribution
-$N(\mu,\sigma)$ was fit to their CDF. This plot shows the relative error of the
+$N(\mu,\sigma)$ was fit to them. This plot shows the relative error of the
 best-fit $\mu$ compared to $E[\chi]$. The trend toward zero for small dimensions
-becomes dwarfed by error due to sampling as $n$ grows.}
+becomes dominated by error due to sampling as $n$ grows.}
 \label{dnssampling-muerror}
 \end{figure}
 
@@ -1119,11 +1189,11 @@ becomes dwarfed by error due to sampling as $n$ grows.}
 distribution in table \ref{TABLE_dnssampling} and a normal distribution
 $N(\mu,\sigma)$ was fit to their CDF. This plot shows the trend of the best-fit
 $\sigma$ as $n$ increases. The trend toward zero for small dimensions becomes
-dwarfed by error due to sampling as $n$ grows.}
+dominated by error due to sampling as $n$ grows.}
 \label{dnssampling-sigmafit}
 \end{figure}
 
-These empirical results show that the theoretical results given in section
+As is shown in figures \ref{dnssampling-muerror} and \ref{dnssampling-sigmafit}, empirical results show that the theoretical results given in section
 \ref{item-four-theory} still hold and are valid for query lengths/dimensionality
 within the practical ranges.
 
@@ -1147,30 +1217,36 @@ hardware.
 
 The proposed approach will be evaluated against these criteria to determine
 whether or not it can be considered an improvement on the state of the art for
-this type of detection. Items 1 and 3 in the list of criteria require additional
-quantification, however the quantification criteria are different for each of
-the classes of tests. Details will be given in sections \ref{test-existing} and
-\ref{test-weakness} on how detection methods will be scored for their respective
-tests.
+this type of detection. 
+
+%Items 1 and 3 in the list of criteria require additional
+%quantification, however the quantification criteria are different for each of
+%the classes of tests. Details will be given in sections \ref{test-existing} and
+%\ref{test-weakness} on how detection methods will be scored for their respective
+%tests.
 
 Because the implementation of the approaches is built on a Python framework and
 is not tuned for high performance, it is not reasonable to set absolute
-performance metrics to measure the success of a detection method. Instead, a
+performance metrics to measure the success of a detection method. Instead, in order to satisfy item 1, a
 relative ranking will be applied that examines the performance of the methods
-in the context of its peers, all implemented using the same data source and
+in the context of their peers, all implemented using the same data source and
 common Python framework. The framework is described in section \ref{scaffolding}
 and the processing performance of the methods is examined in section
 \ref{processing-perf}.
+
+Item 2 will be tested using a next-generation tunnel, described in section
+\ref{appendix-customdns} and referred to as \texttt{next-gen}, that simulates
+what DNS tunnelling applications may look like in the future.
 
 \chapter{Proposed Detection Method}
 \label{proposed-method}
 
 The method proposed in this work examines the information theoretical properties
-of the DNS queries to each subdomain, thus retaining the flexibility to filter
+of the DNS queries to each domain, thus retaining the flexibility to filter
 and alert per domain as opposed to more generally on the set of all DNS queries.
 The tools developed to test this approach utilize full packet data for its
 analysis, but can be modified to use name server query logs (as were used in
-\cite{Romana2007}) or other sources of query information. The prototype software
+\cite{Romana2007}) or other sources of query information. The prototype C++ software described in section \ref{cpp-implementation}
 is easily capable of running at greater than gigabit speed on inexpensive, off
 the shelf hardware making this approach practical and uncomplicated to deploy on
 smaller networks or in resource constrained situations. Deployment in large
@@ -1191,7 +1267,7 @@ The list of assumptions follows:
 \item DNS tunnel applications use the queries themselves to transport data from
 the client to server.
 \item This mechanism will force there to be more unique
-queries per domain (or subdomain) proportional to the amount of data transferred
+queries per domain (or subdomain) proportional to the amount of unique data transferred
 from the client to the server.
 \item In a server-to-client transfer of data, there will still need to be
 acknowledgements sent from the client to the server, with the acknowledgement
@@ -1207,12 +1283,12 @@ detecting it.
 \subsection{Theory}
 In a large internet provider network, it is possible that there could be many
 copies of the same DNS query - say \emph{google.com} - each of which would count
-towards the total number of bytes transferred to/from that domain. If a naive
+towards the total number of bytes or queries transferred to/from that domain. If a naive
 approach to detection is used, such as counting bytes or queries to/from a
 domain, then this kind of repetition will have a detrimental effect on the
 metric calculated for some popular domains.
 
-In order to get around this, the proposed approach takes a different stance on
+In order to work around this, the proposed approach takes a different stance on
 unique data and instead uses entropy to measure the amount of data moved in the
 queries to a domain or subdomain. By considering queries as atomic objects, and
 maintaining a tally of the queries to a domain, and their counts over an
@@ -1229,7 +1305,7 @@ tunnels.
 With this new measure of data, the approach considers intervals of time and
 computes the amount of data estimated to be moved by each domain over that
 interval. By sorting all domains by their data throughput, the heavy-hitters can
-be examined in each time interval with white-listing allowing many of the top
+be examined in each time interval with white-listing preventing many of the top benign
 contenders from causing alerts.
 
 As will be shown in chapter \ref{chap-evaluation}, this approach is capable of
@@ -1249,8 +1325,8 @@ architecture:
 \begin{itemize}
 \item The input is DNS queries and a timestamp at which the query was seen
 \item The DNS query is broken down into a top-level domain (TLD) - such as
-\emph{google.com}, \emph{yahoo.ca} or similar - and the rest of the query.
-\item For each top-level-domain, a data structure is created that maps queries
+\emph{google.com}, \emph{yahoo.ca} or similar - and the rest of the query - such as \emph{www} in \emph{www.google.com} and \emph{plus} in \emph{plus.google.com}.
+\item For each TLD, a data structure is created that maps queries
 to an integer, which represents the number of times that query was seen.
 \item At the end of each time interval, the DLWE of each TLD is calculated, and
 the collection of TLD+DLWE pairs is output.
@@ -1259,7 +1335,7 @@ the collection of TLD+DLWE pairs is output.
 \subsection{C++}
 \label{cpp-implementation}
 The C++ implementation ingests raw packet data in the PCAP file
-format, relying on a network protocol dissector written for this project for the
+format, relying on a purpose designed network protocol dissector for the
 extraction of the DNS query string, TLD, and any response information. The query
 timestamps are obtained from the packet header which is part of the PCAP format.
 
@@ -1297,7 +1373,7 @@ to the approach outlined in section \ref{implementation}, but makes use of
 different methods for measuring the data throughput.
 
 \item A naive approach that simply measures the volume (in number of characters
-in the query strings) of packets per domain/subdomain to illustrate that simple
+in the query strings) of packets per domain/subdomain in an attempt to illustrate that simple
 volume of queries is a highly inadequate approach, and that more sophisticated
 approaches can perform considerably better.
 \end{itemize}
@@ -1325,12 +1401,19 @@ sample available in appendix \ref{appendix-capturestats}.
 This captured traffic will be used to determine a baseline distribution to which
 the metrics produced on isolated tunnel traffic can be compared. This baseline
 will provide context in order to determine if a method is able to detect a
-tunnel with sufficiently low expected false-positive/false-negative rates.
+tunnel with sufficiently high certainty.
 
 It is assumed that the incidence of tunnels in this baseline traffic is
-sufficiently low that it can be discounted. Because of this assumption, the
-approaches will be evaluated on their processing rate of packets from this
-dataset.
+sufficiently low that it can be discounted. This assumption may not be perfectly
+accurate due to to reasons indicated in the introduction. Because many security
+vendors use DNS to transmit some of their information, these transmissions are
+in essence a DNS tunnel and so will represent a certain portion of the real
+world traffic. The effect of tunnels present in the real world traffic given the
+assumption that there are none will result in a more pessimistic environment for
+testing. Since some of the traffic that is lies further out than the synthesized
+traffic, a portion of the ambiguity that the detection approaches will suffer
+may actually be due to the classification of existing traffic as a tunnel, and
+not due to misclassification.
 
 %This capture of DNS traffic will be used to determine the baseline behaviour of
 %normal, benign DNS domains such as \texttt{google.com}, \texttt{yahoo.com}, and
@@ -1344,7 +1427,7 @@ dataset.
 \subsection{Existing Implementation Detection}
 \label{test-existing}
 This test will involve the two hosts communicating at varying throughput rates
-using the existing DNS tunnel implementations. The throughput rates will scale
+using the chosen existing DNS tunnel implementations. The throughput rates will scale
 from as little as several bytes per second, to several megabytes (or as high as
 the tunnel applications can support) per second. The wide range of throughputs
 used is done to give an indication of how the detection methods scale with
@@ -1405,21 +1488,21 @@ described in section \ref{cpp-implementation}, which ingests raw PCAP formatted
 data, the Python scaffolding is unable to do so. Instead, the Python scaffolding
 relies on another tool to process raw packet captures (or other data sources
 such as DNS server logs) into a comma-separated value (CSV) file with a
-timestamp and a query on each line.
+timestamp and a query strong on each line.
 
 \item The scaffolding takes in two arguments: a file name to read the
 timestamp/query pairs from, and how long the intervals should be, in seconds.
 
 \item At the start of each interval, the main loop initializes an array to hold
-all of the packets for the upcoming interval. For the duration of the interval,
-the packets are added to the end of the array, which is passed to the analysis
+all of the queries for the upcoming interval. For the duration of the interval,
+the queries are added to the end of the array, which is passed to the analysis
 routine (where the specific detection method details are) at the end of the
 interval.
 
-\item When the packets from the interval are handed off for processing, each
-packet has its top-level domain (TLD) identified, and then the rest of the query
+\item When the queries from the interval are handed off for processing, each
+query has its top-level domain (TLD) identified, and then the rest of the query
 is passed to the specific method. The returned value is then assigned to the TLD
-that the packet came from.
+that the query came from.
 
 \item Once processing of the interval is complete, the array is cleared in
 preparation for the beginning of the next interval.
@@ -1441,14 +1524,14 @@ these implementations.
 \subsection{Naive}
 \label{implementation-naive}
 The metric returned for each query (stripped of its TLD) is simply the number of
-characters in the query. After all of the packets are processed, for each TLD,
+characters in the query. For each TLD, after all of the packets are processed,
 the total of all of the metrics for each query are summed together resulting in
 a single value that counts all of the characters that appeared in queries to
 that TLD.
 
 Because the packet capture was done in an environment where a large portion of
 the clients use one of only a few different DNS servers, the effects of caching
-will cause the naive approach to have decent detection performance. If this were
+will cause the naive approach to have higher detection performance than if this were not the case. If this were
 an environment such as a large ISP or internet backbone where such DNS caching
 is not present then the naive approach will have far different detection
 performance and characteristics. Unfortunately, due to the nature of the network
@@ -1461,8 +1544,8 @@ taken from a home network serving five computers and smartphones, with DNS
 traffic logged over a twenty-two day period to match the time frame of the
 capture for real world data. Over that twenty two day period,
 \emph{www.google.com} was queried 5645 times compared to the 268842 times the
-same query was seen in the real world traffic. It is important to modulate this
-discrepancy by the number of hosts that the real world traffic represents, which
+same query was seen in the real world traffic capture. It is important to modulate these
+values by the number of hosts that the real world traffic represents, which
 is on the order of approximately thirty thousand, or six thousand times the
 number of hosts the home network was supporting.
 
@@ -1471,15 +1554,32 @@ estimated three million queries to \emph{google.com} occurring in the real world
 traffic, of which only a twelfth of that actually appeared in the capture due to
 DNS caching. This is only one common domain name, so applying similar logic to
 other domains, it is easy to see that in these scenarios, the normal curves
-would take on a car different shape, easily obscuring tunnel traffic for low
-throughputs.
+would take on a very different shape, easily obscuring tunnel traffic for low
+throughputs. Figure \ref{caching} shows plots of the counts of the number of times the queries were present in the samples, comparing the home network (without caching) and the real world packet capture.
 
-As can be seen from the other method's underlying mechanisms, the DNS caching
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{figures/caching.pdf}
+\caption[Effect of DNS Caching on Query Counts]{Shows the trends for DNS query
+counts in networks with and without caching. The axes are normalized to account
+for the fact that the real world data has much more data than the home network.
+By normalizing the query counts, it is possible to perform a direct comparison.}
+\label{caching}
+\end{figure}
+
+As can be seen from the proposed method's underlying mechanisms, the DNS caching
 actually provides a \emph{more pessimistic} detection environment compared to
-the uncached environment. Unlike the naive method, whose performance results
-will not be applicable in an uncached environment, the other three methods can
+the uncached environment. Unlike the naive method, whose detection performance results
+will not be applicable in an uncached environment, the proposed method can
 be expected to perform better in an uncached environment than they do in the
 testing in section \ref{detection-perf}.
+
+Born's method will also improve in detection performance in an uncached network,
+since it will cause normal traffic to have a character distribution more heavily
+skewed away from uniform, resulting in larger metrics and better certainty.
+Paxson's metric, however, will suffer in an uncached environment due to the fact
+that additional data, even it is highly repetitive, will still increase the
+metrics of normal traffic and may obscure some DNS tunnels in the process.
 
 \subsection{Born}
 %Since the technique proposed by Born relies on having a notion of normal
@@ -1495,21 +1595,21 @@ approximately follow Zipf's Law, and that tunnels produce character
 distributions that are much closer to uniform, this was used to determine a
 metric. At the end of each interval, for each TLD all of the queries to that TLD
 are taken together and joined into a single long string. The character
-distribution of that string is then calculated, and its standard deviation
+distribution of that string is then computed, and its standard deviation
 calculated.
 
-Since it is expected that tunnel traffic is close to uniform, then it is assumed
+Since it is expected that tunnel traffic is close to uniform, it is then assumed
 that tunnels will have a very low standard deviation while normal queries will
-increase very quickly by comparison.
+have a standard deviation that increase very quickly by comparison.
 
-Because the next-gen tunnel used in the tests is designed to circumvent Born's
+Because the next-gen tunnel (as described in section \ref{appendix-customdns}) used in the tests is designed to circumvent Born's
 detection method (any any other method that relies on character frequency
 analysis), it is expected that this approach will have poor detection
 performance on the next-gen tunnel.
 
 \subsection{Paxson}
 Paxson's\cite{Paxson2011} approach uses the \emph{gzip} utility to compress the
-queries to domains under the assumption that it will measure approximately the
+queries to domains under the assumption that it will approximately measure the
 amount of unique data contained in those queries. Because \emph{gzip} is a
 command line interface to the underlying \emph{zlib} library, in Python this
 approach was implemented by making calls to Python's \emph{zlib} library and its
@@ -1533,7 +1633,7 @@ expected that the proposed approach will have superior processing performance.
 In place of the high-performance red-black tree used in the C++ implementation,
 a Python \texttt{dict} was used in the Python implementation. The \texttt{dict}
 is used as a mapping from query strings (with the TLD removed) to integers
-indicating how many time that string appeared in the interval. At the end of
+indicating how many times that string appeared in the interval. At the end of
 each interval, such a mapping is built for every TLD from the packets seen in
 the interval, and for each TLD, the DLWE is computed from the obtained
 distribution. The computed DLWE is then used as the metric for the TLD for that
@@ -1546,14 +1646,14 @@ different rates of traffic in both client-to-server and server-to-client
 directions. For each tunnelling application, sixteen captures were performed at
 each of the following target throughput rates (in bytes per second):
 
-10, 100, 1000, 10000, 100000, 1000000, 25, 250, 2500, 25000, 250000, 50, 500,
-5000, 50000, 500000, 1000000
+10, 25, 50, 100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000, 100000,
+250000, 500000, 1000000
 
 Due to implementation details of the applications, and of the next-gen tunnel,
 not all applications were able to transmit traffic at the target rate. Figure
 \ref{tunrates} shows how the various tunnelling applications responded to
 various input rates, plotting their actual rate of ingestion of input and the
-observed number of characters of query output they generated on the wire. Note
+observed number of characters of query output they generated on the network. Note
 that for the lighter coloured graphs showing the observed output, the vertical
 axis is representing a value equivalent to the naive metric. The next-gen tunnel
 was not tested in a server-to-client direction.
@@ -1563,7 +1663,7 @@ was not tested in a server-to-client direction.
 \includegraphics[width=\textwidth]{figures/tunrates.pdf}
 \caption[DNS Tunneling Application Throughput Scaling]{Shows the scaling
 behaviour of DNS tunnelling applications as the input rate is scaled up. Note
-that not all applications are capable of transmitting data at the rate they
+that not all applications are capable of transmitting data at the rate they are
 given data, which is visible as a plateau on the right-hand-side of each plot.}
 \label{tunrates}
 \end{figure}
@@ -1586,12 +1686,14 @@ detection algorithms. Figures \ref{pmat}, \ref{pmqr}, and \ref{pmqr-100k} show
 the performance of the various detection methods over aggregate tunnel and
 real-world data.
 
-Figure \ref{pmat} shows that the analysis methods all suffer, to varying
+Figure \ref{pmat} shows that the analysis methods under Cython all suffer, to varying
 degrees, as the amount of data to process per interval increases. The naive and
-proposed methods suffer the least, while Paxson's method suffer by far the most,
+proposed methods suffer the least, while Paxson's method suffers by far the most,
 dropping to approximately half of its original processing rate. Note that the
 Born's method and Paxson's method trade places as the slowest performer at a
-throughput of approximately five kilobytes of data per second. When looking at
+throughput of approximately five kilobytes of data per second.
+
+When looking at
 the PyPy performance, with the exception of a dip around one kilobyte of data
 per second, performance increases as the amount of data increases in direct
 contrast to the behaviour of Cython. This increase in performance can be due to
@@ -1611,7 +1713,7 @@ interpreters over the aggregate tunnel data. The output is packet processing
 rate as a function of the target input rate (rate at which the tunnels are
 transmitting traffic). As the target input rate increases, the structures
 involved in the methods get larger in a non-linear way, resulting in longer
-operation times and this slower performance.}
+operation times and slower performance.}
 \label{pmat}
 \end{figure}
 
@@ -1620,7 +1722,7 @@ methods and Python interpreters as more packets are ingested. Observe that as
 the time progresses, the methods get progressively slower, likely due to
 inefficiencies in the interpreter and/or method. Again, the naive method is the
 fastest, with the proposed method performing at approximately two thirds of the
-speed. Unlike with the aggregate tunnel data, no swapping of ranks between
+speed of the naive method. Unlike with the aggregate tunnel data, no swapping of ranks between
 Born's and Paxson's methods is observed.
 
 Also unlike the aggregate tunnel detection performance, the methods when run
@@ -1638,9 +1740,9 @@ of the sample data.
 \includegraphics[width=\textwidth]{figures/pmqr.pdf}
 \caption[Performance of Analysis Method and Python Interpreter on Real World
 Data]{This plot shows the performance of the detection methods and Python
-interpreters on real world DNS traffic. The output is packet performance as time
+interpreters on real world DNS traffic. The output is packet processing performance as time
 progresses and more packets are processed by the script. As more packets are fed
-into the script, inefficiencies in the methods and the Python interpreters
+into the script, inefficiencies in the methods and/or the Python interpreters
 themselves become observable in the degradation of performance.}
 \label{pmqr}
 \end{figure}
@@ -1659,7 +1761,7 @@ methods.
 \centering
 \includegraphics[width=\textwidth]{figures/pmqr-100k.pdf}
 \caption[Performance of Analysis Method and Python Interpreter on Real World
-Data - Early Time]{This plot is identical the above but restricts the time
+Data - Early Time]{This plot is identical to figure \ref{pmqr} but restricts the time
 displayed to the first one hundred thousand seconds. The 'spool up' of the JIT
 portion of PyPy is noticable in the very early time-scales.}
 \label{pmqr-100k}
@@ -1700,12 +1802,12 @@ data, showing processing rate as a function of input rate.}
 
 The performance of the naive method has very little dependence on the input
 rate, suffering minimally as the amount of data per interval increases. This is
-expected behaviour since Python's string objects allow for efficient computation
+expected behaviour since Python's string objects allow for efficient computation of
 length, being of $O(1)$ computational complexity\cite{python-strlencplx}.
 Because the naive method's implementation must calculate the length of each
 query, additional queries increase the time complexity of the method linearly
 with the number of queries that must be processed. The Iodine and DNS2TCP
-client-to-server transfers show marked drop in performance, potentially due to
+client-to-server transfers show marked drops in performance, potentially due to
 longer queries being used which would increase the time taken to read the files
 into the script.
 
@@ -1729,14 +1831,14 @@ Born's approach shows a very high level of variation in performance, with marked
 decreases in processing rate as the throughput is increased for many of the the
 tunnel applications. Notable exceptions are the Iodine and DNS2TCP
 server-to-client transfers which suffer minimal degradation or improve as
-throughput increases respectively. Again, the same patters as with the naive
-approach are seen under the PyPy runs, however performance overall is much
+throughput increases respectively. Again, the same patterns as with the naive
+approach are seen under the PyPy runs, however relative performance overall is much
 better from PyPy. This is in part due to the much larger performance hit taken
 by the Cython implementations. This performance is likely due to the fact that
 the Python implementation of Born's approach makes use of a collection of loops
 and arithmetic. This type of computation is not well optimized under Cython but
 can be subject to excellent run-time optimization under PyPy's JIT components.
-PyPy is still unable to improve upon, or match, Cython's performance in these
+PyPy is still, however, unable to improve upon, or match, Cython's performance in these
 workloads.
 
 \begin{figure}
@@ -1780,12 +1882,12 @@ choice for some of the methods on real-world data despite being considerably
 less optimal than Cython in all cases when working with tunnel application data.
 
 \subsection{Processing Performance Conclusion}
-As has been shown, the detection methods were testing on both real world and
+As has been shown, the detection methods were tested on both real world and
 purpose-generated tunnel application traffic as well as on two different Python
 interpreters and were instrumented for their processing performance.
 
 In the real world data test, the Cython interpreter performed well with the PyPy
-interpreter matching or exceeding its performance for Born and proposed
+interpreter matching or exceeding its performance for Born's and the proposed
 detection methods. When operating on tunnelling application data, the Cython
 interpreter is categorically faster in every case than PyPy with performance
 factors ranging from two to two hundred depending on the application,
@@ -1802,7 +1904,7 @@ difference dropping to less than ten percent and Born's approach a close third
 place. Paxson's method falls to the slowest position under the PyPy interpreter.
 
 When operating on tunnelling application traffic, the average performance of the
-methods (averaged over all tunnels and cases) can be seen in \ref{pmat} where
+methods (averaged over all tunnels and cases) can be seen in figure \ref{pmat} where
 the naive and proposed methods both perform well, maintaining processing rates
 in excess of one hundred twenty thousands packets per second. Born and Paxson's
 approaches both suffer severe degradation of performance as throughput
@@ -1812,7 +1914,7 @@ applications individually (and not as an aggregate), only the naive and proposed
 approaches are able to maintain processing rates above one hundred thousand for
 all (or most, in the case of the proposed approach) of the tunnelling
 applications and throughputs. Additionally, only the naive and proposed
-approaches a re able to prevent significant performance degradation (and in fact
+approaches a re able to prevent significant performance degradation, and in fact
 show very similar trends when their plots are compared directly.
 
 \begin{figure}
@@ -1828,18 +1930,18 @@ axis showing the speedup of the naive method over the proposed method.}
 When the ratio of the performance of the naive method to the proposed method, a
 clustering very close to a fixed value is observed as in figure
 \ref{ppia-naive2proposed}. This indicates that much of the performance
-degradation and potentially other performance characteristics of the two methods
-are dominated by the common scaffolding and not by the underlying methods or
+degradation, and potentially other performance characteristics, of the two methods
+are dominated by the common scaffolding and/or the Python interpreter as opposed to by the underlying methods or
 their implementation.
 
 Through this examination, it has been shown that the proposed method
-out-performs both methods from the literature by a considerably margin and comes
+out-performs both methods from the literature by a considerable margin and comes
 very close to matching the naive method in performance in many cases. This by
 itself demonstrates a useful contribution of the proposed method, provided that
-its ability to detect the tunnelled applications with a sufficiently high
+it is able to detect the tunnelled applications with a sufficiently high
 certainty.
 
-\chapter{Evaluation}
+\chapter{Tunnel Detection Evaluation}
 \label{chap-evaluation}
 %\section{Baseline}
 %\section{Tunnel Data}
@@ -1860,7 +1962,7 @@ compare the detection results of the methods against each other.
 Figure \ref{mbtt} shows several log-log plots (in order to be able to have
 adequate resolution for both very small and very large throughputs), one for
 each detection method, that demonstrates how the metrics generated by the
-methods scales as the throughput of the tunnel is increased. The expected trends
+methods scale as the throughput of the tunnel is increased. The expected trends
 of the detection methods is as follows:
 
 \begin{itemize}
@@ -1882,14 +1984,13 @@ incompressible and thus the observed slops of the lines is derived from the
 implementation details of the various tunnelling applications.
 
 \item The proposed metric is expected to increase approximately logarithmically
-with additional throughput due to its reliance on entropy, which is a summation
-of logarithms, as a multiplicative factor in its final metric. This is the
-behaviour seen, for all except for Iodine's server-to-client transfer, with
+with additional throughput due to its reliance on entropy as a multiplicative factor in its final metric. This is the
+behaviour seen for all except for Iodine's server-to-client transfer, with
 varying scaling factors.
 \end{itemize}
 
 As is visible in figure \ref{mbtt}, tunnels with lower throughput produce
-categorically smaller metrics, making them more them more difficult to detect,
+categorically smaller metrics, making them more difficult to detect,
 as will be seen later in figures \ref{mpnv}, \ref{mpbv}, \ref{mppv}, and
 \ref{mphv}. Because of this, the methods will be tested on their ability to
 detect the most hidden tunnel of each application, which in practice is the
@@ -1927,11 +2028,11 @@ The plots shown here illustrate how the various tunnel application fare when
 compared to normal traffic. On each plot the vertical axis is "percent of
 samples with a metric greater than $x$" with the horizontal axis being the
 metric produced by the method. The black curve represents normal traffic, with
-the vertical coloured bars represent the various DNS tunnels. The vertical bars,
+the vertical coloured bars representing the various DNS tunnels. The vertical bars,
 coloured and dashed/solid according to the legend, mark the target throughput
 levels given in section \ref{tunapptp}, but are not identified otherwise. As can
-be seen in figure \ref{mbtt}, in almost all cases, the metric is approximately
-montonic with the lowest throughput samples having the smallest metric. Due to
+be seen in figure \ref{mbtt}, in almost all cases (with any exceptions occurring for higher throughputs), the metric is approximately
+monotonic with the lowest throughput samples having the smallest metric. Due to
 the plot ranges on the following figures, not all bars are visible on all plots.
 Due to the tendency of Born's metric to produce small values for tunnels, most
 of the tunnel bars are visible on the plot of Born's metric.
@@ -1969,12 +2070,14 @@ visible for the next-gen and DNSCat tunnels. The lowest marker belongs to the
 next-gen tunnel, and crosses at a value of 0.0799815, followed by a DNSCat
 server-to-client transfer crossing at 0.0496253. Iodine's client-to-server
 transfers are the most easily detectable with its lowest transfer rate crossing
-at 0.00164529 indicating a very low ambiguity when classifying traffic.
+at 0.00164529 indicating a very low ambiguity when classifying its traffic.
 
 The naive method, due to the nature of the the capture involving very few
 duplicate queries, performs quite well overall even on the next-gen tunnel
 traffic. Figure \ref{cnplot} shows the trends of the crossing values for the
-tunnelling applications as a function of the data throughput.
+tunnelling applications as a function of the data throughput. This property
+and its impacts were discussed in section \ref{implementation-naive} in greater
+detail.
 
 \begin{figure}
 \centering
@@ -2003,7 +2106,7 @@ the tunnel was implemented for the proof-of-concept, as all traffic generated
 very closely conforms to a specified distribution. This distribution produces a
 particular metric under the implementation of Born's approach, independent of
 the amount of throughput. The next-gen tunnel markers are followed by the DNSCat
-server-to-client market with a crossing value of 0.367036. Similarly to the
+server-to-client marker with a crossing value of 0.367036. Similarly to the
 naive metric, Iodine's client-to-server tunnel was the most easily detected
 tunnel with the lowest throughput samples achieve a crossing value of
 0.00133572.
@@ -2055,7 +2158,7 @@ most easily detected with its client-to-server transfers producing crossing
 values no larger than 0.00392552.
 
 As is expected, Paxson's method shows considerable improvement over both the
-approach proposed by Born and the naive methods in terms of ambiguity of tunnel
+approach proposed by Born and the naive method in terms of ambiguity of tunnel
 detection. Figure \ref{cpplot} shows the trends of the crossing values for the
 tunnelling applications as a function of the data throughput.
 
@@ -2115,7 +2218,7 @@ calculated as
 The following charts only consider the certainty of detecting the tunnel in
 which the method is least certain. By comparing the methods in their most
 hostile scenarios more substantial distinctions can be observed with clearer
-distinction between the best two methods. In all cases, this corresponded to one
+separation between the best two methods. In all cases, this corresponded to one
 of the tunnelling applications at the ten bytes per second throughput level,
 which demonstrates the effectiveness of these methods to solve the
 \emph{needle-in-a-haystack} problem of low throughput DNS tunnels on a very busy
@@ -2187,12 +2290,14 @@ its ability to detect tunnels with certainty in excess of ninety eight percent.
 This extremely high detection rate is achieved at a very short time scale and
 with very low tunnel throughput. Depending on the tunnelling application,
 detection performance rises above ninety nine percent for all except the
-next-gen application, and above 99.999\% for Iodine tunnelling applications.
+next-gen application, and above 99.999\% for Iodine.
 
 \chapter{Conclusion}
 
 In this work, a new method of detecting DNS tunnels was proposed, described, and
-evaluated. The existing landscape of detection methods was summarized (section
+evaluated.
+
+The existing landscape of detection methods was summarized (section
 \ref{litreview}) and a gap identified indicating a need for a new method
 (section \ref{methodreqs}) that has both high processing performance on
 commodity hardware, and robust tunnel detection. A prototypical next-gen tunnel
@@ -2217,12 +2322,14 @@ this case due to the lack of duplication of DNS queries.
 The end product of these results is a contribution to the field comprising a new
 detection method with superior processing and detection performance. The new
 detection method falls short of matching the naive method's processing
-performance in many situations with the tradeoff of far superior detection
+performance in many situations with the trade off of far superior detection
 performance.
 
 \section{Future Work}
 
+The proposed method was shown to highly effective in detecting the targeted network traffic with high performance, outperforming existing methods in almost every scenario. In order for this to be of value, however, an adoption of this method into an existing commercial product or an implementation as a plugin for an existing commonly deployed security framework would be necessary.
 
+Future work could include implementing the proposed method for Bro, Snort, Suricata or other existing intrusion detection systems in order to improve organizations ability to observe DNS tunnels in their network.
 
 %\begin{figure}
 %\centering
@@ -2349,7 +2456,7 @@ performance.
 \chapter{Properties of the Network Capture}
 \label{appendix-capturestats}
 
-The packet capture used to represent real world data performed in cooperation with Merlin, an ISP in Manitoba for educational institutions.
+The packet capture used to represent real world data was performed in cooperation with Merlin, an ISP in Manitoba for educational institutions.
 
 \begin{table}[h]
 \centering
@@ -2373,23 +2480,25 @@ RIPEMD160:           &4aba72d43f5726f0a8576f35d60845f895080a43\\
 MD5:                 &32956ef8efe5c3873226386e1608561a\\
 Strict time order:   &True\\
 \end{tabular}
-\caption[Packet Capture Statistics from \emph{capinfos}]{Statistics and information as reported by Wireshark's utility \emph{capinfos}.}
+\caption[Packet Capture Statistics from \emph{capinfos}]{Statistics and information as reported by Wireshark's utility \emph{capinfos} on the real world packet capture..}
 \label{TABLE_capinfos}
 \end{table}
 
-%\begin{figure}
-%\centering
-%\includegraphics[width=\textwidth]{figures/pcap-tpb.pdf}
-%\caption[Throughput in Bytes per Second of Packet Capture]{Throughput in bytes per second of the packet capture, with each sample being the average throughput over ten-second windows.}
-%\label{cplot}
-%\end{figure}
-%
-%\begin{figure}
-%\centering
-%\includegraphics[width=\textwidth]{figures/pcap-tpp.pdf}
-%\caption[Throughput in Packets per Second of Packet Capture]{Throughput in packets per second of the packet capture, with each sample being the average throughput over ten-second windows.}
-%\label{cplot}
-%\end{figure}
+While the capture file contains over one billion total packets, only 339,321,911 (or $32.7\%$) of the packets represent valid DNS traffic.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/pcap-tpb.pdf}
+\caption[Throughput in Bytes per Second of Packet Capture]{Throughput in bytes per second of the packet capture, with each sample being the average throughput over ten-second windows.}
+\label{cplot}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{figures/pcap-tpp.pdf}
+\caption[Throughput in Packets per Second of Packet Capture]{Throughput in packets per second of the packet capture, with each sample being the average throughput over ten-second windows.}
+\label{cplot}
+\end{figure}
 
 
 %\chapter{Testing Software and Scripts}
@@ -2412,7 +2521,7 @@ possible for it to evade detection by masquerading as benign DNS traffic. These
 detection methods assume that the output of a DNS tunnel will have high entropy
 (due to compression and/or encryption) and/or span a wide range of character
 values, whereas normal traffic does not have these features. The solution to
-this problem becomes one of encoding a high entropy source into a lower entropy
+this problem becomes one of converting a high entropy source into a lower entropy
 encoding in a way that the high entropy stream can be recovered from the low
 entropy encoding, where the low entropy encoding has a specific distribution of
 characters.
@@ -2426,16 +2535,18 @@ configuration file that describes the desired output distribution.
 \section{Sample Encoding - English Unigrams}
 
 A sample encoding is given using the english character
-frequency distribution with the character distribution table used given in Table
+frequency distribution with the character distribution table used given in table
 \ref{TABLE_unigrams}. In order to ensure that interested parties can verify this
-output, the source high-entropy data is contained in Table
+output, the source high-entropy data is contained in table
 \ref{TABLE_encodingsource}. A data matrix image of the same base64 encoding is
-also given in Figure \ref{FIGURE_encodingsource}. This can be converted back to
+also given in figure \ref{FIGURE_encodingsource}. This can be converted back to
 the original source via the standard Unix command line tool \emph{base64}. The
 output of the encoder using english character frequencies and the given input
-data is shown in Table \ref{TABLE_encodingoutput-unigram} which is clearly not
-english to any human observer or any analysis tool with knowledge of English di-
-and tri- gram frequency information.
+data is shown in table \ref{TABLE_encodingoutput-unigram}. It is important to observe
+that the output produced does not resemble typical English text and can be easily
+detected by any software that performs analysis on higher level characteristics.
+Such distinguishing characters include, but are note limited to, digrams, trigrams,
+and the existence of English words.
 
 \begin{table}
 \centering
@@ -2457,7 +2568,7 @@ l&0.0354345&  x&0.00132054\\
 c&0.0244916&  q&0.000836341\\
        &    &  z&0.000651466\\
 \end{tabular}
-\caption[English character frequency]{Probability distribution used for english character frequency in the sample encoding and decoding.}
+\caption[English Character Frequency]{Probability distribution used for english character frequency in the sample encoding and decoding.}
 \label{TABLE_unigrams}
 \end{table}
 
@@ -2468,14 +2579,14 @@ nNBRvu3TRlG0KJvLzb6QDBWqxVfa4VeAU+cSvj+uzoajp2F0jd5/csHxJQlguoeqT76pq8oStoLG
 3k48PZWuebgweZx5KdxAgUfN7/kvzwBzG7O+9B7J/O8y6BfGz6In0H+LuDCOsFqMljljX3SkgJq/
 yPka52SDxa3D4GXecj9d
 \end{verbatim}
-\caption[Encoding sample - source]{The base64 encoding of the binary data used for the sample encoding.}
+\caption[Encoding Sample - Source]{The base64 encoding of the binary data used for the sample encoding.}
 \label{TABLE_encodingsource}
 \end{table}
 
 \begin{figure}
 \centering
 \includegraphics[width=4in]{figures/encoding_source.png}
-\caption[Encoding sample - source (data matrix)]{The base64 encoding of the binary data used in the sample encoding, represented in a data matrix image.}
+\caption[Encoding Sample - Source (data matrix)]{The base64 encoding of the binary data used in the sample encoding, represented in a data matrix image.}
 \label{FIGURE_encodingsource}
 \end{figure}
 
@@ -2489,7 +2600,7 @@ hnceslphstestidau eeahl hrosoan wrthaa ft  heabpeeses eeeeewrsn    hrlucne ewr
 esesooc eeeeeewsqe eewefgeesng est f eeeeewlhhae hgao hiuggnrrancewgmob
 hdreeesgopesuoamyufiolisx esrrsloaeewtse"
 \end{verbatim}
-\caption[Encoding sample - output]{The encoded form of the binary data according to English character frequencies.}
+\caption[Encoding Sample - Output]{The encoded form of the binary data according to English character frequencies.}
 \label{TABLE_encodingoutput-unigram}
 \end{table}
 
@@ -2506,8 +2617,7 @@ Analyzing the frequencies of the output shows that it closely approximates
 english character frequencies. A larger sample of random data (one hundred
 thousand bytes) was also encoded, and its output analyzed as well. The small
 sample, the large sample, and actual english character frequencies are displayed
-together in figures \ref{FIGURE_frequencies-bytop} and
-\ref{FIGURE_frequencies-bychar}. As is evident from the combined plots of the
+together in figure \ref{FIGURE_frequencies-bytop}. As is evident from the combined plots of the
 various distributions, there does not exist a clear distinction between them and
 thus it becomes very difficult to perform automated classification when
 information is encoded using this tool.
@@ -2516,7 +2626,7 @@ information is encoded using this tool.
 \begin{figure}
 \centering
 \includegraphics[width=1.15\textwidth]{figures/plots_unigram.pdf}
-\caption[Plot of character frequencies by frequency]{The character frequencies of the small and large encoded samples, as well as the English target distribution sorted by character.}
+\caption[Plot of Character Frequencies]{The character frequencies of the small and large encoded samples using both accurate and efficient encoding, as well as the English target distribution sorted by character.}
 \label{FIGURE_frequencies-bytop}
 \end{figure}
 \end{landscape}
@@ -2525,10 +2635,10 @@ information is encoded using this tool.
 freely available, licensed under the Mozilla Public License version 2 which is
 GPL compatible. The source code is available at \cite{probcodesrc} for download
 and use under the MPL2 license terms. The source code compiles on Unix and other
-POSIX based systems sych as Cygwin on Windows.
+POSIX based systems sych as Cygwin on Windows as well as non-POSIX platforms such as Visual Studio on Windows.
 
 The encoding and decoding processes can be broken up into two steps; probability
-distribution analysis and then the actual conversion. The analysis of the
+distribution analysis followed by the encoding or decoding. The analysis of the
 distribution is the same for both the encoding and decoding operations, however
 the encoding operation is somewhat more involved than the decoding operation
 from an algorithmic point of view.
@@ -2554,22 +2664,26 @@ Observe that it is possible to make a tradeoff between encoding accuracy (that
 is, how accurately the output matches the desired distribution) and encoding
 efficiency (that is, the ratio between output and input size with higher ratios
 indicating a less efficient encoding) by tuning the bit string mapping. More
-accurate mappings result from choosing shorter bit strings (Table
-\ref{TABLE_unigrammapping} chooses the shortest possible bit string mappings and
+accurate mappings result from choosing shorter bit strings (table
+\ref{TABLE_unigrammapping_acc} chooses the shortest possible bit string mappings and
 achieves an efficency factor of approximately 3.3) with more efficient mappings
-sacrificing accuracy for efficiency. Figure \ref{FIGURE_encoding-accvseff} shows
+sacrificing accuracy for efficiency. Figure \ref{FIGURE_frequencies-bytop} shows
 the frequencies of the English target distribution along with the most efficient
-encoding and the most accurate encoding. The efficient coding in that figure
-achieves a factor of
+encoding and the most accurate encoding. The efficient coding (shown in table \ref{TABLE_unigrammapping_eff}) in that figure
+achieves a factor of 2.4 compared to the accurate encoding's factor of 3.3.
+The efficiency factors represent the ratio of bytes in the output compared to
+bytes in the input.
 
-Once the mapping has been built, and the various lookup tables built, the
+Once the mapping, and various lookup tables built, have been built the
 encoding or decoding process can begin. For encoding, a table is maintained that
 keeps track of how many times each symbol in the desired distribution has been
 output. The purpose of this table is to facilitate the greedy selection of
 symbols in order to ensure that one symbol is not chosen more often than is
 necessary and that those symbols that are farthest from meeting their quota in
 the output stream get preferential selection when the input bits match their
-mapping.
+mapping. Decoding is a much more straight forward process that involves reading
+input characters and outputting the appropriate bit string based on the mapping
+generated from the distribution file.
 
 \begin{table}
 \centering
@@ -2604,8 +2718,45 @@ x&0100    &0.00132054\\
 q&1000    &0.000836341\\
 z&0000    &0.000651466\\
 \end{tabular}
-\caption[English character bit-string mapping]{Bit-string mapping for English characters and their frequency for comparison.}
-\label{TABLE_unigrammapping}
+\caption[English Character Bit-String Mapping - Accurate]{Accurate Bit-string mapping for English characters and their frequency for comparison.}
+\label{TABLE_unigrammapping_acc}
+\end{table}
+
+\begin{table}
+\centering
+\begin{tabular}{ c | c | c }
+Character&Bit-String&Count\\
+\hline
+$<$\emph{space}$>$&0&0.11965  \\
+e&1&0.111823 \\
+t&010&0.0797253\\
+a&110&0.0718989\\
+o&001&0.0660886\\
+i&1010&0.0613258\\
+n&0110&0.0594154\\
+s&1110&0.0557003\\
+h&0001&0.0536491\\
+r&1001&0.0527071\\
+d&0101&0.0374417\\
+l&1101&0.0354345\\
+c&00110&0.0244916\\
+u&10110&0.0242803\\
+m&01110&0.0211814\\
+w&11110&0.0207765\\
+f&00001&0.0196144\\
+g&10001&0.0177392\\
+y&01001&0.0173783\\
+p&11001&0.0169821\\
+b&001010&0.013135\\
+v&101010&0.00860991\\
+k&0110100&0.00679637\\
+j&111010000&0.00134695\\
+x&000110000&0.00132054\\
+q&1001100000&0.000836341\\
+z&0101100000&0.000651466\\
+\end{tabular}
+\caption[English Character Bit-String Mapping - Efficient]{Efficient Bit-string mapping for English characters and their frequency for comparison.}
+\label{TABLE_unigrammapping_eff}
 \end{table}
 
 The examples given above show the unigram mapping process, however since the
@@ -2615,9 +2766,9 @@ this tool to build a mapping on all words in a language paired with the nominal
 frequencies if one so desired, however the Markov chain coding portion of the
 tool may be a better choice.
 
-\section{Markov Chain Coding}
-
-Markov chain support was added 
+%\section{Markov Chain Coding}
+%
+%Markov chain support was added 
 
 \section{Custom DNS Tunnel Endpoint Simulator}
 \label{appendix-customdns}
@@ -2662,7 +2813,10 @@ All traffic used for the analysis of the next-gen tunnelling application
 involved this flow of information. By combining existing applications with the
 application in the previous section, it was possible to very quickly, and
 simply, prototype a unidirectional DNS tunnelling application that runs on any
-linux or Unix based host.
+linux, Unix, Mac or Windows based host. Windows hosts using Cygwin are able to use
+common Unix utilities such as \emph{fold} and \emph{gzip}. Windows has its own version of
+\emph{nslookup} bundled with it that has sufficiently similar behaviour to the Unix
+style version as to support this use case.
 
 \end{appendices}
 

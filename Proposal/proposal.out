@@ -37,7 +37,7 @@
 \BOOKMARK [2][-]{subsection.6.2.6}{Tunneling Application Throughput}{section.6.2}% 37
 \BOOKMARK [2][-]{subsection.6.2.7}{Detection Method and Python Interpreter Processing Performance}{section.6.2}% 38
 \BOOKMARK [2][-]{subsection.6.2.8}{Processing Performance Conclusion}{section.6.2}% 39
-\BOOKMARK [0][-]{chapter.7}{Evaluation}{}% 40
+\BOOKMARK [0][-]{chapter.7}{Tunnel Detection Evaluation}{}% 40
 \BOOKMARK [1][-]{section.7.1}{Detection Performance Against Real World Data}{chapter.7}% 41
 \BOOKMARK [1][-]{section.7.2}{Certainty and Ambiguity of Tunnel Classification}{chapter.7}% 42
 \BOOKMARK [1][-]{section.7.3}{Tunnel Detection Performance Conclusion}{chapter.7}% 43
@@ -48,5 +48,4 @@
 \BOOKMARK [0][-]{Appendix.1.B}{Probabilistic Encoding}{}% 48
 \BOOKMARK [1][-]{section.1.B.1}{Sample Encoding - English Unigrams}{Appendix.1.B}% 49
 \BOOKMARK [2][-]{subsection.1.B.1.1}{Technical Details}{section.1.B.1}% 50
-\BOOKMARK [1][-]{section.1.B.2}{Markov Chain Coding}{Appendix.1.B}% 51
-\BOOKMARK [1][-]{section.1.B.3}{Custom DNS Tunnel Endpoint Simulator}{Appendix.1.B}% 52
+\BOOKMARK [1][-]{section.1.B.2}{Custom DNS Tunnel Endpoint Simulator}{Appendix.1.B}% 51
