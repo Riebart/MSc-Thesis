@@ -28,24 +28,25 @@
 \BOOKMARK [2][-]{subsection.6.1.1}{Determining a Baseline}{section.6.1}% 28
 \BOOKMARK [2][-]{subsection.6.1.2}{Existing Implementation Detection}{section.6.1}% 29
 \BOOKMARK [2][-]{subsection.6.1.3}{Demonstration of Existing Weaknesses}{section.6.1}% 30
-\BOOKMARK [1][-]{section.6.2}{Analysis Method Implementations}{chapter.6}% 31
-\BOOKMARK [2][-]{subsection.6.2.1}{Common Scaffolding}{section.6.2}% 32
-\BOOKMARK [2][-]{subsection.6.2.2}{Naive}{section.6.2}% 33
-\BOOKMARK [2][-]{subsection.6.2.3}{Born}{section.6.2}% 34
-\BOOKMARK [2][-]{subsection.6.2.4}{Paxson}{section.6.2}% 35
-\BOOKMARK [2][-]{subsection.6.2.5}{Proposed Approach}{section.6.2}% 36
-\BOOKMARK [2][-]{subsection.6.2.6}{Tunneling Application Throughput}{section.6.2}% 37
-\BOOKMARK [2][-]{subsection.6.2.7}{Detection Method and Python Interpreter Processing Performance}{section.6.2}% 38
-\BOOKMARK [2][-]{subsection.6.2.8}{Processing Performance Conclusion}{section.6.2}% 39
-\BOOKMARK [0][-]{chapter.7}{Tunnel Detection Evaluation}{}% 40
-\BOOKMARK [1][-]{section.7.1}{Detection Performance Against Real World Data}{chapter.7}% 41
-\BOOKMARK [1][-]{section.7.2}{Certainty and Ambiguity of Tunnel Classification}{chapter.7}% 42
-\BOOKMARK [1][-]{section.7.3}{Tunnel Detection Performance Conclusion}{chapter.7}% 43
-\BOOKMARK [0][-]{chapter.8}{Conclusion}{}% 44
-\BOOKMARK [1][-]{section.8.1}{Future Work}{chapter.8}% 45
-\BOOKMARK [0][-]{section*.10}{Appendices}{}% 46
-\BOOKMARK [0][-]{Appendix.1.A}{Properties of the Network Capture}{}% 47
-\BOOKMARK [0][-]{Appendix.1.B}{Probabilistic Encoding}{}% 48
-\BOOKMARK [1][-]{section.1.B.1}{Sample Encoding - English Unigrams}{Appendix.1.B}% 49
-\BOOKMARK [2][-]{subsection.1.B.1.1}{Technical Details}{section.1.B.1}% 50
-\BOOKMARK [1][-]{section.1.B.2}{Custom DNS Tunnel Endpoint Simulator}{Appendix.1.B}% 51
+\BOOKMARK [2][-]{subsection.6.1.4}{The Effect of DNS Caching on Detection Effectiveness}{section.6.1}% 31
+\BOOKMARK [1][-]{section.6.2}{Analysis Method Implementations}{chapter.6}% 32
+\BOOKMARK [2][-]{subsection.6.2.1}{Common Scaffolding}{section.6.2}% 33
+\BOOKMARK [2][-]{subsection.6.2.2}{Naive}{section.6.2}% 34
+\BOOKMARK [2][-]{subsection.6.2.3}{Born}{section.6.2}% 35
+\BOOKMARK [2][-]{subsection.6.2.4}{Paxson}{section.6.2}% 36
+\BOOKMARK [2][-]{subsection.6.2.5}{Proposed Approach}{section.6.2}% 37
+\BOOKMARK [2][-]{subsection.6.2.6}{Tunneling Application Throughput}{section.6.2}% 38
+\BOOKMARK [2][-]{subsection.6.2.7}{Detection Method and Python Interpreter Processing Performance}{section.6.2}% 39
+\BOOKMARK [2][-]{subsection.6.2.8}{Processing Performance Conclusion}{section.6.2}% 40
+\BOOKMARK [0][-]{chapter.7}{Tunnel Detection Evaluation}{}% 41
+\BOOKMARK [1][-]{section.7.1}{Detection Performance Against Real World Data}{chapter.7}% 42
+\BOOKMARK [1][-]{section.7.2}{Certainty and Ambiguity of Tunnel Classification}{chapter.7}% 43
+\BOOKMARK [1][-]{section.7.3}{Tunnel Detection Performance Conclusion}{chapter.7}% 44
+\BOOKMARK [0][-]{chapter.8}{Conclusion}{}% 45
+\BOOKMARK [1][-]{section.8.1}{Future Work}{chapter.8}% 46
+\BOOKMARK [0][-]{section*.10}{Appendices}{}% 47
+\BOOKMARK [0][-]{Appendix.1.A}{Properties of the Network Capture}{}% 48
+\BOOKMARK [0][-]{Appendix.1.B}{Probabilistic Encoding}{}% 49
+\BOOKMARK [1][-]{section.1.B.1}{Sample Encoding - English Unigrams}{Appendix.1.B}% 50
+\BOOKMARK [2][-]{subsection.1.B.1.1}{Technical Details}{section.1.B.1}% 51
+\BOOKMARK [1][-]{section.1.B.2}{Custom DNS Tunnel Endpoint Simulator}{Appendix.1.B}% 52

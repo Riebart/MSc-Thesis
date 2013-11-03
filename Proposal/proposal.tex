@@ -1476,6 +1476,73 @@ As in section \ref{test-existing}, the certainty indicator will be used to
 evaluate the efficacy of the detection methods on this more advanced type of
 traffic.
 
+\subsection{The Effect of DNS Caching on Detection Effectiveness}
+Because the packet capture was done in an environment where a large portion of
+the clients use one of only a few different DNS servers, the effects of caching
+will cause the naive approach to have higher detection performance than if this were not the case. If this were
+an environment such as a large ISP or internet backbone where such DNS caching
+is not present then the naive approach will have far different detection
+performance and characteristics. Unfortunately, due to the nature of the network
+capture obtained for this work, it is not possible to demonstrate how the naive
+approach performs in a uncached DNS environment.
+
+In order to grant some possible context to the effects that DNS caching has had
+on the naive method's performance, a simple comparison is offered. Data was
+taken from a home network serving five computers and smartphones, with DNS
+traffic logged over a twenty-two day period to match the time frame of the
+capture for real world data. Over that twenty two day period,
+\emph{www.google.com} was queried 5645 times compared to the 268842 times the
+same query was seen in the real world traffic capture. It is important to modulate these
+values by the number of hosts that the real world traffic represents, which
+is on the order of approximately thirty thousand, or six thousand times the
+number of hosts the home network was supporting.
+
+Approximately scaling the home network by a factor of six thousand results in an
+estimated three million queries to \emph{google.com} occurring in the real world
+traffic, of which only a twelfth actually appeared in the capture due to
+DNS caching. This is only one common domain name, so applying similar logic to
+other domains, it is easy to see that in these scenarios, the normal curves
+would take on a very different shape, easily obscuring tunnel traffic for low
+throughputs.
+
+A small sample of data was collected from Merlin's caching DNS servers which
+represents \emph{every} DNS query made of them, regardless of whether those
+queries were served from the cache or not. This type of DNS sampling presents a
+high load on their instrumentation infrastructure, and so is only reasonable for
+this type of comparison. The logs obtained from their servers span four hours
+from 1200 to 1600 on a Thursday afternoon. Figure \ref{caching} shows the DNS
+query logs from Merlin's servers, the home network's DNS query logs, and the
+queries from the packet capture and their counts. As can be seen from the plot,
+which is logarithmic in the vertical axis, shows that, on average, the queries
+in an uncached environment occur over two orders of magnitude more frequently
+than in a cached environment. This increased occurrence in an uncached
+environment would have a strongly visible impact on the naive metric's ability
+accurately detect DNS tunnels.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{figures/caching.pdf}
+\caption[Effect of DNS Caching on Query Counts]{Shows the trends for DNS query
+counts in networks with and without caching. The axes are normalized to account
+for the fact that the real world data has much more data than the home network.
+By normalizing the query counts, it is possible to perform a direct comparison.}
+\label{caching}
+\end{figure}
+
+As can be seen from the proposed method's underlying mechanisms, the DNS caching
+actually provides a \emph{more pessimistic} detection environment compared to
+the uncached environment. Unlike the naive method, whose detection performance results
+will not be applicable in an uncached environment, the proposed method can
+be expected to perform better in an uncached environment than they do in the
+testing in section \ref{detection-perf}.
+
+Born's method will also improve in detection performance in an uncached network,
+since it will cause normal traffic to have a character distribution more heavily
+skewed away from uniform, resulting in larger metrics and better certainty.
+Paxson's metric, however, will suffer in an uncached environment due to the fact
+that additional data, even it is highly repetitive, will still increase the
+metrics of normal traffic and may obscure some DNS tunnels in the process.
+
 \section{Analysis Method Implementations}
 \label{implementations}
 \subsection{Common Scaffolding}
@@ -1529,58 +1596,6 @@ the total of all of the metrics for each query are summed together resulting in
 a single value that counts all of the characters that appeared in queries to
 that TLD.
 
-Because the packet capture was done in an environment where a large portion of
-the clients use one of only a few different DNS servers, the effects of caching
-will cause the naive approach to have higher detection performance than if this were not the case. If this were
-an environment such as a large ISP or internet backbone where such DNS caching
-is not present then the naive approach will have far different detection
-performance and characteristics. Unfortunately, due to the nature of the network
-capture obtained for this work, it is not possible to demonstrate how the naive
-approach performs in a uncached DNS environment.
-
-In order to grant some possible context to the effects that DNS caching has had
-on the naive method's performance, a simple comparison is offered. Data was
-taken from a home network serving five computers and smartphones, with DNS
-traffic logged over a twenty-two day period to match the time frame of the
-capture for real world data. Over that twenty two day period,
-\emph{www.google.com} was queried 5645 times compared to the 268842 times the
-same query was seen in the real world traffic capture. It is important to modulate these
-values by the number of hosts that the real world traffic represents, which
-is on the order of approximately thirty thousand, or six thousand times the
-number of hosts the home network was supporting.
-
-Approximately scaling the home network by a factor of six thousand results in an
-estimated three million queries to \emph{google.com} occurring in the real world
-traffic, of which only a twelfth of that actually appeared in the capture due to
-DNS caching. This is only one common domain name, so applying similar logic to
-other domains, it is easy to see that in these scenarios, the normal curves
-would take on a very different shape, easily obscuring tunnel traffic for low
-throughputs. Figure \ref{caching} shows plots of the counts of the number of times the queries were present in the samples, comparing the home network (without caching) and the real world packet capture.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{figures/caching.pdf}
-\caption[Effect of DNS Caching on Query Counts]{Shows the trends for DNS query
-counts in networks with and without caching. The axes are normalized to account
-for the fact that the real world data has much more data than the home network.
-By normalizing the query counts, it is possible to perform a direct comparison.}
-\label{caching}
-\end{figure}
-
-As can be seen from the proposed method's underlying mechanisms, the DNS caching
-actually provides a \emph{more pessimistic} detection environment compared to
-the uncached environment. Unlike the naive method, whose detection performance results
-will not be applicable in an uncached environment, the proposed method can
-be expected to perform better in an uncached environment than they do in the
-testing in section \ref{detection-perf}.
-
-Born's method will also improve in detection performance in an uncached network,
-since it will cause normal traffic to have a character distribution more heavily
-skewed away from uniform, resulting in larger metrics and better certainty.
-Paxson's metric, however, will suffer in an uncached environment due to the fact
-that additional data, even it is highly repetitive, will still increase the
-metrics of normal traffic and may obscure some DNS tunnels in the process.
-
 \subsection{Born}
 %Since the technique proposed by Born relies on having a notion of normal
 %traffic, a PDF of the character frequencies from the Alexa top one-million
@@ -1598,7 +1613,7 @@ are taken together and joined into a single long string. The character
 distribution of that string is then computed, and its standard deviation
 calculated.
 
-Since it is expected that tunnel traffic is close to uniform, it is then assumed
+Since it is expected that tunnel traffic is close to uniform in its character distribution, it is then assumed
 that tunnels will have a very low standard deviation while normal queries will
 have a standard deviation that increase very quickly by comparison.
 
