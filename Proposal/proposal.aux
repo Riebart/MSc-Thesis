@@ -20,12 +20,15 @@
 \@writefile{toc}{\thispagestyle {empty}}
 \@writefile{lot}{\thispagestyle {empty}}
 \@writefile{lof}{\thispagestyle {empty}}
+\citation{sans-dnshash}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \citation{Dietrich2011}
 \citation{WoframlAlpha-Botnet}
+\citation{sans-dnshash}
 \citation{Born2010.cfa}
+\citation{Paxson2011}
 \citation{WolframAlpha-EntropyWord}
 \citation{WolframAlpha-EntropyMath}
 \@writefile{toc}{\contentsline {chapter}{\numberline {2}Background}{5}{chapter.2}}
@@ -126,157 +129,169 @@
 \newlabel{TABLE_dnssampling}{{4.1}{30}{Alexa Top One-Million Character Distribution}{table.4.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Growth of Expected and Mean Norms of Sampled Vectors}}{31}{figure.4.1}}
 \newlabel{dnssampling-evgrowth}{{4.1}{31}{Growth of Expected and Mean Norms of Sampled Vectors}{figure.4.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Relative Error of $\mu $ of Best-Fit Normal Distribution of Sampled Expected Value}}{32}{figure.4.2}}
-\newlabel{dnssampling-muerror}{{4.2}{32}{Relative Error of $\mu $ of Best-Fit Normal Distribution of Sampled Expected Value}{figure.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Relative Error of $\mu $ of Best-Fit Normal Distribution of Sampled Expected Value}}{33}{figure.4.2}}
+\newlabel{dnssampling-muerror}{{4.2}{33}{Relative Error of $\mu $ of Best-Fit Normal Distribution of Sampled Expected Value}{figure.4.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Trend of $\sigma $ of Best-Fit Normal Distribution of Sampled Expected Value}}{33}{figure.4.3}}
 \newlabel{dnssampling-sigmafit}{{4.3}{33}{Trend of $\sigma $ of Best-Fit Normal Distribution of Sampled Expected Value}{figure.4.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}Solution Evaluation Criteria}{34}{section.4.3}}
 \newlabel{methodreqs}{{4.3}{34}{Solution Evaluation Criteria}{section.4.3}{}}
 \citation{Romana2007}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Proposed Detection Method}{35}{chapter.5}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Proposed Detection Method}{36}{chapter.5}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{proposed-method}{{5}{35}{Proposed Detection Method}{chapter.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Theoretical Basis}{35}{section.5.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Assumptions}{35}{subsection.5.1.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Theory}{36}{subsection.5.1.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Implementation}{37}{section.5.2}}
-\newlabel{implementation}{{5.2}{37}{Implementation}{section.5.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}General}{37}{subsection.5.2.1}}
+\newlabel{proposed-method}{{5}{36}{Proposed Detection Method}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Theoretical Basis}{36}{section.5.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Assumptions}{36}{subsection.5.1.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Theory}{37}{subsection.5.1.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}The Effect of DNS Caching on Detection Effectiveness}{38}{subsection.5.1.3}}
+\newlabel{dns-caching}{{5.1.3}{38}{The Effect of DNS Caching on Detection Effectiveness}{subsection.5.1.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Effect of DNS Caching on Query Counts}}{40}{figure.5.1}}
+\newlabel{caching}{{5.1}{40}{Effect of DNS Caching on Query Counts}{figure.5.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Implementation}{41}{section.5.2}}
+\newlabel{implementation}{{5.2}{41}{Implementation}{section.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}General}{41}{subsection.5.2.1}}
 \citation{Friesen2013}
 \citation{Friesen2013}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}C++}{38}{subsection.5.2.2}}
-\newlabel{cpp-implementation}{{5.2.2}{38}{C++}{subsection.5.2.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}Python}{38}{subsection.5.2.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}C++}{42}{subsection.5.2.2}}
+\newlabel{cpp-implementation}{{5.2.2}{42}{C++}{subsection.5.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}Python}{43}{subsection.5.2.3}}
 \citation{Born2010.cfa}
 \citation{Paxson2011}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Detailed Testing Methodology}{39}{chapter.6}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Detailed Testing Methodology and Processing Performance}{44}{chapter.6}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chosen-methods}{{6}{39}{Detailed Testing Methodology}{chapter.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Situational Performance Goals}{40}{section.6.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Determining a Baseline}{40}{subsection.6.1.1}}
-\newlabel{baseline}{{6.1.1}{40}{Determining a Baseline}{subsection.6.1.1}{}}
+\newlabel{chosen-methods}{{6}{44}{Detailed Testing Methodology and Processing Performance}{chapter.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Situational Performance Goals}{45}{section.6.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Determining a Baseline}{45}{subsection.6.1.1}}
+\newlabel{baseline}{{6.1.1}{45}{Determining a Baseline}{subsection.6.1.1}{}}
 \citation{iodinesrc}
 \citation{dnscatsrc}
 \citation{dns2tcpsrc}
 \citation{dnscatsrc}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Existing Implementation Detection}{41}{subsection.6.1.2}}
-\newlabel{test-existing}{{6.1.2}{41}{Existing Implementation Detection}{subsection.6.1.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.3}Demonstration of Existing Weaknesses}{42}{subsection.6.1.3}}
-\newlabel{test-weakness}{{6.1.3}{42}{Demonstration of Existing Weaknesses}{subsection.6.1.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.4}The Effect of DNS Caching on Detection Effectiveness}{42}{subsection.6.1.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Effect of DNS Caching on Query Counts}}{44}{figure.6.1}}
-\newlabel{caching}{{6.1}{44}{Effect of DNS Caching on Query Counts}{figure.6.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Analysis Method Implementations}{44}{section.6.2}}
-\newlabel{implementations}{{6.2}{44}{Analysis Method Implementations}{section.6.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Common Scaffolding}{44}{subsection.6.2.1}}
-\newlabel{scaffolding}{{6.2.1}{44}{Common Scaffolding}{subsection.6.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Existing Implementation Detection}{46}{subsection.6.1.2}}
+\newlabel{test-existing}{{6.1.2}{46}{Existing Implementation Detection}{subsection.6.1.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.3}Demonstration of Existing Weaknesses}{47}{subsection.6.1.3}}
+\newlabel{test-weakness}{{6.1.3}{47}{Demonstration of Existing Weaknesses}{subsection.6.1.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Analysis Method Implementations}{48}{section.6.2}}
+\newlabel{implementations}{{6.2}{48}{Analysis Method Implementations}{section.6.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Common Scaffolding}{48}{subsection.6.2.1}}
+\newlabel{scaffolding}{{6.2.1}{48}{Common Scaffolding}{subsection.6.2.1}{}}
 \citation{Born2010.cfa}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Naive}{49}{subsection.6.2.2}}
+\newlabel{implementation-naive}{{6.2.2}{49}{Naive}{subsection.6.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.3}Born}{49}{subsection.6.2.3}}
 \citation{Paxson2011}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Naive}{46}{subsection.6.2.2}}
-\newlabel{implementation-naive}{{6.2.2}{46}{Naive}{subsection.6.2.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.3}Born}{46}{subsection.6.2.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.4}Paxson}{46}{subsection.6.2.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.5}Proposed Approach}{47}{subsection.6.2.5}}
-\newlabel{proposed-method-python}{{6.2.5}{47}{Proposed Approach}{subsection.6.2.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.4}Paxson}{50}{subsection.6.2.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.5}Proposed Approach}{51}{subsection.6.2.5}}
+\newlabel{proposed-method-python}{{6.2.5}{51}{Proposed Approach}{subsection.6.2.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.6}Tunneling Application Throughput}{51}{subsection.6.2.6}}
+\newlabel{tunapptp}{{6.2.6}{51}{Tunneling Application Throughput}{subsection.6.2.6}{}}
 \citation{pypyvc-strfmt}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.6}Tunneling Application Throughput}{48}{subsection.6.2.6}}
-\newlabel{tunapptp}{{6.2.6}{48}{Tunneling Application Throughput}{subsection.6.2.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.7}Detection Method and Python Interpreter Processing Performance}{48}{subsection.6.2.7}}
-\newlabel{processing-perf}{{6.2.7}{48}{Detection Method and Python Interpreter Processing Performance}{subsection.6.2.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces DNS Tunneling Application Throughput Scaling}}{49}{figure.6.2}}
-\newlabel{tunrates}{{6.2}{49}{DNS Tunneling Application Throughput Scaling}{figure.6.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Performance of Analysis Method and Python Interpreter on Aggregate Tunnel Data}}{50}{figure.6.3}}
-\newlabel{pmat}{{6.3}{50}{Performance of Analysis Method and Python Interpreter on Aggregate Tunnel Data}{figure.6.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Performance of Analysis Method and Python Interpreter on Real World Data}}{51}{figure.6.4}}
-\newlabel{pmqr}{{6.4}{51}{Performance of Analysis Method and Python Interpreter on Real World Data}{figure.6.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Performance of Analysis Method and Python Interpreter on Real World Data - Early Time}}{52}{figure.6.5}}
-\newlabel{pmqr-100k}{{6.5}{52}{Performance of Analysis Method and Python Interpreter on Real World Data - Early Time}{figure.6.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces DNS Tunneling Application Throughput Scaling}}{52}{figure.6.1}}
+\newlabel{tunrates}{{6.1}{52}{DNS Tunneling Application Throughput Scaling}{figure.6.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.7}Detection Method and Python Interpreter Processing Performance}{52}{subsection.6.2.7}}
+\newlabel{processing-perf}{{6.2.7}{52}{Detection Method and Python Interpreter Processing Performance}{subsection.6.2.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Performance of Analysis Method and Python Interpreter on Aggregate Tunnel Data}}{54}{figure.6.2}}
+\newlabel{pmat}{{6.2}{54}{Performance of Analysis Method and Python Interpreter on Aggregate Tunnel Data}{figure.6.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Performance of Analysis Method and Python Interpreter on Real World Data}}{55}{figure.6.3}}
+\newlabel{pmqr}{{6.3}{55}{Performance of Analysis Method and Python Interpreter on Real World Data}{figure.6.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Performance of Analysis Method and Python Interpreter on Real World Data - Early Time}}{56}{figure.6.4}}
+\newlabel{pmqr-100k}{{6.4}{56}{Performance of Analysis Method and Python Interpreter on Real World Data - Early Time}{figure.6.4}{}}
 \citation{python-strlencplx}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces Performance of Naive Method on Tunnel Data by Python Interpreter}}{53}{figure.6.6}}
-\newlabel{ppia-naive}{{6.6}{53}{Performance of Naive Method on Tunnel Data by Python Interpreter}{figure.6.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces Performance of Born's Method on Tunnel Data by Python Interpreter}}{54}{figure.6.7}}
-\newlabel{ppia-born}{{6.7}{54}{Performance of Born's Method on Tunnel Data by Python Interpreter}{figure.6.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.8}{\ignorespaces Performance of Paxson's Method on Tunnel Data by Python Interpreter}}{55}{figure.6.8}}
-\newlabel{ppia-paxson}{{6.8}{55}{Performance of Paxson's Method on Tunnel Data by Python Interpreter}{figure.6.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.9}{\ignorespaces Performance of the Proposed Method on Tunnel Data by Python Interpreter}}{56}{figure.6.9}}
-\newlabel{ppia-proposed}{{6.9}{56}{Performance of the Proposed Method on Tunnel Data by Python Interpreter}{figure.6.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.8}Processing Performance Conclusion}{56}{subsection.6.2.8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.10}{\ignorespaces Performance Ratio of the Naive Method to the Proposed Method on Tunnel Data by Python Interpreter}}{58}{figure.6.10}}
-\newlabel{ppia-naive2proposed}{{6.10}{58}{Performance Ratio of the Naive Method to the Proposed Method on Tunnel Data by Python Interpreter}{figure.6.10}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Tunnel Detection Evaluation}{59}{chapter.7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Performance of Naive Method on Tunnel Data by Python Interpreter}}{57}{figure.6.5}}
+\newlabel{ppia-naive}{{6.5}{57}{Performance of Naive Method on Tunnel Data by Python Interpreter}{figure.6.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces Performance of Born's Method on Tunnel Data by Python Interpreter}}{58}{figure.6.6}}
+\newlabel{ppia-born}{{6.6}{58}{Performance of Born's Method on Tunnel Data by Python Interpreter}{figure.6.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces Performance of Paxson's Method on Tunnel Data by Python Interpreter}}{59}{figure.6.7}}
+\newlabel{ppia-paxson}{{6.7}{59}{Performance of Paxson's Method on Tunnel Data by Python Interpreter}{figure.6.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.8}{\ignorespaces Performance of the Proposed Method on Tunnel Data by Python Interpreter}}{60}{figure.6.8}}
+\newlabel{ppia-proposed}{{6.8}{60}{Performance of the Proposed Method on Tunnel Data by Python Interpreter}{figure.6.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.8}Processing Performance Conclusion}{61}{subsection.6.2.8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.9}{\ignorespaces Performance Ratio of the Naive Method to the Proposed Method on Tunnel Data by Python Interpreter}}{62}{figure.6.9}}
+\newlabel{ppia-naive2proposed}{{6.9}{62}{Performance Ratio of the Naive Method to the Proposed Method on Tunnel Data by Python Interpreter}{figure.6.9}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Tunnel Detection Evaluation}{64}{chapter.7}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap-evaluation}{{7}{59}{Tunnel Detection Evaluation}{chapter.7}{}}
-\newlabel{tunnel-detection-performance}{{7}{59}{Tunnel Detection Evaluation}{chapter.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Scaling of Detection Metrics by Tunnel Throughput}}{61}{figure.7.1}}
-\newlabel{mbtt}{{7.1}{61}{Scaling of Detection Metrics by Tunnel Throughput}{figure.7.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.1}Detection Performance Against Real World Data}{62}{section.7.1}}
-\newlabel{detection-perf}{{7.1}{62}{Detection Performance Against Real World Data}{section.7.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces Tunnel Detection Performance - Naive Metric}}{63}{figure.7.2}}
-\newlabel{mpnv}{{7.2}{63}{Tunnel Detection Performance - Naive Metric}{figure.7.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.3}{\ignorespaces Trend of Crossing Value for Tunnels - Naive Metric}}{63}{figure.7.3}}
-\newlabel{cnplot}{{7.3}{63}{Trend of Crossing Value for Tunnels - Naive Metric}{figure.7.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.4}{\ignorespaces Tunnel Detection Performance - Born's Metric}}{64}{figure.7.4}}
-\newlabel{mpbv}{{7.4}{64}{Tunnel Detection Performance - Born's Metric}{figure.7.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.5}{\ignorespaces Trend of Crossing Value for Tunnels - Born's Metric}}{65}{figure.7.5}}
-\newlabel{cbplot}{{7.5}{65}{Trend of Crossing Value for Tunnels - Born's Metric}{figure.7.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.6}{\ignorespaces Tunnel Detection Performance - Paxson's Metric}}{66}{figure.7.6}}
-\newlabel{mppv}{{7.6}{66}{Tunnel Detection Performance - Paxson's Metric}{figure.7.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.7}{\ignorespaces Trend of Crossing Value for Tunnels - Paxson's Metric}}{66}{figure.7.7}}
-\newlabel{cpplot}{{7.7}{66}{Trend of Crossing Value for Tunnels - Paxson's Metric}{figure.7.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.8}{\ignorespaces Tunnel Detection Performance - Proposed Metric}}{67}{figure.7.8}}
-\newlabel{mphv}{{7.8}{67}{Tunnel Detection Performance - Proposed Metric}{figure.7.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.9}{\ignorespaces Trend of Crossing Value for Tunnels - Proposed Metric}}{68}{figure.7.9}}
-\newlabel{chplot}{{7.9}{68}{Trend of Crossing Value for Tunnels - Proposed Metric}{figure.7.9}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.2}Certainty and Ambiguity of Tunnel Classification}{68}{section.7.2}}
-\newlabel{detection-perf-cert}{{7.2}{68}{Certainty and Ambiguity of Tunnel Classification}{section.7.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.10}{\ignorespaces Chart of Certainty of Detection by Tunnel Application and Detection Method}}{69}{figure.7.10}}
-\newlabel{cplot}{{7.10}{69}{Chart of Certainty of Detection by Tunnel Application and Detection Method}{figure.7.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.11}{\ignorespaces Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.80 to 1.00}}{70}{figure.7.11}}
-\newlabel{cplot80}{{7.11}{70}{Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.80 to 1.00}{figure.7.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.12}{\ignorespaces Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.95 to 1.00}}{71}{figure.7.12}}
-\newlabel{cplot95}{{7.12}{71}{Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.95 to 1.00}{figure.7.12}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.3}Tunnel Detection Performance Conclusion}{71}{section.7.3}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Conclusion}{73}{chapter.8}}
+\newlabel{chap-evaluation}{{7}{64}{Tunnel Detection Evaluation}{chapter.7}{}}
+\newlabel{tunnel-detection-performance}{{7}{64}{Tunnel Detection Evaluation}{chapter.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Relative Standard Deviation of Metrics - Naive Metric}}{65}{figure.7.1}}
+\newlabel{rsd-naive}{{7.1}{65}{Relative Standard Deviation of Metrics - Naive Metric}{figure.7.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces Relative Standard Deviation of Metrics - Born Metric}}{66}{figure.7.2}}
+\newlabel{rsd-born}{{7.2}{66}{Relative Standard Deviation of Metrics - Born Metric}{figure.7.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.3}{\ignorespaces Relative Standard Deviation of Metrics - Paxson Metric}}{66}{figure.7.3}}
+\newlabel{rsd-paxson}{{7.3}{66}{Relative Standard Deviation of Metrics - Paxson Metric}{figure.7.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.4}{\ignorespaces Relative Standard Deviation of Metrics - Proposed Metric}}{67}{figure.7.4}}
+\newlabel{rsd-proposed}{{7.4}{67}{Relative Standard Deviation of Metrics - Proposed Metric}{figure.7.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.5}{\ignorespaces Scaling of Detection Metrics by Tunnel Throughput}}{68}{figure.7.5}}
+\newlabel{mbtt}{{7.5}{68}{Scaling of Detection Metrics by Tunnel Throughput}{figure.7.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces Relative Standard Deviation of Lowest Throughput Tunnel by Detection Method and Tunnel Application}}{69}{table.7.1}}
+\newlabel{rsd-minimum}{{7.1}{69}{Relative Standard Deviation of Lowest Throughput Tunnel by Detection Method and Tunnel Application}{table.7.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Detection Performance Against Real World Data}{69}{section.7.1}}
+\newlabel{detection-perf}{{7.1}{69}{Detection Performance Against Real World Data}{section.7.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.6}{\ignorespaces Trend of False Positive Rate for Tunnels by Throughput - Naive Metric}}{71}{figure.7.6}}
+\newlabel{cnplot}{{7.6}{71}{Trend of False Positive Rate for Tunnels by Throughput - Naive Metric}{figure.7.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.7}{\ignorespaces Tunnel Detection Performance - Naive Metric}}{71}{figure.7.7}}
+\newlabel{mpnv}{{7.7}{71}{Tunnel Detection Performance - Naive Metric}{figure.7.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.8}{\ignorespaces Trend of False Positive Rate for Tunnels by Throughput - Born's Metric}}{72}{figure.7.8}}
+\newlabel{cbplot}{{7.8}{72}{Trend of False Positive Rate for Tunnels by Throughput - Born's Metric}{figure.7.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.9}{\ignorespaces Tunnel Detection Performance - Born's Metric}}{73}{figure.7.9}}
+\newlabel{mpbv}{{7.9}{73}{Tunnel Detection Performance - Born's Metric}{figure.7.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.10}{\ignorespaces Trend of False Positive Rate for Tunnels by Throughput - Paxson's Metric}}{74}{figure.7.10}}
+\newlabel{cpplot}{{7.10}{74}{Trend of False Positive Rate for Tunnels by Throughput - Paxson's Metric}{figure.7.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.11}{\ignorespaces Tunnel Detection Performance - Paxson's Metric}}{74}{figure.7.11}}
+\newlabel{mppv}{{7.11}{74}{Tunnel Detection Performance - Paxson's Metric}{figure.7.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.12}{\ignorespaces Trend of False Positive Rate for Tunnels by Throughput - Proposed Metric}}{75}{figure.7.12}}
+\newlabel{chplot}{{7.12}{75}{Trend of False Positive Rate for Tunnels by Throughput - Proposed Metric}{figure.7.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.13}{\ignorespaces Tunnel Detection Performance - Proposed Metric}}{76}{figure.7.13}}
+\newlabel{mphv}{{7.13}{76}{Tunnel Detection Performance - Proposed Metric}{figure.7.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Specificity and Ambiguity of Tunnel Classification}{76}{section.7.2}}
+\newlabel{detection-perf-cert}{{7.2}{76}{Specificity and Ambiguity of Tunnel Classification}{section.7.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.14}{\ignorespaces Chart of Specificity of Detection by Tunnel Application and Detection Method}}{77}{figure.7.14}}
+\newlabel{cplot}{{7.14}{77}{Chart of Specificity of Detection by Tunnel Application and Detection Method}{figure.7.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.15}{\ignorespaces Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.80 to 1.00}}{78}{figure.7.15}}
+\newlabel{cplot80}{{7.15}{78}{Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.80 to 1.00}{figure.7.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Tunnel Detection Performance Conclusion}{78}{section.7.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.16}{\ignorespaces Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.95 to 1.00}}{79}{figure.7.16}}
+\newlabel{cplot95}{{7.16}{79}{Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.95 to 1.00}{figure.7.16}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Conclusion}{80}{chapter.8}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {8.1}Future Work}{74}{section.8.1}}
-\@writefile{toc}{\contentsline {chapter}{Appendices}{75}{section*.10}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Properties of the Network Capture}{76}{Appendix.1.A}}
+\newlabel{conclusion}{{8}{80}{Conclusion}{chapter.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}Future Work}{82}{section.8.1}}
+\@writefile{toc}{\contentsline {chapter}{Appendices}{83}{section*.10}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Properties of the Network Capture}{84}{Appendix.1.A}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{appendix-capturestats}{{A}{76}{Properties of the Network Capture}{Appendix.1.A}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {A.1}{\ignorespaces Packet Capture Statistics from \emph  {capinfos}}}{76}{table.1.A.1}}
-\newlabel{TABLE_capinfos}{{A.1}{76}{Packet Capture Statistics from \emph {capinfos}}{table.1.A.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Throughput in Bytes per Second of Packet Capture}}{77}{figure.1.A.1}}
-\newlabel{cplot}{{A.1}{77}{Throughput in Bytes per Second of Packet Capture}{figure.1.A.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces Throughput in Packets per Second of Packet Capture}}{78}{figure.1.A.2}}
-\newlabel{cplot}{{A.2}{78}{Throughput in Packets per Second of Packet Capture}{figure.1.A.2}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {B}Probabilistic Encoding}{79}{Appendix.1.B}}
+\newlabel{appendix-capturestats}{{A}{84}{Properties of the Network Capture}{Appendix.1.A}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {A.1}{\ignorespaces Packet Capture Statistics from \emph  {capinfos}}}{84}{table.1.A.1}}
+\newlabel{TABLE_capinfos}{{A.1}{84}{Packet Capture Statistics from \emph {capinfos}}{table.1.A.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.1}{\ignorespaces Throughput in Bytes per Second of Packet Capture}}{85}{figure.1.A.1}}
+\newlabel{pcap-tpb}{{A.1}{85}{Throughput in Bytes per Second of Packet Capture}{figure.1.A.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A.2}{\ignorespaces Throughput in Packets per Second of Packet Capture}}{86}{figure.1.A.2}}
+\newlabel{pcap-tpp}{{A.2}{86}{Throughput in Packets per Second of Packet Capture}{figure.1.A.2}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {B}Probabilistic Encoding}{87}{Appendix.1.B}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{appendix-probcode}{{B}{79}{Probabilistic Encoding}{Appendix.1.B}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {B.1}Sample Encoding - English Unigrams}{80}{section.1.B.1}}
-\@writefile{lot}{\contentsline {table}{\numberline {B.1}{\ignorespaces English Character Frequency}}{81}{table.1.B.1}}
-\newlabel{TABLE_unigrams}{{B.1}{81}{English Character Frequency}{table.1.B.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {B.2}{\ignorespaces Encoding Sample - Source}}{81}{table.1.B.2}}
-\newlabel{TABLE_encodingsource}{{B.2}{81}{Encoding Sample - Source}{table.1.B.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {B.3}{\ignorespaces Encoding Sample - Output}}{81}{table.1.B.3}}
-\newlabel{TABLE_encodingoutput-unigram}{{B.3}{81}{Encoding Sample - Output}{table.1.B.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {B.1}{\ignorespaces Encoding Sample - Source (data matrix)}}{82}{figure.1.B.1}}
-\newlabel{FIGURE_encodingsource}{{B.1}{82}{Encoding Sample - Source (data matrix)}{figure.1.B.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {B.2}{\ignorespaces Plot of Character Frequencies}}{83}{figure.1.B.2}}
-\newlabel{FIGURE_frequencies-bytop}{{B.2}{83}{Plot of Character Frequencies}{figure.1.B.2}{}}
+\newlabel{appendix-probcode}{{B}{87}{Probabilistic Encoding}{Appendix.1.B}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B.1}Sample Encoding - English Unigrams}{88}{section.1.B.1}}
+\@writefile{lot}{\contentsline {table}{\numberline {B.1}{\ignorespaces English Character Frequency}}{89}{table.1.B.1}}
+\newlabel{TABLE_unigrams}{{B.1}{89}{English Character Frequency}{table.1.B.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {B.2}{\ignorespaces Encoding Sample - Source}}{89}{table.1.B.2}}
+\newlabel{TABLE_encodingsource}{{B.2}{89}{Encoding Sample - Source}{table.1.B.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {B.3}{\ignorespaces Encoding Sample - Output}}{89}{table.1.B.3}}
+\newlabel{TABLE_encodingoutput-unigram}{{B.3}{89}{Encoding Sample - Output}{table.1.B.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {B.1}{\ignorespaces Encoding Sample - Source (data matrix)}}{90}{figure.1.B.1}}
+\newlabel{FIGURE_encodingsource}{{B.1}{90}{Encoding Sample - Source (data matrix)}{figure.1.B.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {B.2}{\ignorespaces Plot of Character Frequencies}}{91}{figure.1.B.2}}
+\newlabel{FIGURE_frequencies-bytop}{{B.2}{91}{Plot of Character Frequencies}{figure.1.B.2}{}}
 \citation{probcodesrc}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.1.1}Technical Details}{84}{subsection.1.B.1.1}}
-\@writefile{lot}{\contentsline {table}{\numberline {B.4}{\ignorespaces English Character Bit-String Mapping - Accurate}}{86}{table.1.B.4}}
-\newlabel{TABLE_unigrammapping_acc}{{B.4}{86}{English Character Bit-String Mapping - Accurate}{table.1.B.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {B.5}{\ignorespaces English Character Bit-String Mapping - Efficient}}{87}{table.1.B.5}}
-\newlabel{TABLE_unigrammapping_eff}{{B.5}{87}{English Character Bit-String Mapping - Efficient}{table.1.B.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {B.2}Custom DNS Tunnel Endpoint Simulator}{88}{section.1.B.2}}
-\newlabel{appendix-customdns}{{B.2}{88}{Custom DNS Tunnel Endpoint Simulator}{section.1.B.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1.1}Technical Details}{92}{subsection.1.B.1.1}}
+\@writefile{lot}{\contentsline {table}{\numberline {B.4}{\ignorespaces English Character Bit-String Mapping - Accurate}}{94}{table.1.B.4}}
+\newlabel{TABLE_unigrammapping_acc}{{B.4}{94}{English Character Bit-String Mapping - Accurate}{table.1.B.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {B.5}{\ignorespaces English Character Bit-String Mapping - Efficient}}{95}{table.1.B.5}}
+\newlabel{TABLE_unigrammapping_eff}{{B.5}{95}{English Character Bit-String Mapping - Efficient}{table.1.B.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B.2}Custom DNS Tunnel Endpoint Simulator}{96}{section.1.B.2}}
+\newlabel{appendix-customdns}{{B.2}{96}{Custom DNS Tunnel Endpoint Simulator}{section.1.B.2}{}}
 \bibdata{../Reference/bibliography}
 \bibcite{isoeic10918-1}{1}
 \bibcite{WoframlAlpha-Botnet}{2}
@@ -308,25 +323,26 @@
 \bibcite{probcodesrc}{28}
 \bibcite{Horenbeeck2006}{29}
 \bibcite{asciitable}{30}
-\bibcite{jhind2009}{31}
-\bibcite{Karasaridis2006}{32}
-\bibcite{rfc3445}{33}
-\bibcite{rfc1034}{34}
-\bibcite{rfc1035}{35}
-\bibcite{Moskowitz2003}{36}
-\bibcite{Newman2007}{37}
-\bibcite{Okamura2010}{38}
-\bibcite{Paxson2011}{39}
-\bibcite{dnscatsrc}{40}
-\bibcite{ozymandnssrc}{41}
-\bibcite{Proventia2013.ips_tunnel}{42}
-\bibcite{Ray2008}{43}
-\bibcite{rfc4025}{44}
-\bibcite{Romana2007}{45}
-\bibcite{Roolvink2008}{46}
-\bibcite{Sellke2009}{47}
-\bibcite{Shaffer2008}{48}
-\bibcite{python-strlencplx}{49}
-\bibcite{pypyvc-strfmt}{50}
-\bibcite{Thomas2011}{51}
-\bibcite{rfc3755}{52}
+\bibcite{sans-dnshash}{31}
+\bibcite{jhind2009}{32}
+\bibcite{Karasaridis2006}{33}
+\bibcite{rfc3445}{34}
+\bibcite{rfc1034}{35}
+\bibcite{rfc1035}{36}
+\bibcite{Moskowitz2003}{37}
+\bibcite{Newman2007}{38}
+\bibcite{Okamura2010}{39}
+\bibcite{Paxson2011}{40}
+\bibcite{dnscatsrc}{41}
+\bibcite{ozymandnssrc}{42}
+\bibcite{Proventia2013.ips_tunnel}{43}
+\bibcite{Ray2008}{44}
+\bibcite{rfc4025}{45}
+\bibcite{Romana2007}{46}
+\bibcite{Roolvink2008}{47}
+\bibcite{Sellke2009}{48}
+\bibcite{Shaffer2008}{49}
+\bibcite{python-strlencplx}{50}
+\bibcite{pypyvc-strfmt}{51}
+\bibcite{Thomas2011}{52}
+\bibcite{rfc3755}{53}

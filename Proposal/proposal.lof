@@ -4,37 +4,41 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Growth of Expected and Mean Norms of Sampled Vectors}}{31}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Relative Error of $\mu $ of Best-Fit Normal Distribution of Sampled Expected Value}}{32}{figure.4.2}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Relative Error of $\mu $ of Best-Fit Normal Distribution of Sampled Expected Value}}{33}{figure.4.2}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Trend of $\sigma $ of Best-Fit Normal Distribution of Sampled Expected Value}}{33}{figure.4.3}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Effect of DNS Caching on Query Counts}}{40}{figure.5.1}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Effect of DNS Caching on Query Counts}}{44}{figure.6.1}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces DNS Tunneling Application Throughput Scaling}}{49}{figure.6.2}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Performance of Analysis Method and Python Interpreter on Aggregate Tunnel Data}}{50}{figure.6.3}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Performance of Analysis Method and Python Interpreter on Real World Data}}{51}{figure.6.4}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Performance of Analysis Method and Python Interpreter on Real World Data - Early Time}}{52}{figure.6.5}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Performance of Naive Method on Tunnel Data by Python Interpreter}}{53}{figure.6.6}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Performance of Born's Method on Tunnel Data by Python Interpreter}}{54}{figure.6.7}
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Performance of Paxson's Method on Tunnel Data by Python Interpreter}}{55}{figure.6.8}
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Performance of the Proposed Method on Tunnel Data by Python Interpreter}}{56}{figure.6.9}
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Performance Ratio of the Naive Method to the Proposed Method on Tunnel Data by Python Interpreter}}{58}{figure.6.10}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces DNS Tunneling Application Throughput Scaling}}{52}{figure.6.1}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Performance of Analysis Method and Python Interpreter on Aggregate Tunnel Data}}{54}{figure.6.2}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Performance of Analysis Method and Python Interpreter on Real World Data}}{55}{figure.6.3}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Performance of Analysis Method and Python Interpreter on Real World Data - Early Time}}{56}{figure.6.4}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Performance of Naive Method on Tunnel Data by Python Interpreter}}{57}{figure.6.5}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Performance of Born's Method on Tunnel Data by Python Interpreter}}{58}{figure.6.6}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Performance of Paxson's Method on Tunnel Data by Python Interpreter}}{59}{figure.6.7}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Performance of the Proposed Method on Tunnel Data by Python Interpreter}}{60}{figure.6.8}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Performance Ratio of the Naive Method to the Proposed Method on Tunnel Data by Python Interpreter}}{62}{figure.6.9}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Scaling of Detection Metrics by Tunnel Throughput}}{61}{figure.7.1}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Tunnel Detection Performance - Naive Metric}}{63}{figure.7.2}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Trend of Crossing Value for Tunnels - Naive Metric}}{63}{figure.7.3}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Tunnel Detection Performance - Born's Metric}}{64}{figure.7.4}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Trend of Crossing Value for Tunnels - Born's Metric}}{65}{figure.7.5}
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Tunnel Detection Performance - Paxson's Metric}}{66}{figure.7.6}
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Trend of Crossing Value for Tunnels - Paxson's Metric}}{66}{figure.7.7}
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Tunnel Detection Performance - Proposed Metric}}{67}{figure.7.8}
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Trend of Crossing Value for Tunnels - Proposed Metric}}{68}{figure.7.9}
-\contentsline {figure}{\numberline {7.10}{\ignorespaces Chart of Certainty of Detection by Tunnel Application and Detection Method}}{69}{figure.7.10}
-\contentsline {figure}{\numberline {7.11}{\ignorespaces Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.80 to 1.00}}{70}{figure.7.11}
-\contentsline {figure}{\numberline {7.12}{\ignorespaces Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.95 to 1.00}}{71}{figure.7.12}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Relative Standard Deviation of Metrics - Naive Metric}}{65}{figure.7.1}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Relative Standard Deviation of Metrics - Born Metric}}{66}{figure.7.2}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Relative Standard Deviation of Metrics - Paxson Metric}}{66}{figure.7.3}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Relative Standard Deviation of Metrics - Proposed Metric}}{67}{figure.7.4}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Scaling of Detection Metrics by Tunnel Throughput}}{68}{figure.7.5}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Trend of False Positive Rate for Tunnels by Throughput - Naive Metric}}{71}{figure.7.6}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Tunnel Detection Performance - Naive Metric}}{71}{figure.7.7}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Trend of False Positive Rate for Tunnels by Throughput - Born's Metric}}{72}{figure.7.8}
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Tunnel Detection Performance - Born's Metric}}{73}{figure.7.9}
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Trend of False Positive Rate for Tunnels by Throughput - Paxson's Metric}}{74}{figure.7.10}
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Tunnel Detection Performance - Paxson's Metric}}{74}{figure.7.11}
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Trend of False Positive Rate for Tunnels by Throughput - Proposed Metric}}{75}{figure.7.12}
+\contentsline {figure}{\numberline {7.13}{\ignorespaces Tunnel Detection Performance - Proposed Metric}}{76}{figure.7.13}
+\contentsline {figure}{\numberline {7.14}{\ignorespaces Chart of Specificity of Detection by Tunnel Application and Detection Method}}{77}{figure.7.14}
+\contentsline {figure}{\numberline {7.15}{\ignorespaces Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.80 to 1.00}}{78}{figure.7.15}
+\contentsline {figure}{\numberline {7.16}{\ignorespaces Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.95 to 1.00}}{79}{figure.7.16}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Throughput in Bytes per Second of Packet Capture}}{77}{figure.1.A.1}
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Throughput in Packets per Second of Packet Capture}}{78}{figure.1.A.2}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Throughput in Bytes per Second of Packet Capture}}{85}{figure.1.A.1}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Throughput in Packets per Second of Packet Capture}}{86}{figure.1.A.2}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Encoding Sample - Source (data matrix)}}{82}{figure.1.B.1}
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Plot of Character Frequencies}}{83}{figure.1.B.2}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Encoding Sample - Source (data matrix)}}{90}{figure.1.B.1}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Plot of Character Frequencies}}{91}{figure.1.B.2}

@@ -45,6 +45,8 @@ Warning--entry type for "python-strlencplx" isn't style-file defined
 --line 1095 of file ../Reference/bibliography.bib
 Warning--entry type for "asciitable" isn't style-file defined
 --line 1121 of file ../Reference/bibliography.bib
+Warning--entry type for "sans-dnshash" isn't style-file defined
+--line 1130 of file ../Reference/bibliography.bib
 A bad cross reference---entry "Browne1994"
 refers to entry "conf/ccs/1994", which doesn't exist
 A bad cross reference---entry "Shaffer2008"

@@ -150,6 +150,11 @@ http://www.lookuptables.com, \emph{{Ascii Table - ASCII character codes and
   html, octal, hex and decimal chart conversion}},
   \url{http://www.asciitable.com/}, oct 2013.
 
+\bibitem{sans-dnshash}
+{Internet Storm Centre - SANS Institute}, \emph{{Hash Database | SANS Internet
+  Storm Center; Cooperative Network Security Community - Internet Security}},
+  \url{https://isc.sans.edu/tools/hashsearch.html#dns_interface}, oct 2013.
+
 \bibitem{jhind2009}
 jhind, \emph{{Catching DNS tunnels with A.I.}},
   \url{http://www.meanypants.com/meanypants}, jul 2009.
