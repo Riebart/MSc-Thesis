@@ -19,7 +19,13 @@ Estimation},
 % http://polyphys-s01.ethz.ch/images/bibstyles/
 %\usepackage[natbib=true,style=numeric-verb,backend=bibtex]{biblatex}
 %\addbibresource{../Reference/bibliography.bib} % Syntax for version >= 1.2
-\bibliographystyle{amsplain}
+
+% http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management#Bibliography_styles
+%\bibliographystyle{amsplain}
+\bibliographystyle{abbrv}
+
+%\usepackage[bibstyle=numeric,citestyle=numeric]{biblatex}
+%\bibliography{../Reference/bibliography}
 
 \usepackage{setspace}
 
@@ -2945,7 +2951,7 @@ most to least frequent, and then selecting a shortest available bit string of a
 length that has an expected occurrence rate not less than the symbol's
 occurrence rate in the output distribution. For example, the bit string to
 symbol mapping for the English unigram encoding sample is given in Table
-\ref{TABLE_unigrammapping} along with the approximate frequency of the letters
+\ref{TABLE_unigrammapping_acc} along with the approximate frequency of the letters
 in English text.
 
 Observe that it is possible to make a tradeoff between encoding accuracy (that
@@ -3110,8 +3116,8 @@ style version as to support this use case.
 
 \newpage
 %\nocite{*}
-%\printbibliography
-\bibliography{../Reference/bibliography}{}
+%\printbibliography[title={References}]{}
+\bibliography{../Reference/bibliography}
 
 % \chapter{Problem Statement}
 %

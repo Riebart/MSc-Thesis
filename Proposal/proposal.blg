@@ -1,5 +1,5 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: proposal.aux
-The style file: amsplain.bst
+The style file: abbrv.bst
 Database file #1: ../Reference/bibliography.bib
 Warning--I'm ignoring rfc1035's extra "note" field
 --line 807 of file ../Reference/bibliography.bib
@@ -79,16 +79,8 @@ Warning--I didn't find a database entry for "conf/acns/2011"
 Warning--I didn't find a database entry for "conf/ifip11-9/2011"
 Warning--I didn't find a database entry for "conf/globecom/2006"
 Warning--to sort, need author or key in isoeic10918-1
-Warning--missing pages in Born2010.exfil
-Warning--missing journal name in Born2010.psudp
-Warning--missing pages in Born2010.psudp
-Warning--missing pages in Born2010.cfa
-Warning--missing pages in Born2010.ngviz
-Warning--missing pages in Cabuk2009
-Warning--missing pages in SANS2013
-Warning--missing publisher in Friesen2013
-Warning--missing journal name in Romana2007
-Warning--missing pages in Romana2007
-Warning--missing journal name in Roolvink2008
-Warning--missing pages in Roolvink2008
+Warning--empty journal in Born2010.psudp
+Warning--empty journal in Romana2007
+Warning--empty publisher in Friesen2013
+Warning--empty journal in Roolvink2008
 (There were 11 error messages)
