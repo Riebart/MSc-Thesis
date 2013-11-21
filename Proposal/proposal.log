@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.22)  20 NOV 2013 15:13
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.22)  21 NOV 2013 15:06
 entering extended mode
 **D:/Documents/Projects/Thesis/Proposal/proposal.tex
 (D:/Documents/Projects/Thesis/Proposal/proposal.tex
@@ -697,23 +697,23 @@ Chapter 8.
 
 ]
 Appendix A.
-<figures/pcap-tpb.pdf, id=1661, 731.73375pt x 395.4775pt>
-File: figures/pcap-tpb.pdf Graphic file (type pdf)
+<figures/pcap-tpb.png, id=1661, 615.16225pt x 303.96762pt>
+File: figures/pcap-tpb.png Graphic file (type png)
 
-<use figures/pcap-tpb.pdf>
-Package pdftex.def Info: figures/pcap-tpb.pdf used on input line 2785.
-(pdftex.def)             Requested size: 462.26999pt x 249.84007pt.
+<use figures/pcap-tpb.png>
+Package pdftex.def Info: figures/pcap-tpb.png used on input line 2785.
+(pdftex.def)             Requested size: 462.26999pt x 228.4204pt.
  [84
 
 ]
-<figures/pcap-tpp.pdf, id=1666, 731.73375pt x 394.47375pt>
-File: figures/pcap-tpp.pdf Graphic file (type pdf)
+<figures/pcap-tpp.png, id=1666, 615.16225pt x 301.51044pt>
+File: figures/pcap-tpp.png Graphic file (type png)
 
-<use figures/pcap-tpp.pdf>
-Package pdftex.def Info: figures/pcap-tpp.pdf used on input line 2792.
-(pdftex.def)             Requested size: 462.26999pt x 249.20595pt.
- [85 <D:/Documents/Projects/Thesis/Proposal/figures/pcap-tpb.pdf>] [86 <D:/Docu
-ments/Projects/Thesis/Proposal/figures/pcap-tpp.pdf>]
+<use figures/pcap-tpp.png>
+Package pdftex.def Info: figures/pcap-tpp.png used on input line 2792.
+(pdftex.def)             Requested size: 462.26999pt x 226.57393pt.
+ [85 <D:/Documents/Projects/Thesis/Proposal/figures/pcap-tpb.png (PNG copy)>] [
+86 <D:/Documents/Projects/Thesis/Proposal/figures/pcap-tpp.png (PNG copy)>]
 Appendix B.
 [87
 
@@ -735,7 +735,7 @@ Overfull \hbox (7.03024pt too wide) in paragraph at lines 2875--2875
 sFqMljljX3SkgJq/[] 
  []
 
-<figures/encoding_source.png, id=1716, 782.925pt x 782.925pt>
+<figures/encoding_source.png, id=1684, 782.925pt x 782.925pt>
 File: figures/encoding_source.png Graphic file (type png)
 
 <use figures/encoding_source.png>
@@ -766,7 +766,7 @@ rsn    hrlucne ewr[]
  []
 
 [88] [89] [90 <D:/Documents/Projects/Thesis/Proposal/figures/encoding_source.pn
-g>] <figures/plots_unigram.pdf, id=1733, 1084.05pt x 921.20964pt>
+g>] <figures/plots_unigram.pdf, id=1701, 1084.05pt x 921.20964pt>
 File: figures/plots_unigram.pdf Graphic file (type pdf)
 
 <use figures/plots_unigram.pdf>
@@ -883,9 +883,9 @@ iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9
 ype1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmtt12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/symbols/msbm10.pfb>
-Output written on proposal.pdf (111 pages, 33610120 bytes).
+Output written on proposal.pdf (111 pages, 29784790 bytes).
 PDF statistics:
- 1970 PDF objects out of 2073 (max. 8388607)
+ 1938 PDF objects out of 2073 (max. 8388607)
  287 named destinations out of 1000 (max. 500000)
  582 words of extra memory for PDF output out of 10000 (max. 10000000)
 
