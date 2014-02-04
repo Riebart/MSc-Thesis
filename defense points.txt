@@ -1,0 +1,185 @@
+* Title, and welcome/introduction
+
+* Motivation and Context
+* aims to detect type of application known as DNS tunnel
+* currently difficult and known in the wild malware
+* Detection important for securing a network
+
+* Goal is to identify in real time, commodity, accuracy
+* Starting with some basic background.
+
+* DNS is a service
+* Translates names to other data
+* Standard use is website to IP
+* Also used to efficiently implement spam checking.
+
+* Covert channels are types of communication
+* Do not use standard protocols or formats
+* Rarely benign
+* Some security vendors use them though
+
+* Some of them are more creative than others
+* Simple Flickr example
+
+* Rough measure of randomness or information
+* in source or collection
+
+* Several existing implementations
+* Prototype tunnel created to simulate next-gen
+
+* 2 categories: conforming and non
+* Non are simpler, faster, easier to block
+* Conforming are robust at cost of performance and complexity
+* The cons are not usually a big deal
+* This work will focus on those that do conform.
+
+* Prototype application
+* Matches character frequencies of benign queries
+* only one direction was implemented because prototype
+
+* Several broad categories
+* Problems of each
+* The proposed approach falls into the last category.
+
+* Assume move more data
+* Look for that extra throughput
+
+* WALK THROUGH
+
+* DNS is heavily cached
+* Counting characters ineffective
+* So is query length
+* Makes the playing field more level
+
+* Assumes DNS tunnels repeat very few queries.
+* Benings have lots of repeats
+
+* Treat queries as atomic
+* Consider entropy of collection per TLD per interval
+* Large values for tunnels, small for benign
+
+
+* Evaluate against literature
+* Explain approaches
+* relationship between proposed and Paxson
+* implemented on common Python scaffolding
+* Remove implementation specific performance details
+
+* Score by packet processing and false postiive rate
+* Relative rankings
+* Since Python scaffolding not optimized
+* Absolute performance not applicable.
+
+* And the source data was not clean, and may contain tunnels itself.
+* Affects false positive rate.
+* Relative ranking here as well.
+
++*+*+*+*+*+*+*+*+*+*+*+*+*+*+*
+
+* Thank Merlin
+* Educational ISP
+* Expect diurnal fluctuation
+* Packets per second
+* \consistently above 4000/s during the day
+* fluctuate between 500-1500 at night
+* average about 1200 per second
+* This packet capture is from a cached environment.
+
+* Log plot of query counts in cached and uncached
+* Maximum query counts vastly different, nature of networks
+* Scaled to ratio of maximum
+* Observe factors of 100 to 1000 due to caching
+* This means benign domains would have 100-1000 times the characters
+* Recall packet rates
+* Uncache requests are 400k/s
+
+* Keep that in mind
+* examine packet processing performance
+* Python has several interpreters
+* Cython and PyPY
+* This shows real world data
+* Observe degradation over time on Cython
+* PyPy consistent
+* Comment on performance
+
+* Same plot, early time.
+* See JIT spool up
+* naive is fastest, not surprising
+* Proposed beats out rest.
+* Long term, PyPy works well
+
+* Tunnel data alone is important to test
+* Presents pessimistic case
+* larger data structure
+* Perforamnce varies widely by method
+* Discuss format of plot and information it shows
+* Later scored to detect low through put tunnels
+* Focus on left hand side
+
+* Note 100k/s threshold set by the naive method
+
+* Again
+* Seeing same patterns
+
+* Proposed does really well
+* Nothing below 110k/s
+* Paxson and Born both starting below 100k/s in cases
+
+* Naive and proposed are the fastest
+* As throughput increases, paxson and born suffer
+* Didn't focus on it
+
+* success is measured by false-positive rate
+* Observe the left side of the plots
+* nothing below 1/50, and nothing above 1/10.
+
+* Shows how the distribution of normal metrics compares to those of tunnel applications.
+* DESCRIBE
+
+* Born's metric shows some peaks and inconsistencies
+* Lots around 1/10
+* Observe purple
+* 50% false postiive rate
+
+* Observe the clustering.
+* Then purple
+
+* Paxson's metric does well
+* At most 1/50, many around 1/1000
+
+* See how the tunnels are distributed compared to normal.
+
+* Closer view on those that stand out the most
+
+* Proposed similar to Paxson
+
+* Observe tighter clustering than Paxson.
+* Corresponds to a more rapidly decreasing Normal
+
+* This compares false positive rate
+* For most difficult (ambiguous) tunnel situation
+* Application and throughput
+* Categorically the lowest throughput of 10B/s
+* And compare
+* Observe Born's abysmal performance overall.
+
+* A finer plot showing a reduced range.
+* naive metric's differences begin to show clearly.
+
+* proposed is clearly better in all but two categories
+* differences there are not enough to matter in practice
+
+* Proposed lower false positive rates on all tests.
+* next-gen tunnel is most difficult to detect overall
+
+* both the best detection and processing performance.
+* Already implemented in C/C++
+* Achieves 400k packets per second analysis rate
+* novel and meaningful contribution
+
+* Existence of tunnels in real data impacts false positive rate
+* Could be correctly classifying tunnels as tunnels
+* But assuming the real world data is clean
+* Manually handling 1000s of events not feasible.
+
+

@@ -122,5 +122,26 @@
 
 * Proposed similar to Paxson
 
-* 
+* Observe tighter clustering than Paxson.
+* Corresponse to a more rapidly decreasing Normal curve.
 
+* This will take a closer look at the tunnel situation (application/throughput) that produced the highest expected false positive rate
+* And compare
+* Observe Born's abysmal performance overall.
+
+* A finer plot showing a reduced range.
+* Observe how the naive metric's differences begin to show clearly.
+
+* The proposed metric is clearly better in all but two categories, where the differences are not enough to matter in practice
+
+* Proposed approach achieves lower false positive rates on all tests.
+* next-gen tunnel is by far the most difficult to detect.
+
+* Achieves both the best detection and processing performance.
+* Already implemented in C/C++
+* Achieves 400k packets per second analysis rate.
+
+* The existence of tunnels in the real world data will have a negative impact on estimated false-positive rates.
+* If there were zero tunnels, a perfect algorithm would have zero false postivies.
+* If a perfect approach were tested on the real data used here, it would have a non-zero 'false positive' rate
+* But manually analyzing two weeks of data to determine whether those identified were false positives or not is infeasible.
