@@ -1,0 +1,126 @@
+* Title, and welcome/introduction
+
+* A little motivation and context.
+* This research aims to detect a type of application called a DNS tunnel. They are currently difficult to detect, and there are known instances of them being used in malware in the wild. Dection of these is an important task whens securing a network.
+
+* The goal of this research is to be able to identify DNS tunnels in the wild, in real time, on commodity hardware, with a low false positive rate, and on large networks.
+* Starting with some basic background.
+
+* DNS is a service that allows for translation between names of things, and other data types. The standard use of this is to translate a name, say google.com, into its IP address which is what the underlying browser requires to deliver you the web content.
+* Also used to efficiently implement spam checking.
+
+* Covert channels are types of communication on the Internet that do not use standard protocols or formats.
+* These are rarely benign, but some security vendors use them to talk back to their central intelligence.
+
+* Some of them are more invasive to their underlying protocols than others. A simple one uploads an a specially crafted image to a web hosting service, like Flickr, and then all of the recipients just download the image. That is a simple one-way covert channel.
+
+* This approach makes use of a measure called entropy, which is a rough measure of the amount of information contained in a source. Equivalently, you can think of it as how difficult the source is to predict. If I tell you the sun will rise tomorrow, that statement contains very little information, because you could easily have predicted that.
+
+* DNS tunnels have several existing implementations that are easily obtained. 
+* Because this research intends to examine potential future applications as well, a prototype tunnel was crafted that simulates one potential additional feature. We'll get to that in a moment.
+
+* DNS tunnels can be split into two main categories: those that do, and those that do not, conform to the DNS protocol specification.
+* Those that do not are easier to construct and provider better performance at the cost of being relatively simple to detect and block.
+* Those that do conform are far harder to detect at the cost of performance and complexity.
+* This work will focus on those that do conform.
+
+* The custom DNS tunnel implements a proof-of-concept one-way DNS tunnel that attempts to masquerade its data in a way that evades a class of detection approaches.
+* It does this by attempting to mimic 'normal' DNS query character distributions, thereby making detection difficult or impossible.
+* Because it is a prototype, only one direction was implemented.
+
+* Current state of the art has detection appraoches that fall into a few broad categories.
+* Signature based, blacklist, flow data, character frequency analysis, and per-domain higher level behaviour. 
+** Signatures and blacklists suffer from common problems (validitiy in zero-day situations), flow data loses a lot of information about the queries themselves, and timing, and character frequency analysis is targeted by the prototype tunnel application.
+* The proposed approach falls into the last category.
+
+### TALK MORE ???
+
+* The proposed approach makes certain assumptions about DNS tunnels in order to detect them.
+* They move more data than a benign domain, for a definition of data volume that I will explore in a moment.
+* The approach attempts to detect this increase in volume.
+
+* The approach, in general is simple.
+* Collect DNS queries within a time window, arrange them by top level domain, and compute the amount of data moved 'under' that domain over the time window.
+
+* Since DNS is a heavily cached protocol, simply counting bytes is ineffecitive, and the document shows roughly how caching affects query repetition in various networks.
+* This actually works to make the tests more pessimistic, leveling the playing field somewhat.
+
+* An assumption we make about DNS tunnels is that very few queries are repeated.
+
+* This means that if we treat query strings as atomic under a domain, the collection of query strings will collectively have a higher entropy for a tunnel than a benign domain.
+
+* Evaluate this approach, several options from the literature were selected
+* Explain approaches
+* Explain relationship between proposed and Paxson
+* They were all implemented on a common Python architecture, to minimize differences due to implementatil details.
+
+* Approaches were compared for packet processing performance, and false positive rate.
+* Scoring was done in a relative ranking fashion, since the implementations were unoptimized ones.
+
+* And the source data was not clean, and may contain tunnels itself.
+
+* This is the sample data in packets per second. It came from an Meriln, educational ISP, network and so exhibits strong diurnal tendencies.
+* Peaks rise up to consistently above 4000/s during the day
+* And fluctuate between 500 and 1500 at night
+* With an average of about 1200 per second.
+
+* This packet capture is from a cached environment.
+* This is a log plot of the query counts, comparing counts to the maximum, and the profiles of two other uncached networks.
+* Because maximum counts were vastly different, the counts are normales to be a portion of the maximum.
+* Observe that Merlin's network, with the effects of caching removed, shows most queries occur 100x more often than with caching.
+* My personal network shows queries, which are a vastly different distribution, that occur  1000x more often than with caching.
+* Recall the packet rate plots, and consider the packet rates scaled by these factors.
+* Daily uncached requests are over four hundred thousand per second
+
+* With that in mind, we will examine packet processing performance
+* Because Python has two interpreters available, Performance was examined with Cython (the standard one), and PyPy which has just-in-time compilation.
+* This shows the packet processing performance for the real world data.
+* Observe the slow drops in performance over time, especially for Paxson's method.
+* Observe the steady performance of PyPY implementations, with the exception of Paxson's method
+* The proposed method is a third slower than the naive method, but fifty percent faster than Paxson's or Born's.
+
+* Looking at the same plot, zoomed into the early time portion, the spool-up of PyPy's JIT is visible.
+* Overall, for real world data, the naive method easily ourperforms the rest, but of the more advanced method the proposed leads by a considerable margin.
+
+* The performance when processing purely tunnel data is important to analyze, because in some cases it presents a pessimistic case for the algorithm (larger data structures, for example).
+* Because the performance varied widely by tunneling application, the plots are broken out by detection method, with each plot showing information for the detection performance of the method on both interpreters and of the seven tunneling situations (application and direction). The plots show the processing rate as a function of throughput rate of the tunnel.
+* The first method is the naive method, chosen as a baseling. Observe the improvement in the dns2tcp and iodine server-to-client performance under PyPy, while no such improvement is observed under Cython. This indicated a difference introduced by PyPy's JIT
+* The most important observation is that no method dips below 100k/s but much, if at all. Most stay well above tha threshold.
+* Later on the detection methods will be scored on their ability to detect low throughput tunnels
+* So focusing on the far left hand side of the plots is a valuable restriction
+
+* Observe how the plots interact with the 100k/s threshold set by the naive method.
+
+* Again
+* Seeing same patterns
+
+* Proposed does really well
+* Nothing below 110k/s, whereas Paxson and Born both had situations starting below 100k/s.
+
+* As throughput increases, Paxson and Born's approaches suffer severe degradation which we didn't focus on.
+
+* Detection performance is measured by false-positive rate.
+* Again, since the final tests will be done with low throughput tunnels, restricting to the left hand side of the plot is valuable.
+* Observe that nothing begins below 1/50, and nothing above 1/10.
+
+* Shows how the distribution of normal metrics compares to those of tunnel applications.
+* DESCRIBE
+
+* Born's metric shows some peaks and inconsistencies
+* Lots around 1/10
+* Observe the next-gen tunnel application that is designed to circumvent it.
+* 50% false postiive rate
+
+* Observe the clustering.
+
+* Paxson's metric does well
+* At most 1/50, many around 1/1000
+
+* See how the tunnels are distributed compared to normal.
+
+* Closer view on those that stand out the most
+
+* Proposed similar to Paxson
+
+* 
+
