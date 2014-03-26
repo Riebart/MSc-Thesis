@@ -96,15 +96,11 @@ Estimation},
 \vspace{5mm}
 \centerline{\large{Michael Himbeault}}
 \vspace{20mm}
-\centerline{\large{A Thesis}}
-\vspace{3mm}
-\centerline{\large{Submitted to the Faculty of Graduate Studies}}
-\vspace{3mm}
-\centerline{\large{of the University of Manitoba}}
-\vspace{3mm}
-\centerline{\large{in partial fulfilment of the requirements}}
-\vspace{3mm}
-\centerline{\large{for the degree of}}
+\centerline{\large{A Thesis submitted to the Faculty of Graduate Studies if the}}
+\vspace{5mm}
+\centerline{\large{University of Manitoba}}
+\vspace{5mm}
+\centerline{\large{in partial fulfilment of the requirements for the degree of}}
 \vspace{13mm}
 \centerline{\LARGE{MASTER OF SCIENCE}}
 \vspace{15mm}
@@ -113,11 +109,12 @@ Estimation},
 \centerline{\large{University of Manitoba}}
 \vspace{2mm}
 \centerline{\large{Winnipeg, Manitoba, Canada}}
-\vspace{30mm}
-\centerline{\large{Copyright \copyright 2013 Michael Himbeault}}
-\centerline{}
 \vfill
-\centerline{\today}
+%\vspace{50mm}
+\centerline{\large{Copyright \copyright 2014 Michael Himbeault}}
+%\centerline{}
+%\vfill
+%\centerline{\today}
 \end{titlepage}
 
 \doublespacing
@@ -266,7 +263,9 @@ measuring the amount of data that is transmitted using a particular DNS domain
 or subdomain. The details of this measurement methodology are contained in
 chapter \ref{proposed-method} and requires estimating the amount of unique data
 that is transmitted by analyzing the queries themselves and not simply counting
-characters in the query string.
+characters in the query string. The proposed method uses the information
+measuring properties of entropy in order to estimate the amount of information
+transmitted.
 
 This proposed detection methodology is shown to detect DNS tunnels in as few as
 ten packets (as shown in section \ref{test-existing}) and continues to be robust
@@ -1162,7 +1161,7 @@ character code values of the given characters \cite{asciitable}, has an expected
 value of 74.8797 and a mean value (that is, not considering the probability of a
 character) of 70.5263.
 
-For dimensions up to $n=100$, vectors were sampled from the spaces with
+For dimensions up to $n=100$, 100,000 vectors were sampled from the spaces with
 components chosen IID from the distribution given in table
 \ref{TABLE_dnssampling}. From the sampled vectors the expected and mean values
 were computed and a function of the form $a\sqrt{n}$ was fit to both. The growth
@@ -1172,7 +1171,7 @@ distribution.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/dnssampling-ev_growth.pdf}
+\includegraphics[width=\textwidth]{../figures/dnssampling-ev_growth.pdf}
 \caption[Growth of Expected and Mean Norms of Sampled Vectors]{The computed
 expected and mean values of the norms of the vectors from higher-dimensional
 spaces formed by IID observations from the distribution in table
@@ -1214,7 +1213,7 @@ by the CLT.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{figures/dnssampling-muerror.pdf}
+\includegraphics[width=0.7\textwidth]{../figures/dnssampling-muerror.pdf}
 \caption[Relative Error of $\mu$ of Best-Fit Normal Distribution of Sampled Expected Value]
 {For each $n$, vectors were sampled from $\chi^n$ where $\chi$ is given by the
 distribution in table \ref{TABLE_dnssampling} and a normal distribution
@@ -1226,7 +1225,7 @@ becomes dominated by error due to sampling as $n$ grows.}
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/dnssampling-sigmafit.pdf}
+\includegraphics[width=\textwidth]{../figures/dnssampling-sigmafit.pdf}
 \caption[Trend of $\sigma$ of Best-Fit Normal Distribution of Sampled Expected Value]
 {For each $n$, vectors were sampled from $\chi^n$ where $\chi$ is given by the
 distribution in table \ref{TABLE_dnssampling} and a normal distribution
@@ -1422,7 +1421,7 @@ dataset.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{figures/caching.pdf}
+\includegraphics[width=\textwidth]{../figures/caching.pdf}
 \caption[Effect of DNS Caching on Query Counts]{Shows the trends for DNS query
 counts in networks with and without caching. The axes are normalized to account
 for the fact that the real world data has much more data than the home network.
@@ -1811,7 +1810,7 @@ in appendix \ref{appendix-probcode}.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/tunrates.pdf}
+\includegraphics[width=\textwidth]{../figures/tunrates.pdf}
 \caption[DNS Tunneling Application Throughput Scaling]{Shows the scaling
 behaviour of DNS tunnelling applications as the input rate is scaled up. Note
 that not all applications are capable of transmitting data at the rate they are
@@ -1857,7 +1856,7 @@ that of Cython in many of the cases.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/pmat.pdf}
+\includegraphics[width=\textwidth]{../figures/pmat.pdf}
 \caption[Performance of Analysis Method and Python Interpreter on Aggregate
 Tunnel Data]{This plot shows the performance of the detection methods and Python
 interpreters over the aggregate tunnel data. The output is packet processing
@@ -1888,7 +1887,7 @@ of the sample data.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/pmqr.pdf}
+\includegraphics[width=\textwidth]{../figures/pmqr.pdf}
 \caption[Performance of Analysis Method and Python Interpreter on Real World
 Data]{This plot shows the performance of the detection methods and Python
 interpreters on real world DNS traffic. The output is packet processing performance as time
@@ -1910,7 +1909,7 @@ under both the Cython and PyPy interpreters.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/pmqr-100k.pdf}
+\includegraphics[width=\textwidth]{../figures/pmqr-100k.pdf}
 \caption[Performance of Analysis Method and Python Interpreter on Real World
 Data - Early Time]{This plot is identical to figure \ref{pmqr} but restricts the time
 displayed to the first one hundred thousand seconds. The 'spool up' of the JIT
@@ -1944,7 +1943,7 @@ indicate the use of the PyPy interpreter.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/ppia-naive.pdf}
+\includegraphics[width=\textwidth]{../figures/ppia-naive.pdf}
 \caption[Performance of Naive Method on Tunnel Data by Python
 Interpreter]{Performance of the naive method on separated tunnelling application
 data, showing processing rate as a function of input rate.}
@@ -1971,7 +1970,7 @@ counterparts at the most favourable throughputs.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/ppia-born.pdf}
+\includegraphics[width=\textwidth]{../figures/ppia-born.pdf}
 \caption[Performance of Born's Method on Tunnel Data by Python
 Interpreter]{Performance of Born's method on separated tunnelling application
 data, showing processing rate as a function of input rate.}
@@ -1994,7 +1993,7 @@ workloads.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/ppia-paxson.pdf}
+\includegraphics[width=\textwidth]{../figures/ppia-paxson.pdf}
 \caption[Performance of Paxson's Method on Tunnel Data by Python
 Interpreter]{Performance of Paxson's method on separated tunnelling application
 data, showing processing rate as a function of input rate.}
@@ -2007,7 +2006,7 @@ trend of performance degradation with additional throughput.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/ppia-proposed.pdf}
+\includegraphics[width=\textwidth]{../figures/ppia-proposed.pdf}
 \caption[Performance of the Proposed Method on Tunnel Data by Python
 Interpreter]{Performance of the proposed method on separated tunnelling
 application data, showing processing rate as a function of input rate.}
@@ -2069,7 +2068,7 @@ proposed approaches are able to prevent significant performance degradation, and
 in fact show very similar trends when their plots are compared directly.
 
 \begin{figure} \centering
-\includegraphics[width=\textwidth]{figures/ppia-naive2proposed.pdf}
+\includegraphics[width=\textwidth]{../figures/ppia-naive2proposed.pdf}
 \caption[Performance Ratio of the Naive Method to the Proposed Method on Tunnel
 Data by Python Interpreter]{The ratio of the performance of the naive method to
 the proposed method on separated tunnelling application data, with the vertical
@@ -2135,28 +2134,28 @@ and false positive rates would be minimal.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/rsd-naive.pdf}
+\includegraphics[width=\textwidth]{../figures/rsd-naive.pdf}
 \caption[Relative Standard Deviation of Metrics - Naive Metric]{Relative Standard Deviation of Metrics - Naive Metric}
 \label{rsd-naive}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/rsd-born.pdf}
+\includegraphics[width=\textwidth]{../figures/rsd-born.pdf}
 \caption[Relative Standard Deviation of Metrics - Born Metric]{Relative Standard Deviation of Metrics - Born Metric}
 \label{rsd-born}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/rsd-paxson.pdf}
+\includegraphics[width=\textwidth]{../figures/rsd-paxson.pdf}
 \caption[Relative Standard Deviation of Metrics - Paxson Metric]{Relative Standard Deviation of Metrics - Paxson Metric}
 \label{rsd-paxson}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/rsd-proposed.pdf}
+\includegraphics[width=\textwidth]{../figures/rsd-proposed.pdf}
 \caption[Relative Standard Deviation of Metrics - Proposed Metric]{Relative Standard Deviation of Metrics - Proposed Metric}
 \label{rsd-proposed}
 \end{figure}
@@ -2210,8 +2209,8 @@ Iodine's server-to-client transfer, with varying scaling factors.
 %\begin{landscape}
 \begin{figure}
 \centering
-%\includegraphics[width=1.4\textwidth]{figures/mpbtt.pdf}
-\includegraphics[width=\textwidth]{figures/mpbtt.pdf}
+%\includegraphics[width=1.4\textwidth]{../figures/mpbtt.pdf}
+\includegraphics[width=\textwidth]{../figures/mpbtt.pdf}
 \caption[Scaling of Detection Metrics by Tunnel Throughput]{These plots show how
 the metrics computed by the various detection methods scale per tunnelling
 application as a function of the tunnel throughput rates. Note that since not
@@ -2235,11 +2234,24 @@ the methods to ensure they detect low-rate tunnels, their ability to detect
 high-rate tunnels is implicitly demonstrated.
 
 It is instructive to observe the relative standard deviations for the various
-tunnel applications and and detection methods at the lowest throughput level,
-ten bytes per second. This is given in table \ref{rsd-minimum}. As can be seen,
-the relative standard deviation is extremely low, well under five percent in
-almost every case, with many samples for the proposed method measuring only a
-few tenths of a percent.
+tunnel applications and detection methods at the lowest throughput level, ten
+bytes per second. This is given in table \ref{rsd-minimum}. As can be seen, the
+relative standard deviation is extremely low, well under five percent in almost
+every case, with many samples for the proposed method measuring only a few
+tenths of a percent.
+
+This tight packing of samples indicates that the normal method of classifying
+detection methods, that is the \emph{receiver operating curve (ROC)}, may not be
+entirely appropriate. Since the data sets involved are not annotated in the
+sense that abnormal events to be detected are identified from normal traffic,
+the concept of a 'true positive' does not exist. Similarly, the concept of true
+and false negatives are equally inapplicable. This leaves false positives as the
+most reasonable metric. Further, since ROCs use the percentile of sample value
+as an axis of display, the tight packing of the samples would result in curves
+that do not convey as much information as in a less tightly packed situation.
+For these reasons, a single representative value in each case (the mean), is
+chosen to represent the collection of values, allowing more information per plot
+to provide context.
 
 \begin{table}
 \centering
@@ -2313,7 +2325,7 @@ greatest interest.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/cnplot.pdf}
+\includegraphics[width=\textwidth]{../figures/cnplot.pdf}
 \caption[Trend of False Positive Rate for Tunnels by Throughput - Naive 
 Metric]{Trend of False Positive Rate for Tunnels by Throughput - Naive Metric}
 \label{cnplot}
@@ -2321,7 +2333,7 @@ Metric]{Trend of False Positive Rate for Tunnels by Throughput - Naive Metric}
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/mpnv.pdf}
+\includegraphics[width=\textwidth]{../figures/mpnv.pdf}
 \caption[Tunnel Detection Performance - Naive Metric]{Tunnel Detection 
 Performance - Naive Metric}
 \label{mpnv}
@@ -2344,7 +2356,7 @@ of duplication in the DNS queries and its impacts were discussed in section
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/cbplot.pdf}
+\includegraphics[width=\textwidth]{../figures/cbplot.pdf}
 \caption[Trend of False Positive Rate for Tunnels by Throughput - Born's 
 Metric]{Trend of False Positive Rate for Tunnels by Throughput - Born's Metric}
 \label{cbplot}
@@ -2352,7 +2364,7 @@ Metric]{Trend of False Positive Rate for Tunnels by Throughput - Born's Metric}
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/mpbv.pdf}
+\includegraphics[width=\textwidth]{../figures/mpbv.pdf}
 \caption[Tunnel Detection Performance - Born's Metric]{Tunnel Detection 
 Performance - Born's Metric}
 \label{mpbv}
@@ -2384,7 +2396,7 @@ function of the data throughput.
 
 %\begin{figure}
 %\centering
-%\includegraphics[width=\textwidth]{figures/mppv.pdf}
+%\includegraphics[width=\textwidth]{../figures/mppv.pdf}
 %\caption[Tunnel Detection Performance - Paxson's Metric]{This visualizes the
 %ability of Paxson's metric to discern a DNS tunnel from normal DNS traffic.}
 %\label{mppv}
@@ -2392,7 +2404,7 @@ function of the data throughput.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/cpplot.pdf}
+\includegraphics[width=\textwidth]{../figures/cpplot.pdf}
 \caption[Trend of False Positive Rate for Tunnels by Throughput - Paxson's 
 Metric]{Trend of False Positive Rate for Tunnels by Throughput - Paxson's 
 Metric}
@@ -2401,7 +2413,7 @@ Metric}
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/mppv-500.pdf}
+\includegraphics[width=\textwidth]{../figures/mppv-500.pdf}
 %\caption[Tunnel Detection Performance - Naive Metric (Truncated View)]{A cropped
 %plot of figure \ref{mppv} that offers more resolution in the smaller metric
 %ranges.}
@@ -2426,7 +2438,7 @@ tunnelling applications as a function of the data throughput.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/chplot.pdf}
+\includegraphics[width=\textwidth]{../figures/chplot.pdf}
 \caption[Trend of False Positive Rate for Tunnels by Throughput - Proposed Metric]{Trend
  of False Positive Rate for Tunnels by Throughput - Proposed Metric}
 \label{chplot}
@@ -2434,14 +2446,14 @@ tunnelling applications as a function of the data throughput.
 
 %\begin{figure}
 %\centering
-%\includegraphics[width=\textwidth]{figures/mphv.pdf}
+%\includegraphics[width=\textwidth]{../figures/mphv.pdf}
 %\caption[Tunnel Detection Performance - Proposed Metric]{This visualizes the
 %ability of the proposed metric to discern a DNS tunnel from normal DNS traffic.}
 %\label{mphv}
 %\end{figure}
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/mphv-100.pdf}
+\includegraphics[width=\textwidth]{../figures/mphv-100.pdf}
 %\caption[Tunnel Detection Performance - Proposed Metric (Truncated View)]{A
 %cropped plot of figure \ref{mphv} that offers more resolution in the smaller
 %metric ranges.}
@@ -2477,7 +2489,7 @@ on a very busy network link.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/cplot.pdf}
+\includegraphics[width=\textwidth]{../figures/cplot.pdf}
 \caption[Chart of Specificity of Detection by Tunnel Application and Detection
 Method]{Comparison of the specificity of classification of a tunnel against
 real-world traffic for the least certain tunnel in each detection scenario
@@ -2498,7 +2510,7 @@ distinguished in this chart.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/cplot2.pdf}
+\includegraphics[width=\textwidth]{../figures/cplot2.pdf}
 \caption[Chart of Certainty of Detection by Tunnel Application and Detection
 Method - 0.80 to 1.00]{Figure \ref{cplot} replotted with a reduced range to
 accentuate small differences.}
@@ -2520,7 +2532,7 @@ chart.
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/cplot3.pdf}
+\includegraphics[width=\textwidth]{../figures/cplot3.pdf}
 \caption[Chart of Certainty of Detection by Tunnel Application and Detection
 Method - 0.95 to 1.00]{Figure \ref{cplot} replotted with a further reduced range to
 accentuate \emph{very} small differences.}
@@ -2627,118 +2639,118 @@ to aid in securing the Internet.
 
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/alexa_iodine_prob_v_english-r.pdf}
+%\includegraphics[width=4in]{../figures/alexa_iodine_prob_v_english-r.pdf}
 %\caption[DNS Query, Iodine and Prob-coded Comparison - Ratio]{A plot comparing the statistical properties of the Alexa top one million domains names, Iodine generated queries, and queries generated by the prob-coding tunnel software. This compares the frequencies of each charater in the three considered sets of output against the baseline of english.}
 %\label{FIGURE_alexa-iodine-prob-v-english-r}
 %\end{figure}
 %
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/alexa_iodine_prob_v_english-a.pdf}
+%\includegraphics[width=4in]{../figures/alexa_iodine_prob_v_english-a.pdf}
 %\caption[DNS Query, Iodine and Prob-coded Comparison - Absolute]{A plot comparing the statistical properties of the Alexa top one million domains names, Iodine generated queries, and queries generated by the prob-coding tunnel software. This compares the absolute frequencies of each charater both sorted by character (dashed) and sorted by frequency (solid).}
 %\label{FIGURE_alexa-iodine-prob-v-english-a}
 %\end{figure}
 %
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/alexa_iodine_v_english-a.pdf}
+%\includegraphics[width=4in]{../figures/alexa_iodine_v_english-a.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/alexa_iodine_v_english-r.pdf}
+%\includegraphics[width=4in]{../figures/alexa_iodine_v_english-r.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/alexa_v_english-a.pdf}
+%\includegraphics[width=4in]{../figures/alexa_v_english-a.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/alexa_v_english-r.pdf}
+%\includegraphics[width=4in]{../figures/alexa_v_english-r.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/markov2-a.pdf}
+%\includegraphics[width=4in]{../figures/markov2-a.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/markov3-a.pdf}
+%\includegraphics[width=4in]{../figures/markov3-a.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/markov-a.pdf}
+%\includegraphics[width=4in]{../figures/markov-a.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/metric-tun_v_norm.pdf}
+%\includegraphics[width=4in]{../figures/metric-tun_v_norm.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/metric-tun_v_norm-norm-zoom.pdf}
+%\includegraphics[width=4in]{../figures/metric-tun_v_norm-norm-zoom.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/metric-tun_v_norm-zoom.pdf}
+%\includegraphics[width=4in]{../figures/metric-tun_v_norm-zoom.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/metric-tun-dns2tcp.pdf}
+%\includegraphics[width=4in]{../figures/metric-tun-dns2tcp.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/metric-tun-dnscat.pdf}
+%\includegraphics[width=4in]{../figures/metric-tun-dnscat.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/metric-tun-iodine.pdf}
+%\includegraphics[width=4in]{../figures/metric-tun-iodine.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/metric-tun-probdns.pdf}
+%\includegraphics[width=4in]{../figures/metric-tun-probdns.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/pdf_convergence.pdf}
+%\includegraphics[width=4in]{../figures/pdf_convergence.pdf}
 %\end{figure}
 %\clearpage
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/pdf_convergence_adjusted.pdf}
+%\includegraphics[width=4in]{../figures/pdf_convergence_adjusted.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/pdf_convergence_adjusted2.pdf}
+%\includegraphics[width=4in]{../figures/pdf_convergence_adjusted2.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/plots_best.pdf}
+%\includegraphics[width=4in]{../figures/plots_best.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/plots_digram.pdf}
+%\includegraphics[width=4in]{../figures/plots_digram.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/plots_markov1.pdf}
+%\includegraphics[width=4in]{../figures/plots_markov1.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/plots_markov2.pdf}
+%\includegraphics[width=4in]{../figures/plots_markov2.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/plots_markov3.pdf}
+%\includegraphics[width=4in]{../figures/plots_markov3.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/plots_unigram.pdf}
+%\includegraphics[width=4in]{../figures/plots_unigram.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/tunnels-freqabs.pdf}
+%\includegraphics[width=4in]{../figures/tunnels-freqabs.pdf}
 %\end{figure}
 %\begin{figure}
 %\centering
-%\includegraphics[width=4in]{figures/tunnels-freqrel.pdf}
+%\includegraphics[width=4in]{../figures/tunnels-freqrel.pdf}
 %\end{figure}
 %\clearpage
 %
@@ -2782,14 +2794,14 @@ While the capture file contains over one billion total packets, only 339,321,911
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/pcap-tpb.png}
+\includegraphics[width=\textwidth]{../figures/pcap-tpb.png}
 \caption[Throughput in Bytes per Second of Packet Capture]{Throughput in bytes per second of the packet capture, with each sample being the average throughput over ten-second windows.}
 \label{pcap-tpb}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{figures/pcap-tpp.png}
+\includegraphics[width=\textwidth]{../figures/pcap-tpp.png}
 \caption[Throughput in Packets per Second of Packet Capture]{Throughput in packets per second of the packet capture, with each sample being the average throughput over ten-second windows.}
 \label{pcap-tpp}
 \end{figure}
@@ -2879,7 +2891,7 @@ yPka52SDxa3D4GXecj9d
 
 \begin{figure}
 \centering
-\includegraphics[width=4in]{figures/encoding_source.png}
+\includegraphics[width=4in]{../figures/encoding_source.png}
 \caption[Encoding Sample - Source (data matrix)]{The base64 encoding of the binary data used in the sample encoding, represented in a data matrix image.}
 \label{FIGURE_encodingsource}
 \end{figure}
@@ -2919,7 +2931,7 @@ information is encoded using this tool.
 \begin{landscape}
 \begin{figure}
 \centering
-\includegraphics[width=1.15\textwidth]{figures/plots_unigram.pdf}
+\includegraphics[width=1.15\textwidth]{../figures/plots_unigram.pdf}
 \caption[Plot of Character Frequencies]{The character frequencies of the small and large encoded samples using both accurate and efficient encoding, as well as the English target distribution sorted by character.}
 \label{FIGURE_frequencies-bytop}
 \end{figure}

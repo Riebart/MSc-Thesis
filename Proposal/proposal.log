@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.22)  21 NOV 2013 15:06
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.2.22)  25 MAR 2014 18:01
 entering extended mode
 **D:/Documents/Projects/Thesis/Proposal/proposal.tex
 (D:/Documents/Projects/Thesis/Proposal/proposal.tex
@@ -347,14 +347,14 @@ LaTeX Info: Redefining \nameref on input line 59.
 (D:\Documents\Projects\Thesis\Proposal\proposal.out)
 (D:\Documents\Projects\Thesis\Proposal\proposal.out)
 \@outlinefile=\write3
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 117.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 114.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <14.4> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 117.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 114.
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]pdfTeX warning (ext4): des
@@ -362,7 +362,7 @@ tination with the same identifier (name{page.1}) has been already used, duplica
 te ignored
 <to be read again> 
                    \relax 
-l.151 \tableofcontents
+l.148 \tableofcontents
                        [1] (D:\Documents\Projects\Thesis\Proposal\proposal.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 4.
 
@@ -402,12 +402,12 @@ i-ca-tion and De-tec-tion Method
  [7]
 Chapter 1.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 193.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 190.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.194 firewalls \item R
+l.191 firewalls \item R
                        eceiving commands or information from a remote source...
 [1
 
@@ -415,36 +415,36 @@ l.194 firewalls \item R
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.236 
+l.233 
        [2]pdfTeX warning (ext4): destination with the same identifier (name{pag
 e.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.270 
+l.269 
        [3]pdfTeX warning (ext4): destination with the same identifier (name{pag
 e.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.292 \newpage
+l.291 \newpage
                [4]
 Chapter 2.
 pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.327 
+l.326 
        [5
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.364 
+l.363 
        [6]pdfTeX warning (ext4): destination with the same identifier (name{pag
 e.7}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.394 
+l.393 
        [7] [8] [9] [10] [11] [12]
 Chapter 3.
 [13
@@ -454,334 +454,334 @@ Chapter 4.
 [26
 
 ] [27] [28] [29] [30]
-<figures/dnssampling-ev_growth.pdf, id=702, 631.35875pt x 322.20375pt>
-File: figures/dnssampling-ev_growth.pdf Graphic file (type pdf)
+<../figures/dnssampling-ev_growth.pdf, id=702, 631.35875pt x 322.20375pt>
+File: ../figures/dnssampling-ev_growth.pdf Graphic file (type pdf)
 
-<use figures/dnssampling-ev_growth.pdf>
-Package pdftex.def Info: figures/dnssampling-ev_growth.pdf used on input line 1
-175.
+<use ../figures/dnssampling-ev_growth.pdf>
+Package pdftex.def Info: ../figures/dnssampling-ev_growth.pdf used on input lin
+e 1174.
 (pdftex.def)             Requested size: 462.26999pt x 235.91473pt.
- [31 <D:/Documents/Projects/Thesis/Proposal/figures/dnssampling-ev_growth.pdf>]
+ [31 <D:/Documents/Projects/Thesis/figures/dnssampling-ev_growth.pdf>]
+<../figures/dnssampling-muerror.pdf, id=726, 361.35pt x 248.93pt>
+File: ../figures/dnssampling-muerror.pdf Graphic file (type pdf)
 
-<figures/dnssampling-muerror.pdf, id=726, 361.35pt x 248.93pt>
-File: figures/dnssampling-muerror.pdf Graphic file (type pdf)
-
-<use figures/dnssampling-muerror.pdf>
-Package pdftex.def Info: figures/dnssampling-muerror.pdf used on input line 121
-7.
+<use ../figures/dnssampling-muerror.pdf>
+Package pdftex.def Info: ../figures/dnssampling-muerror.pdf used on input line 
+1216.
 (pdftex.def)             Requested size: 323.58757pt x 222.9182pt.
 
-<figures/dnssampling-sigmafit.pdf, id=729, 553.06625pt x 251.94125pt>
-File: figures/dnssampling-sigmafit.pdf Graphic file (type pdf)
+<../figures/dnssampling-sigmafit.pdf, id=729, 553.06625pt x 251.94125pt>
+File: ../figures/dnssampling-sigmafit.pdf Graphic file (type pdf)
 
-<use figures/dnssampling-sigmafit.pdf>
-Package pdftex.def Info: figures/dnssampling-sigmafit.pdf used on input line 12
-29.
+<use ../figures/dnssampling-sigmafit.pdf>
+Package pdftex.def Info: ../figures/dnssampling-sigmafit.pdf used on input line
+ 1228.
 (pdftex.def)             Requested size: 462.26999pt x 210.5797pt.
- [32] [33 <D:/Documents/Projects/Thesis/Proposal/figures/dnssampling-muerror.pd
-f> <D:/Documents/Projects/Thesis/Proposal/figures/dnssampling-sigmafit.pdf>] [3
-4
+ [32] [33 <D:/Documents/Projects/Thesis/figures/dnssampling-muerror.pdf> <D:/Do
+cuments/Projects/Thesis/figures/dnssampling-sigmafit.pdf>] [34
 
 ] [35]
 Chapter 5.
 [36
 
-] [37] [38] [39] <figures/caching.pdf, id=818, 641.39626pt x 306.14375pt>
-File: figures/caching.pdf Graphic file (type pdf)
+] [37] [38] [39]
+<../figures/caching.pdf, id=818, 641.39626pt x 306.14375pt>
+File: ../figures/caching.pdf Graphic file (type pdf)
 
-<use figures/caching.pdf>
-Package pdftex.def Info: figures/caching.pdf used on input line 1425.
+<use ../figures/caching.pdf>
+Package pdftex.def Info: ../figures/caching.pdf used on input line 1424.
 (pdftex.def)             Requested size: 462.26999pt x 220.64754pt.
- [40 <D:/Documents/Projects/Thesis/Proposal/figures/caching.pdf>] [41] [42] [43
-]
+ [40 <D:/Documents/Projects/Thesis/figures/caching.pdf>] [41] [42] [43]
 Chapter 6.
 [44
 
 ] [45]
-Overfull \hbox (5.9196pt too wide) in paragraph at lines 1614--1623
+Overfull \hbox (5.9196pt too wide) in paragraph at lines 1613--1622
 []\OT1/cmr/m/n/12 The ex-ist-ing im-ple-men-ta-tions cho-sen for test-ing in th
 is sec-tion are Iodine[[]], DNScat[[]],
  []
 
 [46] [47] [48] [49] [50] [51]
-<figures/tunrates.pdf, id=906, 560.0925pt x 248.93pt>
-File: figures/tunrates.pdf Graphic file (type pdf)
+<../figures/tunrates.pdf, id=906, 560.0925pt x 248.93pt>
+File: ../figures/tunrates.pdf Graphic file (type pdf)
 
-<use figures/tunrates.pdf>
-Package pdftex.def Info: figures/tunrates.pdf used on input line 1814.
+<use ../figures/tunrates.pdf>
+Package pdftex.def Info: ../figures/tunrates.pdf used on input line 1813.
 (pdftex.def)             Requested size: 462.26999pt x 205.46094pt.
- [52 <D:/Documents/Projects/Thesis/Proposal/figures/tunrates.pdf>] <figures/pma
-t.pdf, id=933, 431.6125pt x 264.99pt>
-File: figures/pmat.pdf Graphic file (type pdf)
+ [52 <D:/Documents/Projects/Thesis/figures/tunrates.pdf>] <../figures/pmat.pdf,
+ id=933, 431.6125pt x 264.99pt>
+File: ../figures/pmat.pdf Graphic file (type pdf)
 
-<use figures/pmat.pdf>
-Package pdftex.def Info: figures/pmat.pdf used on input line 1860.
+<use ../figures/pmat.pdf>
+Package pdftex.def Info: ../figures/pmat.pdf used on input line 1859.
 (pdftex.def)             Requested size: 462.26999pt x 283.82358pt.
- [53] [54 <D:/Documents/Projects/Thesis/Proposal/figures/pmat.pdf>] <figures/pm
-qr.pdf, id=955, 431.6125pt x 264.99pt>
-File: figures/pmqr.pdf Graphic file (type pdf)
+ [53] [54 <D:/Documents/Projects/Thesis/figures/pmat.pdf>] <../figures/pmqr.pdf
+, id=955, 431.6125pt x 264.99pt>
+File: ../figures/pmqr.pdf Graphic file (type pdf)
 
-<use figures/pmqr.pdf>
-Package pdftex.def Info: figures/pmqr.pdf used on input line 1891.
+<use ../figures/pmqr.pdf>
+Package pdftex.def Info: ../figures/pmqr.pdf used on input line 1890.
 (pdftex.def)             Requested size: 462.26999pt x 283.82358pt.
- [55 <D:/Documents/Projects/Thesis/Proposal/figures/pmqr.pdf>] <figures/pmqr-10
-0k.pdf, id=978, 431.6125pt x 264.99pt>
-File: figures/pmqr-100k.pdf Graphic file (type pdf)
+ [55 <D:/Documents/Projects/Thesis/figures/pmqr.pdf>]
+<../figures/pmqr-100k.pdf, id=978, 431.6125pt x 264.99pt>
+File: ../figures/pmqr-100k.pdf Graphic file (type pdf)
 
-<use figures/pmqr-100k.pdf>
-Package pdftex.def Info: figures/pmqr-100k.pdf used on input line 1913.
+<use ../figures/pmqr-100k.pdf>
+Package pdftex.def Info: ../figures/pmqr-100k.pdf used on input line 1912.
 (pdftex.def)             Requested size: 462.26999pt x 283.82358pt.
- [56 <D:/Documents/Projects/Thesis/Proposal/figures/pmqr-100k.pdf>] <figures/pp
-ia-naive.pdf, id=1002, 528.97626pt x 264.99pt>
-File: figures/ppia-naive.pdf Graphic file (type pdf)
+ [56 <D:/Documents/Projects/Thesis/figures/pmqr-100k.pdf>] <../figures/ppia-nai
+ve.pdf, id=1002, 528.97626pt x 264.99pt>
+File: ../figures/ppia-naive.pdf Graphic file (type pdf)
 
-<use figures/ppia-naive.pdf>
-Package pdftex.def Info: figures/ppia-naive.pdf used on input line 1947.
+<use ../figures/ppia-naive.pdf>
+Package pdftex.def Info: ../figures/ppia-naive.pdf used on input line 1946.
 (pdftex.def)             Requested size: 462.26999pt x 231.57455pt.
- [57 <D:/Documents/Projects/Thesis/Proposal/figures/ppia-naive.pdf>] <figures/p
-pia-born.pdf, id=1025, 528.97626pt x 264.99pt>
-File: figures/ppia-born.pdf Graphic file (type pdf)
+ [57 <D:/Documents/Projects/Thesis/figures/ppia-naive.pdf>] <../figures/ppia-bo
+rn.pdf, id=1025, 528.97626pt x 264.99pt>
+File: ../figures/ppia-born.pdf Graphic file (type pdf)
 
-<use figures/ppia-born.pdf>
-Package pdftex.def Info: figures/ppia-born.pdf used on input line 1974.
+<use ../figures/ppia-born.pdf>
+Package pdftex.def Info: ../figures/ppia-born.pdf used on input line 1973.
 (pdftex.def)             Requested size: 462.26999pt x 231.57455pt.
- [58 <D:/Documents/Projects/Thesis/Proposal/figures/ppia-born.pdf>] <figures/pp
-ia-paxson.pdf, id=1046, 528.97626pt x 264.99pt>
-File: figures/ppia-paxson.pdf Graphic file (type pdf)
+ [58 <D:/Documents/Projects/Thesis/figures/ppia-born.pdf>] <../figures/ppia-pax
+son.pdf, id=1046, 528.97626pt x 264.99pt>
+File: ../figures/ppia-paxson.pdf Graphic file (type pdf)
 
-<use figures/ppia-paxson.pdf>
-Package pdftex.def Info: figures/ppia-paxson.pdf used on input line 1997.
+<use ../figures/ppia-paxson.pdf>
+Package pdftex.def Info: ../figures/ppia-paxson.pdf used on input line 1996.
 (pdftex.def)             Requested size: 462.26999pt x 231.57455pt.
 
-<figures/ppia-proposed.pdf, id=1047, 528.97626pt x 264.99pt>
-File: figures/ppia-proposed.pdf Graphic file (type pdf)
+<../figures/ppia-proposed.pdf, id=1047, 528.97626pt x 264.99pt>
+File: ../figures/ppia-proposed.pdf Graphic file (type pdf)
 
-<use figures/ppia-proposed.pdf>
-Package pdftex.def Info: figures/ppia-proposed.pdf used on input line 2010.
+<use ../figures/ppia-proposed.pdf>
+Package pdftex.def Info: ../figures/ppia-proposed.pdf used on input line 2009.
 (pdftex.def)             Requested size: 462.26999pt x 231.57455pt.
- [59 <D:/Documents/Projects/Thesis/Proposal/figures/ppia-paxson.pdf>] [60 <D:/D
-ocuments/Projects/Thesis/Proposal/figures/ppia-proposed.pdf>] [61]
-<figures/ppia-naive2proposed.pdf, id=1095, 528.97626pt x 264.99pt>
-File: figures/ppia-naive2proposed.pdf Graphic file (type pdf)
+ [59 <D:/Documents/Projects/Thesis/figures/ppia-paxson.pdf>] [60 <D:/Documents/
+Projects/Thesis/figures/ppia-proposed.pdf>]
+[61] <../figures/ppia-naive2proposed.pdf, id=1095, 528.97626pt x 264.99pt>
+File: ../figures/ppia-naive2proposed.pdf Graphic file (type pdf)
 
-<use figures/ppia-naive2proposed.pdf>
-Package pdftex.def Info: figures/ppia-naive2proposed.pdf used on input line 207
-2.
+<use ../figures/ppia-naive2proposed.pdf>
+Package pdftex.def Info: ../figures/ppia-naive2proposed.pdf used on input line 
+2071.
 (pdftex.def)             Requested size: 462.26999pt x 231.57455pt.
- [62 <D:/Documents/Projects/Thesis/Proposal/figures/ppia-naive2proposed.pdf>] [
-63]
+ [62 <D:/Documents/Projects/Thesis/figures/ppia-naive2proposed.pdf>] [63]
 Chapter 7.
 [64
 
-] <figures/rsd-naive.pdf, id=1130, 447.6725pt x 228.855pt>
-File: figures/rsd-naive.pdf Graphic file (type pdf)
+] <../figures/rsd-naive.pdf, id=1130, 447.6725pt x 228.855pt>
+File: ../figures/rsd-naive.pdf Graphic file (type pdf)
 
-<use figures/rsd-naive.pdf>
-Package pdftex.def Info: figures/rsd-naive.pdf used on input line 2138.
+<use ../figures/rsd-naive.pdf>
+Package pdftex.def Info: ../figures/rsd-naive.pdf used on input line 2137.
 (pdftex.def)             Requested size: 462.26999pt x 236.3239pt.
 
-<figures/rsd-born.pdf, id=1131, 447.6725pt x 228.855pt>
-File: figures/rsd-born.pdf Graphic file (type pdf)
+<../figures/rsd-born.pdf, id=1131, 447.6725pt x 228.855pt>
+File: ../figures/rsd-born.pdf Graphic file (type pdf)
 
-<use figures/rsd-born.pdf>
-Package pdftex.def Info: figures/rsd-born.pdf used on input line 2145.
+<use ../figures/rsd-born.pdf>
+Package pdftex.def Info: ../figures/rsd-born.pdf used on input line 2144.
 (pdftex.def)             Requested size: 462.26999pt x 236.3239pt.
 
-<figures/rsd-paxson.pdf, id=1132, 447.6725pt x 228.855pt>
-File: figures/rsd-paxson.pdf Graphic file (type pdf)
+<../figures/rsd-paxson.pdf, id=1132, 447.6725pt x 228.855pt>
+File: ../figures/rsd-paxson.pdf Graphic file (type pdf)
 
-<use figures/rsd-paxson.pdf>
-Package pdftex.def Info: figures/rsd-paxson.pdf used on input line 2152.
+<use ../figures/rsd-paxson.pdf>
+Package pdftex.def Info: ../figures/rsd-paxson.pdf used on input line 2151.
 (pdftex.def)             Requested size: 462.26999pt x 236.3239pt.
 
-<figures/rsd-proposed.pdf, id=1133, 447.6725pt x 228.855pt>
-File: figures/rsd-proposed.pdf Graphic file (type pdf)
+<../figures/rsd-proposed.pdf, id=1133, 447.6725pt x 228.855pt>
+File: ../figures/rsd-proposed.pdf Graphic file (type pdf)
 
-<use figures/rsd-proposed.pdf>
-Package pdftex.def Info: figures/rsd-proposed.pdf used on input line 2159.
+<use ../figures/rsd-proposed.pdf>
+Package pdftex.def Info: ../figures/rsd-proposed.pdf used on input line 2158.
 (pdftex.def)             Requested size: 462.26999pt x 236.3239pt.
- [65 <D:/Documents/Projects/Thesis/Proposal/figures/rsd-naive.pdf>] [66 <D:/Doc
-uments/Projects/Thesis/Proposal/figures/rsd-born.pdf> <D:/Documents/Projects/Th
-esis/Proposal/figures/rsd-paxson.pdf>] [67 <D:/Documents/Projects/Thesis/Propos
-al/figures/rsd-proposed.pdf>]
-<figures/mpbtt.pdf, id=1213, 536.0025pt x 248.93pt>
-File: figures/mpbtt.pdf Graphic file (type pdf)
- <use figures/mpbtt.pdf>
-Package pdftex.def Info: figures/mpbtt.pdf used on input line 2214.
+ [65 <D:/Documents/Projects/Thesis/figures/rsd-naive.pdf>] [66 <D:/Documents/Pr
+ojects/Thesis/figures/rsd-born.pdf> <D:/Documents/Projects/Thesis/figures/rsd-p
+axson.pdf>] [67 <D:/Documents/Projects/Thesis/figures/rsd-proposed.pdf>]
+<../figures/mpbtt.pdf, id=1213, 536.0025pt x 248.93pt>
+File: ../figures/mpbtt.pdf Graphic file (type pdf)
+
+<use ../figures/mpbtt.pdf>
+Package pdftex.def Info: ../figures/mpbtt.pdf used on input line 2213.
 (pdftex.def)             Requested size: 462.26999pt x 214.68715pt.
+ [68 <D:/Documents/Projects/Thesis/figures/mpbtt.pdf>] [69] [70] <../figures/cn
+plot.pdf, id=1244, 447.6725pt x 232.87pt>
+File: ../figures/cnplot.pdf Graphic file (type pdf)
 
-[68 <D:/Documents/Projects/Thesis/Proposal/figures/mpbtt.pdf>] [69]
-<figures/cnplot.pdf, id=1240, 447.6725pt x 232.87pt>
-File: figures/cnplot.pdf Graphic file (type pdf)
- <use figures/cnplot.pdf>
-Package pdftex.def Info: figures/cnplot.pdf used on input line 2316.
+<use ../figures/cnplot.pdf>
+Package pdftex.def Info: ../figures/cnplot.pdf used on input line 2328.
 (pdftex.def)             Requested size: 462.26999pt x 240.46992pt.
 
-<figures/mpnv.pdf, id=1241, 447.6725pt x 247.92625pt>
-File: figures/mpnv.pdf Graphic file (type pdf)
- <use figures/mpnv.pdf>
-Package pdftex.def Info: figures/mpnv.pdf used on input line 2324.
+<../figures/mpnv.pdf, id=1245, 447.6725pt x 247.92625pt>
+File: ../figures/mpnv.pdf Graphic file (type pdf)
+
+<use ../figures/mpnv.pdf>
+Package pdftex.def Info: ../figures/mpnv.pdf used on input line 2336.
 (pdftex.def)             Requested size: 462.26999pt x 256.01756pt.
 
-<figures/cbplot.pdf, id=1245, 447.6725pt x 232.87pt>
-File: figures/cbplot.pdf Graphic file (type pdf)
- <use figures/cbplot.pdf>
-Package pdftex.def Info: figures/cbplot.pdf used on input line 2347.
+<../figures/cbplot.pdf, id=1249, 447.6725pt x 232.87pt>
+File: ../figures/cbplot.pdf Graphic file (type pdf)
+
+<use ../figures/cbplot.pdf>
+Package pdftex.def Info: ../figures/cbplot.pdf used on input line 2359.
 (pdftex.def)             Requested size: 462.26999pt x 240.46992pt.
 
-[70] [71 <D:/Documents/Projects/Thesis/Proposal/figures/cnplot.pdf> <D:/Documen
-ts/Projects/Thesis/Proposal/figures/mpnv.pdf>]
-<figures/mpbv.pdf, id=1282, 447.6725pt x 247.92625pt>
-File: figures/mpbv.pdf Graphic file (type pdf)
- <use figures/mpbv.pdf>
-Package pdftex.def Info: figures/mpbv.pdf used on input line 2355.
-(pdftex.def)             Requested size: 462.26999pt x 256.01756pt.
+<../figures/mpbv.pdf, id=1250, 447.6725pt x 247.92625pt>
+File: ../figures/mpbv.pdf Graphic file (type pdf)
 
-[72 <D:/Documents/Projects/Thesis/Proposal/figures/cbplot.pdf>]
-<figures/cpplot.pdf, id=1305, 447.6725pt x 232.87pt>
-File: figures/cpplot.pdf Graphic file (type pdf)
- <use figures/cpplot.pdf>
-Package pdftex.def Info: figures/cpplot.pdf used on input line 2395.
+<use ../figures/mpbv.pdf>
+Package pdftex.def Info: ../figures/mpbv.pdf used on input line 2367.
+(pdftex.def)             Requested size: 462.26999pt x 256.01756pt.
+ [71 <D:/Documents/Projects/Thesis/figures/cnplot.pdf>] [72 <D:/Documents/Proje
+cts/Thesis/figures/mpnv.pdf> <D:/Documents/Projects/Thesis/figures/cbplot.pdf>]
+ [73 <D:/Documents/Projects/Thesis/figures/mpbv.pdf>]
+<../figures/cpplot.pdf, id=1320, 447.6725pt x 232.87pt>
+File: ../figures/cpplot.pdf Graphic file (type pdf)
+
+<use ../figures/cpplot.pdf>
+Package pdftex.def Info: ../figures/cpplot.pdf used on input line 2407.
 (pdftex.def)             Requested size: 462.26999pt x 240.46992pt.
 
-<figures/mppv-500.pdf, id=1306, 447.6725pt x 247.92625pt>
-File: figures/mppv-500.pdf Graphic file (type pdf)
+<../figures/mppv-500.pdf, id=1321, 447.6725pt x 247.92625pt>
+File: ../figures/mppv-500.pdf Graphic file (type pdf)
 
-<use figures/mppv-500.pdf>
-Package pdftex.def Info: figures/mppv-500.pdf used on input line 2404.
+<use ../figures/mppv-500.pdf>
+Package pdftex.def Info: ../figures/mppv-500.pdf used on input line 2416.
 (pdftex.def)             Requested size: 462.26999pt x 256.01756pt.
- [73 <D:/Documents/Projects/Thesis/Proposal/figures/mpbv.pdf>] [74 <D:/Document
-s/Projects/Thesis/Proposal/figures/cpplot.pdf> <D:/Documents/Projects/Thesis/Pr
-oposal/figures/mppv-500.pdf>]
-<figures/chplot.pdf, id=1355, 447.6725pt x 233.87375pt>
-File: figures/chplot.pdf Graphic file (type pdf)
+ [74 <D:/Documents/Projects/Thesis/figures/cpplot.pdf>] <../figures/chplot.pdf,
+ id=1344, 447.6725pt x 233.87375pt>
+File: ../figures/chplot.pdf Graphic file (type pdf)
 
-<use figures/chplot.pdf>
-Package pdftex.def Info: figures/chplot.pdf used on input line 2429.
+<use ../figures/chplot.pdf>
+Package pdftex.def Info: ../figures/chplot.pdf used on input line 2441.
 (pdftex.def)             Requested size: 462.26999pt x 241.50642pt.
 
-<figures/mphv-100.pdf, id=1356, 447.6725pt x 247.92625pt>
-File: figures/mphv-100.pdf Graphic file (type pdf)
+<../figures/mphv-100.pdf, id=1345, 447.6725pt x 247.92625pt>
+File: ../figures/mphv-100.pdf Graphic file (type pdf)
 
-<use figures/mphv-100.pdf>
-Package pdftex.def Info: figures/mphv-100.pdf used on input line 2444.
+<use ../figures/mphv-100.pdf>
+Package pdftex.def Info: ../figures/mphv-100.pdf used on input line 2456.
 (pdftex.def)             Requested size: 462.26999pt x 256.01756pt.
- [75 <D:/Documents/Projects/Thesis/Proposal/figures/chplot.pdf>] <figures/cplot
-.pdf, id=1378, 440.64626pt x 240.9pt>
-File: figures/cplot.pdf Graphic file (type pdf)
+ [75 <D:/Documents/Projects/Thesis/figures/mppv-500.pdf>] [76 <D:/Documents/Pro
+jects/Thesis/figures/chplot.pdf> <D:/Documents/Projects/Thesis/figures/mphv-100
+.pdf>]
+<../figures/cplot.pdf, id=1393, 440.64626pt x 240.9pt>
+File: ../figures/cplot.pdf Graphic file (type pdf)
 
-<use figures/cplot.pdf>
-Package pdftex.def Info: figures/cplot.pdf used on input line 2480.
+<use ../figures/cplot.pdf>
+Package pdftex.def Info: ../figures/cplot.pdf used on input line 2492.
 (pdftex.def)             Requested size: 462.26999pt x 252.7319pt.
- [76 <D:/Documents/Projects/Thesis/Proposal/figures/mphv-100.pdf>] <figures/cpl
-ot2.pdf, id=1395, 440.64626pt x 240.9pt>
-File: figures/cplot2.pdf Graphic file (type pdf)
+ [77 <D:/Documents/Projects/Thesis/figures/cplot.pdf>] <../figures/cplot2.pdf, 
+id=1413, 440.64626pt x 240.9pt>
+File: ../figures/cplot2.pdf Graphic file (type pdf)
 
-<use figures/cplot2.pdf>
-Package pdftex.def Info: figures/cplot2.pdf used on input line 2501.
+<use ../figures/cplot2.pdf>
+Package pdftex.def Info: ../figures/cplot2.pdf used on input line 2513.
 (pdftex.def)             Requested size: 462.26999pt x 252.7319pt.
- [77 <D:/Documents/Projects/Thesis/Proposal/figures/cplot.pdf>] <figures/cplot3
-.pdf, id=1417, 440.64626pt x 240.9pt>
-File: figures/cplot3.pdf Graphic file (type pdf)
+ [78 <D:/Documents/Projects/Thesis/figures/cplot2.pdf>] <../figures/cplot3.pdf,
+ id=1519, 440.64626pt x 240.9pt>
+File: ../figures/cplot3.pdf Graphic file (type pdf)
 
-<use figures/cplot3.pdf>
-Package pdftex.def Info: figures/cplot3.pdf used on input line 2523.
+<use ../figures/cplot3.pdf>
+Package pdftex.def Info: ../figures/cplot3.pdf used on input line 2535.
 (pdftex.def)             Requested size: 462.26999pt x 252.7319pt.
- [78 <D:/Documents/Projects/Thesis/Proposal/figures/cplot2.pdf>] [79 <D:/Docume
-nts/Projects/Thesis/Proposal/figures/cplot3.pdf>]
+ [79 <D:/Documents/Projects/Thesis/figures/cplot3.pdf>] [80]
 Chapter 8.
-[80
+[81
 
-] [81] [82] [83
+] [82] [83] [84
 
 
 ]
 Appendix A.
-<figures/pcap-tpb.png, id=1661, 615.16225pt x 303.96762pt>
-File: figures/pcap-tpb.png Graphic file (type png)
+<../figures/pcap-tpb.png, id=1665, 615.16225pt x 303.96762pt>
+File: ../figures/pcap-tpb.png Graphic file (type png)
 
-<use figures/pcap-tpb.png>
-Package pdftex.def Info: figures/pcap-tpb.png used on input line 2785.
+<use ../figures/pcap-tpb.png>
+Package pdftex.def Info: ../figures/pcap-tpb.png used on input line 2797.
 (pdftex.def)             Requested size: 462.26999pt x 228.4204pt.
- [84
+ [85
 
 ]
-<figures/pcap-tpp.png, id=1666, 615.16225pt x 301.51044pt>
-File: figures/pcap-tpp.png Graphic file (type png)
+<../figures/pcap-tpp.png, id=1670, 615.16225pt x 301.51044pt>
+File: ../figures/pcap-tpp.png Graphic file (type png)
 
-<use figures/pcap-tpp.png>
-Package pdftex.def Info: figures/pcap-tpp.png used on input line 2792.
+<use ../figures/pcap-tpp.png>
+Package pdftex.def Info: ../figures/pcap-tpp.png used on input line 2804.
 (pdftex.def)             Requested size: 462.26999pt x 226.57393pt.
- [85 <D:/Documents/Projects/Thesis/Proposal/figures/pcap-tpb.png (PNG copy)>] [
-86 <D:/Documents/Projects/Thesis/Proposal/figures/pcap-tpp.png (PNG copy)>]
+ [86 <D:/Documents/Projects/Thesis/figures/pcap-tpb.png (PNG copy)>] [87 <D:/Do
+cuments/Projects/Thesis/figures/pcap-tpp.png (PNG copy)>]
 Appendix B.
-[87
+[88
 
 ]
-Overfull \hbox (7.03024pt too wide) in paragraph at lines 2875--2875
+Overfull \hbox (7.03024pt too wide) in paragraph at lines 2887--2887
 []\OT1/cmtt/m/n/12 HEzQcP9uxPOzeOB1SfRP+DQ7x3X5dTA1WF3vpcnO5kgLQQEP7xnUrnUy7U8I
 SNdbNQd+8da64+Ci[] 
  []
 
 
-Overfull \hbox (7.03024pt too wide) in paragraph at lines 2875--2875
+Overfull \hbox (7.03024pt too wide) in paragraph at lines 2887--2887
 []\OT1/cmtt/m/n/12 nNBRvu3TRlG0KJvLzb6QDBWqxVfa4VeAU+cSvj+uzoajp2F0jd5/csHxJQlg
 uoeqT76pq8oStoLG[] 
  []
 
 
-Overfull \hbox (7.03024pt too wide) in paragraph at lines 2875--2875
+Overfull \hbox (7.03024pt too wide) in paragraph at lines 2887--2887
 []\OT1/cmtt/m/n/12 3k48PZWuebgweZx5KdxAgUfN7/kvzwBzG7O+9B7J/O8y6BfGz6In0H+LuDCO
 sFqMljljX3SkgJq/[] 
  []
 
-<figures/encoding_source.png, id=1684, 782.925pt x 782.925pt>
-File: figures/encoding_source.png Graphic file (type png)
+<../figures/encoding_source.png, id=1688, 782.925pt x 782.925pt>
+File: ../figures/encoding_source.png Graphic file (type png)
 
-<use figures/encoding_source.png>
-Package pdftex.def Info: figures/encoding_source.png used on input line 2882.
+<use ../figures/encoding_source.png>
+Package pdftex.def Info: ../figures/encoding_source.png used on input line 2894
+.
 (pdftex.def)             Requested size: 289.07999pt x 289.0804pt.
 
-Overfull \hbox (7.03024pt too wide) in paragraph at lines 2896--2896
+Overfull \hbox (7.03024pt too wide) in paragraph at lines 2908--2908
 []\OT1/cmtt/m/n/12 " mfeo  hnhaeeeewsao os eewk es fsemroh eeeewthesdre s sol s
 reese ea hrzltse[] 
  []
 
 
-Overfull \hbox (31.73026pt too wide) in paragraph at lines 2896--2896
+Overfull \hbox (31.73026pt too wide) in paragraph at lines 2908--2908
 []\OT1/cmtt/m/n/12 wesrnyemnpaoonef  ht   hsheawnfdemue stntleewth    home esai
 u s feesgealne seaoa[] 
  []
 
 
-Overfull \hbox (19.38025pt too wide) in paragraph at lines 2896--2896
+Overfull \hbox (19.38025pt too wide) in paragraph at lines 2908--2908
 []\OT1/cmtt/m/n/12 hweeeesoltsnahao esde hgmuo weeeeewyl  haoesroo     frmeshti
 eest ewad svikefui[] 
  []
 
 
-Overfull \hbox (19.38025pt too wide) in paragraph at lines 2896--2896
+Overfull \hbox (19.38025pt too wide) in paragraph at lines 2908--2908
 []\OT1/cmtt/m/n/12 hnceslphstestidau eeahl hrosoan wrthaa ft  heabpeeses eeeeew
 rsn    hrlucne ewr[] 
  []
 
-[88] [89] [90 <D:/Documents/Projects/Thesis/Proposal/figures/encoding_source.pn
-g>] <figures/plots_unigram.pdf, id=1701, 1084.05pt x 921.20964pt>
-File: figures/plots_unigram.pdf Graphic file (type pdf)
+[89] [90] [91 <D:/Documents/Projects/Thesis/figures/encoding_source.png>]
+<../figures/plots_unigram.pdf, id=1705, 1084.05pt x 921.20964pt>
+File: ../figures/plots_unigram.pdf Graphic file (type pdf)
 
-<use figures/plots_unigram.pdf>
-Package pdftex.def Info: figures/plots_unigram.pdf used on input line 2922.
+<use ../figures/plots_unigram.pdf>
+Package pdftex.def Info: ../figures/plots_unigram.pdf used on input line 2934.
 (pdftex.def)             Requested size: 531.60765pt x 451.76215pt.
 
 
-LaTeX Warning: Float too large for page by 30.82547pt on input line 2925.
+LaTeX Warning: Float too large for page by 30.82547pt on input line 2937.
 
-[91 <D:/Documents/Projects/Thesis/Proposal/figures/plots_unigram.pdf>] [92
+[92 <D:/Documents/Projects/Thesis/figures/plots_unigram.pdf>] [93
 
 
-]
-[93] [94] [95] [96] [97] (D:\Documents\Projects\Thesis\Proposal\proposal.bbl
-[98
+] [94]
+[95] [96] [97] [98] (D:\Documents\Projects\Thesis\Proposal\proposal.bbl
+[99
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 101--106
@@ -794,30 +794,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 101--106
 tywire . com / 2009 / 07 /$
  []
 
-[99]
+[100]
 Missing character: There is no Â in font cmr12!
 Missing character: There is no · in font cmr12!
- [100] [101] [102]
+ [101] [102] [103]
 Underfull \hbox (badness 10000) in paragraph at lines 302--307
 $\OT1/cmtt/m/n/12 morepypy . blogspot . com / 2011 / 08 / pypy-[]is-[]faster-[]
 than-[]c-[]again-[]string . html$[][]\OT1/cmr/m/n/12 ,
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3190.
- [103]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 3190.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 3202.
+ [104]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 3202.
  (D:\Documents\Projects\Thesis\Proposal\proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3190.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3190.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 3202.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 3202.
 
 Package rerunfilecheck Info: File `proposal.out' has not changed.
 (rerunfilecheck)             Checksum: 5AE218C1F8690323D4FE4807A9691775;3856.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3190.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 3202.
  ) 
 Here is how much of TeX's memory you used:
- 6969 strings out of 493921
- 99934 string characters out of 3147276
+ 6970 strings out of 493921
+ 100341 string characters out of 3147276
  188283 words of memory out of 3000000
  9857 multiletter control sequences out of 15000+200000
  15074 words of font info for 57 fonts, out of 3000000 for 9000
@@ -883,9 +883,9 @@ iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9
 ype1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmtt12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/symbols/msbm10.pfb>
-Output written on proposal.pdf (111 pages, 29784790 bytes).
+Output written on proposal.pdf (112 pages, 29786040 bytes).
 PDF statistics:
- 1938 PDF objects out of 2073 (max. 8388607)
- 287 named destinations out of 1000 (max. 500000)
+ 1942 PDF objects out of 2073 (max. 8388607)
+ 288 named destinations out of 1000 (max. 500000)
  582 words of extra memory for PDF output out of 10000 (max. 10000000)
 
