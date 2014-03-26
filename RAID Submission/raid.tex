@@ -306,48 +306,48 @@ characteristic trait or property that the DNS tunnel will exhibit. If a tunnel
 can be crafted to not exhibit that feature, then those detection strategies will
 normally fail in their detection.
 
-\subsection{General Covert Channel or Anomaly Detection Research}
+%\subsection{General Covert Channel or Anomaly Detection Research}
+%
+%All of the work in this section is aimed at detection of general covert
+%channels, and does not specifically focus on DNS tunnel detection.
+%
+%(Browne, 1994)\cite{Browne1994} establishes an entropy conservation based
+%approach for testing the completeness of general (that is, not specific to DNS)
+%covert channel analysis and detection methodologies. (Shaffer,
+%2008)\cite{Shaffer2008} Proposes a Security Domain model for assessing the
+%surface of a piece of software for exploitable covert channels. (Ray,
+%2008)\cite{Ray2008} proposes a protocol for use in a covert channel that
+%incorporates stealth, low overhead, data integrity, data confidentiality, and
+%data reliability. This protocol can be used on top of any other covert channel
+%transport method (ICMP, IP, HTTP, DNS, etc\ldots)
+%
+%(Horenbeeck, 2006)\cite{Horenbeeck2006} discusses, briefly, DNS tunnels and
+%their implications and includes a mention of proxying DNS requests is given as a
+%potential solution but without examining the other options. The rest of the
+%paper discusses the risk management and policy based mitigations that can be
+%applied to covert channels in general. (Moskowitz, 2003)\cite{Moskowitz2003}
+%investigates the link between anonymity and covert channels. (Newman,
+%2007)\cite{Newman2007} discusses covert channels in a broad sense, examining the
+%various types of covert channels along with the relationship between covert
+%communication, cryptography, steganography and secrets. (Okamura,
+%2010)\cite{Okamura2010} discusses a fascinating type of covert channel for
+%communication between virtual machines that share a physical host involving the
+%manipulation of host CPU load. Tunnel Hunter\cite{Dusi2009} is an application
+%that aims for general covert channel detection over a variety of tunnelling
+%communication channels.
+%
+%\subsection{Non-DNS Related Research}
+%
+%(Bauer, 2003)\cite{Bauer2003} discusses a new type of HTTP-based covert channel
+%that adds the unwitting web browser application to the anonymity set. (Borders,
+%2004)\cite{Borders2004} discusses a method of detecting data egress using
+%HTTP-based covert channels. (Cabuk, 2004)\cite{Cabuk2004} and (Cabuk,
+%2009)\cite{Cabuk2009} discuss the design and detection of IP (Internet Protocol)
+%based covert timing channels. (Gianvecchio, 2007)\cite{Gianvecchio2007}
+%discusses an entropy-based approach to detecting covert timing channels on the
+%Internet based on their effect on the original process' entropy properties.
 
-All of the work in this section is aimed at detection of general covert
-channels, and does not specifically focus on DNS tunnel detection.
-
-(Browne, 1994)\cite{Browne1994} establishes an entropy conservation based
-approach for testing the completeness of general (that is, not specific to DNS)
-covert channel analysis and detection methodologies. (Shaffer,
-2008)\cite{Shaffer2008} Proposes a Security Domain model for assessing the
-surface of a piece of software for exploitable covert channels. (Ray,
-2008)\cite{Ray2008} proposes a protocol for use in a covert channel that
-incorporates stealth, low overhead, data integrity, data confidentiality, and
-data reliability. This protocol can be used on top of any other covert channel
-transport method (ICMP, IP, HTTP, DNS, etc\ldots)
-
-(Horenbeeck, 2006)\cite{Horenbeeck2006} discusses, briefly, DNS tunnels and
-their implications and includes a mention of proxying DNS requests is given as a
-potential solution but without examining the other options. The rest of the
-paper discusses the risk management and policy based mitigations that can be
-applied to covert channels in general. (Moskowitz, 2003)\cite{Moskowitz2003}
-investigates the link between anonymity and covert channels. (Newman,
-2007)\cite{Newman2007} discusses covert channels in a broad sense, examining the
-various types of covert channels along with the relationship between covert
-communication, cryptography, steganography and secrets. (Okamura,
-2010)\cite{Okamura2010} discusses a fascinating type of covert channel for
-communication between virtual machines that share a physical host involving the
-manipulation of host CPU load. Tunnel Hunter\cite{Dusi2009} is an application
-that aims for general covert channel detection over a variety of tunnelling
-communication channels.
-
-\subsection{Non-DNS Related Research}
-
-(Bauer, 2003)\cite{Bauer2003} discusses a new type of HTTP-based covert channel
-that adds the unwitting web browser application to the anonymity set. (Borders,
-2004)\cite{Borders2004} discusses a method of detecting data egress using
-HTTP-based covert channels. (Cabuk, 2004)\cite{Cabuk2004} and (Cabuk,
-2009)\cite{Cabuk2009} discuss the design and detection of IP (Internet Protocol)
-based covert timing channels. (Gianvecchio, 2007)\cite{Gianvecchio2007}
-discusses an entropy-based approach to detecting covert timing channels on the
-Internet based on their effect on the original process' entropy properties.
-
-\subsection{DNS Covert Channel Research}
+%\subsection{DNS Covert Channel Research}
 \label{litreview-dns}
 The SANS
 Institutes's InfoSec Reading Room published a report on the design and detection
@@ -1166,32 +1166,48 @@ operation times and slower performance.}
 %decreasing performance over time while no such decrease for larger times is
 %observed when run under Cython.
 
+%%\begin{figure}
+%%\centering
+%%\includegraphics[width=0.75\textwidth]{../figures/pmqr.pdf}
+%%\caption[Performance of Analysis Method and Python Interpreter on Real World
+%%Data]{This plot shows the performance of the detection methods and Python
+%%interpreters on real world DNS traffic. The output is packet processing performance as time
+%%progresses and more packets are processed by the script. As more packets are fed
+%%into the script, inefficiencies in the methods and/or the Python interpreters
+%%themselves become observable in the degradation of performance.}
+%%\label{pmqr}
+%%\end{figure}
+
 \begin{figure}
 \centering
-\includegraphics[width=0.75\textwidth]{../figures/pmqr.pdf}
-\caption[Performance of Analysis Method and Python Interpreter on Real World
-Data]{This plot shows the performance of the detection methods and Python
+\subfigure[Performance of Analysis Method and Python Interpreter on Real World Data]{\includegraphics[width=0.48\textwidth]{../figures/pmqr.pdf}\label{pmqr}}
+\subfigure[Performance of Analysis Method and Python Interpreter on Real World Data - Early Time]{\includegraphics[width=0.48\textwidth]{../figures/pmqr-100k.pdf}\label{pmqr-100k}}
+\end{figure}
+
+Figure \ref{pmqr} shows the performance of the detection methods and Python
 interpreters on real world DNS traffic. The output is packet processing performance as time
 progresses and more packets are processed by the script. As more packets are fed
 into the script, inefficiencies in the methods and/or the Python interpreters
-themselves become observable in the degradation of performance.}
-\label{pmqr}
-\end{figure}
+themselves become observable in the degradation of performance.
 
 %Figure \ref{pmqr-100k} shows the same data, but with a limited scale allowing
 %early-time behaviour to be examined. Note that the ramp-up of PyPy's JIT
 %components is observed in the very early time followed by a very consistent
 %processing rate.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.75\textwidth]{../figures/pmqr-100k.pdf}
-\caption[Performance of Analysis Method and Python Interpreter on Real World
-Data - Early Time]{This plot is identical to Fig. \ref{pmqr} but restricts the time
+%%\begin{figure}
+%%\centering
+%%\includegraphics[width=0.75\textwidth]{../figures/pmqr-100k.pdf}
+%%\caption[Performance of Analysis Method and Python Interpreter on Real World
+%%Data - Early Time]{This plot is identical to Fig. \ref{pmqr} but restricts the time
+%%displayed to the first one hundred thousand seconds. The 'spool up' of the JIT
+%%portion of PyPy is noticeable in the very early time-scales.}
+%%\label{pmqr-100k}
+%%\end{figure}
+
+Figure \ref{pmqr-100k} is identical to Fig. \ref{pmqr} but restricts the time
 displayed to the first one hundred thousand seconds. The 'spool up' of the JIT
-portion of PyPy is noticeable in the very early time-scales.}
-\label{pmqr-100k}
-\end{figure}
+portion of PyPy is noticeable in the very early time-scales.
 
 %Figures \ref{ppia-born}, \ref{ppia-naive}, \ref{ppia-paxson}, and \ref{ppia-proposed} attempt 
 
@@ -1306,7 +1322,6 @@ It is instructive to observe that PyPy's performance overall is considerably
 lower than Cython on tunnel data, but as is shown in Fig. \ref{pmqr}, this is
 not the case on real-world data.
 
-\clearpage
 \subsection{Processing Performance Conclusion}
 As has been shown, the detection methods were tested on both real world and
 purpose-generated tunnel application traffic as well as on two different Python
@@ -1583,6 +1598,7 @@ greatest interest.
 \centering
 \subfigure[Trend of False Positive Rate for Tunnels by Throughput - Naive Metric]{\includegraphics[width=0.48\textwidth]{../figures/cnplot.pdf}\label{cnplot}}
 \subfigure[Tunnel Detection Performance - Naive Metric]{\includegraphics[width=0.48\textwidth]{../figures/mpnv.pdf}\label{mpnv}}
+\caption{Tunnel detection performance for the naive approach.}
 \end{figure}
 
 %Figure \ref{mpnv} shows the performance of the naive metric, with markers
@@ -1620,6 +1636,7 @@ of duplication in the DNS queries and its impacts were discussed in section
 \centering
 \subfigure[Trend of False Positive Rate for Tunnels by Throughput - Born's Metric]{\includegraphics[width=0.48\textwidth]{../figures/cbplot.pdf}\label{cbplot}}
 \subfigure[Tunnel Detection Performance - Born's Metric]{\includegraphics[width=0.48\textwidth]{../figures/mpbv.pdf}\label{mpbv}}
+\caption{Tunnel detection performance for Born's approach.}
 \end{figure}
 
 %Figure \ref{mpbv} shows the performance of Born's metric with almost all markers
@@ -1679,6 +1696,7 @@ of duplication in the DNS queries and its impacts were discussed in section
 \centering
 \subfigure[Trend of False Positive Rate for Tunnels by Throughput - Paxson's Metric]{\includegraphics[width=0.48\textwidth]{../figures/cpplot.pdf}\label{cpplot}}
 \subfigure[Tunnel Detection Performance - Paxson's Metric]{\includegraphics[width=0.48\textwidth]{../figures/mppv-500.pdf}\label{mppv}}
+\caption{Tunnel detection performance for Paxson's approach.}
 \end{figure}
 
 %Figure \ref{mppv} shows the performance of Paxson's metric similarly to the plot
@@ -1725,6 +1743,7 @@ of duplication in the DNS queries and its impacts were discussed in section
 \centering
 \subfigure[Trend of False Positive Rate for Tunnels by Throughput - Proposed Metric]{\includegraphics[width=0.48\textwidth]{../figures/chplot.pdf}\label{chplot}}
 \subfigure[Tunnel Detection Performance - Proposed Metric]{\includegraphics[width=0.48\textwidth]{../figures/mphv-100.pdf}\label{mphv}}
+\caption{Tunnel detection performance for the proposed approach.}
 \end{figure}
 
 %Figure \ref{mphv} shows the performance of the proposed metric in a fashion
@@ -1807,8 +1826,9 @@ methods more easily visible.
 
 \begin{figure}
 \centering
-\subfigure[Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.80 to 1.00]{\includegraphics[width=0.48\textwidth]{../figures/cplot2.pdf}\label{cplot80}}
-\subfigure[Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.95 to 1.00]{\includegraphics[width=0.48\textwidth]{../figures/cplot3.pdf}\label{cplot95}}
+\subfigure[Certainty of detection - 0.80 to 1.00]{\includegraphics[width=0.48\textwidth]{../figures/cplot2.pdf}\label{cplot80}}
+\subfigure[Certainty of detection - 0.95 to 1.00]{\includegraphics[width=0.48\textwidth]{../figures/cplot3.pdf}\label{cplot95}}
+\caption{Certainty of tunnel detection by detection method.}
 \end{figure}
 
 The differences between Paxson's method and the proposed method are visible, but
