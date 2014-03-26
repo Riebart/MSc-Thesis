@@ -706,7 +706,7 @@ assumption is no longer true, then the proposed approach will be ineffective in
 detecting it.
 
 \subsubsection{Theory}
-In a large Internet provider network, it is possible that there could be many
+In a large internet provider network, it is possible that there could be many
 copies of the same DNS query - say \emph{google.com} - each of which would count
 towards the total number of bytes or queries transferred to/from that domain. If a naive
 approach to detection is used, such as counting bytes or queries to/from a
@@ -764,7 +764,7 @@ other domains, it is easy to see that in these scenarios, the normal curves
 would take on a very different shape, easily obscuring tunnel traffic for low
 throughputs.
 
-A small sample of data was collected from Merlin's\footnote{Merlin is a small ISP that supplied the primary data set for the testing later.} caching DNS servers which
+A small sample of data was collected from Merlin's\footnote{Merlin is a small ISP that supplied the primary data set for the testing.} caching DNS servers which
 represents \emph{every} DNS query made of them, regardless of whether those
 queries were served from the cache or not. This type of DNS sampling presents a
 high load on their instrumentation infrastructure, and so is only reasonable for
@@ -1155,16 +1155,16 @@ operation times and slower performance.}
 \label{pmat}
 \end{figure}
 
-Figure \ref{pmqr} shows the performance over time of the different detection
-methods and Python interpreters as more packets are ingested from real world
-data. Observe that as time progresses, the methods get progressively slower,
-likely due to inefficiencies in the interpreter and/or method.
+%Figure \ref{pmqr} shows the performance over time of the different detection
+%methods and Python interpreters as more packets are ingested from real world
+%data. Observe that as time progresses, the methods get progressively slower,
+%likely due to inefficiencies in the interpreter and/or method.
 
-Also unlike the aggregate tunnel detection performance, the methods when run
-under PyPy perform \emph{far} better, even surpassing the Cython counterparts in
-at least one case. Note that the Paxson's approach when run under PyPy shows
-decreasing performance over time while no such decrease for larger times is
-observed when run under Cython.
+%Also unlike the aggregate tunnel detection performance, the methods when run
+%under PyPy perform \emph{far} better, even surpassing the Cython counterparts in
+%at least one case. Note that the Paxson's approach when run under PyPy shows
+%decreasing performance over time while no such decrease for larger times is
+%observed when run under Cython.
 
 \begin{figure}
 \centering
@@ -1178,10 +1178,10 @@ themselves become observable in the degradation of performance.}
 \label{pmqr}
 \end{figure}
 
-Figure \ref{pmqr-100k} shows the same data, but with a limited scale allowing
-early-time behaviour to be examined. Note that the ramp-up of PyPy's JIT
-components is observed in the very early time followed by a very consistent
-processing rate.
+%Figure \ref{pmqr-100k} shows the same data, but with a limited scale allowing
+%early-time behaviour to be examined. Note that the ramp-up of PyPy's JIT
+%components is observed in the very early time followed by a very consistent
+%processing rate.
 
 \begin{figure}
 \centering
@@ -1201,7 +1201,7 @@ detection methods and Python interpreters as more tunnel data is moved through
 them per interval. Their horizontal axes are the actual data input rate (see \ref{tunapptp}), and the vertical axes indicate the
 processing rate (in packets per second).
 
-In the above mentioned figures the legend requires some additional context. The
+In Fig. \ref{ppia-all} the legend requires some additional context. The
 plot legends contain labels of the form \emph{dns2tcp c2s Cython} which contains
 three distinct pieces of information. The first word indicates which tunnelling
 application being one of DNS2TCP, DNSCat, Iodine, or the next-generation simulated application which is indicated by a name of \texttt{next-gen}. The
@@ -1333,7 +1333,7 @@ axis showing the speedup of the naive method over the proposed method.}
 \label{ppia-naive2proposed} \end{figure}
 
 When the ratio of the performance of the naive method to the proposed method is
-examined, a clustering very close to a fixed value is observed as in figure
+examined, a clustering very close to a fixed value is observed as in Fig.
 \ref{ppia-naive2proposed}. This indicates that much of the performance
 degradation, and potentially other performance characteristics, of the two
 methods are dominated by the common scaffolding and/or the Python interpreter as
@@ -1366,7 +1366,7 @@ that a standard receiver operating characteristic (ROC) plot would be of little
 additional value since the true and false positive rates are dependant on the
 value ranges that the metrics take. Since the range of values that the metrics
 take on is so limited, the differences between a low and high percentile in true
-and false positive rates would be minimal.
+and false positive rates would be minimal to statistically insignificant.
 
 \begin{figure}
 \centering
@@ -1476,7 +1476,7 @@ high-rate tunnels is implicitly demonstrated.
 
 It is instructive to observe the relative standard deviations for the various
 tunnel applications and detection methods at the lowest throughput level, ten
-bytes per second. This is given in table \ref{rsd-minimum}.
+bytes per second. This is given in Table \ref{rsd-minimum}.
 
 %This tight packing of samples indicates that the normal method of classifying
 %detection methods, that is the \emph{receiver operating curve (ROC)}, may not be
@@ -1491,24 +1491,31 @@ bytes per second. This is given in table \ref{rsd-minimum}.
 %chosen to represent the collection of values, allowing more information per plot
 %to provide context.
 
-\begin{table}
+\begin{table}[ht]
 \centering
-\begin{tabular}{ r|cccc }
-& Naive & Born & Paxson & Proposed \\
+\begin{tabular}{r|cccc}
+& \,\,\,\,Naive\,\,\,\, & \,\,\,\,Born\,\,\,\, & \,\,Paxson\,\, & Proposed \\
 \hline
-DNS2TCP c2s & 0.0559644 & 0.0497584 & 0.0450118 & 0.0371504 \\
-DNS2TCP s2c & 0.0477585 & 0.0675144 & 0.0495964 & 0.0392231 \\
-DNSCat c2s & 0.0155828 & 0.0526164 & 0.018919 & 0.00980975 \\
-DNSCat s2c & 0.0152077 & 0.0452746 & 0.0172972 & 0.0101241 \\
-Iodine c2s & 0.00720872 & 0.0439898 & 0.0106345 & 0.00500239 \\
-Iodine s2c & 0.00687431 & 0.0377363 & 0.0119256 & 0.00375623 \\
-Next-Gen & 0.0309484 & 0.0581522 & 0.0399604 & 0.00414985 \\
+%DNS2TCP c2s & 0.0559644 & 0.0497584 & 0.0450118 & 0.0371504 \\
+%DNS2TCP s2c & 0.0477585 & 0.0675144 & 0.0495964 & 0.0392231 \\
+%DNSCat c2s & 0.0155828 & 0.0526164 & 0.018919 & 0.00980975 \\
+%DNSCat s2c & 0.0152077 & 0.0452746 & 0.0172972 & 0.0101241 \\
+%Iodine c2s & 0.00720872 & 0.0439898 & 0.0106345 & 0.00500239 \\
+%Iodine s2c & 0.00687431 & 0.0377363 & 0.0119256 & 0.00375623 \\
+%Next-Gen & 0.0309484 & 0.0581522 & 0.0399604 & 0.00414985 \\
+DNS2TCP c2s & 0.056 & 0.050 & 0.045 & 0.037 \\
+DNS2TCP s2c & 0.048 & 0.068 & 0.050 & 0.039 \\
+DNSCat c2s & 0.016 & 0.053 & 0.019 & 0.0098 \\
+DNSCat s2c & 0.015 & 0.045 & 0.017 & 0.010 \\
+Iodine c2s & 0.0072 & 0.044 & 0.011 & 0.0050 \\
+Iodine s2c & 0.0069 & 0.038 & 0.012 & 0.0038 \\
+Next-Gen & 0.031 & 0.058 & 0.040 & 0.0041 \\
 \end{tabular}
 \caption[Relative Standard Deviation of Lowest Throughput Tunnel by Detection Method and Tunnel Application]{The relative standard deviation given by $\frac{\sigma}{\mu}$ of the multiple samples for each tunnel application and detection method pairing for the lowest throughput rate.}
 \label{rsd-minimum}
 \end{table}
 
-\section{Detection Performance Against Real World Data}
+\subsection{Detection Performance Against Real World Data}
 \label{detection-perf}
 
 Since tunnel metrics are represented by a single value, the mean of their
@@ -1730,7 +1737,7 @@ of duplication in the DNS queries and its impacts were discussed in section
 %server-to-client transmissions of no more than $5.19129\times10^{-6}$ and
 %$5.73392\times10^{-6}$ respectively.
 
-\section{Specificity and Ambiguity of Tunnel Classification}
+\subsection{Specificity and Ambiguity of Tunnel Classification}
 \label{detection-perf-cert}
 
 It is possible to simplify the above plots and figures into a single chart that
@@ -1800,7 +1807,7 @@ methods more easily visible.
 
 \begin{figure}
 \centering
-\subfigure[hart of Certainty of Detection by Tunnel Application and Detection Method - 0.80 to 1.00]{\includegraphics[width=0.48\textwidth]{../figures/cplot2.pdf}\label{cplot80}}
+\subfigure[Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.80 to 1.00]{\includegraphics[width=0.48\textwidth]{../figures/cplot2.pdf}\label{cplot80}}
 \subfigure[Chart of Certainty of Detection by Tunnel Application and Detection Method - 0.95 to 1.00]{\includegraphics[width=0.48\textwidth]{../figures/cplot3.pdf}\label{cplot95}}
 \end{figure}
 
@@ -1811,7 +1818,7 @@ the interval $[0.95,1.00]$, the differences between the two methods are clearly
 visible, with the proposed approach achieving a higher certainty in every
 detection scenario.
 
-\section{Tunnel Detection Performance Conclusion}
+\subsection{Tunnel Detection Performance Conclusion}
 It is visible from the detailed plots in Sect. \ref{detection-perf} and
 \ref{detection-perf-cert} that the proposed method is superior to its peers in
 its ability to detect tunnels with certainty in excess of ninety eight percent.
@@ -1842,33 +1849,33 @@ As is shown in the relevant sections, the proposed method outperforms its peers
 in both processing performance and tunnel detection in almost every situation by
 a measurable and often considerable margin.
 
-When compared to its peers from literature, the performance improvement over
-Paxson's approach on real-world data is approximately 25\% while a speedup of
-almost 100\% is observed when processing tunnel data under the Cython
-interpreter. The margins are similar under PyPy, with the primary difference
-being that the proposed method is nearly double the performance of Paxson's
-approach on both real world and tunnel application data. Born's approach is able
-to narrow the gap on tunnel data to only approximately a 50\% improvement, while
-the gap on real-world data increases to about 30\%. Under PyPy however, the
-performance of the proposed method and Born's method become very similar with
-gaps less than 10\%.
-
-Examining tunnel detection performance shows additional benefits to the proposed
-method. Born's method shows very poor performance, as expected, when faced with
-the next-gen tunnel, with a less drastic performance hit shown on other
-tunnelling software. In all cases the proposed, as well as Paxson's, approach
-out-perform Born's method by a considerable margin in false-positive rates. The
-proposed approach reduces the false positive rate by almost 98\% when compared
-to Born's approach. When comparing Paxson's approach with the proposed
-approach, the proposed approach reduces the number of false positives by up to
-nearly 90\% in the best case, with an average reduction of 70\%.
-
-The exception is the naive method which outperforms the proposed method in
-processing performance by approximately fifty percent at the expense of
-detection performance, with the proposed approach reducing the false positive
-rate by 82\%. As was mentioned in Sect. \ref{dns-caching} however,
-the naive method's detection performance is only as good as it is in this case
-due to the lack of duplication of DNS queries.
+%When compared to its peers from literature, the performance improvement over
+%Paxson's approach on real-world data is approximately 25\% while a speedup of
+%almost 100\% is observed when processing tunnel data under the Cython
+%interpreter. The margins are similar under PyPy, with the primary difference
+%being that the proposed method is nearly double the performance of Paxson's
+%approach on both real world and tunnel application data. Born's approach is able
+%to narrow the gap on tunnel data to only approximately a 50\% improvement, while
+%the gap on real-world data increases to about 30\%. Under PyPy however, the
+%performance of the proposed method and Born's method become very similar with
+%gaps less than 10\%.
+%
+%Examining tunnel detection performance shows additional benefits to the proposed
+%method. Born's method shows very poor performance, as expected, when faced with
+%the next-gen tunnel, with a less drastic performance hit shown on other
+%tunnelling software. In all cases the proposed, as well as Paxson's, approach
+%out-perform Born's method by a considerable margin in false-positive rates. The
+%proposed approach reduces the false positive rate by almost 98\% when compared
+%to Born's approach. When comparing Paxson's approach with the proposed
+%approach, the proposed approach reduces the number of false positives by up to
+%nearly 90\% in the best case, with an average reduction of 70\%.
+%
+%The exception is the naive method which outperforms the proposed method in
+%processing performance by approximately fifty percent at the expense of
+%detection performance, with the proposed approach reducing the false positive
+%rate by 82\%. As was mentioned in Sect. \ref{dns-caching} however,
+%the naive method's detection performance is only as good as it is in this case
+%due to the lack of duplication of DNS queries.
 
 Recall that the improvements demonstrated by the proposed approach are on
 measured in a highly pessimistic detection scenario, with false-positive rates
