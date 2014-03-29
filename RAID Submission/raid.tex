@@ -1,11 +1,12 @@
 \documentclass{llncs}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{float}
 \usepackage[urlcolor=blue,linkcolor=black,colorlinks=true]{hyperref}
 \hypersetup{
-  pdftitle = {A Novel Approach to Detecting Covert DNS Tunnels Using Throughput Estimation},
+  pdftitle = {A Novel Approach to Detecting DNS Tunnels Using Throughput Estimation},
   pdfkeywords = {},
-  pdfauthor = {Michael Himbeault}
+  pdfauthor = {Michael Himbeault and Jacky Baltes}
 }
 \usepackage[dvips]{graphicx}
 \usepackage{lscape}
@@ -16,42 +17,52 @@
 
 %\frontmatter
 %\bibliographystyle{abbrv}
-\title{A Novel Approach to Detecting Covert DNS Tunnels Using Throughput Estimation}
-\author{Michael Himbeault}
+\title{A Novel Approach to Detecting DNS Tunnels Using Throughput Estimation}
+\author{Michael Himbeault (\email{mike.himbeault@gmail.com}) and \\
+Jacky Baltes (\email{jacky@cs.umanitoba.ca})}
 \institute{University of Manitoba}
-%\email{mike.himbeault@gmail.com}
 \maketitle
 
-\abstract{DNS tunnels represent a clear and common threat to network security by
-bypassing existing security and administrative controls. The ability for DNS
-tunnels to transmit arbitrary data over conforming DNS packets makes them
-difficult to detect. This work proposes a novel approach to detecting DNS
-tunnels that is built on entropy and operates on commodity hardware. The
-proposed approach is compared to several others from literature and outperforms
-both in computational speed and detection accuracy.}
+\abstract{DNS tunnels represent a clear and common threat to network
+  security by bypassing existing security and administrative
+  controls. The ability for DNS tunnels to transmit arbitrary data via
+  conforming DNS packets makes them difficult to detect. This work
+  describes a novel entropy based approach to detecting DNS
+  tunnels. The approach is efficient and can process more than 2
+  Gigabits per second per second on commodity hardware. Testing shows
+  that our approach achieves a ninety percent reduction in false-positive
+  rates than the next best achieving up to 25\% better processing performance.}
 
 \smallskip
 \keywords{intrusion detection, APT, DNS, entropy, NIDS, network analysis}
 
 \section{Introduction}
-Control of the data that moves between hosts on a computer network is vitally
-important in order to be able to enforce security policies and protect sensitive
-information. To this end systems such as firewalls, proxies, and content filters
-are put into place in order to monitor and control network traffic. Covert
-channels are utilized to circumvent these control mechanisms for purposes that
-range from benign\cite{sans-dnshash} to malicious. This work focuses
-specifically on DNS tunnels, however other types of covert channels do exist.
+
+Covert tunnels circumvent network control systems such as firewalls,
+proxies, and/or content filters. The use of covert tunnels may be
+benign \cite{sans-dnshash} but is often malicious (e.g., theft of
+sensitive data, infiltration of data, or as control channel for
+malware) \cite{Dietrich2011}. A common method for establishing a
+covert tunnel is via the Domain Name Services (DNS) protocol, which
+translates host names (e.g., www.google.com) into IP addresses (e.g.,
+173.194.33.148). DNS provides an integral service to the Internet and
+thus cannot be blocked easily. Therefore, efficient and accurate
+detection of DNS tunnels on a busy network link is an important
+problem in network security.
+
 
 %Detecting a DNS tunnel effectively on a busy network link becomes an exercise in
 %discrimination. Since there is such a wide variety of network traffic that is
 %generated on a busy link, there is generally no simple definition of
 %\emph{normal} for a particular class of traffic, including DNS.
 
-A highly sensitive and specific detection of DNS tunnels on a busy network link
-is an important problem in the arena of network security as it enables
-administrators to block or otherwise control these potential sources of
-compromise. In addition to data exfiltration and infiltration, DNS tunnels can
-be used as channels for communication by malware\cite{Dietrich2011}.
+
+%%  as it enables
+%% administrators to block or otherwise control these potential
+%% threats. In addition to data exfiltration and infiltration, DNS
+%% tunnels can be used as channels for communication by
+%% malware.
+
 %Even if an enterprise does not have sensitive information
 %that needs protecting, DNS tunnels should still be blocked in order to prevent
 %malware from communicating\cite{Dietrich2011}. Because DNS tunnels can be used
@@ -59,54 +70,54 @@ be used as channels for communication by malware\cite{Dietrich2011}.
 %for botnets or any other malicious system that relies
 %on data transmission.
 
-In addition to the malicious uses for DNS tunnels, there are other uses that
-could be classed as benign. One use of this is the DNS-interface to the NIST
-National Software Reference Library\cite{sans-dnshash}. Queries to a specific
-zone can include hashes of files on a system in order to determine the validity
-or purpose of said file. 
+%% In addition to the malicious uses for DNS tunnels, there are other
+%% uses that could be classed as benign. One use of this is the
+%% DNS-interface to the NIST National Software Reference
+%% Library\cite{sans-dnshash}. Queries to a specific zone can include
+%% hashes of files on a system in order to determine the validity or
+%% purpose of said file.
 
-Because signature based schemes are not effective in detecting DNS tunnels in a
-zero-day situation, another method is required. Analysis based on character
-frequency is proposed in\cite{Born2010.cfa} by Kenton Born with similar
-approaches proposed by several other authors (see Sect. \ref{litreview-dns}
-for more details) which uses character frequency analysis under some assumed
-properties.
+A common method for detecting of malware or network breaches is by
+comparing observed network data against a library of known security
+threats, so called signature based approaches. However, the detection
+of DNS tunnels via traffic signatures is inflexible and unusable in
+zero-day attacks. Therefore, some researchers proposed character
+frequency based approaches or similar approaches \cite{Born2010.cfa}.
 
-The proposed method operates under the assumption that DNS tunnels move more
-data than a normal domain but do not necessarily do it by moving more bytes than
-a benign domain. This distinction is important since, on a busy network, a large
-content or service provider such as Google, Amazon, Facebook or Twitter may make
-up orders of magnitude more DNS traffic by byte count than a DNS tunnel. A brief
-treatment of the effects of DNS caching on the number of bytes observed in
-repeated query strings is given in Sect. \ref{dns-caching}. The proposed method uses the information
-measuring properties of entropy in order to estimate the amount of information
-transmitted.
+Our method assumes that DNS tunnels move more information than a
+normal domain but do not necessarily do it by moving more
+bytes or packets than a benign domain. This distinction is important
+since, on a busy network, a large content or service provider such as
+Google, Amazon, Facebook or Twitter may make up orders of magnitude
+more DNS traffic by byte count than a DNS tunnel. A brief treatment of
+the effects of DNS caching on the number of bytes observed in repeated
+query strings is given in Sect. \ref{dns-caching}. Our method uses an
+entropy based estimate of the amount of information being transmitted
+via DNS queries to detect DNS tunnels.
 
-This proposed detection methodology is shown to 
-%detect DNS tunnels in as few as
-%ten packets (as shown in Sect. \ref{test-existing}) and continues to 
-be robust
-in highly hostile detection environments such as those that contain a great deal
-of non-tunnel traffic as well as benign uses of DNS for transmitting arbitrary
-data. Detection performance on commodity hardware is shown to scale to greater
-than two gigabits of UDP port 53 throughput per second in a performance-oriented
-C++ implementation.
+Our method can detect DNS tunnels in as few as ten packets (as shown
+in Sect. \ref{test-existing}) and works robustly in difficult
+real-world detection environments (i.e., environments that contain a
+great deal of non-tunnel traffic as well as benign uses of
+DNS). Detection performance on commodity hardware is shown to scale to
+greater than two gigabits of UDP port 53 throughput per second in a
+performance-oriented C++ implementation.
 %This indicates
 %that this methodology does not sacrifice performance for detection accuracy and
 %remains practical for monitoring very large networks.
 
-Section \ref{processing-perf} compares the processing performance of various
-approaches from the literature to the proposed method, demonstrating that the
-proposed method has better performance in a great many cases. Section
-\ref{chap-evaluation} compares the detection performance of the proposed
-approach to its peers, demonstrating that
+Section \ref{processing-perf} compares the processing performance of
+various approaches from the literature to our method and shows that
+our method has better performance. Section \ref{chap-evaluation}
+compares the detection performance of our approach to its peers,
+demonstrating that
 %in addition to improved computational
 %performance,
-the proposed approach also provides superior detection performance.
+our approach also provides superior detection performance.
 
-By improving upon both areas over existing methods from the literature, the
-proposed method constitutes a worthwhile contribution to the field of DNS tunnel
-detection.
+%% By improving upon both areas over existing methods from the literature, the
+%% proposed method constitutes a worthwhile contribution to the field of DNS tunnel
+%% detection.
 
 % ==============================================================================
 % The background section provides a reasonable breadth and depth of content for
@@ -146,7 +157,7 @@ detection.
 %
 %DNS is the service through which names are mapped to
 %resources\cite{rfc1034}\cite{rfc1035}. Typically, this maps a name (such as
-%\emph{www.google.ca}) to an IP address. The value of this service is that names
+%\emph{www.google.ca}) to an IP address (173.194.33.148). The value of this service is that names
 %are considerably more flexible, and typically considerably easier to remember,
 %than the resource or record that they point to. For example, \emph{google.com}
 %is considerably easier to remember than one of the IP addresses that it points
@@ -252,8 +263,8 @@ any standardized protocol or communication method.
 \subsection{DNS Tunnels}
 \label{tunnels-types}
 DNS tunnelling is the method by which arbitrary data is transferred
-over the same channels as DNS. DNS tunnels come in one of two primary types: raw, or
-conforming.
+over the same channels as DNS. DNS tunnels come in one of two primary
+types: raw, or conforming.
 
 \subsubsection{Raw DNS Tunnels}
 \label{tunnels-types-raw}
@@ -438,14 +449,15 @@ that also use DNS as their command and control medium.
 %aggregate of several packets to estimate the persistence of DNS queries as well
 %as the amount of data moved over DNS by each host on the network.
 
-(Paxson, 2011)\cite{Paxson2011} is a slide deck that discusses the author's
-searches through large campus networks for DNS tunnels in the wild. The author
-proposes an approach for detecting DNS tunnels that is very similar to the
-method proposed in this work in that it examines the approximate amount of data
-transferred per domain and/or subdomain. The author, instead of utilizing
-entropy measures, makes use of the utility \emph{gzip}\footnote{\emph{gzip} is a
-compression utility that is used to compress input streams such as archives or
-other files.} to estimate the amount of data moved under a domain in a given
+(Paxson, 2011)\cite{Paxson2011} is a slide deck that discusses the
+author's searches through large campus networks for DNS tunnels in the
+wild. The author proposes an approach for detecting DNS tunnels that
+is similar to our method in that it examines the approximate amount of
+information transferred per domain and/or subdomain. However, the
+author, instead of utilizing exact entropy measures, uses
+\emph{gzip}\footnote{\emph{gzip} is a compression utility that
+  compresses input streams such as archives or other files.} to
+estimate the amount of information transferred to a domain in a given
 collection of queries.
 
 jhind\cite{jhind2009} gave a presentation at DefCon 17 that discusses the use of
@@ -658,9 +670,9 @@ baseline of normal traffic.
 hardware.
 \end{itemize}
 
-The proposed approach will be evaluated against these criteria to determine
-whether or not it can be considered an improvement on the state of the art for
-this type of detection. 
+We evaluated our approach against these criteria to determine whether
+or not it can be considered an improvement on the state of the art for
+this type of detection.
 
 %Items 1 and 3 in the list of criteria require additional
 %quantification, however the quantification criteria are different for each of
@@ -668,31 +680,34 @@ this type of detection.
 %\ref{test-weakness} on how detection methods will be scored for their respective
 %tests.
 
-Item 1 will be validated by comparing the chosen approaches against the proposed
-approach in a relative scoring fashion. Methods will be compared to their peers
-for relative detection performance, and improvement therein, in the various test
-scenarios. Methods will be scored based on false positive rate, with lower rates
-being more desirable.
+Item 1 was validated by comparing the chosen approaches against our
+approach in a relative scoring fashion. Methods were compared to their
+peers for relative detection performance, and improvement therein, in
+the various test scenarios. Methods were scored based on false
+positive rates, with lower rates being more desirable.
 %Successful approaches must be highly specific with a very
 %low false positive rate in order to prevent overloading alerting systems with
 %unhelpful information.
 
-Item 2 will be tested using a next-generation tunnel and referred to as
-\texttt{next-gen}, that simulates what DNS tunnelling applications may look like
-in the future. The primary difference is that output of this tunnel is set to
-match the character frequency distributions of normal DNS queries. Due to the
-implementation details of the next-gen tunnel, there is no server-to-client
-transfer direction for that tunnelling application.
+Item 2 will be tested using a next-generation tunnel and referred to
+as \texttt{next-gen}, that simulates what DNS tunnelling applications
+may look like in the future. The primary difference is that output of
+this tunnel is set to match the character frequency distributions of
+normal DNS queries. Due to the implementation details of the next-gen
+tunnel, there is no server-to-client transfer direction for that
+tunnelling application.
 
-Item 3 will be tested by comparing the approaches when implemented on a common
-Python framework to produce a level playing field of performance.
+Item 3 will be tested by comparing the approaches when implemented on
+a common Python framework to produce a level playing field of
+performance.
 
-\section{Proposed Detection Method}
+\section{Our Detection Method}
 \label{proposed-method}
 
-The method proposed in this work examines the information theoretical properties
-of the DNS queries to each domain, thus retaining the flexibility to filter
-and alert per domain as opposed to more generally on the set of all DNS queries.
+Our method examines the information theoretical properties of the DNS
+queries to each domain, thus retaining the flexibility to filter and
+alert per domain as opposed to more generally on the set of all DNS
+queries.
 %The tools developed to test this approach utilize full packet data for its
 %analysis, but can be modified to use name server query logs (as were used in
 %\cite{Romana2007}) or other sources of query information. The prototype C++ software
@@ -703,67 +718,74 @@ and alert per domain as opposed to more generally on the set of all DNS queries.
 
 \subsection{Theoretical Basis}
 \subsubsection{Assumptions}
-The detection approach proposed in this work
-makes certain assumptions about the nature of DNS tunnels in order to
-effectively detect them. The primary assumption made is that DNS tunnels move
-more data than a normal DNS subdomain, with a very particular meaning of
-\emph{data} that goes beyond simply counting bytes or the number of queries. The
-concept of the amount of data moved under a DNS domain involves considering the
-entropy of the queries as a whole, and not the characters that make up a query.
-The list of assumptions follows:
+
+Our detection approach makes certain assumptions about the nature of
+DNS tunnels in order to effectively detect them. The primary
+assumption made is that DNS tunnels move more information than a
+normal DNS subdomain, with a very particular meaning of \emph{data}
+that goes beyond simply counting bytes or the number of queries. The
+concept of the amount of information transferred to a DNS domain
+considers the entropy of the queries as a whole, and not just the
+characters/data that make up a query.  The list of assumptions
+follows:
 
 \begin{itemize}
-\item DNS tunnel applications use the queries themselves to transport data from
-the client to server.
-\item This mechanism will force there to be more unique
-queries per domain (or subdomain) proportional to the amount of unique data transferred
-from the client to the server.
-\item In a server-to-client transfer of data, there will still need to be
-acknowledgements sent from the client to the server, with the acknowledgement
-data encoded in the query string.
+\item DNS tunnel applications use the queries themselves to transport
+  information from the client to server.
+\item There are more unique queries per domain (or subdomain)
+  proportional to the amount of information transferred from the
+  client to the server.
+\item Even in server-to-client communication, acknowledgements must be
+  sent from the client to the server, with the acknowledgement encoded
+  in the query string.
 \end{itemize}
 
-The primary assumption, in the language of DNS queries, is that DNS tunnels will
-cause more unique DNS queries to a domain (or subdomain) than benign traffic. If
-a DNS tunnel is able to construct its network traffic in such a way that this
-assumption is no longer true, then the proposed approach will be ineffective in
-detecting it.
+The primary assumption, in the language of DNS queries, is that DNS
+tunnels will cause more unique DNS queries to a domain (or subdomain)
+than benign traffic. If a DNS tunnel is able to construct its network
+traffic in such a way that this assumption is no longer true, then our
+approach will be ineffective in detecting it.
 
 \subsubsection{Theory}
-In a large internet provider network, it is possible that there could be many
-copies of the same DNS query - say \emph{google.com} - each of which would count
-towards the total number of bytes or queries transferred to/from that domain. If a naive
-approach to detection is used, such as counting bytes or queries to/from a
-domain, then this kind of repetition will have a detrimental effect on the
-metric calculated for some popular domains.
 
-In order to work around this, the proposed approach takes a different stance on
-unique data and instead uses entropy to measure the amount of data moved in the
-queries to a domain or subdomain. By considering queries as atomic objects, and
-maintaining a tally of the queries to a domain, and their counts over an
-interval, a probability distribution function (PDF) is generated. By computing
-the entropy of this PDF, a basic measure of throughput is achieved. However,
-since there is value in the capturing the length of the queries that were sent
-(since longer queries are moving more bytes than shorter ones), the entropy is
-multipled by the average query length (in bytes) over that interval. This
-metric, which will be referred as the Domain Length-Weighted Entropy (DLWE), is
-the primary mechanism through which the proposed approach detects DNS tunnels.
+In a large internet provider network, it is possible that there could
+be many copies of the same DNS query - say \emph{google.com} - each of
+which would count towards the total number of bytes or queries
+transferred to/from that domain. This repitition has detrimental
+effects on the metric calculated for popular domains when using a
+naive detection approach (e.g., counting bytes or queries to/from a
+domain).
 
-With this new measure of data, the approach considers intervals of time and
-computes the amount of data estimated to be moved by each domain over that
-interval. By sorting all domains by their data throughput, the heavy-hitters can
-be examined in each time interval with white-listing preventing many of the top benign
-contenders from causing alerts. As will be shown in Sect. \ref{processing-perf}, this approach is capable of
-processing packets nearly as fast as a naive approach with equivalent or better
-detection performance which is shown in Sect. \ref{chap-evaluation}.
+In order to work around this, our approach instead uses entropy to
+measure the amount of information moved in the queries to a domain or
+subdomain. By considering queries as atomic objects, and maintaining a
+tally of the queries to a domain, and their counts over an interval, a
+probability distribution function (PDF) is generated. By computing the
+entropy of this PDF, a basic measure of throughput is
+achieved. However, since there is value in the capturing the length of
+the queries that were sent (since longer queries are moving more bytes
+than shorter ones), the entropy is multipled by the average query
+length (in bytes) over that interval. This metric, which we call the
+Domain Length-Weighted Entropy (DLWE), is our primary mechanism for
+detecting DNS tunnels.
+
+With this new throughput measure, the approach considers intervals of
+time and computes the amount of estimated to be moved by each domain
+over that interval. By sorting all domains by their information
+throughput, the heavy-hitters can be examined in each time interval.
+White-listing can be used to prevent false alarms for known benign DNS
+tunnels. As will be shown in Sect. \ref{processing-perf}, this
+approach is capable of processing packets nearly as fast as a naive
+approach with equivalent or better detection performance (see
+Sect. \ref{chap-evaluation}).
 
 \subsubsection{The Effect of DNS Caching on Detection Effectiveness}
 \label{dns-caching}
 
-Because the packet capture was done in an environment where a large portion of
-the clients use one of only a few different DNS servers, the effects of caching
-will cause the naive approach to have far better detection performance than if this
-were not the case.
+Because the packet capture was done in an environment where a large
+portion of the clients use one of only a few different DNS servers,
+the effects of caching will cause the naive approach to have far
+better detection performance than if this were not the case.
 % If this were an environment such as a large ISP or Internet
 %backbone where such DNS caching were not present then the naive approach would have
 %far different detection performance and characteristics.
@@ -832,12 +854,13 @@ the naive metric's ability accurately detect DNS tunnels.
 %network that are not, and can not be, accounted for in the logging obtained from
 %Merlin.
 
-As can be seen from the proposed method's underlying mechanisms, the DNS caching
-actually provides a \emph{more pessimistic} detection environment compared to
-the uncached environment. Unlike the naive method, whose detection performance
-results will not be applicable in an uncached environment, the proposed method
-can be expected to perform better in an uncached environment than in the
-testing in Sect. \ref{detection-perf}.
+As can be seen from the our method's underlying mechanisms, the DNS
+caching actually provides a \emph{more pessimistic} detection
+environment compared to the uncached environment. Unlike the naive
+method, whose detection performance results will not be applicable in
+an uncached environment, our method can be expected to
+perform better in an uncached environment than in the testing in
+Sect. \ref{detection-perf}.
 
 %Born's method will also improve in detection performance in an uncached network,
 %since it will cause normal traffic to have a character distribution more heavily
@@ -895,7 +918,7 @@ testing in Sect. \ref{detection-perf}.
 
 \section{Detailed Testing Methodology and Processing Performance}
 A collection of tests were run on several detection methods, demonstrating the
-performance of this work's proposed method when compared to existing methods
+performance of our method when compared to existing methods
 from the literature. The detection methods chosen for comparison are
 
 \label{chosen-methods}
@@ -1353,7 +1376,7 @@ data, showing processing rate as a function of input rate.}
 %%\label{ppia-proposed}
 %%\end{figure}
 
-The proposed approach shows performance characteristics and trends that match
+Our approach shows performance characteristics and trends that match
 the naive approach far more closely than either of the other two approaches.
 There is minimal degradation in performance for most of the tunnelling
 applications, and almost all of the samples under the Cython interpreter are
@@ -1369,12 +1392,12 @@ not the case on real-world data.
 %interpreters and were instrumented for their processing performance.
 
 When evaluating the performance of the detection methods on real-world data, in all
-cases the naive method is the fastest, followed by the proposed approach, Born's
+cases the naive method is the fastest, followed by our approach, Born's
 method, and Paxson's method in order.
 
 When operating on tunnelling application traffic, the average performance of the
 methods (averaged over all tunnels and cases) can be seen in Fig. \ref{pmat}
-where the naive and proposed methods both perform well, maintaining processing
+where the our method and the naive method both perform well, maintaining processing
 rates in excess of one hundred twenty thousands packets per second. Born's and
 Paxson's approaches both suffer severe degradation of performance as throughput
 increases, resulting in final processing rates well below one hundred thousand
@@ -1382,20 +1405,20 @@ packets per second.
 
 \begin{figure}[h] \centering
 \includegraphics[width=0.75\textwidth]{../figures/ppia-naive2proposed.pdf}
-\caption[Performance Ratio of the Naive Method to the Proposed Method on Tunnel
+\caption[Performance Ratio of the Naive Method to the our Method on Tunnel
 Data by Python Interpreter]{The ratio of the performance of the naive method to
-the proposed method on separated tunnelling application data, with the vertical
-axis showing the speedup of the naive method over the proposed method.}
+our method on separated tunnelling application data, with the vertical
+axis showing the speedup of the naive method over our method.}
 \label{ppia-naive2proposed} \end{figure}
 
-When the ratio of the performance of the naive method to the proposed method is
+When the ratio of the performance of the naive method to our method is
 examined, a clustering very close to a fixed value is observed as in Fig.
 \ref{ppia-naive2proposed}. This indicates that much of the performance
 degradation, and potentially other performance characteristics, of the two
 methods are dominated by the common scaffolding and/or the Python interpreter as
 opposed to the underlying methods or their implementation.
 
-Through this examination, it has been shown that the proposed method
+Through this examination, it has been shown that our method
 out-performs both methods from the literature by a considerable margin and comes
 very close to matching the naive method in performance in many cases.
 
@@ -1593,7 +1616,7 @@ the corresponding legend. For each marker, the false-positive rate is the $y$
 value of the normal traffic curve at intersection of the normal curve with the
 vertical marker. The second plot only shows the tunnelling combinations that
 produce the highest false-positive rates, since those are the scenarios of
-greatest interest. These eight plots are shown in Fig. \ref{mpv}.
+greatest interest. These eight plots are shown in Fig. \ref{mpn} to Fig. \ref{mph}.
 
 %The plots shown here illustrate how the various tunnel application fare when
 %compared to normal traffic. On each plot the vertical axis is "percent of
@@ -1619,37 +1642,38 @@ greatest interest. These eight plots are shown in Fig. \ref{mpv}.
 %ambiguity of classification. This value will be referred to as the
 %\emph{crossing value} in subsequent discussion.
 
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=\textwidth]{../figures/cnplot.pdf}
-%\caption[Trend of False Positive Rate for Tunnels by Throughput - Naive 
-%Metric]{Trend of False Positive Rate for Tunnels by Throughput - Naive Metric}
-%\label{cnplot}
-%\end{figure}
-%
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=\textwidth]{../figures/mpnv.pdf}
-%\caption[Tunnel Detection Performance - Naive Metric]{Tunnel Detection 
-%Performance - Naive Metric}
-%\label{mpnv}
-%\end{figure}
+%%%\begin{figure}[h]
+%%%\centering
+%%%\includegraphics[width=\textwidth]{../figures/cnplot.pdf}
+%%%\caption[Trend of False Positive Rate for Tunnels by Throughput - Naive 
+%%%Metric]{Trend of False Positive Rate for Tunnels by Throughput - Naive Metric}
+%%%\label{cnplot}
+%%%\end{figure}
+%%%
+%%%\begin{figure}[h]
+%%%\centering
+%%%\includegraphics[width=\textwidth]{../figures/mpnv.pdf}
+%%%\caption[Tunnel Detection Performance - Naive Metric]{Tunnel Detection 
+%%%Performance - Naive Metric}
+%%%\label{mpnv}
+%%%\end{figure}
 
-%\begin{figure}[h]
-%\centering
-%\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Naive Metric]{\includegraphics[width=0.48\textwidth]{../figures/cnplot.pdf}\label{cnplot}}
-%\subfigure[Tunnel Detection Performance - Naive Metric]{\includegraphics[width=0.48\textwidth]{../figures/mpnv.pdf}\label{mpnv}}
-%\caption{Tunnel detection performance for the naive approach.}
-%\end{figure}
+\begin{figure}[h]
+\centering
+\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Naive Metric]{\includegraphics[width=0.48\textwidth]{../figures/cnplot.pdf}\label{cnplot}}
+\subfigure[Tunnel Detection Performance - Naive Metric]{\includegraphics[width=0.48\textwidth]{../figures/mpnv.pdf}\label{mpnv}}
+\caption{Tunnel detection performance for the naive approach.}
+\label{mpn}
+\end{figure}
 
-%Figure \ref{mpnv} shows the performance of the naive metric, with markers
-%visible for the next-gen and DNSCat tunnels. The lowest marker belongs to the
-%next-gen tunnel, and has a false positive rate of 0.0799815, followed by a
-%DNSCat server-to-client transfer with a rate of 0.0496253. Iodine's
-%client-to-server transfers are the most easily detectable with its lowest false
-%positive rate at 0.00164529 indicating a very low ambiguity when classifying its
-%traffic.
-%
+%%%Figure \ref{mpnv} shows the performance of the naive metric, with markers
+%%%visible for the next-gen and DNSCat tunnels. The lowest marker belongs to the
+%%%next-gen tunnel, and has a false positive rate of 0.0799815, followed by a
+%%%DNSCat server-to-client transfer with a rate of 0.0496253. Iodine's
+%%%client-to-server transfers are the most easily detectable with its lowest false
+%%%positive rate at 0.00164529 indicating a very low ambiguity when classifying its
+%%%traffic.
+%%%
 The naive method, due to the nature of the the capture involving (relatively)
 very few duplicate queries, performs quite well overall even on the next-gen
 tunnel traffic. Figure \ref{cnplot} shows the trends of the false positive rate
@@ -1657,162 +1681,165 @@ for the tunnelling applications as a function of the data throughput. The lack
 of duplication in the DNS queries and its impacts were discussed in section
 \ref{dns-caching} in greater detail.
 
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=\textwidth]{../figures/cbplot.pdf}
-%\caption[Trend of False Positive Rate for Tunnels by Throughput - Born's 
-%Metric]{Trend of False Positive Rate for Tunnels by Throughput - Born's Metric}
-%\label{cbplot}
-%\end{figure}
-%
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=\textwidth]{../figures/mpbv.pdf}
-%\caption[Tunnel Detection Performance - Born's Metric]{Tunnel Detection 
-%Performance - Born's Metric}
-%\label{mpbv}
-%\end{figure}
-
-%\begin{figure}[h]
-%\centering
-%\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Born's Metric]{\includegraphics[width=0.48\textwidth]{../figures/cbplot.pdf}\label{cbplot}}
-%\subfigure[Tunnel Detection Performance - Born's Metric]{\includegraphics[width=0.48\textwidth]{../figures/mpbv.pdf}\label{mpbv}}
-%\caption{Tunnel detection performance for Born's approach.}
-%\end{figure}
-
-%Figure \ref{mpbv} shows the performance of Born's metric with almost all markers
-%visible clustered near the smaller metric values. Since the implementation of
-%Born's metric produces smaller metrics for tunnels, the highest values are the
-%ones of interest. The highest false positive rate of 0.529347 occurs for the
-%next-gen tunnels. It is not easily seen in the plot, but all sixteen (one for
-%each target throughput) of the next-gen tunnel markers are superimposed on each
-%other at that value. This is due to how the tunnel was implemented for the
-%proof-of-concept, as all traffic generated very closely conforms to a specified
-%distribution. This distribution produces a particular metric under the
-%implementation of Born's approach, independent of the amount of throughput. The
-%next-gen tunnel markers are followed by the DNSCat server-to-client marker with
-%a false positive rate of 0.367036. Similarly to the naive metric, Iodine's
-%client-to-server tunnel was the most easily detected tunnel with the lowest
-%throughput samples achieving a rate of no more than 0.00133572.
-%
-%It is easily seen that Born's metric will not be able to identify the next-gen
-%tunnel with any reasonable certainty due to the ambiguity caused by the tunnel's
-%traffic generating metrics very near to the median of real-world traffic. It is
-%possible to augment the next-gen tunnel to adhere less tightly to a given
-%distribution in order to spread its metrics over a wider range surrounding the
-%median, further increasing the difficulty of detection. Figure \ref{cbplot}
-%shows the trends of the crossing values for the tunnelling applications as a
-%function of the data throughput.
-
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=\textwidth]{../figures/mppv.pdf}
-%\caption[Tunnel Detection Performance - Paxson's Metric]{This visualizes the
-%ability of Paxson's metric to discern a DNS tunnel from normal DNS traffic.}
-%\label{mppv}
-%\end{figure}
-
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=\textwidth]{../figures/cpplot.pdf}
-%\caption[Trend of False Positive Rate for Tunnels by Throughput - Paxson's 
-%Metric]{Trend of False Positive Rate for Tunnels by Throughput - Paxson's 
-%Metric}
-%\label{cpplot}
-%\end{figure}
-%
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=\textwidth]{../figures/mppv-500.pdf}
-%%\caption[Tunnel Detection Performance - Naive Metric (Truncated View)]{A cropped
-%%plot of figure \ref{mppv} that offers more resolution in the smaller metric
-%%ranges.}
-%%\label{mppv-500}
-%\caption[Tunnel Detection Performance - Paxson's Metric]{Tunnel Detection 
-%Performance - Paxson's Metric}
-%\label{mppv}
-%\end{figure}
-
-%\begin{figure}[h]
-%\centering
-%\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Paxson's Metric]{\includegraphics[width=0.48\textwidth]{../figures/cpplot.pdf}\label{cpplot}}
-%\subfigure[Tunnel Detection Performance - Paxson's Metric]{\includegraphics[width=0.48\textwidth]{../figures/mppv-500.pdf}\label{mppv}}
-%\caption{Tunnel detection performance for Paxson's approach.}
-%\end{figure}
-
-%Figure \ref{mppv} shows the performance of Paxson's metric similarly to the plot
-%shown for the naive method. The lowest metric is shown by the DNSCat
-%client-to-server transfer with a false positive rate of 0.0239753 followed very closely by
-%DNSCat's server-to-client transfer with a rate of 0.0232046. The next-gen tunnel
-%produces a false positive rate of 0.0212873 and again Iodine is the most easily
-%detected with its client-to-server transfers producing false positives at a
-%proportion no larger than 0.00392552.
-%
-%As is expected, Paxson's method shows considerable improvement over both
-%Born's approach and the naive method in terms of ambiguity of tunnel detection.
-%Figure \ref{cpplot} shows the trends of the false positive rates for the
-%tunnelling applications as a function of the data throughput.
-
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=\textwidth]{../figures/chplot.pdf}
-%\caption[Trend of False Positive Rate for Tunnels by Throughput - Proposed Metric]{Trend
-% of False Positive Rate for Tunnels by Throughput - Proposed Metric}
-%\label{chplot}
-%\end{figure}
-%
-%%\begin{figure}[h]
-%%\centering
-%%\includegraphics[width=\textwidth]{../figures/mphv.pdf}
-%%\caption[Tunnel Detection Performance - Proposed Metric]{This visualizes the
-%%ability of the proposed metric to discern a DNS tunnel from normal DNS traffic.}
-%%\label{mphv}
-%%\end{figure}
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=\textwidth]{../figures/mphv-100.pdf}
-%%\caption[Tunnel Detection Performance - Proposed Metric (Truncated View)]{A
-%%cropped plot of figure \ref{mphv} that offers more resolution in the smaller
-%%metric ranges.}
-%%\label{mphv-100}
-%\caption[Tunnel Detection Performance - Proposed Metric]{Tunnel Detection 
-%Performance - Proposed Metric}
-%\label{mphv}
-%\end{figure}
-
-%\begin{figure}[h]
-%\centering
-%\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Proposed Metric]{\includegraphics[width=0.48\textwidth]{../figures/chplot.pdf}\label{chplot}}
-%\subfigure[Tunnel Detection Performance - Proposed Metric]{\includegraphics[width=0.48\textwidth]{../figures/mphv-100.pdf}\label{mphv}}
-%\caption{Tunnel detection performance for the proposed approach.}
-%\end{figure}
+%%%\begin{figure}[h]
+%%%\centering
+%%%\includegraphics[width=\textwidth]{../figures/cbplot.pdf}
+%%%\caption[Trend of False Positive Rate for Tunnels by Throughput - Born's 
+%%%Metric]{Trend of False Positive Rate for Tunnels by Throughput - Born's Metric}
+%%%\label{cbplot}
+%%%\end{figure}
+%%%
+%%%\begin{figure}[h]
+%%%\centering
+%%%\includegraphics[width=\textwidth]{../figures/mpbv.pdf}
+%%%\caption[Tunnel Detection Performance - Born's Metric]{Tunnel Detection 
+%%%Performance - Born's Metric}
+%%%\label{mpbv}
+%%%\end{figure}
 
 \begin{figure}[h]
 \centering
-\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Naive Metric]{\includegraphics[width=0.48\textwidth]{../figures/cnplot.pdf}\label{cnplot}}
-\subfigure[Tunnel Detection Performance - Naive Metric]{\includegraphics[width=0.48\textwidth]{../figures/mpnv.pdf}\label{mpnv}}
-
 \subfigure[Trend of False Positive Rate for Tunnels by Throughput - Born's Metric]{\includegraphics[width=0.48\textwidth]{../figures/cbplot.pdf}\label{cbplot}}
 \subfigure[Tunnel Detection Performance - Born's Metric]{\includegraphics[width=0.48\textwidth]{../figures/mpbv.pdf}\label{mpbv}}
-
-\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Paxson's Metric]{\includegraphics[width=0.48\textwidth]{../figures/cpplot.pdf}\label{cpplot}}
-\subfigure[Tunnel Detection Performance - Paxson's Metric]{\includegraphics[width=0.48\textwidth]{../figures/mppv-500.pdf}\label{mppv}}
-
-\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Proposed Metric]{\includegraphics[width=0.48\textwidth]{../figures/chplot.pdf}\label{chplot}}
-\subfigure[Tunnel Detection Performance - Proposed Metric]{\includegraphics[width=0.48\textwidth]{../figures/mphv-100.pdf}\label{mphv}}
-\caption{Tunnel detection performance for detection approaches}
-\label{mpv}
+\caption{Tunnel detection performance for Born's approach.}
+\label{mpb}
 \end{figure}
 
-%Figure \ref{mphv} shows the performance of the proposed metric in a fashion
-%similar to the naive method and for Paxson's method. The highest false positive
-%rate encountered is from the next-gen tunnel at 0.0184927. This is followed by
-%two of the samples generated by the DNSCat server-to-client transfers, the first
-%of which produced a false positive rate of 0.00751152. As has been the case for all
-%metrics thus far, Iodine is the most easily detected tunnel generating
-%proportions of false positives for its lowest throughput client-to-server and
-%server-to-client transmissions of no more than $5.19129\times10^{-6}$ and
-%$5.73392\times10^{-6}$ respectively.
+%%%Figure \ref{mpbv} shows the performance of Born's metric with almost all markers
+%%%visible clustered near the smaller metric values. Since the implementation of
+%%%Born's metric produces smaller metrics for tunnels, the highest values are the
+%%%ones of interest. The highest false positive rate of 0.529347 occurs for the
+%%%next-gen tunnels. It is not easily seen in the plot, but all sixteen (one for
+%%%each target throughput) of the next-gen tunnel markers are superimposed on each
+%%%other at that value. This is due to how the tunnel was implemented for the
+%%%proof-of-concept, as all traffic generated very closely conforms to a specified
+%%%distribution. This distribution produces a particular metric under the
+%%%implementation of Born's approach, independent of the amount of throughput. The
+%%%next-gen tunnel markers are followed by the DNSCat server-to-client marker with
+%%%a false positive rate of 0.367036. Similarly to the naive metric, Iodine's
+%%%client-to-server tunnel was the most easily detected tunnel with the lowest
+%%%throughput samples achieving a rate of no more than 0.00133572.
+%%%
+%%%It is easily seen that Born's metric will not be able to identify the next-gen
+%%%tunnel with any reasonable certainty due to the ambiguity caused by the tunnel's
+%%%traffic generating metrics very near to the median of real-world traffic. It is
+%%%possible to augment the next-gen tunnel to adhere less tightly to a given
+%%%distribution in order to spread its metrics over a wider range surrounding the
+%%%median, further increasing the difficulty of detection. Figure \ref{cbplot}
+%%%shows the trends of the crossing values for the tunnelling applications as a
+%%%function of the data throughput.
+%%
+%%%\begin{figure}[h]
+%%%\centering
+%%%\includegraphics[width=\textwidth]{../figures/mppv.pdf}
+%%%\caption[Tunnel Detection Performance - Paxson's Metric]{This visualizes the
+%%%ability of Paxson's metric to discern a DNS tunnel from normal DNS traffic.}
+%%%\label{mppv}
+%%%\end{figure}
+%%
+%%%\begin{figure}[h]
+%%%\centering
+%%%\includegraphics[width=\textwidth]{../figures/cpplot.pdf}
+%%%\caption[Trend of False Positive Rate for Tunnels by Throughput - Paxson's 
+%%%Metric]{Trend of False Positive Rate for Tunnels by Throughput - Paxson's 
+%%%Metric}
+%%%\label{cpplot}
+%%%\end{figure}
+%%%
+%%%\begin{figure}[h]
+%%%\centering
+%%%\includegraphics[width=\textwidth]{../figures/mppv-500.pdf}
+%%%%\caption[Tunnel Detection Performance - Naive Metric (Truncated View)]{A cropped
+%%%%plot of figure \ref{mppv} that offers more resolution in the smaller metric
+%%%%ranges.}
+%%%%\label{mppv-500}
+%%%\caption[Tunnel Detection Performance - Paxson's Metric]{Tunnel Detection 
+%%%Performance - Paxson's Metric}
+%%%\label{mppv}
+%%%\end{figure}
+
+\begin{figure}[h]
+\centering
+\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Paxson's Metric]{\includegraphics[width=0.48\textwidth]{../figures/cpplot.pdf}\label{cpplot}}
+\subfigure[Tunnel Detection Performance - Paxson's Metric]{\includegraphics[width=0.48\textwidth]{../figures/mppv-500.pdf}\label{mppv}}
+\caption{Tunnel detection performance for Paxson's approach.}
+\label{mpp}
+\end{figure}
+
+%%%Figure \ref{mppv} shows the performance of Paxson's metric similarly to the plot
+%%%shown for the naive method. The lowest metric is shown by the DNSCat
+%%%client-to-server transfer with a false positive rate of 0.0239753 followed very closely by
+%%%DNSCat's server-to-client transfer with a rate of 0.0232046. The next-gen tunnel
+%%%produces a false positive rate of 0.0212873 and again Iodine is the most easily
+%%%detected with its client-to-server transfers producing false positives at a
+%%%proportion no larger than 0.00392552.
+%%%
+%%%As is expected, Paxson's method shows considerable improvement over both
+%%%Born's approach and the naive method in terms of ambiguity of tunnel detection.
+%%%Figure \ref{cpplot} shows the trends of the false positive rates for the
+%%%tunnelling applications as a function of the data throughput.
+
+%%%\begin{figure}[h]
+%%%\centering
+%%%\includegraphics[width=\textwidth]{../figures/chplot.pdf}
+%%%\caption[Trend of False Positive Rate for Tunnels by Throughput - Proposed Metric]{Trend
+%%% of False Positive Rate for Tunnels by Throughput - Proposed Metric}
+%%%\label{chplot}
+%%%\end{figure}
+%%%
+%%%%\begin{figure}[h]
+%%%%\centering
+%%%%\includegraphics[width=\textwidth]{../figures/mphv.pdf}
+%%%%\caption[Tunnel Detection Performance - Proposed Metric]{This visualizes the
+%%%%ability of the proposed metric to discern a DNS tunnel from normal DNS traffic.}
+%%%%\label{mphv}
+%%%%\end{figure}
+%%%\begin{figure}[h]
+%%%\centering
+%%%\includegraphics[width=\textwidth]{../figures/mphv-100.pdf}
+%%%%\caption[Tunnel Detection Performance - Proposed Metric (Truncated View)]{A
+%%%%cropped plot of figure \ref{mphv} that offers more resolution in the smaller
+%%%%metric ranges.}
+%%%%\label{mphv-100}
+%%%\caption[Tunnel Detection Performance - Proposed Metric]{Tunnel Detection 
+%%%Performance - Proposed Metric}
+%%%\label{mphv}
+%%%\end{figure}
+
+\begin{figure}[h]
+\centering
+\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Proposed Metric]{\includegraphics[width=0.48\textwidth]{../figures/chplot.pdf}\label{chplot}}
+\subfigure[Tunnel Detection Performance - Proposed Metric]{\includegraphics[width=0.48\textwidth]{../figures/mphv-100.pdf}\label{mphv}}
+\caption{Tunnel detection performance for our approach.}
+\label{mph}
+\end{figure}
+
+%\begin{figure}[h]
+%\centering
+%\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Naive Metric]{\includegraphics[width=0.48\textwidth]{../figures/cnplot.pdf}\label{cnplot}}
+%\subfigure[Tunnel Detection Performance - Naive Metric]{\includegraphics[width=0.48\textwidth]{../figures/mpnv.pdf}\label{mpnv}}
+%
+%\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Born's Metric]{\includegraphics[width=0.48\textwidth]{../figures/cbplot.pdf}\label{cbplot}}
+%\subfigure[Tunnel Detection Performance - Born's Metric]{\includegraphics[width=0.48\textwidth]{../figures/mpbv.pdf}\label{mpbv}}
+%
+%\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Paxson's Metric]{\includegraphics[width=0.48\textwidth]{../figures/cpplot.pdf}\label{cpplot}}
+%\subfigure[Tunnel Detection Performance - Paxson's Metric]{\includegraphics[width=0.48\textwidth]{../figures/mppv-500.pdf}\label{mppv}}
+%
+%\subfigure[Trend of False Positive Rate for Tunnels by Throughput - Proposed Metric]{\includegraphics[width=0.48\textwidth]{../figures/chplot.pdf}\label{chplot}}
+%\subfigure[Tunnel Detection Performance - Proposed Metric]{\includegraphics[width=0.48\textwidth]{../figures/mphv-100.pdf}\label{mphv}}
+%\caption{Tunnel detection performance for detection approaches}
+%\label{mpv}
+%\end{figure}
+
+%%%Figure \ref{mphv} shows the performance of the proposed metric in a fashion
+%%%similar to the naive method and for Paxson's method. The highest false positive
+%%%rate encountered is from the next-gen tunnel at 0.0184927. This is followed by
+%%%two of the samples generated by the DNSCat server-to-client transfers, the first
+%%%of which produced a false positive rate of 0.00751152. As has been the case for all
+%%%metrics thus far, Iodine is the most easily detected tunnel generating
+%%%proportions of false positives for its lowest throughput client-to-server and
+%%%server-to-client transmissions of no more than $5.19129\times10^{-6}$ and
+%%%$5.73392\times10^{-6}$ respectively.
 
 \subsection{Specificity and Ambiguity of Tunnel Classification}
 \label{detection-perf-cert}
@@ -1823,21 +1850,21 @@ tunnelling application. The following charts only consider the certainty of
 detecting the tunnel in which the method is least certain. By comparing the
 methods in their most hostile scenarios more substantial distinctions can be
 observed with clearer separation between the best two methods.
-%In all cases,
-%this corresponded to one of the tunnelling applications at the ten bytes per
-%second throughput level, which demonstrates the effectiveness of these methods
-%to solve the \emph{needle-in-a-haystack} problem of low throughput DNS tunnels
-%on a very busy network link.
-
-%%\begin{figure}[h]
-%%\centering
-%%\includegraphics[width=\textwidth]{../figures/cplot.pdf}
-%%\caption[Chart of Specificity of Detection by Tunnel Application and Detection
-%%Method]{Comparison of the specificity of classification of a tunnel against
-%%real-world traffic for the least certain tunnel in each detection scenario
-%%(method/application pair).}
-%%\label{cplot}
-%%\end{figure}
+%%%In all cases,
+%%%this corresponded to one of the tunnelling applications at the ten bytes per
+%%%second throughput level, which demonstrates the effectiveness of these methods
+%%%to solve the \emph{needle-in-a-haystack} problem of low throughput DNS tunnels
+%%%on a very busy network link.
+%%
+%%%%\begin{figure}[h]
+%%%%\centering
+%%%%\includegraphics[width=\textwidth]{../figures/cplot.pdf}
+%%%%\caption[Chart of Specificity of Detection by Tunnel Application and Detection
+%%%%Method]{Comparison of the specificity of classification of a tunnel against
+%%%%real-world traffic for the least certain tunnel in each detection scenario
+%%%%(method/application pair).}
+%%%%\label{cplot}
+%%%%\end{figure}
 
 \begin{figure}[h]
 \centering
@@ -1899,94 +1926,102 @@ methods more easily visible.
 %\label{cplot95}
 %\end{figure}
 
-
-
-The differences between Paxson's method and the proposed method are visible, but
-an additional chart further accentuating them is instructive and is shown in
-figure \ref{cplot95}. In this final chart which shows a range of certainties in
-the interval $[0.95,1.00]$, the differences between the two methods are clearly
-visible, with the proposed approach achieving a higher certainty in every
-detection scenario.
+The differences between Paxson's method and our method are visible,
+but an additional chart further accentuating them is instructive and
+is shown in figure \ref{cplot95}. In this final chart which shows a
+range of certainties in the interval $[0.95,1.00]$, the differences
+between the two methods are clearly visible, with our approach
+achieving a higher certainty in every detection scenario.
 
 \subsection{Tunnel Detection Performance Conclusion}
-It is visible from the detailed plots in Sect. \ref{detection-perf} and
-\ref{detection-perf-cert} that the proposed method is superior to its peers in
-its ability to detect tunnels with certainty in excess of ninety eight percent.
-This extremely high detection rate is achieved at a very short time scale and
-with very low tunnel throughput.
+It is visible from the detailed plots in Sect. \ref{detection-perf}
+and \ref{detection-perf-cert} that our method is superior to its peers
+in its ability to detect tunnels with certainty in excess of ninety
+eight percent.  This extremely high detection rate is achieved within
+a very short time scale and with very low tunnel throughput.
 
-\section{Conclusion}
+%% In this work, a new method of detecting DNS tunnels was proposed, described, and
+%% evaluated.
+%% %The existing landscape of detection methods was summarized (section
+%% %\ref{litreview}) and a gap identified indicating a need for a new method
+%% %(section \ref{methodreqs}) that has both high processing performance on
+%% %commodity hardware, and robust tunnel detection. A prototypical next-gen tunnel
+%% %application was postulated and simulated in order to present a more difficult detection
+%% %task during evaluation alongside existing tunnel applications (section
+%% %\ref{test-existing}). Several detection methods from the literature as well as
+%% %the proposed method were selected (section \ref{chosen-methods}) and implemented
+%% %on a common framework. The implemented methods
+%% %were tested for processing performance (section \ref{processing-perf}) and
+%% %tunnel detection performance on a large sample of real world DNS traffic as well
+%% %as existing and next-gen tunnelling application data (section
+%% %\ref{chap-evaluation}).
+%% As is shown in the relevant sections, the proposed method outperforms its peers
+%% in both processing performance and tunnel detection in almost every situation by
+%% a measurable and often considerable margin.
+%% %When compared to its peers from literature, the performance improvement over
+%% %Paxson's approach on real-world data is approximately 25\% while a speedup of
+%% %almost 100\% is observed when processing tunnel data under the Cython
+%% %interpreter. The margins are similar under PyPy, with the primary difference
+%% %being that the proposed method is nearly double the performance of Paxson's
+%% %approach on both real world and tunnel application data. Born's approach is able
+%% %to narrow the gap on tunnel data to only approximately a 50\% improvement, while
+%% %the gap on real-world data increases to about 30\%. Under PyPy however, the
+%% %performance of the proposed method and Born's method become very similar with
+%% %gaps less than 10\%.
+%% %
+%% %Examining tunnel detection performance shows additional benefits to the proposed
+%% %method. Born's method shows very poor performance, as expected, when faced with
+%% %the next-gen tunnel, with a less drastic performance hit shown on other
+%% %tunnelling software. In all cases the proposed, as well as Paxson's, approach
+%% %out-perform Born's method by a considerable margin in false-positive rates. The
+%% %proposed approach reduces the false positive rate by almost 98\% when compared
+%% %to Born's approach. When comparing Paxson's approach with the proposed
+%% %approach, the proposed approach reduces the number of false positives by up to
+%% %nearly 90\% in the best case, with an average reduction of 70\%.
+%% %
+%% %The exception is the naive method which outperforms the proposed method in
+%% %processing performance by approximately fifty percent at the expense of
+%% %detection performance, with the proposed approach reducing the false positive
+%% %rate by 82\%. As was mentioned in Sect. \ref{dns-caching} however,
+%% %the naive method's detection performance is only as good as it is in this case
+%% %due to the lack of duplication of DNS queries.
+%% Recall that the improvements demonstrated of our approach are measured
+%% in a highly pessimistic detection scenario, with false-positive rates
+%% rapidly dropping below $10^{-6}$ as throughput increases.
+
+%% The end product of these results is a contribution to the field
+%% composed of a new detection method with superior processing and
+%% detection performance.
+%% %The new
+%% %detection method falls short of matching the naive method's processing
+%% %performance in many situations with the trade off of far superior detection
+%% %performance in the general case.
+
+\section{Conclusion and Future Work}
 \label{conclusion}
-
-In this work, a new method of detecting DNS tunnels was proposed, described, and
-evaluated.
-%The existing landscape of detection methods was summarized (section
-%\ref{litreview}) and a gap identified indicating a need for a new method
-%(section \ref{methodreqs}) that has both high processing performance on
-%commodity hardware, and robust tunnel detection. A prototypical next-gen tunnel
-%application was postulated and simulated in order to present a more difficult detection
-%task during evaluation alongside existing tunnel applications (section
-%\ref{test-existing}). Several detection methods from the literature as well as
-%the proposed method were selected (section \ref{chosen-methods}) and implemented
-%on a common framework. The implemented methods
-%were tested for processing performance (section \ref{processing-perf}) and
-%tunnel detection performance on a large sample of real world DNS traffic as well
-%as existing and next-gen tunnelling application data (section
-%\ref{chap-evaluation}).
-As is shown in the relevant sections, the proposed method outperforms its peers
-in both processing performance and tunnel detection in almost every situation by
-a measurable and often considerable margin.
-%When compared to its peers from literature, the performance improvement over
-%Paxson's approach on real-world data is approximately 25\% while a speedup of
-%almost 100\% is observed when processing tunnel data under the Cython
-%interpreter. The margins are similar under PyPy, with the primary difference
-%being that the proposed method is nearly double the performance of Paxson's
-%approach on both real world and tunnel application data. Born's approach is able
-%to narrow the gap on tunnel data to only approximately a 50\% improvement, while
-%the gap on real-world data increases to about 30\%. Under PyPy however, the
-%performance of the proposed method and Born's method become very similar with
-%gaps less than 10\%.
-%
-%Examining tunnel detection performance shows additional benefits to the proposed
-%method. Born's method shows very poor performance, as expected, when faced with
-%the next-gen tunnel, with a less drastic performance hit shown on other
-%tunnelling software. In all cases the proposed, as well as Paxson's, approach
-%out-perform Born's method by a considerable margin in false-positive rates. The
-%proposed approach reduces the false positive rate by almost 98\% when compared
-%to Born's approach. When comparing Paxson's approach with the proposed
-%approach, the proposed approach reduces the number of false positives by up to
-%nearly 90\% in the best case, with an average reduction of 70\%.
-%
-%The exception is the naive method which outperforms the proposed method in
-%processing performance by approximately fifty percent at the expense of
-%detection performance, with the proposed approach reducing the false positive
-%rate by 82\%. As was mentioned in Sect. \ref{dns-caching} however,
-%the naive method's detection performance is only as good as it is in this case
-%due to the lack of duplication of DNS queries.
-Recall that the improvements demonstrated by the proposed approach are 
-measured in a highly pessimistic detection scenario, with false-positive rates
-rapidly dropping below $10^{-6}$ as throughput increases.
-
-The end product of these results is a contribution to the field composed of a new
-detection method with superior processing and detection performance.
-%The new
-%detection method falls short of matching the naive method's processing
-%performance in many situations with the trade off of far superior detection
-%performance in the general case.
-
-\section{Future Work}
-
 %The proposed method was shown to be highly effective in detecting the targeted
 %network traffic with superior performance, outperforming existing methods in almost
 %every scenario. In order for this to be of value, however, an adoption of this
 %method into an existing commercial products or an implementation as a plugin for
 %an existing security framework would be necessary.
 
-Future work could include implementing the proposed method for Bro, Snort,
-Suricata or other existing intrusion detection systems in order to improve
-the ability of organizations to observe DNS tunnels in their network. Partnership with, and
-adoption by, an existing industry partner would aid in the spread and deployment of
-this technique in enterprise and corporate environments.
+This paper describes our entropy-based detection method for DNS
+tunnels and shows through an empirical evaluation that our approach
+provides better detection accuracy and faster processing than previous
+approaches described in the literature. Our method works well not only
+in artificial benchmark datasets, but also in difficult real-world
+traffic. 
+
+%We also show a method for encoding data such that it closely matches a
+%desired character frequency distribution, which completely circumvents
+%some current detection methods ***cite.
+
+Future work includes implementing our method for Bro, Snort, Suricata
+or other existing intrusion detection systems in order to improve the
+ability of organizations to observe DNS tunnels in their
+network. Partnership with, and adoption by, an existing industry
+partner would aid in the spread and deployment of this technique in
+enterprise and corporate environments.
 %Due to the nature of
 %computer security research, regardless of how valuable a contribution may be, unless
 %there is deployment of the approach into real world environments it is unable
